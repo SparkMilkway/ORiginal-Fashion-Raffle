@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */; };
+		04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */; };
+		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
+		048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B81DC39EBB006A1C3E /* ThirdViewController.swift */; };
+		048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */; };
+		04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */; };
+		04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */; };
+		04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E01DC36C53008B1989 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DF1DC36C53008B1989 /* FirstViewController.swift */; };
 		04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1E11DC36C53008B1989 /* SecondViewController.swift */; };
@@ -15,6 +23,12 @@
 		04D8A1EA1DC36C53008B1989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E81DC36C53008B1989 /* LaunchScreen.storyboard */; };
 		04D8A1F51DC36C53008B1989 /* FashionRaffleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1F41DC36C53008B1989 /* FashionRaffleTests.swift */; };
 		04D8A2001DC36C53008B1989 /* FashionRaffleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */; };
+		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
+		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
+		525D6C8F1DC58A6500509E20 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */; };
+		525D6CA31DC5908100509E20 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA11DC5908100509E20 /* FBSDKCoreKit.framework */; };
+		525D6CA41DC5908100509E20 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA21DC5908100509E20 /* FBSDKLoginKit.framework */; };
+		525D6CA61DC590A200509E20 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA51DC590A200509E20 /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		048581B81DC39EBB006A1C3E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStackElementViewController.swift; sourceTree = "<group>"; };
+		04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmStackElementViewController.swift; path = ../AlarmStackElementViewController.swift; sourceTree = "<group>"; };
+		04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInStackElementViewController.swift; sourceTree = "<group>"; };
+		04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogOutStackElementViewController.swift; path = ../LogOutStackElementViewController.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D8A1DF1DC36C53008B1989 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +71,16 @@
 		04D8A1FB1DC36C53008B1989 /* FashionRaffleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FashionRaffleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionRaffleUITests.swift; sourceTree = "<group>"; };
 		04D8A2011DC36C53008B1989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		525D6C981DC58E2500509E20 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../FaceBook SDK/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		525D6C991DC58E2500509E20 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../FaceBook SDK/FacebookSDKs-iOS-4.17.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		525D6CA01DC58FDC00509E20 /* Bridging Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging Header.h"; sourceTree = "<group>"; };
+		525D6CA11DC5908100509E20 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		525D6CA21DC5908100509E20 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		525D6CA51DC590A200509E20 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		525D6CA71DC59F3900509E20 /* FashionRaffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FashionRaffle.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525D6CA61DC590A200509E20 /* Bolts.framework in Frameworks */,
+				525D6C8F1DC58A6500509E20 /* libsqlite3.tbd in Frameworks */,
+				525D6CA31DC5908100509E20 /* FBSDKCoreKit.framework in Frameworks */,
+				525D6CA41DC5908100509E20 /* FBSDKLoginKit.framework in Frameworks */,
+				525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +116,13 @@
 		04D8A1D11DC36C53008B1989 = {
 			isa = PBXGroup;
 			children = (
+				525D6CA01DC58FDC00509E20 /* Bridging Header.h */,
+				525D6C861DC589AC00509E20 /* Framework */,
 				04D8A1DC1DC36C53008B1989 /* FashionRaffle */,
 				04D8A1F31DC36C53008B1989 /* FashionRaffleTests */,
 				04D8A1FE1DC36C53008B1989 /* FashionRaffleUITests */,
 				04D8A1DB1DC36C53008B1989 /* Products */,
+				525D6C8B1DC58A5E00509E20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +139,11 @@
 		04D8A1DC1DC36C53008B1989 /* FashionRaffle */ = {
 			isa = PBXGroup;
 			children = (
+				525D6CAB1DC5A83700509E20 /* AWSCredential */,
 				04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */,
-				04D8A1DF1DC36C53008B1989 /* FirstViewController.swift */,
-				04D8A1E11DC36C53008B1989 /* SecondViewController.swift */,
-				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
+				525D6CA91DC5A1FD00509E20 /* TabViews */,
+				525D6CA81DC5A1ED00509E20 /* Main Interface */,
+				525D6CA71DC59F3900509E20 /* FashionRaffle.entitlements */,
 				04D8A1E61DC36C53008B1989 /* Assets.xcassets */,
 				04D8A1E81DC36C53008B1989 /* LaunchScreen.storyboard */,
 				04D8A1EB1DC36C53008B1989 /* Info.plist */,
@@ -126,6 +167,69 @@
 				04D8A2011DC36C53008B1989 /* Info.plist */,
 			);
 			path = FashionRaffleUITests;
+			sourceTree = "<group>";
+		};
+		525D6C861DC589AC00509E20 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				525D6CA51DC590A200509E20 /* Bolts.framework */,
+				525D6CA11DC5908100509E20 /* FBSDKCoreKit.framework */,
+				525D6CA21DC5908100509E20 /* FBSDKLoginKit.framework */,
+			);
+			name = Framework;
+			path = FashionRaffle;
+			sourceTree = "<group>";
+		};
+		525D6C8B1DC58A5E00509E20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				525D6C981DC58E2500509E20 /* FBSDKCoreKit.framework */,
+				525D6C991DC58E2500509E20 /* FBSDKLoginKit.framework */,
+				525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */,
+				525D6C8C1DC58A5E00509E20 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		525D6CA81DC5A1ED00509E20 /* Main Interface */ = {
+			isa = PBXGroup;
+			children = (
+				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
+				04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */,
+				048581B61DC37653006A1C3E /* LoginTextField.swift */,
+			);
+			name = "Main Interface";
+			sourceTree = "<group>";
+		};
+		525D6CA91DC5A1FD00509E20 /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				525D6CAA1DC5A23300509E20 /* ThirdTabView */,
+				04D8A1DF1DC36C53008B1989 /* FirstViewController.swift */,
+				04D8A1E11DC36C53008B1989 /* SecondViewController.swift */,
+				048581B81DC39EBB006A1C3E /* ThirdViewController.swift */,
+			);
+			name = TabViews;
+			sourceTree = "<group>";
+		};
+		525D6CAA1DC5A23300509E20 /* ThirdTabView */ = {
+			isa = PBXGroup;
+			children = (
+				04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */,
+				04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */,
+				04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */,
+				04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */,
+				048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */,
+				04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */,
+			);
+			name = ThirdTabView;
+			sourceTree = "<group>";
+		};
+		525D6CAB1DC5A83700509E20 /* AWSCredential */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AWSCredential;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,8 +300,14 @@
 				TargetAttributes = {
 					04D8A1D91DC36C53008B1989 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = E23AHD5J9B;
+						DevelopmentTeam = PA49KJL793;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					04D8A1EF1DC36C53008B1989 = {
 						CreatedOnToolsVersion = 8.1;
@@ -207,7 +317,7 @@
 					};
 					04D8A1FA1DC36C53008B1989 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = E23AHD5J9B;
+						DevelopmentTeam = PA49KJL793;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 04D8A1D91DC36C53008B1989;
 					};
@@ -265,9 +375,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */,
+				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
+				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
+				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
+				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,
+				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				04D8A1E01DC36C53008B1989 /* FirstViewController.swift in Sources */,
+				048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */,
+				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,12 +538,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E23AHD5J9B;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FashionRaffle/FashionRaffle.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PA49KJL793;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FashionRaffle",
+				);
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffle;
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -432,12 +563,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E23AHD5J9B;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FashionRaffle/FashionRaffle.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = PA49KJL793;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FashionRaffle",
+				);
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffle;
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -448,6 +590,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = E23AHD5J9B;
 				INFOPLIST_FILE = FashionRaffleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,6 +606,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = E23AHD5J9B;
 				INFOPLIST_FILE = FashionRaffleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -475,8 +619,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = E23AHD5J9B;
+				DEVELOPMENT_TEAM = PA49KJL793;
 				INFOPLIST_FILE = FashionRaffleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -489,8 +634,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = E23AHD5J9B;
+				DEVELOPMENT_TEAM = PA49KJL793;
 				INFOPLIST_FILE = FashionRaffleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EC.FashionRaffleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,6 +664,7 @@
 				04D8A2061DC36C53008B1989 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04D8A2071DC36C53008B1989 /* Build configuration list for PBXNativeTarget "FashionRaffleTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +673,7 @@
 				04D8A2091DC36C53008B1989 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04D8A20A1DC36C53008B1989 /* Build configuration list for PBXNativeTarget "FashionRaffleUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +682,7 @@
 				04D8A20C1DC36C53008B1989 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
