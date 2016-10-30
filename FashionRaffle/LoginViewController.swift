@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet var addForgetPasswordView: UIView!
+    
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var passwordButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     
     
-    @IBAction func moveToTabBar(_ sender: Any) {
-        loginSuccess()
-    }
     
     func loginInFailed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -26,6 +27,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = viewController
         print("Login Failed!")
+    }
+    
+    func getFireBaseCredential() {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
     }
     
     func loginSuccess() {
@@ -84,10 +89,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         
-        let attributedString = NSAttributedString(string:"Forgot your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
+        let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
         passwordButton.setAttributedTitle(attributedString, for: .normal)
         
         
+        
+    }
+    
+    //add forgot Password Pop Up
+    @IBAction func addForgetPasswordPopUp(_ sender: Any) {
+        self.view.addSubview(addForgetPasswordView)
+        addForgetPasswordView.center = self.view.center
+        addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
+        addForgetPasswordView.alpha = 0
+        
+        UIView.animate(withDuration:0.4){
+            self.addForgetPasswordView.alpha = 1
+            self.addForgetPasswordView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    
+    //dismiss forgot Password Pop Up
+    @IBAction func dismissForgetPasswordPopUp(_ sender: Any) {
+        UIView.animate(withDuration:0.3, animations:{
+            self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
+            self.addForgetPasswordView.alpha = 0
+        }) {(success:Bool) in
+            self.addForgetPasswordView.removeFromSuperview()
+        }
         
     }
     
@@ -108,9 +138,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
     }
+    
+
 
     //Facebook Login Button Delegate
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error) {
+        if let errors: NSError = error as NSError?{
+            print(errors.localizedDescription)
+            return
+        }
+        getFireBaseCredential()
         loginSuccess()
         print("successfully logged in with Facebook")
 
