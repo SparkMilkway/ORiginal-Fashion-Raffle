@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Raffle-->
+        <!--Profile-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,12 +62,15 @@
                                 <state key="normal" title="Email Sign Out">
                                     <color key="titleColor" red="0.9152866005897522" green="0.24655312299728394" blue="0.20107686519622803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="emailSignOut:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="grw-I8-k73"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZuW-K6-dpP" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="396" id="GcT-8t-LVt"/>
-                            <constraint firstItem="6f3-iE-6lc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="348" id="HW6-Ns-Ya2"/>
+                            <constraint firstItem="6f3-iE-6lc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="358" id="HW6-Ns-Ya2"/>
                             <constraint firstItem="DTs-Ve-Ru3" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="51" id="V1c-GN-9eo"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="DTs-Ve-Ru3" secondAttribute="bottom" constant="27" id="frn-qz-3Dg"/>
                             <constraint firstItem="6f3-iE-6lc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="79" id="ixk-lc-Vlq"/>
@@ -75,9 +78,9 @@
                             <constraint firstItem="ZuW-K6-dpP" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="vth-Rn-RMw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Raffle" image="first" selectedImage="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="first" selectedImage="first" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="emailSignOut" destination="6f3-iE-6lc" id="z4T-VC-2vL"/>
+                        <outlet property="emailSignOutButton" destination="6f3-iE-6lc" id="xDf-Ck-s0y"/>
                         <outlet property="fbLoginButton" destination="ZuW-K6-dpP" id="ADu-iy-LyQ"/>
                     </connections>
                 </viewController>
@@ -130,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="1490" y="-321"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="ult-pP-h3M">
             <objects>
                 <viewController id="BDG-WT-ocH" customClass="ThirdViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,7 +160,7 @@
                             <constraint firstItem="a5x-WX-bg7" firstAttribute="trailing" secondItem="dv7-xe-kuJ" secondAttribute="trailing" id="rL4-K6-4IZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="first" selectedImage="first" id="HmW-PN-afU"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="first" selectedImage="first" id="HmW-PN-afU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXP-Yw-zr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -472,7 +475,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Gs-hx-lPK" customClass="LoginTextField" customModule="FashionRaffle" customModuleProvider="target">
-                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -520,7 +523,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="51D-b3-z0X" customClass="LoginTextField" customModule="FashionRaffle" customModuleProvider="target">
-                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>

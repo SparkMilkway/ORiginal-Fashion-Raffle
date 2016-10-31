@@ -23,13 +23,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     
-    func loginInFailed() {
+    /*func loginInFailed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = viewController
         print("Login Failed!")
-    }
+    }*/
     
     func getFireBaseCredential() {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -38,8 +38,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginSuccess() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = tabBarController
+        self.present(tabBarController, animated: true, completion: nil)
+        /*let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController*/
     }
     
     /*@IBAction func fbLoginAction (sender:AnyObject){
@@ -150,8 +151,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else{
             FIRAuth.auth()?.signIn(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
-                    self.showAlerts(title: "Login Successful!", message: "Welcome Back!")
+                    //self.showAlerts(title: "Success", message: "Welcome Back!")
                     self.loginSuccess()
+                    
                 }
                 else {
                     self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
@@ -176,6 +178,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else{
             FIRAuth.auth()?.createUser(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
+                    
                     self.showAlerts(title: "Success!", message: "Your ccount is successfully created! You can sign in now!")
                 }
                 else {
