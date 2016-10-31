@@ -22,10 +22,10 @@ class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
     var viewPinned = false
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         //
@@ -54,7 +54,7 @@ class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
         let sb = UIStoryboard(name: "Main", bundle:nil)
         let stackElementVC = sb.instantiateViewController(withIdentifier: "ProfileStackElement") as! ProfileStackElementViewController
         
-      
+        
         
         if let view = stackElementVC.view{
             view.frame = frameForView
@@ -83,7 +83,7 @@ class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
             animator.addBehavior(collision)
             
             let boundary = view.frame.origin.y + view.frame.size.height
-
+            
             
             //lower boundary
             var boundaryStart = CGPoint(x:0, y:boundary)
@@ -213,21 +213,21 @@ class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
     }
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

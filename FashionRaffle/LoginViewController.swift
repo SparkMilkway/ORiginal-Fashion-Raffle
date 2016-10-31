@@ -12,6 +12,8 @@ import Firebase
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet var addForgetPasswordView: UIView!
+    @IBOutlet weak var emailFiled: LoginTextField!
+    @IBOutlet weak var passwordField: LoginTextField!
     
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var passwordButton: UIButton!
@@ -53,7 +55,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }*/
     
-    
+    //facebook login button
     @IBOutlet var fbLoginButton : FBSDKLoginButton! = {
         let button = FBSDKLoginButton()
         button.readPermissions = ["email"]
@@ -75,18 +77,30 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Hide the keyboard when tapping around
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    
+    
+        
         // Do any additional setup after loading the view.
         
         fbLoginButton.delegate = self
-        applyMotionEffect(toView:logoImageView, magnitude: -20)
+        applyMotionEffect(toView:logoImageView, magnitude: 5)
     
-        applyMotionEffect(toView:backgroundImageView, magnitude: 10)
-        
+        applyMotionEffect(toView:backgroundImageView, magnitude: 15)
+        //If FB signed in
         if let _ = FBSDKAccessToken.current(){
             getFBUserData()
             loginSuccess()
             
         }
+
+        
         
         
         let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
@@ -94,6 +108,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
         
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     //add forgot Password Pop Up
@@ -121,6 +140,64 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    //Determine the login Access
+    @IBAction func emailLoginAction(_ sender: AnyObject) {
+        if self.emailFiled.text == "" || self.passwordField.text == ""
+        {
+            self.showAlerts(title: "Error", message: "Please enter your email address and password!")
+            
+        }
+        else{
+            FIRAuth.auth()?.signIn(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
+                if error == nil{
+                    self.showAlerts(title: "Login Successful!", message: "Welcome Back!")
+                    self.loginSuccess()
+                }
+                else {
+                    self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
+                    
+                }
+                    
+            })
+        }
+        
+    }
+    
+    
+    @IBAction func emailregisterAction(_ sender: AnyObject) {
+        
+        //If nothing is typed
+        if self.emailFiled.text == "" || self.passwordField.text == ""
+        {
+            self.showAlerts(title: "Error", message: "Please enter your email address and password!")
+
+        }
+        //Create an account
+        else{
+            FIRAuth.auth()?.createUser(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
+                if error == nil{
+                    self.showAlerts(title: "Success!", message: "Your ccount is successfully created! You can sign in now!")
+                }
+                else {
+                    self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
+
+                }
+                
+            })
+        }
+    }
+    
+    //TextFields Edit
+    
+    func showAlerts(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     func applyMotionEffect (toView view:UIView, magnitude:Float){
         let xMotion = UIInterpolatingMotionEffect(keyPath:"center.x", type:.tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
@@ -142,14 +219,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 
     //Facebook Login Button Delegate
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error) {
-        if let errors: NSError = error as NSError?{
-            print(errors.localizedDescription)
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+
+        /*if error == nil{
+            print(error!.localizedDescription)
             return
-        }
-        getFireBaseCredential()
+        }*/
+        if let _ = FBSDKAccessToken.current(){
         loginSuccess()
         print("successfully logged in with Facebook")
+        }
 
         
     }
@@ -179,4 +258,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     */
 
+    
+
+
+    
 }
+// Hide the keyboard when tapping around
+/*extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}*/
