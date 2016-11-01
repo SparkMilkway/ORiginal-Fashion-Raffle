@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var emailFiled: LoginTextField!
     @IBOutlet weak var passwordField: LoginTextField!
     
+    @IBOutlet weak var forgetPasswordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var passwordButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -31,10 +32,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Login Failed!")
     }*/
     
-    func getFireBaseCredential() {
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-    }
-    
+
     func loginSuccess() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
@@ -132,6 +130,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     //dismiss forgot Password Pop Up
     @IBAction func dismissForgetPasswordPopUp(_ sender: Any) {
+        if self.forgetPasswordTextField.text == "" {
+            self.showAlerts(title: "Error", message: "Please enter your email!")
+        }
+        
+            
+        
+        
         UIView.animate(withDuration:0.3, animations:{
             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
             self.addForgetPasswordView.alpha = 0
@@ -146,23 +151,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if self.emailFiled.text == "" || self.passwordField.text == ""
         {
             self.showAlerts(title: "Error", message: "Please enter your email address and password!")
-            
         }
         else{
+            
             FIRAuth.auth()?.signIn(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
+                    let alertController = UIAlertController(title: "Success", message: "Welcome Back!", preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: {
+                        UIAlertAction in
+                        self.loginSuccess()
+                    })
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
                     //self.showAlerts(title: "Success", message: "Welcome Back!")
-                    self.loginSuccess()
-                    
+                    //self.loginSuccess()
                 }
                 else {
                     self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
-                    
                 }
-                    
             })
         }
-        
     }
     
     
@@ -228,10 +236,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print(error!.localizedDescription)
             return
         }*/
-        if let _ = FBSDKAccessToken.current(){
-        loginSuccess()
+        // link with Firebase!
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
+            if error == nil{
+                //self.showAlerts(title: "Success", message: "Welcome Back!")
+                self.loginSuccess()
+                
+            }
+            else {
+                self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
+            }
+        })
         print("successfully logged in with Facebook")
-        }
+        
 
         
     }

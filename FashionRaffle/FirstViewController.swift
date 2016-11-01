@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class NewsTableViewController: UITableViewController {
 
     /*@IBOutlet var fbLoginButton : FBSDKLoginButton! = {
         let button = FBSDKLoginButton()

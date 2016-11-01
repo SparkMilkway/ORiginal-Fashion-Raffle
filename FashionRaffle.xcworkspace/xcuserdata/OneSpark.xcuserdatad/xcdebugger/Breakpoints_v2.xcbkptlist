@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FashionRaffle/LoginViewController.swift"
-            timestampString = "499635040.210353"
+            timestampString = "499660724.561355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "LoginViewController"
             landmarkType = "3">
          </BreakpointContent>

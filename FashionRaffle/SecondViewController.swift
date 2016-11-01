@@ -44,8 +44,10 @@ class SecondViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func logOut() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
-        self.present(viewController, animated: true, completion: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        self.present(loginVC, animated: true, completion: nil)
+        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //appDelegate.window?.rootViewController = loginVC
         print("Logged Out!")
     }
     
@@ -56,12 +58,13 @@ class SecondViewController: UIViewController, FBSDKLoginButtonDelegate {
         fbLoginButton.delegate = self
         
         if FBSDKAccessToken.current() == nil{
-            fbLoginButton.isHidden = true
-        }
-        if let user = FIRAuth.auth()?.currentUser{
+            self.fbLoginButton.isHidden = true
             self.emailSignOutButton.isHidden = false
-        }   else {
+        }
+        else {
+            self.fbLoginButton.isHidden = false
             self.emailSignOutButton.isHidden = true
+            
         }
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -78,6 +81,7 @@ class SecondViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        try! FIRAuth.auth()?.signOut()
         self.logOut()
     }
     
