@@ -95,8 +95,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //If FB signed in
         if let _ = FBSDKAccessToken.current(){
             getFBUserData()
-            loginSuccess()
+            self.fbLoginButton.isHidden = true
             
+        }
+        else {
+            self.fbLoginButton.isHidden = false
         }
 
         let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])

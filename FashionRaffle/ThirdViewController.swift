@@ -10,7 +10,7 @@ import UIKit
 
 class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
     
-    let data = ["Address 123", "Alarm management", "Daily Check In", "Log Out"]
+    let data = ["Raffle Item 1", "Raffle Item 2", "Raffle Item 3", "Raffle Item 4"]
     
     
     var views = [UIView]()
@@ -106,6 +106,7 @@ class ThirdViewController: UIViewController,UICollisionBehaviorDelegate {
         }
         return nil
     }
+    
     
     
     

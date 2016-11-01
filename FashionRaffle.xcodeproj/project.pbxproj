@@ -31,6 +31,8 @@
 		525D6CA61DC590A200509E20 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA51DC590A200509E20 /* Bolts.framework */; };
 		525D6CD21DC69F3500509E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */; };
 		525D6CD51DC6A08A00509E20 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 525D6CD41DC6A08A00509E20 /* podfile */; };
+		5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5279FE061DC942440072A5B5 /* FirstDemo.storyboard */; };
+		5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */; };
 		58D56B9A4BAB484736D882BA /* libPods-FashionRaffle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B6D1AA0277794FC487214 /* libPods-FashionRaffle.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		525D6CA71DC59F3900509E20 /* FashionRaffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FashionRaffle.entitlements; sourceTree = "<group>"; };
 		525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		525D6CD41DC6A08A00509E20 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
+		5279FE061DC942440072A5B5 /* FirstDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstDemo.storyboard; sourceTree = "<group>"; };
+		5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeatures.swift; sourceTree = "<group>"; };
 		7F39338E81D732C7C9A50156 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 		F07B6D1AA0277794FC487214 /* libPods-FashionRaffle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionRaffle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -216,10 +220,12 @@
 		525D6CA91DC5A1FD00509E20 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
+				5279FE051DC9421F0072A5B5 /* News Feed */,
 				525D6CAA1DC5A23300509E20 /* ThirdTabView */,
 				04D8A1DF1DC36C53008B1989 /* FirstViewController.swift */,
 				04D8A1E11DC36C53008B1989 /* SecondViewController.swift */,
 				048581B81DC39EBB006A1C3E /* ThirdViewController.swift */,
+				5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */,
 			);
 			name = TabViews;
 			sourceTree = "<group>";
@@ -251,6 +257,14 @@
 				525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		5279FE051DC9421F0072A5B5 /* News Feed */ = {
+			isa = PBXGroup;
+			children = (
+				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
+			);
+			name = "News Feed";
 			sourceTree = "<group>";
 		};
 		C358F3A15C0140FD98B0CF05 /* Pods */ = {
@@ -381,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */,
 				04D8A1EA1DC36C53008B1989 /* LaunchScreen.storyboard in Resources */,
 				525D6CD21DC69F3500509E20 /* GoogleService-Info.plist in Resources */,
 				525D6CD51DC6A08A00509E20 /* podfile in Resources */,
@@ -463,6 +478,7 @@
 				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
 				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
 				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
 				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,

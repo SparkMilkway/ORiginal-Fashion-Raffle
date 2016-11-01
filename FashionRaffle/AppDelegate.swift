@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         // Override point for customization after application launch.
-        if FBSDKAccessToken.current() != nil || FIRAuth.auth()?.currentUser != nil {
+        if FIRAuth.auth()?.currentUser != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
             self.window?.rootViewController = viewController

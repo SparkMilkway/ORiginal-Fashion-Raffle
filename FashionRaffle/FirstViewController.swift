@@ -10,19 +10,8 @@ import UIKit
 
 class NewsTableViewController: UITableViewController {
 
-    /*@IBOutlet var fbLoginButton : FBSDKLoginButton! = {
-        let button = FBSDKLoginButton()
-        button.readPermissions = ["email"]
-        return button
-    }()
-    
-    func fbLogOut() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = viewController
-        print("Logged Out!")
-    }*/
+    var demoFeatures :[DemoFeature] = []
+    var willEnterForeGroundObserver: AnyObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +23,5 @@ class NewsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error) {
-        
-        print("successfully logged out")
-        
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        //fbLogOut()
-    }
-    
-    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-        return true
-    }*/
 
 }
