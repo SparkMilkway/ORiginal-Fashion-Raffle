@@ -99,13 +99,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }
 
-        
-        
-        
         let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
         passwordButton.setAttributedTitle(attributedString, for: .normal)
-        
-        
         
     }
     
@@ -128,46 +123,72 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
-    //dismiss forgot Password Pop Up
+    //do the forget password work and if successfully sent then dismiss the view
     @IBAction func dismissForgetPasswordPopUp(_ sender: Any) {
         if self.forgetPasswordTextField.text == "" {
-            self.showAlerts(title: "Error", message: "Please enter your email!")
+            self.showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil)
+        }
+        else{
+            FIRAuth.auth()?.sendPasswordReset(withEmail: self.forgetPasswordTextField.text!, completion: {(error) in
+                var title = ""
+                var message = ""
+                if error != nil {
+                    title = "Oops!"
+                    message = (error?.localizedDescription)!
+                    self.showAlerts(title: title, message: message, handler: nil)
+                    
+                }
+                else {
+                    title = "Success!"
+                    message = "The password reset email was sent!"
+                    self.forgetPasswordTextField.text = ""
+                    self.showAlerts(title: title, message: message, handler: {
+                        UIAlertAction in
+                        UIView.animate(withDuration:0.3, animations:{
+                            self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
+                            self.addForgetPasswordView.alpha = 0
+                        }) {(success:Bool) in
+                            self.addForgetPasswordView.removeFromSuperview()
+                        }
+                        
+                    })
+                }
+            })
         }
         
-            
-        
-        
+    }
+    //Directly dismiss the password reset view
+    @IBAction func dismissPasswordReset(_ sender: AnyObject) {
         UIView.animate(withDuration:0.3, animations:{
             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
             self.addForgetPasswordView.alpha = 0
         }) {(success:Bool) in
             self.addForgetPasswordView.removeFromSuperview()
         }
-        
     }
+
+    
+    
     
     //Determine the login Access
     @IBAction func emailLoginAction(_ sender: AnyObject) {
         if self.emailFiled.text == "" || self.passwordField.text == ""
         {
-            self.showAlerts(title: "Error", message: "Please enter your email address and password!")
+            self.showAlerts(title: "Oops!", message: "Please enter your email address and password!", handler: nil)
         }
         else{
             
             FIRAuth.auth()?.signIn(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
-                    let alertController = UIAlertController(title: "Success", message: "Welcome Back!", preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: {
+                    self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
                         UIAlertAction in
                         self.loginSuccess()
                     })
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
                     //self.showAlerts(title: "Success", message: "Welcome Back!")
                     //self.loginSuccess()
                 }
                 else {
-                    self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
+                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
                 }
             })
         }
@@ -179,7 +200,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //If nothing is typed
         if self.emailFiled.text == "" || self.passwordField.text == ""
         {
-            self.showAlerts(title: "Error", message: "Please enter your email address and password!")
+            self.showAlerts(title: "Oops!", message: "Please enter your email address and password!", handler: nil)
 
         }
         //Create an account
@@ -187,22 +208,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             FIRAuth.auth()?.createUser(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
                     
-                    self.showAlerts(title: "Success!", message: "Your ccount is successfully created! You can sign in now!")
+                    self.showAlerts(title: "Success!", message: "Your ccount is successfully created! You can sign in now!", handler: nil)
                 }
                 else {
-                    self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
-
+                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
                 }
-                
             })
         }
     }
     
     //TextFields Edit
     
-    func showAlerts(title: String, message: String){
+    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: nil)
+        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -246,12 +265,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
             }
             else {
-                self.showAlerts(title: "Error", message: (error?.localizedDescription)!)
+                self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
             }
         })
         print("successfully logged in with Facebook")
         
-
         
     }
     

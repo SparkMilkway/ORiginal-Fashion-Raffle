@@ -568,35 +568,56 @@
                                 <frame key="frameInset"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B2t-ta-2w6">
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMt-VC-ZXx">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="6Zw-aa-VXD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egt-BD-Kug">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FC1-52-4kO"/>
+                                        </constraints>
                                         <state key="normal" title="SEND"/>
                                         <connections>
                                             <action selector="dismissForgetPasswordPopUp:" destination="BXX-B1-iob" eventType="touchUpInside" id="qtL-HL-GyH"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMt-VC-ZXx">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="IQw-dj-0ao"/>
+                                            <constraint firstAttribute="width" constant="185" id="iNf-di-RNR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoY-gK-B7G">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="77" id="olA-K3-nJy"/>
+                                        </constraints>
+                                        <state key="normal" title="Dismiss">
+                                            <color key="titleColor" red="0.9152866005897522" green="0.24655312299728394" blue="0.20107686519622803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissPasswordReset:" destination="BXX-B1-iob" eventType="touchUpInside" id="Egd-WW-Bef"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="B2t-ta-2w6">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="dhT-if-uZL"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="B2t-ta-2w6" firstAttribute="top" secondItem="LMt-VC-ZXx" secondAttribute="bottom" constant="8" symbolic="YES" id="Dfv-Gu-u4M"/>
-                                    <constraint firstItem="B2t-ta-2w6" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="49" id="RK8-Nn-nAb"/>
-                                    <constraint firstAttribute="bottom" secondItem="egt-BD-Kug" secondAttribute="bottom" constant="248" id="TUt-1P-bjV"/>
-                                    <constraint firstItem="LMt-VC-ZXx" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="80" id="ZB9-MM-xZI"/>
-                                    <constraint firstItem="egt-BD-Kug" firstAttribute="centerX" secondItem="HBM-tE-xCI" secondAttribute="centerX" id="bO7-Jp-whJ"/>
-                                    <constraint firstItem="egt-BD-Kug" firstAttribute="centerX" secondItem="B2t-ta-2w6" secondAttribute="centerX" id="e45-3u-205"/>
-                                    <constraint firstItem="B2t-ta-2w6" firstAttribute="top" secondItem="HBM-tE-xCI" secondAttribute="top" constant="145" id="o9l-le-Rfm"/>
-                                    <constraint firstAttribute="trailing" secondItem="LMt-VC-ZXx" secondAttribute="trailing" constant="59" id="wUm-3H-yWt"/>
+                                    <constraint firstItem="egt-BD-Kug" firstAttribute="top" secondItem="B2t-ta-2w6" secondAttribute="bottom" constant="20" id="1DI-bs-krc"/>
+                                    <constraint firstAttribute="trailing" secondItem="B2t-ta-2w6" secondAttribute="trailing" constant="54" id="7Xn-8w-Zys"/>
+                                    <constraint firstItem="B2t-ta-2w6" firstAttribute="top" secondItem="LMt-VC-ZXx" secondAttribute="bottom" constant="8" id="ELZ-nN-HeY"/>
+                                    <constraint firstItem="B2t-ta-2w6" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="54" id="Ifn-G4-D7T"/>
+                                    <constraint firstAttribute="trailing" secondItem="egt-BD-Kug" secondAttribute="trailing" constant="142" id="cbu-XB-Uqg"/>
+                                    <constraint firstItem="LMt-VC-ZXx" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="80" id="jw4-5j-Tdd"/>
+                                    <constraint firstAttribute="bottom" secondItem="EoY-gK-B7G" secondAttribute="bottom" constant="335" id="ke7-EG-KTi"/>
+                                    <constraint firstItem="EoY-gK-B7G" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="124" id="maW-vO-eCg"/>
+                                    <constraint firstItem="egt-BD-Kug" firstAttribute="leading" secondItem="HBM-tE-xCI" secondAttribute="leading" constant="142" id="qcE-tQ-Cml"/>
+                                    <constraint firstItem="EoY-gK-B7G" firstAttribute="top" secondItem="egt-BD-Kug" secondAttribute="bottom" constant="8" id="vMH-dK-WYS"/>
+                                    <constraint firstItem="LMt-VC-ZXx" firstAttribute="top" secondItem="HBM-tE-xCI" secondAttribute="top" constant="116" id="zwN-hF-bJv"/>
                                 </constraints>
                             </view>
                             <blurEffect style="light"/>
