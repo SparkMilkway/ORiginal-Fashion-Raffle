@@ -14,12 +14,14 @@ class DemoFeature: NSObject {
     var detailText: String
     var image: String
     var storyboard: String
+    var identifier: String
     
-    init(name: String, detail: String, image: String, storyboard: String) {
+    init(name: String, detail: String, image: String, storyboard: String, identifier: String) {
         self.displayName = name
         self.detailText = detail
         self.image = image
         self.storyboard = storyboard
+        self.identifier = identifier
         super.init()
     }
 }

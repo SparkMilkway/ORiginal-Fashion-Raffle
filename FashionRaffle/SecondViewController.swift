@@ -51,8 +51,8 @@ class SecondViewController: UIViewController, FBSDKLoginButtonDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
         self.present(loginVC, animated: true, completion: nil)
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //appDelegate.window?.rootViewController = loginVC
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginVC
         print("Logged Out!")
     }
     
@@ -70,6 +70,7 @@ class SecondViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let name = user.displayName
                 self.userID.text = email
                 self.userName.text = name
+                self.userImage.image = UIImage(named:"UserIcon")
             }
             else {
                 self.userName.text = "You are not signed in"
