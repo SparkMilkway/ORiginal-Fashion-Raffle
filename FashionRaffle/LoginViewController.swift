@@ -95,11 +95,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //If FB signed in
         if let _ = FBSDKAccessToken.current(){
             getFBUserData()
-            self.fbLoginButton.isHidden = true
             
-        }
-        else {
-            self.fbLoginButton.isHidden = false
         }
 
         let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
@@ -259,6 +255,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }*/
         // link with Firebase!
+        if let _ = FBSDKAccessToken.current(){
         
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
@@ -272,6 +269,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         })
         print("successfully logged in with Facebook")
+        }
         
         
     }
