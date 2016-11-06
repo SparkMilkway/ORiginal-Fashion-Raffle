@@ -34,6 +34,7 @@
 		525D6CD51DC6A08A00509E20 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 525D6CD41DC6A08A00509E20 /* podfile */; };
 		5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5279FE061DC942440072A5B5 /* FirstDemo.storyboard */; };
 		5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */; };
+		52EC4C4B1DCFDAB8001F94E6 /* DataBaseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC4C4A1DCFDAB8001F94E6 /* DataBaseStructure.swift */; };
 		58D56B9A4BAB484736D882BA /* libPods-FashionRaffle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F07B6D1AA0277794FC487214 /* libPods-FashionRaffle.a */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		525D6CD41DC6A08A00509E20 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		5279FE061DC942440072A5B5 /* FirstDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstDemo.storyboard; sourceTree = "<group>"; };
 		5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeatures.swift; sourceTree = "<group>"; };
+		52EC4C4A1DCFDAB8001F94E6 /* DataBaseStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseStructure.swift; sourceTree = "<group>"; };
 		7F39338E81D732C7C9A50156 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 		F07B6D1AA0277794FC487214 /* libPods-FashionRaffle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FashionRaffle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 		04D8A1DC1DC36C53008B1989 /* FashionRaffle */ = {
 			isa = PBXGroup;
 			children = (
+				52EC4C4A1DCFDAB8001F94E6 /* DataBaseStructure.swift */,
 				04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */,
 				525D6CD31DC69F3F00509E20 /* Resource */,
 				525D6CAB1DC5A83700509E20 /* AWSCredential */,
@@ -486,6 +489,7 @@
 				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
 				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
 				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,
+				52EC4C4B1DCFDAB8001F94E6 /* DataBaseStructure.swift in Sources */,
 				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				04D8A1E01DC36C53008B1989 /* FirstViewController.swift in Sources */,
 				048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */,

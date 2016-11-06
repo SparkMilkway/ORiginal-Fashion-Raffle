@@ -179,12 +179,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             FIRAuth.auth()?.signIn(withEmail: self.emailFiled.text!, password: self.passwordField.text!, completion: {(user, error) in
                 if error == nil{
+                    
+                    let userID = user?.uid
+                    let email = user?.email
+                    DataBaseStructure().setBasicInfo(userID: userID!, userEmail: email!)
+                    
                     self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
                         UIAlertAction in
                         self.loginSuccess()
                     })
-                    //self.showAlerts(title: "Success", message: "Welcome Back!")
-                    //self.loginSuccess()
+                    
                 }
                 else {
                     self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
@@ -261,6 +265,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
             if error == nil{
                 //self.showAlerts(title: "Success", message: "Welcome Back!")
+                for profile in (user?.providerData)! {
+                    let providerID = profile.providerID
+                    let uid = profile.uid;  // Provider-specific UID
+                    let name = profile.displayName
+                    let email = profile.email
+                    DataBaseStructure().setProvidersInfo(userName: name!, userID: uid, userEmail: email!, ProviderID: providerID)
+                }
+                
                 self.loginSuccess()
                 
             }
