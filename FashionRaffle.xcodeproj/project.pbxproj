@@ -25,6 +25,7 @@
 		04D8A2001DC36C53008B1989 /* FashionRaffleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */; };
 		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
 		5207E4B61DC97E3200781CB5 /* FirstDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5207E4B51DC97E3200781CB5 /* FirstDemoViewController.swift */; };
+		523935A51DCFDD9C00B6173C /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523935A41DCFDD9C00B6173C /* NewsFeedCell.swift */; };
 		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
 		525D6C8F1DC58A6500509E20 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */; };
 		525D6CA31DC5908100509E20 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA11DC5908100509E20 /* FBSDKCoreKit.framework */; };
@@ -81,6 +82,7 @@
 		04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
 		5207E4B51DC97E3200781CB5 /* FirstDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstDemoViewController.swift; sourceTree = "<group>"; };
+		523935A41DCFDD9C00B6173C /* NewsFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		525D6C981DC58E2500509E20 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../FaceBook SDK/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
 				5207E4B51DC97E3200781CB5 /* FirstDemoViewController.swift */,
+				523935A41DCFDD9C00B6173C /* NewsFeedCell.swift */,
 			);
 			name = "News Feed";
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				04D8A1E01DC36C53008B1989 /* FirstViewController.swift in Sources */,
 				048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */,
+				523935A51DCFDD9C00B6173C /* NewsFeedCell.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
