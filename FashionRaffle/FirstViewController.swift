@@ -8,8 +8,11 @@
 
 import UIKit
 
+
 class NewsTableViewController: UITableViewController {
 
+    var newsfeedDatas: [NewsFeedData] = []
+    
     var demoFeatures :[DemoFeature] = []
     //var willEnterForegroundObserver: AnyObject!
     
@@ -19,7 +22,18 @@ class NewsTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         //willEnterForegroundObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillEnterForeground, object: nil, queue: OperationQueue.current) { _ in}
+        /*let ref = FIRDatabase.database().reference()
         
+        ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: { snapshot in
+            let value = snapshot.value as! NSDictionary
+            let title = value["Title"] as! String
+            let subtitle = value["SubTitle"] as! String
+            let text = value["Text"] as! String
+            
+            let newsfeedData = NewsFeedData.init(title: title, subtitle: subtitle, details: text)
+            self.newsfeedDatas.insert(newsfeedData, at: 0)
+        
+        })*/
         
         var demoFeature = DemoFeature.init(
             name: "Yeezy Boost 350",
@@ -49,6 +63,7 @@ class NewsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainView")!
         let demoFeature = demoFeatures[indexPath.row]
+        //let newsFeedData = newsfeedDatas[indexPath.row]
         cell.imageView!.image = UIImage(named: demoFeature.image)
         cell.textLabel!.text = demoFeature.displayName
         cell.detailTextLabel!.text = demoFeature.detailText

@@ -150,6 +150,24 @@
             </objects>
             <point key="canvasLocation" x="301.60000000000002" y="-38.23088455772114"/>
         </scene>
+        <!--Prototype Content Controller-->
+        <scene sceneID="Ggp-t0-jjU">
+            <objects>
+                <viewController storyboardIdentifier="PrototypeContent" id="fFa-e8-V3A" customClass="PrototypeContentController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="13h-29-Y0h"/>
+                        <viewControllerLayoutGuide type="bottom" id="7eR-XL-e5f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fDB-HU-77q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9fJ-S7-enK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="988" y="-38"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Anti_Social" width="512" height="512"/>

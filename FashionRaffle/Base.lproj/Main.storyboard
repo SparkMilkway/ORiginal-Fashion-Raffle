@@ -672,7 +672,7 @@
                 <navigationController id="Mzd-X9-beH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News Feed" image="first" id="DEV-eC-7nk"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="vMv-dZ-i5x">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="vMv-dZ-i5x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.9435001649319924" green="1" blue="0.95653896102821812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

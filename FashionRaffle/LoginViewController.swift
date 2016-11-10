@@ -264,6 +264,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
             if error == nil{
+                
                 //self.showAlerts(title: "Success", message: "Welcome Back!")
                 for profile in (user?.providerData)! {
                     let providerID = profile.providerID
