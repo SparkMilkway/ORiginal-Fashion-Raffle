@@ -8,9 +8,18 @@
 
 import UIKit
 
-class LogOutStackElementViewController: UIViewController {
+class LogOutStackElementViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var logOutManagerHeader: UILabel!
 
+    
+    func fbLogOut() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVC") as UIViewController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = viewController
+        print("Logged Out!")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +40,22 @@ class LogOutStackElementViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error) {
+        
+        print("successfully logged in")
+        
+        
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        fbLogOut()
+    }
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    
+
 
     /*
     // MARK: - Navigation
