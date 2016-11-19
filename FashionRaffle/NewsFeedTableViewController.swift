@@ -22,20 +22,29 @@ class NewsFeedTableViewController: UITableViewController {
         let ref = FIRDatabase.database().reference()
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
-        snapshot in
+            snapshot in
             
             let value = snapshot.value as? NSDictionary
             let title = value!["Title"] as? String
             let subtitle = value!["SubTitle"] as? String
             
             let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!)
-            self.newsDatas.append(newsData)
+            self.newsDatas.insert(newsData, at: 0)
             
             self.tableView.reloadData()
-        
+            
         })
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
+   }
+    
+    
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
         
-
+        
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     
