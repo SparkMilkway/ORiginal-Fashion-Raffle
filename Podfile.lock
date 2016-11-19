@@ -29,9 +29,6 @@ PODS:
   - FirebaseStorage (1.0.3):
     - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
-  - FirebaseUI/Storage (0.6.1):
-    - Firebase/Storage
-    - SDWebImage
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleNetworkingUtilities (1.2.2):
@@ -39,16 +36,12 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - FirebaseUI/Storage (~> 0.6)
 
 SPEC CHECKSUMS:
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
@@ -58,13 +51,11 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 750a4a0fe18ef114318876fd654b2d9c671e0992
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
-  FirebaseUI: cfe7b83264b9fbdd7e4c9804327a397471e2643b
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 848a84650b1220df3c809b95802c9958ccb6600f
+PODFILE CHECKSUM: 3b1192535830cd68f0dfc5fcca71c6e948f3fd45
 
 COCOAPODS: 1.0.1
