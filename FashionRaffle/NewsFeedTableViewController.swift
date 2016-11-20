@@ -21,6 +21,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     let searchBar = UISearchBar()
     
+    var label : UILabel?
+    
     var shouldFiltContents = false
     //let searchController = UISearchController(searchResultsController: nil)
     
@@ -29,6 +31,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        label?.text = self.title
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
@@ -58,14 +61,31 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchTapped() {
         
+        searchBar.delegate = self
+        
+        searchBar.isHidden = false
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Explore your interest!"
-        searchBar.delegate = self
         self.navigationItem.titleView = searchBar
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelsearch))
 
         
     }
+    
+    //cancel the search if needed
+    
+    func cancelsearch() {
+        searchBar.text = ""
+        shouldFiltContents = false
+        self.tableView.reloadData()
+        searchBar.isHidden = true
+        self.navigationItem.titleView = label
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
+    }
+    
+    
+    // Function for search bar ends
     
     //Search Functions
     
@@ -199,8 +219,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         viewController.passDetail = newsData.subtitle
         
         searchBar.endEditing(true)
-        
-        
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
