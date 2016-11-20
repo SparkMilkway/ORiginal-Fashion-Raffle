@@ -8,14 +8,19 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class NewsReusableViewController: UIViewController {
     
     @IBOutlet weak var Label1: UILabel!
     @IBOutlet weak var Details: UILabel!
+    @IBOutlet weak var Image: UIImageView!
     
     var passLabel : String!
     var passDetail : String!
+    var passImageURL : String!
+    
+    var reference : FIRStorageReference!
     
     
     override func viewDidLoad() {
@@ -25,11 +30,13 @@ class NewsReusableViewController: UIViewController {
         self.Label1.text = passLabel
         self.Details.text = passDetail
         
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
     
     
 }

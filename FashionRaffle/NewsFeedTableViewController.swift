@@ -15,6 +15,7 @@ class NewsFeedTableViewController: UITableViewController {
     
     var newsDatas : [NewsFeedData] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
@@ -27,8 +28,9 @@ class NewsFeedTableViewController: UITableViewController {
             let value = snapshot.value as? NSDictionary
             let title = value!["Title"] as? String
             let subtitle = value!["SubTitle"] as? String
+            let image = value!["Image"] as? String
             
-            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!)
+            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!, image: image!)
             self.newsDatas.insert(newsData, at: 0)
             
             self.tableView.reloadData()
@@ -71,6 +73,9 @@ class NewsFeedTableViewController: UITableViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "NewsReusableView") as! NewsReusableViewController
         
         viewController.title = newsData.title
+        
+        
+        
         viewController.passLabel = newsData.title
         viewController.passDetail = newsData.subtitle
         
