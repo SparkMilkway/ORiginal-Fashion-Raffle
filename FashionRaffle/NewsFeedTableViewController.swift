@@ -10,14 +10,18 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorageUI
 
 class NewsFeedTableViewController: UITableViewController {
     
     var newsDatas : [NewsFeedData] = []
     
+    let storageReference = FIRStorage.storage()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         let ref = FIRDatabase.database().reference()
@@ -53,6 +57,12 @@ class NewsFeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
         let newstemp = newsDatas[indexPath.row]
+        
+        let imageURL = newstemp.image
+        let storage = storageReference.reference(forURL: imageURL)
+        
+        cell.Cellimage.sd_setImage(with: storage)
+        
         cell.Title!.text = newstemp.title
         cell.Subtitle!.text = newstemp.subtitle
         
@@ -74,7 +84,10 @@ class NewsFeedTableViewController: UITableViewController {
         
         viewController.title = newsData.title
         
+        let imageURL = newsData.image
+        let storage = storageReference.reference(forURL: imageURL)
         
+        viewController.reference = storage
         
         viewController.passLabel = newsData.title
         viewController.passDetail = newsData.subtitle

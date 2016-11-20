@@ -9,18 +9,21 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorageUI
+
+
 
 class NewsReusableViewController: UIViewController {
     
     @IBOutlet weak var Label1: UILabel!
     @IBOutlet weak var Details: UILabel!
+    
     @IBOutlet weak var Image: UIImageView!
+    
+    var reference : FIRStorageReference!
     
     var passLabel : String!
     var passDetail : String!
-    var passImageURL : String!
-    
-    var reference : FIRStorageReference!
     
     
     override func viewDidLoad() {
@@ -29,14 +32,13 @@ class NewsReusableViewController: UIViewController {
         
         self.Label1.text = passLabel
         self.Details.text = passDetail
-        
+        self.Image.sd_setImage(with: reference)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
     
     
 }
