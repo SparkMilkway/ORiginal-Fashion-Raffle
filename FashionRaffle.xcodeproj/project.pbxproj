@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */; };
 		04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */; };
+		0466A7A31DE1390000DFF106 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466A7A21DE1390000DFF106 /* SettingTableViewController.swift */; };
+		0466A7A51DE14CE500DFF106 /* uploadImage+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466A7A41DE14CE500DFF106 /* uploadImage+handler.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B81DC39EBB006A1C3E /* ThirdViewController.swift */; };
 		048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		0466A7A21DE1390000DFF106 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		0466A7A41DE14CE500DFF106 /* uploadImage+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "uploadImage+handler.swift"; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		048581B81DC39EBB006A1C3E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStackElementViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			children = (
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
 				04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */,
+				0466A7A41DE14CE500DFF106 /* uploadImage+handler.swift */,
 				048581B61DC37653006A1C3E /* LoginTextField.swift */,
 			);
 			name = "Main Interface";
@@ -228,6 +233,7 @@
 				04D8A1E11DC36C53008B1989 /* SecondViewController.swift */,
 				048581B81DC39EBB006A1C3E /* ThirdViewController.swift */,
 				5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */,
+				0466A7A21DE1390000DFF106 /* SettingTableViewController.swift */,
 			);
 			name = TabViews;
 			sourceTree = "<group>";
@@ -481,10 +487,12 @@
 				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				0466A7A51DE14CE500DFF106 /* uploadImage+handler.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
 				5207E4B61DC97E3200781CB5 /* FirstDemoViewController.swift in Sources */,
 				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
 				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
+				0466A7A31DE1390000DFF106 /* SettingTableViewController.swift in Sources */,
 				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,
 				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				04D8A1E01DC36C53008B1989 /* FirstViewController.swift in Sources */,

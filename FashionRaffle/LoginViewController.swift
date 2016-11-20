@@ -56,31 +56,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func handleLogin(){
-        guard let email = emailTextField.text, let password = passwordTextField.text else{
-            print("Invalid form")
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Form is not valid")
             return
         }
         
-        if emailTextField.text == "" || passwordTextField.text == ""
-        {
-            self.showAlerts(title: "Oops!", message: "Please enter your email address and password!", handler: nil)
-        }
-        else{
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: {(user, error) in
-                if error == nil{
-                    self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
-                        UIAlertAction in
-                        self.loginSuccess()
-                    })
-                    //self.showAlerts(title: "Success", message: "Welcome Back!")
-                    //self.loginSuccess()
-                }
-                else {
-                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
-                }
-            })
-        }
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            //successfully logged in our user
+            self.dismiss(animated: true, completion: nil)
+            
+        })
         
         
     }
@@ -98,42 +89,54 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }
             //Create an account
-        else{
+        
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
                 if error == nil{
                     
                     self.showAlerts(title: "Success!", message: "Your account is successfully created! You can sign in now!", handler: nil)
                     
-                    
+                }
                     //successfully registe
-                    guard let uid = user?.uid else{
-                        return
-                    }
+                guard let uid = user?.uid else{
+                    return
+                }
                     
-                    let ref = FIRDatabase.database().reference(fromURL: "https://originalfashionraffle.firebaseio.com/")
-                    let values = ["name": name, "email":email, "userID": uid]
-                    let usersReference = ref.child("Users/EmailUsers").child(uid)
-                    
-                    usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        
-                        if err != nil{
-                            self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
+                let imageName = NSUUID().uuidString
+                let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
+                if let uploadData = UIImagePNGRepresentation(self.backgroundImageView.image!){
+                    storageRef.put(uploadData, metadata: nil, completion: {
+                        (metadata, error) in
+                        if error != nil{
+                            print(error)
                             return
                         }
+                        if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
+                            let values = ["name": name, "email": email, "userID": uid, "profileImageUrl": profileImageUrl]
+                            self.registerUserIntoDataBaseWithUID(uid: uid, values: values as [String : AnyObject])
+                        }
                     })
-                    
-                    
-                    
+            }
+        })
+        
+    }
 
-                }
-                else {
-                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
-                }
-            })
-        }
-        self.loginSuccess()  // need to work on this, why is it not showing  the message?????????
+    
+    func registerUserIntoDataBaseWithUID (uid: String, values: [String: AnyObject]) {
         
         
+        let ref = FIRDatabase.database().reference(fromURL: "https://originalfashionraffle.firebaseio.com/")
+        let usersReference = ref.child("Users/EmailUsers").child(uid)
+        usersReference.updateChildValues(values, withCompletionBlock: { (error, ref) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        })
+        loginSuccess()
+    
     }
     
     let forgotPasswordTextField: UITextField = {
@@ -214,6 +217,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         inputsContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150
         
         //change height of nametextfield
+        
         nameTextFieldHeightAnchor?.isActive = false
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
         nameTextFieldHeightAnchor?.isActive = true
@@ -323,8 +327,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func setUpLoginRegisterSegmentControl(){
         loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
-        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, multiplier: 1).isActive = true
+        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 36).isActive = true
     }
     
     /*
@@ -361,8 +365,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
         nameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
-        
-        nameTextFieldHeightAnchor? .isActive = true
+        nameTextFieldHeightAnchor?.isActive = true
         
         nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
         nameSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
