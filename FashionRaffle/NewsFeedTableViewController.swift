@@ -62,7 +62,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     func searchTapped() {
         
         searchBar.delegate = self
-        searchBar.tintColor = UIColor(red: 101, green: 201, blue: 255, alpha: 1)
+        searchBar.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
         
         searchBar.isHidden = false
         searchBar.showsCancelButton = false

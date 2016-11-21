@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor.black
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Login", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -96,12 +96,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: {(user, error) in
                 if error == nil{
-                    
                     //successfully register
                     guard let uid = user?.uid else{
                         return
                     }
-                    
                     // put the values into Firebase Auth
                     let ref = FIRDatabase.database().reference()
                     let values = ["name": name, "email":email, "userID": uid]
@@ -142,6 +140,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let nameTextField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "Name"
+        tf.clearButtonMode = UITextFieldViewMode.whileEditing
+        tf.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -157,6 +157,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let emailTextField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
+        tf.clearButtonMode = UITextFieldViewMode.whileEditing
+        
+        tf.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -172,23 +175,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let passwordTextField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "Password"
+        tf.clearButtonMode = UITextFieldViewMode.whileEditing
+        tf.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isSecureTextEntry = true
         return tf
     }()
     
+    
+    //function that create the Segmented UI
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = UIColor.white
-        sc.selectedSegmentIndex = 1
+        sc.selectedSegmentIndex = 0
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
     }()
     
     
-    
-    
+    // function that handle the segments
     func handleLoginRegisterChange(){
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
         loginRegisterButton.setTitle(title, for: .normal)
@@ -201,13 +207,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         nameTextFieldHeightAnchor?.isActive = false
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
-            nameTextField.placeholder = ""
+            nameTextField.isHidden = true
         }
         else {
-            nameTextField.placeholder = "Name"
+            nameTextField.isHidden = false
+            
         }
         nameTextFieldHeightAnchor?.isActive = true
         
+
         emailTextFieldHeightAnchor?.isActive = false
         emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         emailTextFieldHeightAnchor?.isActive = true
@@ -253,6 +261,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -268,14 +279,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         setUpLoginRegisterButton()
         setUpLoginRegisterSegmentControl()
         
-        
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
-        
-        
-        
         // Do any additional setup after loading the view.
         
         fbLoginButton.delegate = self
@@ -287,6 +294,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             getFBUserData()
             
         }
+        
+        
+        
+        
         
         let attributedString = NSAttributedString(string:"Forget your password?", attributes:[NSForegroundColorAttributeName:UIColor.white, NSUnderlineStyleAttributeName:1])
         passwordButton.setAttributedTitle(attributedString, for: .normal)
@@ -311,7 +322,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier:0.9, constant: -24).isActive = true
-        inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 150)
+        inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 100)
         inputsContainerViewHeightAnchor?.isActive = true
         
         inputsContainerView.addSubview(nameTextField)
@@ -325,8 +336,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         nameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant:12).isActive = true
         nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
         nameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
+        nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 0)
         nameTextFieldHeightAnchor?.isActive = true
+        nameTextField.isHidden = true
+        
         
         nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
         nameSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
@@ -337,7 +350,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant:12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
+        emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2)
         emailTextFieldHeightAnchor?.isActive = true
         
         emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
@@ -349,7 +362,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant:12).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
+        passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2)
         passwordTextFieldHeightAnchor?.isActive = true
         
         
@@ -486,34 +499,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         // No user is signed in.
                         print("No user is signed in")
                     }
-                    
-                    
-                    
                     self.loginSuccess()
-                    
-                    
-                    //Add facebook users to firebase database
-                    
-                    /*guard let uid = user?.uid else{
-                        return
-                    }
-                    
-                    // put the values into Firebase Auth
-                    let ref = FIRDatabase.database().reference()
-                    let values = ["name": name, "email":email, "userID": uid]
-                    let usersReference = ref.child("Users/EmailUsers").child(uid)
-                    
-                    usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        
-                        if err != nil{
-                            self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
-                            return
-                        }
-                    })
-                    
-                    */
-                    
-                    
                 }
                 else {
                     self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)

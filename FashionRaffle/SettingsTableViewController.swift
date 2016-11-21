@@ -9,31 +9,19 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseDatabase
+import FirebaseStorageUI
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
     
-    
-    
     @IBOutlet weak var profileImage: UIImageView!
+    
     let ref = FIRDatabase.database().reference()
-    
-    //let ref = FIRDatabase.database().reference(fromURL: "https://originalfashionraffle.firebaseio.com/")
-    //let uid = FIRAuth.auth()?.currentUser?.uid
-    //let email = FIRAuth.auth()?.currentUser?.email
-    //let name = FIRDatabase.database().reference().child("Users/EmailUsers/(uid)/name")
-    
-    
-    
-    
-    
+    let storageRef = FIRStorage.storage().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImageView()
-        
-        
-        //let storageRef = FIRStorage.storage().reference().child("myImage.png")
+
         
         uploadProfileImage()
         
@@ -52,6 +40,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     func profileImageView() {
         profileImage.image = UIImage(named: "background")
         profileImage.translatesAutoresizingMaskIntoConstraints = false
@@ -68,17 +58,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         uploadProfileImage()
     }
     func uploadProfileImage(){
-        //self.ref.child("Users/EmailUsers/(uid)").setValue(["Image":String])
-        /*
-         let imageName = NSUUID().uuidString
-         if let uploadData = UIImagePNGRepresentation(self.profileImage.image!){
-         if error != nil{
-         print(error)
-         }
-         if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-         self.ref.child("Users/EmailUsers/(uid)").setValue(["ProfileImage": profileImageUrl])
-         }
-         }*/
         
         let imageName = NSUUID().uuidString
         let storageRef = FIRStorage.storage().reference().child("(imageName).png")
