@@ -19,53 +19,5 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FashionRaffle/LoginViewController.swift"
-            timestampString = "501316306.378306"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "handleRegister()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FashionRaffle.LoginViewController.(handleRegister () -&gt; ()).(closure #1)"
-                  moduleName = "FashionRaffle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Mac/Desktop/Project/untitled%20folder/FashionRaffle/LoginViewController.swift"
-                  timestampString = "501316306.641273"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "2138">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FashionRaffle.LoginViewController.(handleRegister () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "FashionRaffle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Mac/Desktop/Project/untitled%20folder/FashionRaffle/LoginViewController.swift"
-                  timestampString = "501316306.644285"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "545">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

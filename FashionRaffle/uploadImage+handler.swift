@@ -1,9 +1,9 @@
 //
-//  uploadImage+handler.swift
+//  uploadimage+handler.swift
 //  FashionRaffle
 //
-//  Created by Mac on 2016/11/19.
-//  Copyright © 2016年 Mac. All rights reserved.
+//  Created by Spark Da Capo on 11/20/16.
+//  Copyright © 2016 Mac. All rights reserved.
 //
 
 import UIKit
@@ -48,6 +48,6 @@ extension SettingTableViewController: UIImagePickerControllerDelegate,UINavigati
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
 }
 

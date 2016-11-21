@@ -119,7 +119,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate,UI
                         else {
                             URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) -> Void in
                                 if (error != nil){
-                                    print(error)
+                                    print(error!)
                                     return
                                 }
                                 let image = UIImage(data: data!)
