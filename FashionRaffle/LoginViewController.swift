@@ -74,11 +74,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
                         UIAlertAction in
                         SVProgressHUD.show(withStatus: "Logging in...")
-                        self.loginSuccess()
-                    
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                            SVProgressHUD.dismiss()
+                            self.loginSuccess()
+                        })
                     })
-                    
-                    
                 }
                     
                 else {
@@ -116,7 +116,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let usersReference = ref.child("Users/EmailUsers").child(uid)
                     
                     usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        
                         if err != nil{
                             self.showAlerts(title: "Oops!", message: (err?.localizedDescription)!, handler: nil)
                             return
@@ -135,7 +134,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     self.showAlerts(title: "Success!", message: "Your account is successfully created!", handler: {
                         UIAlertAction in
                         SVProgressHUD.show(withStatus: "Logging in...")
-                        self.loginSuccess()
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                            SVProgressHUD.dismiss()
+                            self.loginSuccess()
+                        })
                     })
                 }
                 else {
@@ -271,7 +273,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func getFBUserData(){
         if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start{ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "picture.type(middle)"]).start{ (connection, result, error) -> Void in
                 if (error == nil){
                     //everything works print the user data
                     print(result!)
@@ -503,13 +505,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // link with Firebase!
         if let _ = FBSDKAccessToken.current(){
-            
             SVProgressHUD.show(withStatus: "Logging in...")
-            
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
                 if error == nil{
-                    //self.showAlerts(title: "Success", message: "Welcome Back!")
                     
                     if let user = FIRAuth.auth()?.currentUser {
                         for profile in user.providerData {
@@ -520,11 +519,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             
                             DataBaseStructure().setProvidersInfo(userName: name!, userID: uid, userEmail: email!, ProviderID: providerID)
                         }
-                    } else {
-                        // No user is signed in.
-                        print("No user is signed in")
                     }
-                    self.loginSuccess()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
+                        SVProgressHUD.dismiss()
+                        self.getFBUserData()
+                        self.loginSuccess()
+                    })
                 }
                 else {
                     self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)

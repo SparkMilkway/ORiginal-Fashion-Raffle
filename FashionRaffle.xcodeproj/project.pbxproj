@@ -16,7 +16,6 @@
 		04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */; };
 		04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
-		04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1E11DC36C53008B1989 /* SecondViewController.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
 		04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E61DC36C53008B1989 /* Assets.xcassets */; };
 		04D8A1EA1DC36C53008B1989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E81DC36C53008B1989 /* LaunchScreen.storyboard */; };
@@ -70,7 +69,6 @@
 		04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogOutStackElementViewController.swift; path = ../LogOutStackElementViewController.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04D8A1E11DC36C53008B1989 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		04D8A1E41DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D8A1E61DC36C53008B1989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D8A1E91DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				525D6CAA1DC5A23300509E20 /* TabView */,
 				526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */,
 				527CA0711DDFED8B00379312 /* DataBaseStructure.swift */,
-				04D8A1E11DC36C53008B1989 /* SecondViewController.swift */,
 				048581B81DC39EBB006A1C3E /* ThirdViewController.swift */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */,
@@ -488,7 +485,6 @@
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
-				04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
 				52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */,

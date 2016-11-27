@@ -30,15 +30,15 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         label?.text = self.title
-        SVProgressHUD.dismiss()
         
-        
+        SVProgressHUD.show(withStatus: "Loading News Feed...")
         //Messing with dates and daily sign in
-        let date = Date()
+        /*let date = Date()
         let cal = Calendar(identifier: .gregorian)
         let newDate = cal.startOfDay(for: date) // return as a Date
-        
+        */
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
@@ -59,9 +59,12 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             self.newsDatas.insert(newsData, at: 0)
             
             self.tableView.reloadData()
-            
         })
-        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.2, execute: {
+            SVProgressHUD.dismiss()
+        })
+        //self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
     }
     
     //The function for search bar

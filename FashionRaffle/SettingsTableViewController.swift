@@ -17,6 +17,34 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var ticketsTemp = 0 as NSNumber
     var ticketsCal = 0
     
+    @IBOutlet weak var changeImage: UITextField!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
+    
+    @IBOutlet weak var emailLogOutButton: UIButton!
+    @IBAction func emailLogOut(_ sender: Any) {
+        let refreshAlert = UIAlertController(title: "Sign Out", message: "Are you sure to sign out?", preferredStyle: .alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) -> Void in
+            try! FIRAuth.auth()?.signOut()
+            self.logOut()
+            
+        }))
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    @IBOutlet var fbLogoutButton: FBSDKLoginButton! = {
+       let button = FBSDKLoginButton()
+        return button
+    }()
+    
+    
+    
+    //Buy raffle Tickets and Update the database
     @IBAction func RaffleTickets(_ sender: Any) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
@@ -45,20 +73,80 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         
         
-
+        
     }
     @IBOutlet weak var profileImage: UIImageView!
     
-
-    let storageRef = FIRStorage.storage().reference()
+    
+    let emailStorageRef = FIRStorage.storage().reference().child("User Info/EmailUsers")
+    let providerStorageRef = FIRStorage.storage().reference().child("User Info/ProviderUsers")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = false
+        fbLogoutButton.delegate = self
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy"
+        let now = dateFormat.string(from: Date())
+        self.dateLabel.text = now
+        
+        
         profileImageView()
+        
+        
+        if FBSDKAccessToken.current() == nil {
 
-        
-        uploadProfileImage()
-        
+            self.profileImage.image = UIImage(named: "background")
+            self.fbLogoutButton.isHidden = true
+            self.emailLogOutButton.isHidden = false
+            if let userID = FIRAuth.auth()?.currentUser?.uid {
+                ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
+                    snapshot in
+                    let value = snapshot.value as? NSDictionary
+                    let name = value!["name"] as? String
+                    let email = value!["email"] as? String
+                    self.userName!.text = name
+                    self.userEmail!.text = email
+                })
+            }
+            
+        }
+        else {
+            self.fbLogoutButton.isHidden = false
+            self.emailLogOutButton.isHidden = true
+            profileImage.isUserInteractionEnabled = false
+            if let user = FIRAuth.auth()?.currentUser{
+                for profile in user.providerData {
+                    let name = profile.displayName
+                    let email = profile.email
+                    let photoURL = profile.photoURL
+                    
+                    self.userEmail!.text = email
+                    self.userName!.text = name
+                    
+                    if let url = photoURL {
+                        if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
+                            self.profileImage.image = image
+                        }
+                        else {
+                            URLSession.shared.dataTask(with: url, completionHandler: {
+                                (data, response, error) -> Void in
+                                if (error != nil) {
+                                    print (error!)
+                                    return
+                                }
+                                let image = UIImage(data: data!)
+                                self.imageCache.setObject(image!, forKey: url as AnyObject)
+                                DispatchQueue.main.async(execute: {
+                                    () -> Void in
+                                    self.profileImage.image = image
+                                })
+                            }).resume()
+                        }
+                    }
+                }
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -70,6 +158,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
     }
     
+    let imageCache = NSCache<AnyObject, AnyObject>()
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,7 +167,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     
     func profileImageView() {
-        profileImage.image = UIImage(named: "background")
+        
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileImage.contentMode = .scaleAspectFill
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
@@ -88,8 +178,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         profileImage.isUserInteractionEnabled = true
         
-        
-        uploadProfileImage()
     }
     func uploadProfileImage(){
         
@@ -141,6 +229,15 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func logOut() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        self.present(loginVC, animated: true, completion: nil)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginVC
+        print("Logged Out!")
+    }
+    
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         
@@ -149,12 +246,14 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        try! FIRAuth.auth()?.signOut()
+        self.logOut()
     }
     
     func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
         return true
     }
     
-
+    
     
 }
