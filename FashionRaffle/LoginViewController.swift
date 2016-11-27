@@ -14,6 +14,8 @@ import SVProgressHUD
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+
+    
     @IBOutlet var addForgetPasswordView: UIView!
     
     @IBOutlet weak var forgetPasswordTextField: UITextField!
@@ -306,10 +308,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         applyMotionEffect(toView:backgroundImageView, magnitude: 15)
         //If FB signed in
-        if let _ = FBSDKAccessToken.current(){
-            getFBUserData()
-            
-        }
         
         
         
@@ -493,28 +491,39 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //Facebook Login Button Delegate
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         
-        
+        let ref = FIRDatabase.database().reference()
         // link with Firebase!
         if let _ = FBSDKAccessToken.current(){
             SVProgressHUD.show(withStatus: "Logging in...")
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
                 if error == nil{
-                    
                     if let user = FIRAuth.auth()?.currentUser {
-                        for profile in user.providerData {
-                            let providerID = profile.providerID
-                            let uid = profile.uid;  // Provider-specific UID
-                            let name = profile.displayName
-                            let email = profile.email
-                            
-                            DataBaseStructure().setProvidersInfo(userName: name!, userID: uid, userEmail: email!, ProviderID: providerID)
-                        }
+                        let userID = user.uid
+                        ref.child("Users/ProviderUsers").observeSingleEvent(of: .value, with: {
+                            snapshot in
+                            if snapshot.hasChild(userID){
+                                print("User signed in before.")
+                            }
+                            else {
+                                for profile in user.providerData {
+                                    let name = profile.displayName
+                                    let email = profile.email
+                                    let uid = profile.uid as String
+                                    let providerID = profile.providerID
+                                    let imageURL = "http://graph.facebook.com/\(uid)/picture?type=large"
+                                    
+                                    let post : [String: String] = ["name":name!, "providerID":providerID,"email":email!,"porivderuserID":uid, "imageURL":imageURL]
+                                    ref.child("Users/ProviderUsers").child(userID).updateChildValues(post)
+                                    
+                                }
+                            }
+                        })
                     }
+                    
                     
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
                         SVProgressHUD.dismiss()
-                        self.getFBUserData()
                         self.loginSuccess()
                     })
                 }

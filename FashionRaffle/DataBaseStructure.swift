@@ -26,12 +26,9 @@ class DataBaseStructure {
     
     func setProvidersInfo(userName: String, userID: String, userEmail: String, ProviderID: String) {
         let ref = FIRDatabase.database().reference()
-        let post: NSDictionary = ["Email": userEmail, "Name": userName, "UserID": userID, "ProviderID": ProviderID]
-        ref.child("Users/ProviderUsers").child(userID).setValue(post)
-    }
-    
-    func updateUserProfileImage() {
         
+        let post : [String: String?] = ["Email": userEmail,"Name": userName, "UserID": userID, "ProviderID": ProviderID]
+        ref.child("Users/ProviderUsers").child(userID).updateChildValues(post)
     }
     
     

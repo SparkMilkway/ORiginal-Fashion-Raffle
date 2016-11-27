@@ -16,17 +16,27 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     let ref = FIRDatabase.database().reference()
     let storage = FIRStorage.storage()
-    var ticketsTemp = 0 as NSNumber
-    var ticketsCal = 0
+    var defaulttickets : Int = 0
+    var ticketsCal : Int = 0
     
     @IBOutlet weak var changeImage: UITextField!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    //Check in Begin
+    @IBOutlet weak var dailyCheckInButton: UIButton!
+    @IBAction func dailyCheckIn(_ sender: Any) {
+        
+        
+    }
+    //Check in ends
     
+    
+    //Email Log out Begin
     
     @IBOutlet weak var emailLogOutButton: UIButton!
+    
     @IBAction func emailLogOut(_ sender: Any) {
         let refreshAlert = UIAlertController(title: "Sign Out", message: "Are you sure to sign out?", preferredStyle: .alert)
         
@@ -38,6 +48,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
+    //Ends
     
     @IBOutlet var fbLogoutButton: FBSDKLoginButton! = {
        let button = FBSDKLoginButton()
@@ -47,36 +58,43 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     
     //Buy raffle Tickets and Update the database
+    
+    
+    @IBOutlet weak var ticketsPossess: UILabel!
+    
+    
     @IBAction func RaffleTickets(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
-            snapshot in
-            let value = snapshot.value as? NSDictionary
-            let tickets = value?["Tickets"] as? Int ?? nil
-            if tickets == nil {
-                self.ticketsCal = 0
-            }
-            else {
-                self.ticketsCal = tickets!
-            }
-        })
-        ticketsCal = ticketsCal + 1
-        ticketsTemp = NSNumber(value: ticketsCal)
-        let post = ["Tickets": ticketsTemp] as [String: NSNumber]
-        ref.child("Users/EmailUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
-            if error != nil {
-                self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
-                return
-            }
-            else {
-                self.showAlerts(title: "Purchase Success!", message: "Now you have \(self.ticketsTemp) raffle tickets!", handler: nil)
-            }
-        })
-        
-        
-        
-        
+        let user = FIRAuth.auth()?.currentUser
+        let userID = user?.uid
+        self.ticketsCal = self.ticketsCal + 1
+        let post = ["Tickets": self.ticketsCal] as [String: Int]
+        if FBSDKAccessToken.current() == nil {
+            ref.child("Users/EmailUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
+                    return
+                }
+                else {
+                    self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
+                    self.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil)
+                }
+            })
+        }
+        else {
+            ref.child("Users/ProviderUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
+                    return
+                }
+                else {
+                    self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
+                    self.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil)
+                }
+            })
+        }
     }
+    
+    //End
     @IBOutlet weak var profileImage: UIImageView!
     
     
@@ -95,6 +113,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.dateLabel.text = now
         
         
+        
+        
         profileImageView()
         
         
@@ -108,7 +128,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     let value = snapshot.value as? NSDictionary
                     let name = value!["name"] as? String
                     let email = value!["email"] as? String
-                    let pictureURL = value!["ProfileImageUrl"] as? String
+                    let hastickets = value!["Tickets"] as! Int
+                    self.ticketsCal = hastickets
+                    let pictureURL = value?["ProfileImageUrl"] as? String
                     if pictureURL != nil{
                         let httpRef = self.storage.reference(forURL: pictureURL!)
                         self.profileImage.sd_setImage(with: httpRef)
@@ -118,6 +140,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                     self.userName!.text = name
                     self.userEmail!.text = email
+                    self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
+                    
                 })
             }
             
@@ -128,15 +152,32 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             self.emailLogOutButton.isHidden = true
             profileImage.isUserInteractionEnabled = false
             if let user = FIRAuth.auth()?.currentUser{
+                let uid = user.uid
                 for profile in user.providerData {
                     let name = profile.displayName
                     let email = profile.email
-                    let userID = profile.uid as NSString
-                    let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
-                    
                     self.userEmail!.text = email
                     self.userName!.text = name
-                
+                    let userID = profile.uid as String
+                    
+                    ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
+                        snapshot in
+                        let value = snapshot.value as? NSDictionary
+                        let hastickets = value?["Tickets"] as? Int
+                        if hastickets != nil {
+                            self.ticketsCal = hastickets!
+                        }
+                        else {
+                            self.ticketsCal = self.defaulttickets
+                            let post = ["Tickets":self.ticketsCal] as [String:Int]
+                            self.ref.child("Users/ProviderUsers").child(uid).updateChildValues(post)
+                        }
+                        self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
+                    })
+                    
+                    
+                    //Get the user's Profile Image
+                    let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                     if let url = pictureURL {
                         if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
                             self.profileImage.image = image
@@ -160,6 +201,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 }
             }
         }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
