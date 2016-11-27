@@ -42,6 +42,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseUI/Storage (~> 0.6)
   - SDWebImage (~> 3.8)
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
@@ -65,7 +67,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 5b1763e415108b33e6b9238267d695b335c91d9b
+PODFILE CHECKSUM: 680ba998c78b6eebbfa640af000a01e8ad60fcbe
 
 COCOAPODS: 1.0.1

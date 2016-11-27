@@ -13,9 +13,43 @@ import FirebaseStorageUI
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
     
+    let ref = FIRDatabase.database().reference()
+    var ticketsTemp = 0 as NSNumber
+    var ticketsCal = 0
+    
+    @IBAction func RaffleTickets(_ sender: Any) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
+            snapshot in
+            let value = snapshot.value as? NSDictionary
+            let tickets = value?["Tickets"] as? Int ?? nil
+            if tickets == nil {
+                self.ticketsCal = 0
+            }
+            else {
+                self.ticketsCal = tickets!
+            }
+        })
+        ticketsCal = ticketsCal + 1
+        ticketsTemp = NSNumber(value: ticketsCal)
+        let post = ["Tickets": ticketsTemp] as [String: NSNumber]
+        ref.child("Users/EmailUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
+            if error != nil {
+                self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
+                return
+            }
+            else {
+                self.showAlerts(title: "Purchase Success!", message: "Now you have \(self.ticketsTemp) raffle tickets!", handler: nil)
+            }
+        })
+        
+        
+        
+
+    }
     @IBOutlet weak var profileImage: UIImageView!
     
-    let ref = FIRDatabase.database().reference()
+
     let storageRef = FIRStorage.storage().reference()
     
     override func viewDidLoad() {
@@ -100,7 +134,12 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     
     
-    
+    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {

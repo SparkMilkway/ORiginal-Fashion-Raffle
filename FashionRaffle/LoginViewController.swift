@@ -1,3 +1,4 @@
+
 //
 //  LoginViewController.swift
 //  FashionRaffle
@@ -9,6 +10,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import SVProgressHUD
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -57,20 +59,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func handleLogin(){
-
+        
         if emailTextField.text == "" || passwordTextField.text == "" {
             self.showAlerts(title: "Oops!", message: "Please enter values!", handler: nil)
         }
-        
+            
         else {
             let email = emailTextField.text, password = passwordTextField.text
             FIRAuth.auth()?.signIn(withEmail: email!, password: password!, completion: { (user, error) in
                 
                 if error == nil {
+                    
+                    self.view.endEditing(true)
                     self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
                         UIAlertAction in
+                        SVProgressHUD.show(withStatus: "Logging in...")
                         self.loginSuccess()
+                    
                     })
+                    
+                    
                 }
                     
                 else {
@@ -81,9 +89,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             })
         }
     }
-    
-    func handleRegister() {
 
+    func handleRegister() {
+        
         if emailTextField.text == "" || passwordTextField.text == "" || nameTextField.text == ""
         {
             self.showAlerts(title: "Oops!", message: "Please enter values!", handler: nil)
@@ -92,9 +100,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             //Create an account
         else{
             
-            let email = emailTextField.text, password = passwordTextField.text, name = nameTextField.text
+            let email = emailTextField.text! as String, password = passwordTextField.text, name = nameTextField.text! as String
             
-            FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: {(user, error) in
+            FIRAuth.auth()?.createUser(withEmail: email, password: password!, completion: {(user, error) in
                 if error == nil{
                     //successfully register
                     guard let uid = user?.uid else{
@@ -102,19 +110,31 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }
                     // put the values into Firebase Auth
                     let ref = FIRDatabase.database().reference()
+                    let defaultTicketsNumber = 0 as NSNumber
                     let values = ["name": name, "email":email, "userID": uid]
+                    let value2 = ["Tickets": defaultTicketsNumber]
                     let usersReference = ref.child("Users/EmailUsers").child(uid)
                     
                     usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                         
                         if err != nil{
-                            self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
+                            self.showAlerts(title: "Oops!", message: (err?.localizedDescription)!, handler: nil)
+                            return
+                        }
+                    })
+                    usersReference.updateChildValues(value2, withCompletionBlock: { (err, ref) in
+                        
+                        if err != nil{
+                            self.showAlerts(title: "Oops!", message: (err?.localizedDescription)!, handler: nil)
                             return
                         }
                     })
                     
-                    self.showAlerts(title: "Success!", message: "Your account is successfully created! You can sign in now!", handler: {
+                    
+                    self.view.endEditing(true)
+                    self.showAlerts(title: "Success!", message: "Your account is successfully created!", handler: {
                         UIAlertAction in
+                        SVProgressHUD.show(withStatus: "Logging in...")
                         self.loginSuccess()
                     })
                 }
@@ -127,7 +147,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
     }
-    
     
     
     
@@ -216,7 +235,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         nameTextFieldHeightAnchor?.isActive = true
         
-
+        
         emailTextFieldHeightAnchor?.isActive = false
         emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         emailTextFieldHeightAnchor?.isActive = true
@@ -230,9 +249,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    //Login Func
+    
     func loginSuccess() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        
         self.present(tabBarController, animated: true, completion: nil)
     }
     
@@ -481,6 +503,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // link with Firebase!
         if let _ = FBSDKAccessToken.current(){
+            
+            SVProgressHUD.show(withStatus: "Logging in...")
             
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in

@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorageUI
+import SVProgressHUD
 
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -24,14 +25,20 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     var label : UILabel?
     
     var shouldFiltContents = false
-    //let searchController = UISearchController(searchResultsController: nil)
     
     let storageReference = FIRStorage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         label?.text = self.title
+        SVProgressHUD.dismiss()
+        
+        
+        //Messing with dates and daily sign in
+        let date = Date()
+        let cal = Calendar(identifier: .gregorian)
+        let newDate = cal.startOfDay(for: date) // return as a Date
+        
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
@@ -59,6 +66,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     //The function for search bar
     
+
     func searchTapped() {
         
         searchBar.delegate = self
@@ -106,24 +114,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         }
         
     }
-    
-    /*func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-     self.filterednewsDatas = newsDatas.filter({ content in
-     
-     let title = content.title
-     return title.lowercased().contains(searchText.lowercased())
-     
-     })
-     
-     if searchText != "" {
-     shouldFiltContents = true
-     self.tableView.reloadData()
-     }
-     else {
-     shouldFiltContents = false
-     self.tableView.reloadData()
-     }
-     }*/
     
     
     
