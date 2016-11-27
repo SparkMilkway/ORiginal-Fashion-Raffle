@@ -40,8 +40,10 @@ extension SettingTableViewController: UIImagePickerControllerDelegate,UINavigati
         if let selectedImage = selectedImageFromPicker {
             profileImage.image = selectedImage
         }
-        
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            () -> Void in
+            self.uploadProfileImage()
+        })
         
     }
     

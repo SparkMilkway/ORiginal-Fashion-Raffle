@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseStorageUI
+import SVProgressHUD
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
     
     let ref = FIRDatabase.database().reference()
+    let storage = FIRStorage.storage()
     var ticketsTemp = 0 as NSNumber
     var ticketsCal = 0
     
@@ -81,6 +83,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     let emailStorageRef = FIRStorage.storage().reference().child("User Info/EmailUsers")
     let providerStorageRef = FIRStorage.storage().reference().child("User Info/ProviderUsers")
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
@@ -96,7 +100,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         if FBSDKAccessToken.current() == nil {
 
-            self.profileImage.image = UIImage(named: "background")
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
             if let userID = FIRAuth.auth()?.currentUser?.uid {
@@ -105,12 +108,21 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     let value = snapshot.value as? NSDictionary
                     let name = value!["name"] as? String
                     let email = value!["email"] as? String
+                    let pictureURL = value!["ProfileImage"] as? String
+                    if pictureURL != nil{
+                        let httpRef = self.storage.reference(forURL: pictureURL!)
+                        self.profileImage.sd_setImage(with: httpRef)
+                    }
+                    else {
+                        self.profileImage.image = UIImage(named: "background")
+                    }
                     self.userName!.text = name
                     self.userEmail!.text = email
                 })
             }
             
         }
+            
         else {
             self.fbLogoutButton.isHidden = false
             self.emailLogOutButton.isHidden = true
@@ -119,12 +131,13 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                 for profile in user.providerData {
                     let name = profile.displayName
                     let email = profile.email
-                    let photoURL = profile.photoURL
+                    let userID = profile.uid as NSString
+                    let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                     
                     self.userEmail!.text = email
                     self.userName!.text = name
-                    
-                    if let url = photoURL {
+                
+                    if let url = pictureURL {
                         if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
                             self.profileImage.image = image
                         }
@@ -157,6 +170,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         
     }
+
     
     let imageCache = NSCache<AnyObject, AnyObject>()
     
@@ -179,21 +193,29 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         profileImage.isUserInteractionEnabled = true
         
     }
+    
+    // Upload the Image to cloud storage
     func uploadProfileImage(){
-        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else{return}
         let imageName = NSUUID().uuidString
-        let storageRef = FIRStorage.storage().reference().child("(imageName).png")
-        if let uploadData = UIImagePNGRepresentation(self.profileImage.image!) {
+        let storageRef = emailStorageRef.child("/\(uid)/Profile Images/\(imageName).jpg")
+        //let metadata = FIRStorageMetadata()
+        if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.6) {
+            SVProgressHUD.show(withStatus: "Uploading...")
             storageRef.put(uploadData,metadata:nil, completion: { (metadata, error) in
                 if error != nil {
                     print(error!)
+                    SVProgressHUD.showError(withStatus: "Error Occurs")
                     return
                 }
+                SVProgressHUD.showSuccess(withStatus: "Upload Success!")
+                SVProgressHUD.dismiss(withDelay: 1)
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-                    self.ref.child("Users/EmailUsers/(uid)").setValue(["ProfilImageUrl":profileImageUrl])
+                    self.ref.child("Users/EmailUsers/\(uid)").updateChildValues(["ProfileImageUrl":profileImageUrl])
                 }
             })
         }
+
     }
     
     
