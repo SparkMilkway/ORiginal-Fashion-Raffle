@@ -179,6 +179,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let emailTextField:UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
+        tf.keyboardType = UIKeyboardType.emailAddress
         tf.clearButtonMode = UITextFieldViewMode.whileEditing
         
         tf.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
@@ -270,17 +271,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         button.readPermissions = ["email"]
         return button
     }()
-    
-    func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "picture.type(middle)"]).start{ (connection, result, error) -> Void in
-                if (error == nil){
-                    //everything works print the user data
-                    print(result!)
-                }
-            }
-        }
-    }
+
     
     //FB stuff ends
     

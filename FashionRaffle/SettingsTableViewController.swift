@@ -108,7 +108,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     let value = snapshot.value as? NSDictionary
                     let name = value!["name"] as? String
                     let email = value!["email"] as? String
-                    let pictureURL = value!["ProfileImage"] as? String
+                    let pictureURL = value!["ProfileImageUrl"] as? String
                     if pictureURL != nil{
                         let httpRef = self.storage.reference(forURL: pictureURL!)
                         self.profileImage.sd_setImage(with: httpRef)
