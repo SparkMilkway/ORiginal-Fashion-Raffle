@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="258"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bW6-8Y-NU1" id="bfj-Ip-HJm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pMI-dg-wj0">
@@ -723,7 +723,7 @@
                             <tableViewSection headerTitle="Manage Raffles" id="H2c-lS-WQR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wMJ-ye-pK1">
-                                        <rect key="frame" x="0.0" y="460" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="459" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wMJ-ye-pK1" id="nSg-DF-y1Y">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -759,7 +759,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aDh-R3-hdn">
-                                        <rect key="frame" x="0.0" y="504" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="503" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDh-R3-hdn" id="Aka-lh-dth">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

@@ -18,16 +18,40 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     let storage = FIRStorage.storage()
     var defaulttickets : Int = 0
     var ticketsCal : Int = 0
+    var nextDayYet = false
+    var checkedYet = false
     
     @IBOutlet weak var changeImage: UITextField!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    
     //Check in Begin
     @IBOutlet weak var dailyCheckInButton: UIButton!
     @IBAction func dailyCheckIn(_ sender: Any) {
+
+        if checkedYet == false {
+            
+            SVProgressHUD.showSuccess(withStatus: "Checked")
+            
+            self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
+            checkedYet = true
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
+                () -> Void in
+                SVProgressHUD.dismiss()
+            })
+            
+        }
+        else {
+            SVProgressHUD.showError(withStatus: "Already Checked")
+            print("Good Work")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
+                () -> Void in
+                SVProgressHUD.dismiss()
+            })
         
+        }
         
     }
     //Check in ends
@@ -111,12 +135,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         dateFormat.dateFormat = "MM/dd/yyyy"
         let now = dateFormat.string(from: Date())
         self.dateLabel.text = now
-        
-        
-        
-        
         profileImageView()
-        
+
         
         if FBSDKAccessToken.current() == nil {
 
@@ -259,30 +279,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
 
     }
-    
-    
-    
-    
-    
-    
-    /*
-     let imageName = NSUUID().uuidString
-     let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).png")
-     if let uploadData = UIImagePNGRepresentation(self.profileImage.image!) {
-     storageRef.put(uploadData,metadata:nil, completion: { (metadata, error) in
-     if error != nil {
-     print(error)
-     return
-     }
-     if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-     let values = ["name":self.name, "email": self.email, "profile ImageUrl": profileImageUrl]
-     
-     }
-     
-     })
-     }
-     */
-    
     
     
     
