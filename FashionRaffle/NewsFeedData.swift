@@ -14,12 +14,14 @@ class NewsFeedData : NSObject {
     var subtitle: String
     //var details: String
     var image: String
+    var details: String
     
-    init(title: String, subtitle: String, image: String) {
+    init(title: String, subtitle: String, image: String, details: String) {
         self.title = title
         self.subtitle = subtitle
         //self.details = details
         self.image = image
+        self.details = details
         super.init()
     }
     

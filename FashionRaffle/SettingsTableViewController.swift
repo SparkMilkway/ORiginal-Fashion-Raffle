@@ -183,15 +183,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
                         snapshot in
                         let value = snapshot.value as? NSDictionary
-                        let hastickets = value?["Tickets"] as? Int
-                        if hastickets != nil {
-                            self.ticketsCal = hastickets!
-                        }
-                        else {
-                            self.ticketsCal = self.defaulttickets
-                            let post = ["Tickets":self.ticketsCal] as [String:Int]
-                            self.ref.child("Users/ProviderUsers").child(uid).updateChildValues(post)
-                        }
+                        let hastickets = value!["Tickets"] as! Int
+                        self.ticketsCal = hastickets
                         self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
                     })
                     

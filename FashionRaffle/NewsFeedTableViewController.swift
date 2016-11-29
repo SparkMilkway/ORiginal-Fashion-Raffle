@@ -46,7 +46,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         let ref = FIRDatabase.database().reference()
         
-        
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
@@ -54,9 +53,10 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             let title = value!["Title"] as? String
             let subtitle = value!["SubTitle"] as? String
             let image = value!["Image"] as? String
+            let text = value!["Text"] as? String
             
-            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!, image: image!)
-            self.newsDatas.insert(newsData, at: 0)
+            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!, image: image!, details: text!)
+            self.newsDatas.append(newsData)
             
             self.tableView.reloadData()
         })
@@ -210,7 +210,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         viewController.reference = storage
         
         viewController.passLabel = newsData.title
-        viewController.passDetail = newsData.subtitle
+        viewController.passDetail = newsData.details
         
         searchBar.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)

@@ -15,6 +15,7 @@ import SVProgressHUD
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
 
+    let defaultTickets = 0
     
     @IBOutlet var addForgetPasswordView: UIView!
     
@@ -111,27 +112,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         return
                     }
                     // put the values into Firebase Auth
-                    let ref = FIRDatabase.database().reference()
-                    let defaultTicketsNumber = 0 as NSNumber
-                    let values = ["name": name, "email":email, "userID": uid]
-                    let value2 = ["Tickets": defaultTicketsNumber]
-                    let usersReference = ref.child("Users/EmailUsers").child(uid)
-                    
-                    usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        if err != nil{
-                            self.showAlerts(title: "Oops!", message: (err?.localizedDescription)!, handler: nil)
-                            return
-                        }
-                    })
-                    usersReference.updateChildValues(value2, withCompletionBlock: { (err, ref) in
-                        
-                        if err != nil{
-                            self.showAlerts(title: "Oops!", message: (err?.localizedDescription)!, handler: nil)
-                            return
-                        }
-                    })
-                    
-                    
+                    let values : [String: Any] = ["name": name, "email":email, "userID": uid, "Tickets": self.defaultTickets]
+                    DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: uid, post: values)
+
                     self.view.endEditing(true)
                     self.showAlerts(title: "Success!", message: "Your account is successfully created!", handler: {
                         UIAlertAction in
@@ -513,9 +496,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     let providerID = profile.providerID
                                     let imageURL = "http://graph.facebook.com/\(uid)/picture?type=large"
                                     
-                                    let post : [String: String] = ["name":name!, "providerID":providerID,"email":email!,"porivderuserID":uid, "imageURL":imageURL]
-                                    ref.child("Users/ProviderUsers").child(userID).updateChildValues(post)
-                                    
+                                    let post : [String: Any] = ["name":name!, "providerID":providerID,"email":email!,"porivderuserID":uid, "imageURL":imageURL, "Tickets": self.defaultTickets]
+                                    DataBaseStructure().updateUserDatabase(location: "Users/ProviderUsers", userID: userID, post: post)
                                 }
                             }
                         })
