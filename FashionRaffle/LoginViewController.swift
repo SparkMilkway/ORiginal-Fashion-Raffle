@@ -383,7 +383,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         addForgetPasswordView.center = self.view.center
         addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
         addForgetPasswordView.alpha = 0
-        
+        addForgetPasswordView.layer.cornerRadius = 8
+        addForgetPasswordView.layer.masksToBounds = true
+        self.forgetPasswordTextField.tintColor = UIColor.blue
         UIView.animate(withDuration:0.4){
             self.addForgetPasswordView.alpha = 1
             self.addForgetPasswordView.transform = CGAffineTransform.identity

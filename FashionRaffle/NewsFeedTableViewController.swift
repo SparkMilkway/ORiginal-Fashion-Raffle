@@ -50,12 +50,12 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             snapshot in
             
             let value = snapshot.value as? NSDictionary
-            let title = value!["Title"] as? String
-            let subtitle = value!["SubTitle"] as? String
-            let image = value!["Image"] as? String
-            let text = value!["Text"] as? String
+            let title = value!["Title"] as! String
+            let subtitle = value!["SubTitle"] as! String
+            let image = value!["Image"] as! String
+            let text = value!["Text"] as! String
             
-            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!, image: image!, details: text!)
+            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text)
             self.newsDatas.append(newsData)
             
             self.tableView.reloadData()

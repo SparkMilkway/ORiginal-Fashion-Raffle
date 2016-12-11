@@ -1,25 +1,29 @@
 //
-//  NewsFeedData.swift
+//  RafflePoolData.swift
 //  FashionRaffle
 //
-//  Created by Spark Da Capo on 11/14/16.
+//  Created by Spark Da Capo on 11/30/16.
 //  Copyright © 2016 Mac. All rights reserved.
 //
 
 import Foundation
 
-class NewsFeedData : NSObject {
+
+class RafflePoolData : NSObject {
     
     var title: String
     var subtitle: String
-    var image: String
+    var image1: String
+    //var image2: String
     var details: String
+    //var itemLocation: String
     
     init(title: String, subtitle: String, image: String, details: String) {
         self.title = title
         self.subtitle = subtitle
-        self.image = image
+        self.image1 = image
         self.details = details
+        //self.itemLocation = itemLocation
         super.init()
     }
     

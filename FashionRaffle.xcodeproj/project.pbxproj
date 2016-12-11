@@ -23,6 +23,7 @@
 		04D8A2001DC36C53008B1989 /* FashionRaffleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */; };
 		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
+		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
 		52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */; };
 		52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FE11DE2791000ED34CC /* uploadimage+handler.swift */; };
 		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
@@ -40,6 +41,7 @@
 		5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */; };
 		527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */; };
 		527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA0711DDFED8B00379312 /* DataBaseStructure.swift */; };
+		52FE414E1DFCA99400263015 /* RafflePoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE414D1DFCA99400263015 /* RafflePoolCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,7 @@
 		04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
+		52060FC31DEF785A00A26D8F /* RafflePoolData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflePoolData.swift; sourceTree = "<group>"; };
 		52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		52329FE11DE2791000ED34CC /* uploadimage+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "uploadimage+handler.swift"; sourceTree = "<group>"; };
 		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -104,6 +107,7 @@
 		5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeatures.swift; sourceTree = "<group>"; };
 		527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableViewController.swift; sourceTree = "<group>"; };
 		527CA0711DDFED8B00379312 /* DataBaseStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseStructure.swift; sourceTree = "<group>"; };
+		52FE414D1DFCA99400263015 /* RafflePoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflePoolCell.swift; sourceTree = "<group>"; };
 		7F39338E81D732C7C9A50156 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,7 +245,9 @@
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */,
 				526EC5151DDA7462001BE789 /* NewsFeedData.swift */,
+				52060FC31DEF785A00A26D8F /* RafflePoolData.swift */,
 				526EC5191DDAD83B001BE789 /* NewsFeedCell.swift */,
+				52FE414D1DFCA99400263015 /* RafflePoolCell.swift */,
 			);
 			name = TabViews;
 			sourceTree = "<group>";
@@ -357,10 +363,13 @@
 				TargetAttributes = {
 					04D8A1D91DC36C53008B1989 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = PA49KJL793;
+						DevelopmentTeam = K5BD7N2LW3;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -488,8 +497,10 @@
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
+				52FE414E1DFCA99400263015 /* RafflePoolCell.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
+				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
@@ -657,7 +668,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FashionRaffle/FashionRaffle.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PA49KJL793;
+				DEVELOPMENT_TEAM = K5BD7N2LW3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -666,7 +677,7 @@
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -683,7 +694,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FashionRaffle/FashionRaffle.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PA49KJL793;
+				DEVELOPMENT_TEAM = K5BD7N2LW3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -692,7 +703,7 @@
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
 				SWIFT_VERSION = 3.0;

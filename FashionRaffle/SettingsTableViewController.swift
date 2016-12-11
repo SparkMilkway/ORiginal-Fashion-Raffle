@@ -33,8 +33,18 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         if checkedYet == false {
             
-            SVProgressHUD.showSuccess(withStatus: "Checked")
-            
+            SVProgressHUD.showSuccess(withStatus: "Checked Today!")
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "MM/dd/yyyy"
+            let now = dateFormat.string(from: Date())
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            let post:[String: String] = ["Last Checked In": now]
+            if FBSDKAccessToken.current() != nil {
+                DataBaseStructure().updateUserDatabase(location: "Users/ProviderUsers", userID: userID!, post: post)
+            }
+            else {
+                DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: userID!, post: post)
+            }
             self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
             checkedYet = true
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
@@ -44,7 +54,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             
         }
         else {
-            SVProgressHUD.showError(withStatus: "Already Checked")
+            SVProgressHUD.showError(withStatus: "Already Checked Today!")
             print("Good Work")
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
                 () -> Void in
@@ -145,7 +155,22 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if let userID = FIRAuth.auth()?.currentUser?.uid {
                 ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
                     snapshot in
+                    
+                    
                     let value = snapshot.value as? NSDictionary
+                    let checkdate = value?["Last Checked In"] as? String
+                    if checkdate == nil{
+                        self.checkedYet = false
+                    }
+                    else {
+                        if checkdate == now {
+                            self.checkedYet = true
+                            self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
+                        }
+                        else {
+                            self.checkedYet = false
+                        }
+                    }
                     let name = value!["name"] as? String
                     let email = value!["email"] as? String
                     let hastickets = value!["Tickets"] as! Int
@@ -183,6 +208,19 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
                         snapshot in
                         let value = snapshot.value as? NSDictionary
+                        let checkdate = value?["Last Checked In"] as? String
+                        if checkdate == nil{
+                            self.checkedYet = false
+                        }
+                        else {
+                            if checkdate == now {
+                                self.checkedYet = true
+                                self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
+                            }
+                            else {
+                                self.checkedYet = false
+                            }
+                        }
                         let hastickets = value!["Tickets"] as! Int
                         self.ticketsCal = hastickets
                         self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
