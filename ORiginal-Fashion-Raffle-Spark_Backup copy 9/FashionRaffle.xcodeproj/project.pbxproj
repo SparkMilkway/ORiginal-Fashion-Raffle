@@ -26,12 +26,11 @@
 		0431555C1DF3F0CC007638DA /* FusumaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431554E1DF3F0CC007638DA /* FusumaViewController.swift */; };
 		0431555D1DF3F0CC007638DA /* FusumaViewController.swift.orig in Resources */ = {isa = PBXBuildFile; fileRef = 0431554F1DF3F0CC007638DA /* FusumaViewController.swift.orig */; };
 		0431555E1DF3F0CC007638DA /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043155501DF3F0CC007638DA /* FusumaViewController.xib */; };
-		043155621DF4AABC007638DA /* photoTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043155611DF4AABC007638DA /* photoTagTableViewCell.swift */; };
 		043155641DF4BA1C007638DA /* tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043155631DF4BA1C007638DA /* tags.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B81DC39EBB006A1C3E /* ThirdViewController.swift */; };
 		048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */; };
-		04B84C891DFD146A00EF3F1F /* addTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B84C881DFD146A00EF3F1F /* addTagsViewController.swift */; };
+		04B84C8B1DFD169700EF3F1F /* addTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B84C8A1DFD169700EF3F1F /* addTagsViewController.swift */; };
 		04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */; };
 		04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */; };
 		04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */; };
@@ -99,12 +98,11 @@
 		0431554E1DF3F0CC007638DA /* FusumaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FusumaViewController.swift; sourceTree = "<group>"; };
 		0431554F1DF3F0CC007638DA /* FusumaViewController.swift.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FusumaViewController.swift.orig; sourceTree = "<group>"; };
 		043155501DF3F0CC007638DA /* FusumaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FusumaViewController.xib; sourceTree = "<group>"; };
-		043155611DF4AABC007638DA /* photoTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoTagTableViewCell.swift; sourceTree = "<group>"; };
 		043155631DF4BA1C007638DA /* tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tags.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		048581B81DC39EBB006A1C3E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStackElementViewController.swift; sourceTree = "<group>"; };
-		04B84C881DFD146A00EF3F1F /* addTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = addTagsViewController.swift; path = "../../../../.Trash/ORiginal-Fashion-Raffle-Spark_Backup copy 9/FashionRaffle/addTagsViewController.swift"; sourceTree = "<group>"; };
+		04B84C8A1DFD169700EF3F1F /* addTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = addTagsViewController.swift; path = ../../../addTagsViewController.swift; sourceTree = "<group>"; };
 		04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmStackElementViewController.swift; path = ../AlarmStackElementViewController.swift; sourceTree = "<group>"; };
 		04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInStackElementViewController.swift; sourceTree = "<group>"; };
 		04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogOutStackElementViewController.swift; path = ../LogOutStackElementViewController.swift; sourceTree = "<group>"; };
@@ -285,8 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
-				04B84C881DFD146A00EF3F1F /* addTagsViewController.swift */,
-				043155611DF4AABC007638DA /* photoTagTableViewCell.swift */,
+				04B84C8A1DFD169700EF3F1F /* addTagsViewController.swift */,
 				043155401DF3EE23007638DA /* fusumaPhotoViewController.swift */,
 				043155631DF4BA1C007638DA /* tags.swift */,
 				04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */,
@@ -561,7 +558,6 @@
 			files = (
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */,
-				043155621DF4AABC007638DA /* photoTagTableViewCell.swift in Sources */,
 				043155561DF3F0CC007638DA /* FSCameraView.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				0431555A1DF3F0CC007638DA /* FSVideoCameraView.swift in Sources */,
@@ -570,7 +566,7 @@
 				04D8A1E21DC36C53008B1989 /* SecondViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
-				04B84C891DFD146A00EF3F1F /* addTagsViewController.swift in Sources */,
+				04B84C8B1DFD169700EF3F1F /* addTagsViewController.swift in Sources */,
 				52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				043155411DF3EE23007638DA /* fusumaPhotoViewController.swift in Sources */,
