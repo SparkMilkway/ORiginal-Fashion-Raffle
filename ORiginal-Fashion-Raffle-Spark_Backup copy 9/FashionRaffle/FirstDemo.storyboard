@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News Reusable View Controller-->
+        <scene sceneID="o60-d7-8zR">
+            <objects>
+                <viewController storyboardIdentifier="NewsReusableView" extendedLayoutIncludesOpaqueBars="YES" id="fge-VU-3XQ" customClass="NewsReusableViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gNc-7W-DNw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dwg-Gd-rGZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="djT-28-MGb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBy-V7-5pB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Anti_Social" translatesAutoresizingMaskIntoConstraints="NO" id="PmZ-9z-dc5">
+                                        <rect key="frame" x="67" y="16" width="240" height="205"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="205" id="bxy-8S-1T3"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TestLabel1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-sA-NRP">
+                                        <rect key="frame" x="0.0" y="229" width="375" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="mgU-Oc-t8t"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TestLabel2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56F-0w-FoS">
+                                        <rect key="frame" x="0.0" y="272" width="375" height="358"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="358" id="ELb-9s-Ezi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="56F-0w-FoS" firstAttribute="top" secondItem="4kb-sA-NRP" secondAttribute="bottom" constant="8" symbolic="YES" id="8Cz-bE-dgM"/>
+                                    <constraint firstItem="4kb-sA-NRP" firstAttribute="top" secondItem="PmZ-9z-dc5" secondAttribute="bottom" constant="8" symbolic="YES" id="HVf-g8-gt5"/>
+                                    <constraint firstAttribute="trailing" secondItem="4kb-sA-NRP" secondAttribute="trailing" id="HzD-Fy-Ev1"/>
+                                    <constraint firstItem="4kb-sA-NRP" firstAttribute="trailing" secondItem="56F-0w-FoS" secondAttribute="trailing" id="J9m-cP-w7o"/>
+                                    <constraint firstItem="PmZ-9z-dc5" firstAttribute="centerX" secondItem="fBy-V7-5pB" secondAttribute="centerX" id="Nnz-eI-W1T"/>
+                                    <constraint firstItem="4kb-sA-NRP" firstAttribute="leading" secondItem="56F-0w-FoS" secondAttribute="leading" id="QaH-Gk-YsP"/>
+                                    <constraint firstItem="PmZ-9z-dc5" firstAttribute="top" secondItem="fBy-V7-5pB" secondAttribute="top" constant="36" id="RdE-mB-4Qp"/>
+                                    <constraint firstItem="PmZ-9z-dc5" firstAttribute="leading" secondItem="fBy-V7-5pB" secondAttribute="leading" constant="67" id="SRu-Er-dIv"/>
+                                    <constraint firstAttribute="bottom" secondItem="56F-0w-FoS" secondAttribute="bottom" constant="17" id="bQK-69-NsO"/>
+                                    <constraint firstItem="PmZ-9z-dc5" firstAttribute="centerX" secondItem="4kb-sA-NRP" secondAttribute="centerX" id="us3-lt-jAl"/>
+                                    <constraint firstItem="4kb-sA-NRP" firstAttribute="leading" secondItem="fBy-V7-5pB" secondAttribute="leading" id="wCg-a9-Yv1"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fBy-V7-5pB" firstAttribute="bottom" secondItem="Dwg-Gd-rGZ" secondAttribute="top" id="CX7-DR-ip2"/>
+                            <constraint firstAttribute="trailing" secondItem="fBy-V7-5pB" secondAttribute="trailing" id="aR0-hb-0HX"/>
+                            <constraint firstItem="fBy-V7-5pB" firstAttribute="top" secondItem="djT-28-MGb" secondAttribute="top" id="j46-25-jmV"/>
+                            <constraint firstItem="fBy-V7-5pB" firstAttribute="leading" secondItem="djT-28-MGb" secondAttribute="leading" id="uhz-hh-8eE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Details" destination="56F-0w-FoS" id="dzw-R2-07g"/>
+                        <outlet property="Image" destination="PmZ-9z-dc5" id="K8j-kL-oJl"/>
+                        <outlet property="Label1" destination="4kb-sA-NRP" id="USv-mb-kOn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hxh-Cr-0NL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69.599999999999994" y="0.44977511244377816"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Anti_Social" width="512" height="512"/>
+    </resources>
+</document>
