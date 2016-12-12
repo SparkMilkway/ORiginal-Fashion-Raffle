@@ -21,9 +21,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     var filterednewsDatas : [NewsFeedData] = []
     
     let searchBar = UISearchBar()
-    
+    var hastickets = 0
     var label : UILabel?
-    
     var shouldFiltContents = false
     
     let storageReference = FIRStorage.storage()
@@ -45,6 +44,24 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         
         let ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        if FBSDKAccessToken.current() == nil {
+            ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                
+                let value = snapshot.value as? NSDictionary
+                let tickets = value!["Tickets"] as! Int
+                self.hastickets = tickets
+            })
+        }else {
+            ref.child("Users/ProviderUsers").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                
+                let value = snapshot.value as? NSDictionary
+                let tickets = value!["Tickets"] as! Int
+                self.hastickets = tickets
+            })
+        }
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in

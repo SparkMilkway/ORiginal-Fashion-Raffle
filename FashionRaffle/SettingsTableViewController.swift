@@ -14,11 +14,10 @@ import SVProgressHUD
 import PassKit
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate, PKPaymentAuthorizationViewControllerDelegate {
-    
+
     let ref = FIRDatabase.database().reference()
     let storage = FIRStorage.storage()
     var defaulttickets : Int = 0
-    var ticketsCal : Int = 0
     var nextDayYet = false
     var checkedYet = false
     
@@ -69,6 +68,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
     //Check in ends
     
+
     
     //Email Log out Begin
     
@@ -92,12 +92,27 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         return button
     }()
     
+    @IBAction func checkTickets(_ sender: Any) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        var location = ""
+        if FBSDKAccessToken.current() == nil {
+            location = "Users/EmailUsers"
+        }
+        else {
+            location = "Users/ProviderUsers"
+        }
+        ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
+            snapshot in
+            let value = snapshot.value as? NSDictionary
+            let tickets = value!["Tickets"] as! Int
+            SettingsLauncher().showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
+        })
+    }
     
     
     //Buy raffle Tickets and Update the database////////////////////////////////////////
     
     
-    @IBOutlet weak var ticketsPossess: UILabel!
     
     func itemToSell() -> [PKPaymentSummaryItem] {
         let oneRaffleTicket = PKPaymentSummaryItem(label: "One Raffle Ticket", amount: 0.99)
@@ -114,7 +129,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             paymentRequest.merchantIdentifier = "merchant.com.Raffle-F"
             paymentRequest.supportedNetworks = paymentNetworks
             paymentRequest.merchantCapabilities = .capability3DS
-            paymentRequest.requiredShippingAddressFields = [.all]
+            paymentRequest.requiredShippingAddressFields = [.email,.name,.phone]
             paymentRequest.paymentSummaryItems = self.itemToSell()
             
             let freeShipping = PKShippingMethod(label: "Normal Delivery", amount: 0)
@@ -138,32 +153,25 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func purchaseSuccess() {
         let user = FIRAuth.auth()?.currentUser
         let userID = user?.uid
-        self.ticketsCal = self.ticketsCal + 1
-        let post = ["Tickets": self.ticketsCal] as [String: Int]
+        var hastickets : Int = 0
+        var location = ""
         if FBSDKAccessToken.current() == nil {
-            ref.child("Users/EmailUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    SettingsLauncher().showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil, controller: self)
-                    return
-                }
-                else {
-                    self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
-                    SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
-                }
-            })
+            location = "Users/EmailUsers"
+        }else {
+            location = "Users/ProviderUsers"
         }
-        else {
-            ref.child("Users/ProviderUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    SettingsLauncher().showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil, controller: self)
-                    return
-                }
-                else {
-                    self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
-                    SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
-                }
-            })
-        }
+        ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
+            snapshot in
+            let value = snapshot.value as? NSDictionary
+            let tickets = value!["Tickets"] as! Int
+            hastickets = tickets
+            let post : [String: Int] = ["Tickets" : hastickets + 1]
+            self.ref.child(location).child(userID!).updateChildValues(post)
+        })
+        
+        SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
+        
+
     }
     
     
@@ -185,11 +193,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         
     }
-    
-    
-    
-    
-    
     //End///////////////////////////////////////////////////////////
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -207,16 +210,12 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.dateLabel.text = now
         profileImageView()
 
-        
         if FBSDKAccessToken.current() == nil {
-
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
             if let userID = FIRAuth.auth()?.currentUser?.uid {
-                ref.child("Users/EmailUsers").child(userID).observe(.childChanged, with: {
+                ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
                     snapshot in
-                    
-                    
                     let value = snapshot.value as? NSDictionary
                     let checkdate = value?["Last Checked In"] as? String
                     if checkdate == nil{
@@ -233,8 +232,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                     let name = value!["name"] as? String
                     let email = value!["email"] as? String
-                    let hastickets = value!["Tickets"] as! Int
-                    self.ticketsCal = hastickets
+                    
                     let pictureURL = value?["ProfileImageUrl"] as? String
                     if pictureURL != nil{
                         let httpRef = self.storage.reference(forURL: pictureURL!)
@@ -245,7 +243,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                     self.userName!.text = name
                     self.userEmail!.text = email
-                    self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
                     
                 })
             }
@@ -268,6 +265,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
                         snapshot in
                         let value = snapshot.value as? NSDictionary
+                        
                         let checkdate = value?["Last Checked In"] as? String
                         if checkdate == nil{
                             self.checkedYet = false
@@ -281,12 +279,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                                 self.checkedYet = false
                             }
                         }
-                        let hastickets = value!["Tickets"] as! Int
-                        self.ticketsCal = hastickets
-                        self.ticketsPossess!.text = "You have \(self.ticketsCal) raffle tickets."
                     })
-                    
-                    
                     //Get the user's Profile Image
                     let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                     if let url = pictureURL {
@@ -311,7 +304,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                 }
             }
-            tableView.reloadData()
         }
         
         // Uncomment the following line to preserve selection between presentations
