@@ -16,14 +16,14 @@ class RafflePoolData : NSObject {
     var image1: String
     //var image2: String
     var details: String
-    //var itemLocation: String
+    var pathKey: String
     
-    init(title: String, subtitle: String, image: String, details: String) {
+    init(title: String, subtitle: String, image: String, details: String, pathKey: String) {
         self.title = title
         self.subtitle = subtitle
         self.image1 = image
         self.details = details
-        //self.itemLocation = itemLocation
+        self.pathKey = "Raffles/\(pathKey)"
         super.init()
     }
     

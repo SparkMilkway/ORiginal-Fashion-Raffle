@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseStorageUI
 import SVProgressHUD
+import PassKit
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
     
@@ -20,6 +21,15 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var ticketsCal : Int = 0
     var nextDayYet = false
     var checkedYet = false
+    
+    var paymentRequest : PKPaymentRequest! {
+        didSet {
+            paymentRequest = PKPaymentRequest()
+            paymentRequest.currencyCode = "USD"
+            paymentRequest.countryCode = "US"
+            paymentRequest.merchantIdentifier = "merchant.com.Raffle-F"
+        }
+    }
     
     @IBOutlet weak var changeImage: UITextField!
     @IBOutlet weak var userName: UILabel!

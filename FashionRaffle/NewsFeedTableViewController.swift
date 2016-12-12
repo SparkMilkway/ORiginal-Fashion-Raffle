@@ -49,13 +49,14 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
+            let key = snapshot.key
             let value = snapshot.value as? NSDictionary
             let title = value!["Title"] as! String
             let subtitle = value!["SubTitle"] as! String
             let image = value!["Image"] as! String
             let text = value!["Text"] as! String
             
-            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text)
+            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
             self.newsDatas.append(newsData)
             
             self.tableView.reloadData()
@@ -208,7 +209,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         let storage = storageReference.reference(forURL: imageURL)
         
         viewController.reference = storage
-        
+        viewController.passKey = newsData.pathKey
         viewController.passLabel = newsData.title
         viewController.passDetail = newsData.details
         

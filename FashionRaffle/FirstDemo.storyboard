@@ -21,9 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Wood" translatesAutoresizingMaskIntoConstraints="NO" id="uNB-da-Xbn">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wood" translatesAutoresizingMaskIntoConstraints="NO" id="uNB-da-Xbn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="q5x-dl-eyn"/>
+                                </constraints>
                             </imageView>
                             <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bc-6C-mep">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -40,7 +42,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F7BF6D90-F1D6-45BC-B365-7D45468582B5" translatesAutoresizingMaskIntoConstraints="NO" id="Rbr-f3-vFI">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="040C02BB-B279-4052-BFC3-0E011925AAA6" translatesAutoresizingMaskIntoConstraints="NO" id="Rbr-f3-vFI">
                                                 <rect key="frame" x="0.0" y="46" width="375" height="248"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="248" id="moO-6r-Lo5"/>
@@ -82,10 +84,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.91938999457046267" green="0.9994240403175354" blue="0.90586614858743275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uNB-da-Xbn" secondAttribute="trailing" id="979-9r-UcU"/>
                             <constraint firstItem="YRY-4g-mng" firstAttribute="width" secondItem="5O4-Ta-A0C" secondAttribute="width" id="MaC-DZ-lBs"/>
+                            <constraint firstItem="uNB-da-Xbn" firstAttribute="leading" secondItem="5O4-Ta-A0C" secondAttribute="leading" id="NeN-Hl-y2K"/>
                             <constraint firstAttribute="trailing" secondItem="9bc-6C-mep" secondAttribute="trailing" id="UPJ-G0-cz7"/>
+                            <constraint firstItem="uNB-da-Xbn" firstAttribute="top" secondItem="5O4-Ta-A0C" secondAttribute="top" id="Z9a-XU-WEf"/>
                             <constraint firstItem="cKG-13-nK1" firstAttribute="top" secondItem="9bc-6C-mep" secondAttribute="bottom" id="bpK-G4-KYa"/>
                             <constraint firstItem="9bc-6C-mep" firstAttribute="leading" secondItem="5O4-Ta-A0C" secondAttribute="leading" id="gga-Kd-hko"/>
+                            <constraint firstItem="cKG-13-nK1" firstAttribute="top" secondItem="uNB-da-Xbn" secondAttribute="bottom" id="tdS-gQ-NHH"/>
                             <constraint firstItem="9bc-6C-mep" firstAttribute="top" secondItem="5O4-Ta-A0C" secondAttribute="top" id="trt-LO-zpU"/>
                         </constraints>
                     </view>
@@ -94,11 +100,68 @@
                         <outlet property="Details" destination="m46-qZ-waI" id="7f8-Jp-HFc"/>
                         <outlet property="Image" destination="Rbr-f3-vFI" id="qOF-ZZ-mO6"/>
                         <outlet property="Label1" destination="rec-ke-fH2" id="VUC-hU-NJ4"/>
+                        <outlet property="PaymentShow" destination="sym-BA-X71" id="8br-z2-tOJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kng-Ld-Hzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="sym-BA-X71">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XO2-8Q-IPn">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                            <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="YWZ-It-9BG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Oblique" family="Avenir" pointSize="25"/>
+                            <state key="normal" title="Enter Pool Now!">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath=".layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath=".layer.cornerRadius">
+                                    <integer key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="Pay:" destination="aI3-Wn-pTl" eventType="touchUpInside" id="PBL-be-6ed"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sC-1U-09T">
+                            <rect key="frame" x="0.0" y="60" width="320" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="8Mg-IH-DNX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath=".layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath=".layer.cornerRadius">
+                                    <integer key="value" value="7"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="DismissPay:" destination="aI3-Wn-pTl" eventType="touchUpInside" id="1UX-OT-PCF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="XO2-8Q-IPn" secondAttribute="trailing" id="316-u5-1ZD"/>
+                        <constraint firstAttribute="trailing" secondItem="5sC-1U-09T" secondAttribute="trailing" id="3gw-Hk-EyM"/>
+                        <constraint firstAttribute="bottom" secondItem="XO2-8Q-IPn" secondAttribute="bottom" constant="60" id="FqV-FW-7Wy"/>
+                        <constraint firstAttribute="bottom" secondItem="5sC-1U-09T" secondAttribute="bottom" id="NMf-5J-li4"/>
+                        <constraint firstItem="5sC-1U-09T" firstAttribute="leading" secondItem="sym-BA-X71" secondAttribute="leading" id="RQw-wZ-bsq"/>
+                        <constraint firstItem="XO2-8Q-IPn" firstAttribute="leading" secondItem="sym-BA-X71" secondAttribute="leading" id="caa-NW-kCM"/>
+                        <constraint firstItem="XO2-8Q-IPn" firstAttribute="top" secondItem="sym-BA-X71" secondAttribute="top" id="kb7-dd-RAs"/>
+                        <constraint firstItem="5sC-1U-09T" firstAttribute="top" secondItem="sym-BA-X71" secondAttribute="top" constant="60" id="ycQ-CV-5Yc"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="772" y="-2"/>
+            <point key="canvasLocation" x="772" y="-2.2488755622188905"/>
         </scene>
         <!--News Reusable View Controller-->
         <scene sceneID="tRX-YB-tZI">
@@ -112,9 +175,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Wood" translatesAutoresizingMaskIntoConstraints="NO" id="0Kl-Kb-hdk">
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wood" translatesAutoresizingMaskIntoConstraints="NO" id="0Kl-Kb-hdk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="RgR-Um-zid"/>
+                                </constraints>
                             </imageView>
                             <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAU-sV-1Kr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -131,7 +196,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E1AB4241-23F7-44E0-83DC-77C646280813" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-F0-6AM">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A4AE0609-8B5A-4A9B-B0ED-5858044BD0AB" translatesAutoresizingMaskIntoConstraints="NO" id="GvV-F0-6AM">
                                                 <rect key="frame" x="0.0" y="58" width="375" height="248"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="248" id="BKM-j4-Isr"/>
@@ -174,10 +239,14 @@
                         <color key="backgroundColor" red="0.95195312407475607" green="0.9994240403175354" blue="0.93399540040639839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bAU-sV-1Kr" firstAttribute="top" secondItem="GnW-H4-coo" secondAttribute="top" id="DKr-jb-IPH"/>
+                            <constraint firstItem="0Kl-Kb-hdk" firstAttribute="top" secondItem="GnW-H4-coo" secondAttribute="top" id="Esh-WS-vou"/>
+                            <constraint firstAttribute="trailing" secondItem="0Kl-Kb-hdk" secondAttribute="trailing" id="FXw-52-OLb"/>
                             <constraint firstItem="0e0-6r-e2U" firstAttribute="width" secondItem="GnW-H4-coo" secondAttribute="width" id="VdC-y0-9wC"/>
                             <constraint firstAttribute="trailing" secondItem="bAU-sV-1Kr" secondAttribute="trailing" id="aEl-Xo-uIU"/>
                             <constraint firstItem="srQ-ZO-VKt" firstAttribute="top" secondItem="bAU-sV-1Kr" secondAttribute="bottom" id="ckP-F5-0F8"/>
+                            <constraint firstItem="srQ-ZO-VKt" firstAttribute="top" secondItem="0Kl-Kb-hdk" secondAttribute="bottom" id="nDv-H9-NC8"/>
                             <constraint firstItem="bAU-sV-1Kr" firstAttribute="leading" secondItem="GnW-H4-coo" secondAttribute="leading" id="qwC-f1-AfR"/>
+                            <constraint firstItem="0Kl-Kb-hdk" firstAttribute="leading" secondItem="GnW-H4-coo" secondAttribute="leading" id="z98-0U-B4s"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -193,7 +262,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="E1AB4241-23F7-44E0-83DC-77C646280813" width="512" height="512">
+        <image name="040C02BB-B279-4052-BFC3-0E011925AAA6" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -17724,7 +17793,7 @@ ABAKVAAQClkAEAphABAKZAAQCmkAEApxABAKdAAQCoYAEAqJABAKjgAAAAAAAAQBAAAAAAAAAEEAAAAA
 AAAAAAAAAAAAEAqQA
 </mutableData>
         </image>
-        <image name="F7BF6D90-F1D6-45BC-B365-7D45468582B5" width="512" height="512">
+        <image name="A4AE0609-8B5A-4A9B-B0ED-5858044BD0AB" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

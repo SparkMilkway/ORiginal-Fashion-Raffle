@@ -24,7 +24,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    
     let inputsContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -377,8 +376,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.endEditing(true)
     }
     
+    @IBOutlet var DimView: UIView!
     //add forgot Password Pop Up
     @IBAction func addForgetPasswordPopUp(_ sender: Any) {
+        self.view.addSubview(DimView)
+        self.DimView.alpha = 0
         self.view.addSubview(addForgetPasswordView)
         addForgetPasswordView.center = self.view.center
         addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
@@ -388,6 +390,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.forgetPasswordTextField.tintColor = UIColor.blue
         UIView.animate(withDuration:0.4){
             self.addForgetPasswordView.alpha = 1
+            self.DimView.alpha = 0.56
             self.addForgetPasswordView.transform = CGAffineTransform.identity
         }
     }
@@ -417,6 +420,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         UIView.animate(withDuration:0.3, animations:{
                             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
                             self.addForgetPasswordView.alpha = 0
+                            self.DimView.alpha = 0
                         }) {(success:Bool) in
                             self.addForgetPasswordView.removeFromSuperview()
                         }
@@ -432,6 +436,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         UIView.animate(withDuration:0.3, animations:{
             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
             self.addForgetPasswordView.alpha = 0
+            self.DimView.alpha = 0
         }) {(success:Bool) in
             self.addForgetPasswordView.removeFromSuperview()
         }
@@ -450,6 +455,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
     
     
     

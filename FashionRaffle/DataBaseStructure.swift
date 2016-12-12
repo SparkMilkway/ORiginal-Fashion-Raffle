@@ -11,7 +11,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
-class DataBaseStructure {
+class DataBaseStructure: NSObject {
     //let ref = FIRDatabase.database().reference()
     
 
@@ -26,6 +26,9 @@ class DataBaseStructure {
         })
     }
     
+    override init() {
+        super.init()
+    }
 
 
     

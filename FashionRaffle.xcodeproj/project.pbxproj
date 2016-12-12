@@ -24,6 +24,25 @@
 		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
 		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
+		522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */; };
+		522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */; };
+		522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */; };
+		522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC66A1DFE2B4100CA7AA6 /* FSAlbumViewCell.swift */; };
+		522EC6791DFE2B4100CA7AA6 /* FSAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC66B1DFE2B4100CA7AA6 /* FSAlbumViewCell.xib */; };
+		522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC66C1DFE2B4100CA7AA6 /* FSCameraView.swift */; };
+		522EC67B1DFE2B4100CA7AA6 /* FSCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC66D1DFE2B4100CA7AA6 /* FSCameraView.xib */; };
+		522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC66E1DFE2B4100CA7AA6 /* FSConstants.swift */; };
+		522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC66F1DFE2B4100CA7AA6 /* FSImageCropView.swift */; };
+		522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6701DFE2B4100CA7AA6 /* FSVideoCameraView.swift */; };
+		522EC67F1DFE2B4100CA7AA6 /* FSVideoCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6711DFE2B4100CA7AA6 /* FSVideoCameraView.xib */; };
+		522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6721DFE2B4100CA7AA6 /* FusumaViewController.swift */; };
+		522EC6811DFE2B4100CA7AA6 /* FusumaViewController.swift.orig in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6731DFE2B4100CA7AA6 /* FusumaViewController.swift.orig */; };
+		522EC6821DFE2B4100CA7AA6 /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */; };
+		522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6831DFE2B6B00CA7AA6 /* Sources */; };
+		522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */; };
+		522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6861DFE2BC700CA7AA6 /* headerView.swift */; };
+		522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6871DFE2BC700CA7AA6 /* homeVC.swift */; };
+		522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6881DFE2BC700CA7AA6 /* tags.swift */; };
 		52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */; };
 		52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FE11DE2791000ED34CC /* uploadimage+handler.swift */; };
 		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
@@ -41,6 +60,7 @@
 		5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */; };
 		527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */; };
 		527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA0711DDFED8B00379312 /* DataBaseStructure.swift */; };
+		52F970811DFDED2200E396CD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F970801DFDED2200E396CD /* Settings.swift */; };
 		52FE414E1DFCA99400263015 /* RafflePoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE414D1DFCA99400263015 /* RafflePoolCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +106,25 @@
 		108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
 		52060FC31DEF785A00A26D8F /* RafflePoolData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflePoolData.swift; sourceTree = "<group>"; };
+		522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
+		522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
+		522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
+		522EC66A1DFE2B4100CA7AA6 /* FSAlbumViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumViewCell.swift; path = Sources/FSAlbumViewCell.swift; sourceTree = "<group>"; };
+		522EC66B1DFE2B4100CA7AA6 /* FSAlbumViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumViewCell.xib; path = Sources/FSAlbumViewCell.xib; sourceTree = "<group>"; };
+		522EC66C1DFE2B4100CA7AA6 /* FSCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSCameraView.swift; path = Sources/FSCameraView.swift; sourceTree = "<group>"; };
+		522EC66D1DFE2B4100CA7AA6 /* FSCameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSCameraView.xib; path = Sources/FSCameraView.xib; sourceTree = "<group>"; };
+		522EC66E1DFE2B4100CA7AA6 /* FSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSConstants.swift; path = Sources/FSConstants.swift; sourceTree = "<group>"; };
+		522EC66F1DFE2B4100CA7AA6 /* FSImageCropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSImageCropView.swift; path = Sources/FSImageCropView.swift; sourceTree = "<group>"; };
+		522EC6701DFE2B4100CA7AA6 /* FSVideoCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSVideoCameraView.swift; path = Sources/FSVideoCameraView.swift; sourceTree = "<group>"; };
+		522EC6711DFE2B4100CA7AA6 /* FSVideoCameraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSVideoCameraView.xib; path = Sources/FSVideoCameraView.xib; sourceTree = "<group>"; };
+		522EC6721DFE2B4100CA7AA6 /* FusumaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FusumaViewController.swift; path = Sources/FusumaViewController.swift; sourceTree = "<group>"; };
+		522EC6731DFE2B4100CA7AA6 /* FusumaViewController.swift.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FusumaViewController.swift.orig; path = Sources/FusumaViewController.swift.orig; sourceTree = "<group>"; };
+		522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
+		522EC6831DFE2B6B00CA7AA6 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
+		522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fusumaPhotoViewController.swift; sourceTree = "<group>"; };
+		522EC6861DFE2BC700CA7AA6 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
+		522EC6871DFE2BC700CA7AA6 /* homeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
+		522EC6881DFE2BC700CA7AA6 /* tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tags.swift; sourceTree = "<group>"; };
 		52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		52329FE11DE2791000ED34CC /* uploadimage+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "uploadimage+handler.swift"; sourceTree = "<group>"; };
 		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -107,6 +146,7 @@
 		5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeatures.swift; sourceTree = "<group>"; };
 		527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableViewController.swift; sourceTree = "<group>"; };
 		527CA0711DDFED8B00379312 /* DataBaseStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseStructure.swift; sourceTree = "<group>"; };
+		52F970801DFDED2200E396CD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		52FE414D1DFCA99400263015 /* RafflePoolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflePoolCell.swift; sourceTree = "<group>"; };
 		7F39338E81D732C7C9A50156 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +239,28 @@
 			path = FashionRaffleUITests;
 			sourceTree = "<group>";
 		};
+		522EC6481DFE299500CA7AA6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				522EC6831DFE2B6B00CA7AA6 /* Sources */,
+				522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */,
+				522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */,
+				522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */,
+				522EC66A1DFE2B4100CA7AA6 /* FSAlbumViewCell.swift */,
+				522EC66B1DFE2B4100CA7AA6 /* FSAlbumViewCell.xib */,
+				522EC66C1DFE2B4100CA7AA6 /* FSCameraView.swift */,
+				522EC66D1DFE2B4100CA7AA6 /* FSCameraView.xib */,
+				522EC66E1DFE2B4100CA7AA6 /* FSConstants.swift */,
+				522EC66F1DFE2B4100CA7AA6 /* FSImageCropView.swift */,
+				522EC6701DFE2B4100CA7AA6 /* FSVideoCameraView.swift */,
+				522EC6711DFE2B4100CA7AA6 /* FSVideoCameraView.xib */,
+				522EC6721DFE2B4100CA7AA6 /* FusumaViewController.swift */,
+				522EC6731DFE2B4100CA7AA6 /* FusumaViewController.swift.orig */,
+				522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
 		525D6C861DC589AC00509E20 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +287,10 @@
 		525D6CA81DC5A1ED00509E20 /* Main Interface */ = {
 			isa = PBXGroup;
 			children = (
+				522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */,
+				522EC6861DFE2BC700CA7AA6 /* headerView.swift */,
+				522EC6871DFE2BC700CA7AA6 /* homeVC.swift */,
+				522EC6881DFE2BC700CA7AA6 /* tags.swift */,
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
 				04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */,
 				52329FE11DE2791000ED34CC /* uploadimage+handler.swift */,
@@ -236,6 +302,7 @@
 		525D6CA91DC5A1FD00509E20 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
+				522EC6481DFE299500CA7AA6 /* Sources */,
 				5279FE051DC9421F0072A5B5 /* News Feed */,
 				525D6CAA1DC5A23300509E20 /* TabView */,
 				526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */,
@@ -279,6 +346,7 @@
 			children = (
 				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
 				527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */,
+				52F970801DFDED2200E396CD /* Settings.swift */,
 			);
 			name = "News Feed";
 			sourceTree = "<group>";
@@ -373,6 +441,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Wallet = {
+								enabled = 0;
+							};
 						};
 					};
 					04D8A1EF1DC36C53008B1989 = {
@@ -415,11 +486,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */,
+				522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */,
+				522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */,
 				04D8A1EA1DC36C53008B1989 /* LaunchScreen.storyboard in Resources */,
 				525D6CD21DC69F3500509E20 /* GoogleService-Info.plist in Resources */,
+				522EC6791DFE2B4100CA7AA6 /* FSAlbumViewCell.xib in Resources */,
+				522EC6811DFE2B4100CA7AA6 /* FusumaViewController.swift.orig in Resources */,
+				522EC67F1DFE2B4100CA7AA6 /* FSVideoCameraView.xib in Resources */,
 				525D6CD51DC6A08A00509E20 /* podfile in Resources */,
 				04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */,
+				522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */,
+				522EC67B1DFE2B4100CA7AA6 /* FSCameraView.xib in Resources */,
 				04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */,
+				522EC6821DFE2B4100CA7AA6 /* FusumaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,11 +571,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */,
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
+				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
 				04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
+				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
+				522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
+				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
+				522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */,
 				52FE414E1DFCA99400263015 /* RafflePoolCell.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
@@ -505,13 +590,19 @@
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
 				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
+				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
 				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
+				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
 				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,
 				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
+				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
+				522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */,
 				048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */,
+				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				526EC51A1DDAD83B001BE789 /* NewsFeedCell.swift in Sources */,
+				52F970811DFDED2200E396CD /* Settings.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

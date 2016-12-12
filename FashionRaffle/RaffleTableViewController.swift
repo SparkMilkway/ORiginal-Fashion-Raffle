@@ -25,14 +25,17 @@ class RaffleTableViewController: UITableViewController {
         
         self.ref.child("Raffles").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
-            
+
+            let path = snapshot.key
             let value = snapshot.value as? NSDictionary
+            let imagechild = snapshot.childSnapshot(forPath: "ImagePool")
+            let childvalue = imagechild.value as? NSDictionary
+            let image = childvalue!["Image1"] as! String
             let title = value!["Title"] as! String
             let subtitle = value!["SubTitle"] as! String
-            let image = value!["Image"] as! String
             let details = value!["Text"] as! String
             
-            let raffleData = RafflePoolData.init(title: title, subtitle: subtitle, image: image, details: details)
+            let raffleData = RafflePoolData.init(title: title, subtitle: subtitle, image: image, details: details, pathKey: path)
             self.raffleDatas.append(raffleData)
             self.tableView.reloadData()
         })
@@ -74,6 +77,7 @@ class RaffleTableViewController: UITableViewController {
         viewController.reference = storage
         viewController.passLabel = raffledata.title
         viewController.passDetail = raffledata.details
+        viewController.passKey = raffledata.pathKey
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
