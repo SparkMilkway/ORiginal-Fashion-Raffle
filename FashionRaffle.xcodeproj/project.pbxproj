@@ -7,14 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */; };
-		04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
-		048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B81DC39EBB006A1C3E /* ThirdViewController.swift */; };
-		048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */; };
-		04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */; };
-		04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */; };
-		04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
 		04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E61DC36C53008B1989 /* Assets.xcassets */; };
@@ -43,6 +36,7 @@
 		522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6861DFE2BC700CA7AA6 /* headerView.swift */; };
 		522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6871DFE2BC700CA7AA6 /* homeVC.swift */; };
 		522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6881DFE2BC700CA7AA6 /* tags.swift */; };
+		522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */; };
 		52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */; };
 		52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FE11DE2791000ED34CC /* uploadimage+handler.swift */; };
 		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
@@ -82,14 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
-		04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
-		048581B81DC39EBB006A1C3E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
-		048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStackElementViewController.swift; sourceTree = "<group>"; };
-		04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmStackElementViewController.swift; path = ../AlarmStackElementViewController.swift; sourceTree = "<group>"; };
-		04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInStackElementViewController.swift; sourceTree = "<group>"; };
-		04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogOutStackElementViewController.swift; path = ../LogOutStackElementViewController.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D8A1E41DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +112,7 @@
 		522EC6861DFE2BC700CA7AA6 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		522EC6871DFE2BC700CA7AA6 /* homeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
 		522EC6881DFE2BC700CA7AA6 /* tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tags.swift; sourceTree = "<group>"; };
+		522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckLikeFunctions.swift; sourceTree = "<group>"; };
 		52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		52329FE11DE2791000ED34CC /* uploadimage+handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "uploadimage+handler.swift"; sourceTree = "<group>"; };
 		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -304,11 +292,9 @@
 			children = (
 				522EC6481DFE299500CA7AA6 /* Sources */,
 				5279FE051DC9421F0072A5B5 /* News Feed */,
-				525D6CAA1DC5A23300509E20 /* TabView */,
 				526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */,
 				52644D451DEB97500095A8FC /* RaffleTableViewController.swift */,
 				527CA0711DDFED8B00379312 /* DataBaseStructure.swift */,
-				048581B81DC39EBB006A1C3E /* ThirdViewController.swift */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */,
 				526EC5151DDA7462001BE789 /* NewsFeedData.swift */,
@@ -317,19 +303,6 @@
 				52FE414D1DFCA99400263015 /* RafflePoolCell.swift */,
 			);
 			name = TabViews;
-			sourceTree = "<group>";
-		};
-		525D6CAA1DC5A23300509E20 /* TabView */ = {
-			isa = PBXGroup;
-			children = (
-				04000CDC1DC432EA00F6F9D0 /* CircularTransition.swift */,
-				04000CDA1DC42D2C00F6F9D0 /* PurchaseViewController.swift */,
-				04D062FF1DC3D463004165D5 /* LogOutStackElementViewController.swift */,
-				04D062FB1DC3D1A9004165D5 /* CheckInStackElementViewController.swift */,
-				048581BA1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift */,
-				04D062F91DC3C4C2004165D5 /* AlarmStackElementViewController.swift */,
-			);
-			name = TabView;
 			sourceTree = "<group>";
 		};
 		525D6CD31DC69F3F00509E20 /* Resource */ = {
@@ -347,6 +320,7 @@
 				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
 				527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */,
 				52F970801DFDED2200E396CD /* Settings.swift */,
+				522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */,
 			);
 			name = "News Feed";
 			sourceTree = "<group>";
@@ -574,32 +548,26 @@
 				522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */,
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
-				04000CDB1DC42D2C00F6F9D0 /* PurchaseViewController.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
-				04D062FC1DC3D1A9004165D5 /* CheckInStackElementViewController.swift in Sources */,
 				522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */,
 				52FE414E1DFCA99400263015 /* RafflePoolCell.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				52329FE21DE2791100ED34CC /* uploadimage+handler.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
-				048581BB1DC3AC6E006A1C3E /* ProfileStackElementViewController.swift in Sources */,
 				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
-				04D062FA1DC3C4C2004165D5 /* AlarmStackElementViewController.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
-				04000CDD1DC432EA00F6F9D0 /* CircularTransition.swift in Sources */,
-				04D063001DC3D463004165D5 /* LogOutStackElementViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
 				522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */,
-				048581B91DC39EBB006A1C3E /* ThirdViewController.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				526EC51A1DDAD83B001BE789 /* NewsFeedCell.swift in Sources */,
 				52F970811DFDED2200E396CD /* Settings.swift in Sources */,

@@ -63,7 +63,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func handleLogin(){
         
         if emailTextField.text == "" || passwordTextField.text == "" {
-            self.showAlerts(title: "Oops!", message: "Please enter values!", handler: nil)
+            SettingsLauncher().showAlerts(title: "Oops", message: "Please enter values!", handler: nil, controller: self)
+
         }
             
         else {
@@ -73,18 +74,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if error == nil {
                     
                     self.view.endEditing(true)
-                    self.showAlerts(title: "Success!", message: "Welcome Back!", handler: {
+                    SettingsLauncher().showAlerts(title: "Success!", message: "Welcome Back!", handler: {
                         UIAlertAction in
                         SVProgressHUD.show(withStatus: "Logging in...")
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                             SVProgressHUD.dismiss()
                             self.loginSuccess()
                         })
-                    })
+                        
+                    }, controller: self)
+
                 }
                     
                 else {
-                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
+                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                     return
                 }
                 //successfully logged in our user
@@ -96,7 +99,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if emailTextField.text == "" || passwordTextField.text == "" || nameTextField.text == ""
         {
-            self.showAlerts(title: "Oops!", message: "Please enter values!", handler: nil)
+            SettingsLauncher().showAlerts(title: "Oops!", message: "Please enter values!", handler: nil, controller: self)
+        
             
         }
             //Create an account
@@ -115,17 +119,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: uid, post: values)
 
                     self.view.endEditing(true)
-                    self.showAlerts(title: "Success!", message: "Your account is successfully created!", handler: {
+                    SettingsLauncher().showAlerts(title: "Success!", message: "Your accont is been created!", handler: {
                         UIAlertAction in
                         SVProgressHUD.show(withStatus: "Logging in...")
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                             SVProgressHUD.dismiss()
                             self.loginSuccess()
                         })
-                    })
+
+                    }, controller: self)
                 }
                 else {
-                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
+                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                 }
             })
         }
@@ -399,7 +404,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //do the forget password work and if successfully sent then dismiss the view
     @IBAction func dismissForgetPasswordPopUp(_ sender: Any) {
         if self.forgetPasswordTextField.text == "" {
-            self.showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil)
+            SettingsLauncher().showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil, controller: self)
         }
         else{
             FIRAuth.auth()?.sendPasswordReset(withEmail: self.forgetPasswordTextField.text!, completion: {(error) in
@@ -408,14 +413,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if error != nil {
                     title = "Oops!"
                     message = (error?.localizedDescription)!
-                    self.showAlerts(title: title, message: message, handler: nil)
+                    SettingsLauncher().showAlerts(title: title, message: message, handler: nil, controller: self)
                     
                 }
                 else {
                     title = "Success!"
                     message = "The password reset email was sent!"
                     self.forgetPasswordTextField.text = ""
-                    self.showAlerts(title: title, message: message, handler: {
+                    SettingsLauncher().showAlerts(title: title, message: message, handler: {
                         UIAlertAction in
                         UIView.animate(withDuration:0.3, animations:{
                             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
@@ -425,7 +430,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             self.addForgetPasswordView.removeFromSuperview()
                         }
                         
-                    })
+                        
+                    }, controller: self)
                 }
             })
         }
@@ -442,23 +448,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    
-    
-    
-    
-    
     //TextFields Edit
-    
-    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
-    
-    
+
     func applyMotionEffect (toView view:UIView, magnitude:Float){
         let xMotion = UIInterpolatingMotionEffect(keyPath:"center.x", type:.tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
@@ -518,7 +509,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     })
                 }
                 else {
-                    self.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil)
+                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                 }
             })
             print("successfully logged in with Facebook")

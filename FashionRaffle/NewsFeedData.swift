@@ -21,7 +21,7 @@ class NewsFeedData : NSObject {
         self.subtitle = subtitle
         self.image = image
         self.details = details
-        self.pathKey = pathKey
+        self.pathKey = "Demos/\(pathKey)"
         super.init()
     }
     

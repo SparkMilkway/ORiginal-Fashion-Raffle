@@ -13,7 +13,7 @@ import FirebaseStorageUI
 import SVProgressHUD
 import PassKit
 
-class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate {
+class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate, PKPaymentAuthorizationViewControllerDelegate {
     
     let ref = FIRDatabase.database().reference()
     let storage = FIRStorage.storage()
@@ -22,14 +22,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     var nextDayYet = false
     var checkedYet = false
     
-    var paymentRequest : PKPaymentRequest! {
-        didSet {
-            paymentRequest = PKPaymentRequest()
-            paymentRequest.currencyCode = "USD"
-            paymentRequest.countryCode = "US"
-            paymentRequest.merchantIdentifier = "merchant.com.Raffle-F"
-        }
-    }
+    var paymentRequest : PKPaymentRequest!
     
     @IBOutlet weak var changeImage: UITextField!
     @IBOutlet weak var userName: UILabel!
@@ -101,13 +94,48 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     
     
-    //Buy raffle Tickets and Update the database
+    //Buy raffle Tickets and Update the database////////////////////////////////////////
     
     
     @IBOutlet weak var ticketsPossess: UILabel!
     
+    func itemToSell() -> [PKPaymentSummaryItem] {
+        let oneRaffleTicket = PKPaymentSummaryItem(label: "One Raffle Ticket", amount: 0.99)
+        let totalPrice = PKPaymentSummaryItem(label: "ORiginal APP", amount: oneRaffleTicket.amount)
+        return [oneRaffleTicket, totalPrice]
+    }
     
     @IBAction func RaffleTickets(_ sender: Any) {
+        let paymentNetworks = [PKPaymentNetwork.amex, .visa, .discover, .masterCard]
+        if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
+            paymentRequest = PKPaymentRequest()
+            paymentRequest.currencyCode = "USD"
+            paymentRequest.countryCode = "US"
+            paymentRequest.merchantIdentifier = "merchant.com.Raffle-F"
+            paymentRequest.supportedNetworks = paymentNetworks
+            paymentRequest.merchantCapabilities = .capability3DS
+            paymentRequest.requiredShippingAddressFields = [.all]
+            paymentRequest.paymentSummaryItems = self.itemToSell()
+            
+            let freeShipping = PKShippingMethod(label: "Normal Delivery", amount: 0)
+            freeShipping.detail = "Delivered to you within 7 to 10 days."
+            freeShipping.identifier = "freeShipping"
+            
+            paymentRequest.shippingMethods = [freeShipping]
+            
+            let applePayVC = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
+            applePayVC.delegate = self
+            self.present(applePayVC, animated: true, completion: nil)
+            
+        }
+        else {
+            SettingsLauncher().showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
+        }
+            
+        
+    }
+    
+    func purchaseSuccess() {
         let user = FIRAuth.auth()?.currentUser
         let userID = user?.uid
         self.ticketsCal = self.ticketsCal + 1
@@ -115,37 +143,59 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         if FBSDKAccessToken.current() == nil {
             ref.child("Users/EmailUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
                 if error != nil {
-                    self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
+                    SettingsLauncher().showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil, controller: self)
                     return
                 }
                 else {
                     self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
-                    self.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil)
+                    SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
                 }
             })
         }
         else {
             ref.child("Users/ProviderUsers").child(userID!).updateChildValues(post, withCompletionBlock: { (error, ref) in
                 if error != nil {
-                    self.showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil)
+                    SettingsLauncher().showAlerts(title: "Oops", message: error!.localizedDescription, handler: nil, controller: self)
                     return
                 }
                 else {
                     self.ticketsPossess.text = "You have \(self.ticketsCal) raffle tickets."
-                    self.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil)
+                    SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
                 }
             })
         }
     }
     
-    //End
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didSelect shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) {
+        completion(PKPaymentAuthorizationStatus.success, itemToSell())
+    }
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        completion(PKPaymentAuthorizationStatus.success)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
+            controller.dismiss(animated: true, completion: {
+                self.purchaseSuccess()
+            })
+        })
+    }
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion:nil)
+        
+        
+    }
+    
+    
+    
+    
+    
+    //End///////////////////////////////////////////////////////////
     @IBOutlet weak var profileImage: UIImageView!
     
     
     let emailStorageRef = FIRStorage.storage().reference().child("User Info/EmailUsers")
     let providerStorageRef = FIRStorage.storage().reference().child("User Info/ProviderUsers")
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,7 +213,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
             if let userID = FIRAuth.auth()?.currentUser?.uid {
-                ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
+                ref.child("Users/EmailUsers").child(userID).observe(.childChanged, with: {
                     snapshot in
                     
                     
@@ -261,6 +311,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     }
                 }
             }
+            tableView.reloadData()
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -322,13 +373,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
     
     
-    
-    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
     
     func logOut() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -41,7 +41,12 @@ class SettingsLauncher: NSObject {
             self.blackView.alpha = 0
         })
     }
-    
+    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
+        alertController.addAction(defaultAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
     
     override init() {
         super.init()
