@@ -10,33 +10,150 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseStorageUI
+import SVProgressHUD
 
-class NewsFeedTableViewController: UITableViewController {
+class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     var newsDatas : [NewsFeedData] = []
     
+    // search attributes
+    var filterednewsDatas : [NewsFeedData] = []
+    
+    let searchBar = UISearchBar()
+    var hastickets = 0
+    var label : UILabel?
+    var shouldFiltContents = false
+    
+    let storageReference = FIRStorage.storage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        label?.text = self.title
+        
+        SVProgressHUD.show(withStatus: "Loading News Feed...")
+        //Messing with dates and daily sign in
+        /*let date = Date()
+        let cal = Calendar(identifier: .gregorian)
+        let newDate = cal.startOfDay(for: date) // return as a Date
+        */
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
+        
         
         let ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        if FBSDKAccessToken.current() == nil {
+            ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                
+                let value = snapshot.value as? NSDictionary
+                let tickets = value!["Tickets"] as! Int
+                self.hastickets = tickets
+            })
+        }else {
+            ref.child("Users/ProviderUsers").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                
+                let value = snapshot.value as? NSDictionary
+                let tickets = value!["Tickets"] as! Int
+                self.hastickets = tickets
+            })
+        }
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
+            let key = snapshot.key
             let value = snapshot.value as? NSDictionary
-            let title = value!["Title"] as? String
-            let subtitle = value!["SubTitle"] as? String
+            let title = value!["Title"] as! String
+            let subtitle = value!["SubTitle"] as! String
+            let image = value!["Image"] as! String
+            let text = value!["Text"] as! String
             
-            let newsData = NewsFeedData.init(title: title!, subtitle: subtitle!)
-            self.newsDatas.insert(newsData, at: 0)
+            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
+            self.newsDatas.append(newsData)
             
             self.tableView.reloadData()
-            
         })
-        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
-   }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.2, execute: {
+            SVProgressHUD.dismiss()
+        })
+        //self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
+    }
     
+    //The function for search bar
+    
+
+    func searchTapped() {
+        
+        searchBar.delegate = self
+        searchBar.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
+        
+        searchBar.isHidden = false
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Explore your interest!"
+        self.navigationItem.titleView = searchBar
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelsearch))
+
+        
+    }
+    
+    //cancel the search if needed
+    
+    func cancelsearch() {
+        searchBar.text = ""
+        shouldFiltContents = false
+        self.tableView.reloadData()
+        searchBar.isHidden = true
+        self.navigationItem.titleView = label
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
+    }
+    
+    
+    // Function for search bar ends
+    
+    //Search Functions
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filterednewsDatas = newsDatas.filter({content -> Bool in
+            let title = content.title
+            return title.lowercased().contains(searchText.lowercased())
+        
+        })
+        if searchText != "" {
+            shouldFiltContents = true
+            self.tableView.reloadData()
+        }
+        else {
+            shouldFiltContents = false
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    
+    
+    //Search Functions end
+    
+    //Close Search Bar if needed
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        shouldFiltContents = true
+        self.tableView.reloadData()
+    }
+    
+    
+    //Close search bar functions end
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -48,9 +165,29 @@ class NewsFeedTableViewController: UITableViewController {
     }
     
     
+    //TableView Delegates
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
-        let newstemp = newsDatas[indexPath.row]
+        
+        
+        var newstemp : NewsFeedData
+        
+        if shouldFiltContents == false {
+         newstemp = newsDatas[indexPath.row]
+         }
+         else {
+         newstemp = filterednewsDatas[indexPath.row]
+         }
+        
+        //newstemp = newsDatas[indexPath.row]
+        
+        
+        let imageURL = newstemp.image
+        let storage = storageReference.reference(forURL: imageURL)
+        
+        cell.Cellimage.sd_setImage(with: storage)
+        
         cell.Title!.text = newstemp.title
         cell.Subtitle!.text = newstemp.subtitle
         
@@ -60,24 +197,58 @@ class NewsFeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if shouldFiltContents == true {
+         return self.filterednewsDatas.count
+         }
         return self.newsDatas.count
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let newsData = newsDatas[indexPath.row]
+        
+        var newsData : NewsFeedData
+        
+        if shouldFiltContents == true {
+         newsData = filterednewsDatas[indexPath.row]
+         }
+         else {
+         newsData = newsDatas[indexPath.row]
+         }
+        
         let storyboard = UIStoryboard(name: "FirstDemo", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "NewsReusableView") as! NewsReusableViewController
         
         viewController.title = newsData.title
+        
+        let imageURL = newsData.image
+        let storage = storageReference.reference(forURL: imageURL)
+        
+        viewController.reference = storage
+        viewController.passKey = newsData.pathKey
         viewController.passLabel = newsData.title
-        viewController.passDetail = newsData.subtitle
+        viewController.passDetail = newsData.details
         
-        
+        searchBar.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
+    
+    //TableView Delegates end
+    
+    
+    
+    //Search bar delegates
+    
+    
+    /*
+     func updateSearchResults(for searchController: UISearchController) {
+     // updates
+     filterContents(searchText: self.searchController.searchBar.text!)
+     }
+     */
+    //Search Bar delegates end
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
