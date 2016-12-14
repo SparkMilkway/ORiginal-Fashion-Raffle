@@ -2,6 +2,9 @@
 
 This is an iOS social fashion app which is still under development. 
 
+#Product Video Demo
+https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
+
 #Current Functions
 
 1. Complete user authentication system: Register, Login with email or Facebook, Reset password
