@@ -114,13 +114,7 @@ class RaffleReusableViewController: UIViewController {
     func handlepurchase() {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
-        var location = ""
-        if FBSDKAccessToken.current() == nil {
-            location = "Users/EmailUsers"
-        }
-        else {
-            location = "Users/ProviderUsers"
-        }
+        let location = "Users"
         ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
             snapshot in
             let value = snapshot.value as? NSDictionary
@@ -236,14 +230,8 @@ class RaffleReusableViewController: UIViewController {
     }
     
     func handleUpdateTickets(Tickets: Int) {
-        var location = ""
+        let location = "Users"
         let userID = FIRAuth.auth()?.currentUser?.uid
-        if FBSDKAccessToken.current() == nil {
-            location = "Users/EmailUsers"
-        }
-        else {
-            location = "Users/ProviderUsers"
-        }
         self.ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
             snapshot in
             let value = snapshot.value as? NSDictionary

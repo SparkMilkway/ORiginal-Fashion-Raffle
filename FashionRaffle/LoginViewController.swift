@@ -72,6 +72,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             FIRAuth.auth()?.signIn(withEmail: email!, password: password!, completion: { (user, error) in
                 
                 if error == nil {
+
                     
                     self.view.endEditing(true)
                     SettingsLauncher().showAlerts(title: "Success!", message: "Welcome Back!", handler: {
@@ -116,7 +117,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }
                     // put the values into Firebase Auth
                     let values : [String: Any] = ["name": name, "email":email, "userID": uid, "Tickets": self.defaultTickets]
-                    DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: uid, post: values)
+                    DataBaseStructure().updateUserDatabase(location: "Users", userID: uid, post: values)
 
                     self.view.endEditing(true)
                     SettingsLauncher().showAlerts(title: "Success!", message: "Your accont is been created!", handler: {
@@ -482,7 +483,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if error == nil{
                     if let user = FIRAuth.auth()?.currentUser {
                         let userID = user.uid
-                        ref.child("Users/ProviderUsers").observeSingleEvent(of: .value, with: {
+                        ref.child("Users").observeSingleEvent(of: .value, with: {
                             snapshot in
                             if snapshot.hasChild(userID){
                                 print("User signed in before.")
@@ -496,7 +497,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     let imageURL = "http://graph.facebook.com/\(uid)/picture?type=large"
                                     
                                     let post : [String: Any] = ["name":name!, "providerID":providerID,"email":email!,"porivderuserID":uid, "imageURL":imageURL, "Tickets": self.defaultTickets]
-                                    DataBaseStructure().updateUserDatabase(location: "Users/ProviderUsers", userID: userID, post: post)
+                                    DataBaseStructure().updateUserDatabase(location: "Users", userID: userID, post: post)
                                 }
                             }
                         })

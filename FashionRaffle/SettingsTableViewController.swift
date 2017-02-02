@@ -41,12 +41,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let now = dateFormat.string(from: Date())
             let userID = FIRAuth.auth()?.currentUser?.uid
             let post:[String: String] = ["Last Checked In": now]
-            if FBSDKAccessToken.current() != nil {
-                DataBaseStructure().updateUserDatabase(location: "Users/ProviderUsers", userID: userID!, post: post)
-            }
-            else {
-                DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: userID!, post: post)
-            }
+
+            DataBaseStructure().updateUserDatabase(location: "Users", userID: userID!, post: post)
+
             self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
             checkedYet = true
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
@@ -94,13 +91,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     @IBAction func checkTickets(_ sender: Any) {
         let userID = FIRAuth.auth()?.currentUser?.uid
-        var location = ""
-        if FBSDKAccessToken.current() == nil {
-            location = "Users/EmailUsers"
-        }
-        else {
-            location = "Users/ProviderUsers"
-        }
+        let location = "Users"
         ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
             snapshot in
             let value = snapshot.value as? NSDictionary
@@ -214,7 +205,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
             if let userID = FIRAuth.auth()?.currentUser?.uid {
-                ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
+                ref.child("Users").child(userID).observeSingleEvent(of: .value, with: {
                     snapshot in
                     let value = snapshot.value as? NSDictionary
                     let checkdate = value?["Last Checked In"] as? String
@@ -262,7 +253,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                     self.userName!.text = name
                     let userID = profile.uid as String
                     
-                    ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
+                    ref.child("Users").child(uid).observeSingleEvent(of: .value, with: {
                         snapshot in
                         let value = snapshot.value as? NSDictionary
                         

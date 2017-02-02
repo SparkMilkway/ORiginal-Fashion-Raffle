@@ -21,7 +21,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     var filterednewsDatas : [NewsFeedData] = []
     
     let searchBar = UISearchBar()
-    var hastickets = 0
     var label : UILabel?
     var shouldFiltContents = false
     
@@ -31,7 +30,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         label?.text = self.title
-        
         SVProgressHUD.show(withStatus: "Loading News Feed...")
         //Messing with dates and daily sign in
         /*let date = Date()
@@ -44,24 +42,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         
         let ref = FIRDatabase.database().reference()
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        if FBSDKAccessToken.current() == nil {
-            ref.child("Users/EmailUsers").child(userID!).observeSingleEvent(of: .value, with: {
-                snapshot in
-                
-                let value = snapshot.value as? NSDictionary
-                let tickets = value!["Tickets"] as! Int
-                self.hastickets = tickets
-            })
-        }else {
-            ref.child("Users/ProviderUsers").child(userID!).observeSingleEvent(of: .value, with: {
-                snapshot in
-                
-                let value = snapshot.value as? NSDictionary
-                let tickets = value!["Tickets"] as! Int
-                self.hastickets = tickets
-            })
-        }
+        
+        
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
@@ -79,15 +61,12 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             self.tableView.reloadData()
         })
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.2, execute: {
-            SVProgressHUD.dismiss()
-        })
+        SVProgressHUD.dismiss()
         //self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
     }
     
     //The function for search bar
     
-
     func searchTapped() {
         
         searchBar.delegate = self
