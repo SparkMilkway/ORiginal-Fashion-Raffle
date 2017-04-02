@@ -61,7 +61,7 @@ extension UIImage {
     }
     
     static func imageWithBase64String(base64String: String) -> UIImage {
-        let decodedData = Data(base64Encoded: base64String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+        let decodedData = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters)!
         let postImage = UIImage(data: decodedData)!
         return postImage
     }

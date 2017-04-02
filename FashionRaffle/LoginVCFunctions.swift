@@ -254,20 +254,11 @@ extension LoginViewController {
                                     guard let imageURL = URL(string: "http://graph.facebook.com/\(uid)/picture?type=large") else{
                                         return
                                     }
-                                    URLSession.shared.dataTask(with: imageURL, completionHandler: {
-                                        (data, response, error) -> Void in
-                                        if (error != nil) {
-                                            print(error!)
-                                            return
-                                        }
-                                        else {
-                                            let profileImage = UIImage(data: data!)
-                                            newuser.picture = profileImage
-                                            Profile.currentUser = newuser
-                                            newuser.sync()
-                                        }
-                                    }).resume()
- 
+                                    let imagedata = try? Data(contentsOf: imageURL)
+                                    let image = UIImage(data: imagedata!)
+                                    newuser.picture = image
+                                    Profile.currentUser = newuser
+                                    newuser.sync()
                                 }
                             }
                         })

@@ -272,27 +272,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                         }
                     })
                     //Get the user's Profile Image
-                    
-                    let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
-                    if let url = pictureURL {
-                        if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
-                            self.profileImage.image = image
-                        }
-                        else {
-                            URLSession.shared.dataTask(with: url, completionHandler: {
-                                (data, response, error) -> Void in
-                                if (error != nil) {
-                                    print (error!)
-                                    return
-                                }
-                                let image = UIImage(data: data!)
-                                self.imageCache.setObject(image!, forKey: url as AnyObject)
-                                DispatchQueue.main.async(execute: {
-                                    () -> Void in
-                                    self.profileImage.image = image
-                                })
-                            }).resume()
-                        }
+                    let current = Profile.currentUser
+                    if let image = current?.picture {
+                        self.profileImage.image = image
                     }
                 }
             }
