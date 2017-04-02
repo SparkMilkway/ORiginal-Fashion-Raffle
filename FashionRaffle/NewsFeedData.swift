@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 class NewsFeedData : NSObject {
     
@@ -25,4 +27,13 @@ class NewsFeedData : NSObject {
         super.init()
     }
     
+}
+
+class NewsDataCell: UITableViewCell{
+    
+    @IBOutlet weak var Cellimage: UIImageView!
+    
+    @IBOutlet weak var Title: UILabel!
+    
+    @IBOutlet weak var Subtitle: UILabel!
 }

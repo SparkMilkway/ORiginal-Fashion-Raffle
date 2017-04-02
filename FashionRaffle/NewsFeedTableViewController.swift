@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseDatabase
-import FirebaseStorageUI
 import SVProgressHUD
 
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
@@ -28,7 +26,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         label?.text = self.title
         SVProgressHUD.show(withStatus: "Loading News Feed...")
         //Messing with dates and daily sign in
@@ -42,8 +39,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         
         let ref = FIRDatabase.database().reference()
-        
-        
+
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
@@ -183,6 +179,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         return self.newsDatas.count
     }
     
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

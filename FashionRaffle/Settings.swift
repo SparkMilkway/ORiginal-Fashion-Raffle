@@ -52,3 +52,17 @@ class SettingsLauncher: NSObject {
         super.init()
     }
 }
+
+extension UIImage {
+    func base64String() -> String {
+        let imageData = UIImagePNGRepresentation(self)!
+        let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
+        return base64String
+    }
+    
+    static func imageWithBase64String(base64String: String) -> UIImage {
+        let decodedData = Data(base64Encoded: base64String, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+        let postImage = UIImage(data: decodedData)!
+        return postImage
+    }
+}

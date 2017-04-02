@@ -221,7 +221,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                             self.checkedYet = false
                         }
                     }
-                    let name = value!["name"] as? String
+                    let name = value!["username"] as? String
                     let email = value!["email"] as? String
                     
                     let pictureURL = value?["ProfileImageUrl"] as? String
@@ -272,6 +272,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
                         }
                     })
                     //Get the user's Profile Image
+                    
                     let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
                     if let url = pictureURL {
                         if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
