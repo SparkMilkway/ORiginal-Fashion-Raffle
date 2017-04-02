@@ -16,6 +16,7 @@ class Profile {
     var username:String
     var tickets:Int
     var checkInCount:Int
+    var lastCheckDate:String
     var followers:[String]
     var following:[String]
     var followBrands:[String]
@@ -34,9 +35,9 @@ class Profile {
         self.checkInCount = checkInCount
         self.posts = posts
         self.picture = picture
-        
+        lastCheckDate = Date().now()
+        //It's the local time, later it should be a world time and can't be changed from the user's calendar
     }
-    
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
         return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [String](), picture: nil)
@@ -45,7 +46,9 @@ class Profile {
     // Used during login
     static func initWithUserID(userID:String , profileDict: [String:Any]) -> Profile? {
         let profile = Profile.newUser(username: "Default", userID: userID, email: "Default")
-        
+        if let lastCheckDate = profileDict["lastCheckDate"] as? String {
+            profile.lastCheckDate = lastCheckDate
+        }
         //fetch username,email,raffleTickets,checkinCount,followers,followings, brands,posts, picture
         if let email = profileDict["email"] as? String {
             profile.email = email
@@ -86,6 +89,7 @@ class Profile {
         profileDict["following"] = following
         profileDict["followBrands"] = followBrands
         profileDict["posts"] = posts
+        profileDict["lastCheckDate"] = lastCheckDate
         if let profilepic = picture {
             profileDict["picture"] = profilepic.base64String()
         }

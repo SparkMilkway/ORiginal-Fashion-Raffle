@@ -66,3 +66,13 @@ extension UIImage {
         return postImage
     }
 }
+
+extension Date {
+    // Return the date now as MM/DD/YYYY
+    func now() -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy"
+        let now = dateFormat.string(from: Date())
+        return now
+    }
+}

@@ -29,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         if FIRAuth.auth()?.currentUser != nil {
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            FIRDatabase.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                let profilevalue = snapshot.value as? [String:Any]
+                let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue!)
+                Profile.currentUser = currentUser
+            })
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
             self.window?.rootViewController = viewController
