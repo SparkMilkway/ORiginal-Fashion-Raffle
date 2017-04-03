@@ -22,6 +22,7 @@ class Profile {
     var followBrands:[String]
     var posts:[String]
     var picture:UIImage?
+    var editor:Bool
     static var currentUser:Profile?
     
     init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[String], picture:UIImage?) {
@@ -36,6 +37,8 @@ class Profile {
         self.posts = posts
         self.picture = picture
         lastCheckDate = Date().now()
+        editor = false
+        // Check in upon login
         //It's the local time, later it should be a world time and can't be changed from the user's calendar
     }
     // Used during register
@@ -74,6 +77,12 @@ class Profile {
         if let imgString = profileDict["picture"] as? String {
             profile.picture = UIImage.imageWithBase64String(base64String: imgString)
         }
+        if profileDict["editor"] != nil {
+            profile.editor = true
+        }
+        else {
+            profile.editor = false
+        }
         return profile
     }
     // put all info into dict
@@ -90,6 +99,9 @@ class Profile {
         profileDict["followBrands"] = followBrands
         profileDict["posts"] = posts
         profileDict["lastCheckDate"] = lastCheckDate
+        if editor == true {
+            profileDict["editor"] = "yes"
+        }
         if let profilepic = picture {
             profileDict["picture"] = profilepic.base64String()
         }

@@ -48,7 +48,9 @@ extension LoginViewController {
                             let newuser = Profile.initWithUserID(userID: uid, profileDict: profileinfo)
                             Profile.currentUser = newuser
                         })
-                        self.loginSuccess()
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                            self.loginSuccess()
+                        })
                     }, controller: self)
                 }
             })
@@ -78,7 +80,9 @@ extension LoginViewController {
                         Profile.currentUser = newprofile
                         //sync to database
                         newprofile.sync()
-                        self.loginSuccess()
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                            self.loginSuccess()
+                        })
                     }, controller: self)
                 }
             })
@@ -263,7 +267,9 @@ extension LoginViewController {
                             }
                         })
                     }
-                    self.loginSuccess()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                        self.loginSuccess()
+                    })
                 }
                 else {
                     SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)

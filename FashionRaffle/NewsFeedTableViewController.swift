@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
+
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     var newsDatas : [NewsFeedData] = []
@@ -23,6 +24,12 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     var shouldFiltContents = false
     
     let storageReference = FIRStorage.storage()
+    
+    @IBOutlet weak var addNews: UIBarButtonItem!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +45,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
         
-        let ref = FIRDatabase.database().reference()
-
+        
+        
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
