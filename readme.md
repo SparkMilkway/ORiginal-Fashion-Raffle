@@ -12,7 +12,8 @@ https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
 3. Manage the user's account, change and upload profile image, apple pay simulation
 
 # Requirements to simulate this app
-1. Set in-app database and storage reference to gs://originalfashionraffle.appspot.com/
+(Tutorial of setting up Google Firebase can be found at https://firebase.google.com/docs/ios/setup)
+1. Set in-app database and storage reference to https://originalfashionraffle.firebaseio.com/
 2. Xcode 8.0 or above
 3. apple developer account to simulate the Apple Pay function
 4. use terminal to pod install the SDKs under the directory you downloaded the files.
