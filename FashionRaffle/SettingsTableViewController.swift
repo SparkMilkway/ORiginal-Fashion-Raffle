@@ -29,7 +29,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var checkInCount:Int = (Profile.currentUser?.checkInCount)!
+        let checkInCount:Int = (Profile.currentUser?.checkInCount)!
         let currentDate = Date().now()
         let lastCheckDate = Profile.currentUser?.lastCheckDate
         if Profile.currentUser?.editor == true {
@@ -44,8 +44,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
 
         if currentDate != lastCheckDate {
-            checkInCount = checkInCount + 1
-            Profile.currentUser?.checkInCount = checkInCount
+            Profile.currentUser?.checkInCount = checkInCount + 1
             Profile.currentUser?.lastCheckDate = currentDate
             Profile.currentUser?.sync()
         }
@@ -53,7 +52,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             self.checkCount!.text = "You've checked in 1 day."
         }
         else{
-            self.checkCount!.text = "You've checked in \(checkInCount) days."
+            self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
         }
     }
     

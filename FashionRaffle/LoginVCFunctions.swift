@@ -36,22 +36,21 @@ extension LoginViewController {
                     guard let uid = user?.uid else{
                         return
                     }
-                    SettingsLauncher().showAlerts(title: "Success!", message: "Welcome Back!", handler: {
-                        UIAlertAction in
-                        SVProgressHUD.show(withStatus: "Logging in...")
-                        let ref = FIRDatabase.database().reference()
-                        ref.child("Users").child(uid).observeSingleEvent(of: .value, with: {
-                            snapshot in
-                            guard let profileinfo = snapshot.value as? [String:Any] else{
-                                return
-                            }
-                            let newuser = Profile.initWithUserID(userID: uid, profileDict: profileinfo)
-                            Profile.currentUser = newuser
-                        })
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                            self.loginSuccess()
-                        })
-                    }, controller: self)
+                    SVProgressHUD.show(withStatus: "Logging in...")
+                    let ref = FIRDatabase.database().reference()
+                    ref.child("Users").child(uid).observeSingleEvent(of:.value, with: {
+                        snapshot in
+                        guard let profileinfo = snapshot.value as? [String:Any] else{
+                            print("Fatal error happened in Database, can't retrieve user data.")
+                            return
+                        }
+                        let newuser = Profile.initWithUserID(userID: uid, profileDict: profileinfo)
+                        Profile.currentUser = newuser
+                    })
+                    SVProgressHUD.showSuccess(withStatus: "Welcome Back!")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                        self.loginSuccess()
+                    })
                 }
             })
         }
@@ -73,17 +72,15 @@ extension LoginViewController {
                     guard let uid = user?.uid else{
                         return
                     }
-                    SettingsLauncher().showAlerts(title: "Success!", message: "Your account has been created!", handler: {
-                        UIAlertAction in
-                        SVProgressHUD.show(withStatus: "Logging in...")
-                        let newprofile = Profile.newUser(username: name, userID: uid, email: email)
-                        Profile.currentUser = newprofile
-                        //sync to database
-                        newprofile.sync()
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                            self.loginSuccess()
-                        })
-                    }, controller: self)
+                    SVProgressHUD.show(withStatus: "Registering...")
+                    let newprofile = Profile.newUser(username: name, userID: uid, email: email)
+                    Profile.currentUser = newprofile
+                    //sync to database
+                    newprofile.sync()
+                    SVProgressHUD.showSuccess(withStatus: "Success!")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                        self.loginSuccess()
+                    })
                 }
             })
         }
@@ -226,36 +223,30 @@ extension LoginViewController {
     
     //Facebook Login Button Delegate
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
-        
-        let ref = FIRDatabase.database().reference()
-        // link with Firebase!
-        if let _ = FBSDKAccessToken.current(){
-            SVProgressHUD.show(withStatus: "Logging in...")
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
-                if error == nil{
-                    if let user = FIRAuth.auth()?.currentUser {
-                        let userID = user.uid
-                        ref.child("Users").observeSingleEvent(of: .value, with: {
+        self.fbLoginButton.isHidden = true
+        if error == nil {
+            
+            let ref = FIRDatabase.database().reference()
+            // link with Firebase!
+            if let current = FBSDKAccessToken.current() {
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: current.tokenString)
+                FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
+                    if error == nil{
+                        
+                        SVProgressHUD.show(withStatus: "Logging in...")
+                        let userID = user?.uid
+                        ref.child("Users").child(userID!).observeSingleEvent(of: .value, with: {
                             snapshot in
-                            if snapshot.hasChild(userID){
-                                print("User signed in before.")
-                                let childsnapshot = snapshot.childSnapshot(forPath: userID)
-                                guard let profilevalue = childsnapshot.value as? [String:Any] else{
-                                    return
-                                }
-                                let newuser = Profile.initWithUserID(userID: userID, profileDict: profilevalue)
-                                Profile.currentUser = newuser
-                            }
-                                //if not signed in before
-                            else {
-                                for profile in user.providerData {
+                            guard let profilevalue = snapshot.value as? [String:Any] else{
+                                print("No record in database, will create one")
+                                for profile in (user?.providerData)! {
                                     let name = profile.displayName
                                     let email = profile.email
                                     let uid = profile.uid as String
                                     let newuser = Profile.newUser(username: name, userID: userID, email: email)
                                     
                                     guard let imageURL = URL(string: "http://graph.facebook.com/\(uid)/picture?type=large") else{
+                                        print("Can't retrieve the profile image URL.")
                                         return
                                     }
                                     let imagedata = try? Data(contentsOf: imageURL)
@@ -263,20 +254,44 @@ extension LoginViewController {
                                     newuser.picture = image
                                     Profile.currentUser = newuser
                                     newuser.sync()
+                                    
                                 }
+                                return
                             }
+                            Profile.currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
+                        })
+                        
+                        
+                        /*
+                         let currentUser = Profile.currentUser
+                         print(currentUser?.username)
+                         print(currentUser?.userID)
+                         print(currentUser?.checkInCount)
+                         print(currentUser?.lastCheckDate)
+                         print(currentUser?.email)
+                         print(currentUser?.tickets)
+                         print(currentUser?.editor)
+                         */
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+                            self.loginSuccess()
                         })
                     }
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                        self.loginSuccess()
-                    })
-                }
-                else {
-                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
-                }
-            })
-            print("successfully logged in with Facebook")
+                    else {
+                        self.fbLoginButton.isHidden = true
+                        SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
+                    }
+                })
+                print("successfully logged in with Facebook")
+            }
+            else{
+                self.fbLoginButton.isHidden = false
+            }
+            
         }
+        else {
+            self.fbLoginButton.isHidden = false
+            return}
+        
         
     }
 

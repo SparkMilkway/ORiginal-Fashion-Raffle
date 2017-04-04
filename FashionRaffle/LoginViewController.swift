@@ -133,7 +133,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         return button
     }()
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fbLoginButton.isHidden = false
+    }
     //FB stuff ends
     override func viewDidLoad() {
         super.viewDidLoad()

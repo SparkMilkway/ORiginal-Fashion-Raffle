@@ -25,7 +25,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     let storageReference = FIRStorage.storage()
     
-    @IBOutlet weak var addNews: UIBarButtonItem!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
