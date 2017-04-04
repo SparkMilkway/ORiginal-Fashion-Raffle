@@ -41,12 +41,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let now = dateFormat.string(from: Date())
             let userID = FIRAuth.auth()?.currentUser?.uid
             let post:[String: String] = ["Last Checked In": now]
-            if FBSDKAccessToken.current() != nil {
-                DataBaseStructure().updateUserDatabase(location: "Users/ProviderUsers", userID: userID!, post: post)
-            }
-            else {
-                DataBaseStructure().updateUserDatabase(location: "Users/EmailUsers", userID: userID!, post: post)
-            }
+
+            DataBaseStructure().updateUserDatabase(location: "Users", userID: userID!, post: post)
+
             self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
             checkedYet = true
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
@@ -93,27 +90,11 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }()
     
     @IBAction func checkTickets(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        var location = ""
-        if FBSDKAccessToken.current() == nil {
-            location = "Users/EmailUsers"
-        }
-        else {
-            location = "Users/ProviderUsers"
-        }
-        ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
-            snapshot in
-            let value = snapshot.value as? NSDictionary
-            let tickets = value!["Tickets"] as! Int
-            SettingsLauncher().showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
-        })
+        let currentUser = Profile.currentUser
+        let tickets:Int = (currentUser?.tickets)!
+        SettingsLauncher().showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
     }
-    
-    
     //Buy raffle Tickets and Update the database////////////////////////////////////////
-    
-    
-    
     func itemToSell() -> [PKPaymentSummaryItem] {
         let oneRaffleTicket = PKPaymentSummaryItem(label: "One Raffle Ticket", amount: 0.99)
         let totalPrice = PKPaymentSummaryItem(label: "ORiginal APP", amount: oneRaffleTicket.amount)
@@ -146,34 +127,17 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         else {
             SettingsLauncher().showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
         }
-            
-        
     }
-    
     func purchaseSuccess() {
-        let user = FIRAuth.auth()?.currentUser
-        let userID = user?.uid
-        var hastickets : Int = 0
-        var location = ""
-        if FBSDKAccessToken.current() == nil {
-            location = "Users/EmailUsers"
-        }else {
-            location = "Users/ProviderUsers"
-        }
-        ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
-            snapshot in
-            let value = snapshot.value as? NSDictionary
-            let tickets = value!["Tickets"] as! Int
-            hastickets = tickets
-            let post : [String: Int] = ["Tickets" : hastickets + 1]
-            self.ref.child(location).child(userID!).updateChildValues(post)
-        })
-        
+        let currentUser = Profile.currentUser
+        var tickets:Int = (currentUser?.tickets)!
+        tickets = tickets + 1
+        // Every time there is an update to the class, current user needs to be updated
+        currentUser?.tickets = tickets
+        Profile.currentUser = currentUser
+        currentUser?.sync()
         SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
-        
-
     }
-    
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didSelect shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) {
         completion(PKPaymentAuthorizationStatus.success, itemToSell())
@@ -196,136 +160,55 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     //End///////////////////////////////////////////////////////////
     @IBOutlet weak var profileImage: UIImageView!
     
-    
-    let emailStorageRef = FIRStorage.storage().reference().child("User Info/EmailUsers")
-    let providerStorageRef = FIRStorage.storage().reference().child("User Info/ProviderUsers")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
         fbLogoutButton.delegate = self
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy"
-        let now = dateFormat.string(from: Date())
+        let now = Date().now()
         self.dateLabel.text = now
         profileImageView()
-
-        if FBSDKAccessToken.current() == nil {
+        let currentUser = Profile.currentUser
+        if FBSDKAccessToken.current() == nil{
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
-            if let userID = FIRAuth.auth()?.currentUser?.uid {
-                ref.child("Users/EmailUsers").child(userID).observeSingleEvent(of: .value, with: {
-                    snapshot in
-                    let value = snapshot.value as? NSDictionary
-                    let checkdate = value?["Last Checked In"] as? String
-                    if checkdate == nil{
-                        self.checkedYet = false
-                    }
-                    else {
-                        if checkdate == now {
-                            self.checkedYet = true
-                            self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-                        }
-                        else {
-                            self.checkedYet = false
-                        }
-                    }
-                    let name = value!["name"] as? String
-                    let email = value!["email"] as? String
-                    
-                    let pictureURL = value?["ProfileImageUrl"] as? String
-                    if pictureURL != nil{
-                        let httpRef = self.storage.reference(forURL: pictureURL!)
-                        self.profileImage.sd_setImage(with: httpRef)
-                    }
-                    else {
-                        self.profileImage.image = UIImage(named: "background")
-                    }
-                    self.userName!.text = name
-                    self.userEmail!.text = email
-                    
-                })
-            }
-            
         }
-            
         else {
             self.fbLogoutButton.isHidden = false
             self.emailLogOutButton.isHidden = true
-            profileImage.isUserInteractionEnabled = false
-            if let user = FIRAuth.auth()?.currentUser{
-                let uid = user.uid
-                for profile in user.providerData {
-                    let name = profile.displayName
-                    let email = profile.email
-                    self.userEmail!.text = email
-                    self.userName!.text = name
-                    let userID = profile.uid as String
-                    
-                    ref.child("Users/ProviderUsers").child(uid).observeSingleEvent(of: .value, with: {
-                        snapshot in
-                        let value = snapshot.value as? NSDictionary
-                        
-                        let checkdate = value?["Last Checked In"] as? String
-                        if checkdate == nil{
-                            self.checkedYet = false
-                        }
-                        else {
-                            if checkdate == now {
-                                self.checkedYet = true
-                                self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-                            }
-                            else {
-                                self.checkedYet = false
-                            }
-                        }
-                    })
-                    //Get the user's Profile Image
-                    let pictureURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
-                    if let url = pictureURL {
-                        if let image = self.imageCache.object(forKey: url as AnyObject) as? UIImage {
-                            self.profileImage.image = image
-                        }
-                        else {
-                            URLSession.shared.dataTask(with: url, completionHandler: {
-                                (data, response, error) -> Void in
-                                if (error != nil) {
-                                    print (error!)
-                                    return
-                                }
-                                let image = UIImage(data: data!)
-                                self.imageCache.setObject(image!, forKey: url as AnyObject)
-                                DispatchQueue.main.async(execute: {
-                                    () -> Void in
-                                    self.profileImage.image = image
-                                })
-                            }).resume()
-                        }
-                    }
-                }
-            }
         }
-        
+        let username = currentUser?.username
+        let email = currentUser?.email
+        if let picture = currentUser?.picture {
+            self.profileImage.image = picture
+        }
+        else {
+            self.profileImage.image = UIImage(named: "background")
+        }
+        self.userName!.text = username
+        self.userEmail!.text = email
+        /*
+         if checkdate == now {
+         self.checkedYet = true
+         self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
+         }
+         else {
+         self.checkedYet = false
+         }
+        */
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-        
-        
-    }
 
-    
-    let imageCache = NSCache<AnyObject, AnyObject>()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+    // ProfileImageView
     func profileImageView() {
         
         profileImage.translatesAutoresizingMaskIntoConstraints = false
@@ -340,32 +223,21 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
     }
     
-    // Upload the Image to cloud storage
+    // Upload the Image to database
     func uploadProfileImage(){
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else{return}
-        let imageName = NSUUID().uuidString
-        let storageRef = emailStorageRef.child("/\(uid)/Profile Images/\(imageName).jpg")
-        //let metadata = FIRStorageMetadata()
-        if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.6) {
-            SVProgressHUD.show(withStatus: "Uploading...")
-            storageRef.put(uploadData,metadata:nil, completion: { (metadata, error) in
-                if error != nil {
-                    print(error!)
-                    SVProgressHUD.showError(withStatus: "Error Occurs")
-                    return
-                }
-                SVProgressHUD.showSuccess(withStatus: "Upload Success!")
-                SVProgressHUD.dismiss(withDelay: 1)
-                if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-                    self.ref.child("Users/EmailUsers/\(uid)").updateChildValues(["ProfileImageUrl":profileImageUrl])
-                }
-            })
-        }
-
+        let currentUser = Profile.currentUser
+        currentUser?.picture = self.profileImage.image
+        Profile.currentUser = currentUser
+        SVProgressHUD.show(withStatus: "Uploading...")
+        currentUser?.sync()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+            
+            SVProgressHUD.showSuccess(withStatus: "Uploaded")
+            SVProgressHUD.dismiss(withDelay: 1.5)
+        })
+        
     }
-    
-    
-    
+
     func logOut() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
@@ -379,9 +251,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         
     }
-    
-    
-    
+
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         try! FIRAuth.auth()?.signOut()
         self.logOut()

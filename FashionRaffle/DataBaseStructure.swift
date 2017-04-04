@@ -25,6 +25,13 @@ class DataBaseStructure: NSObject {
             }
         })
     }
+    //Create an account: containing Name, Email, uid, Profile Image, Tickets, followers, followings, follow brands,
+    //login dates
+    
+
+    
+    //have problems
+    
     
     override init() {
         super.init()
