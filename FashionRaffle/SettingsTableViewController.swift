@@ -29,31 +29,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let checkInCount:Int = (Profile.currentUser?.checkInCount)!
-        let currentDate = Date().now()
-        let lastCheckDate = Profile.currentUser?.lastCheckDate
-        if Profile.currentUser?.editor == true {
-            print("Is Editor")
-            self.addNews.isEnabled = true
-            self.addNews.tintColor = UIColor.black
-        }
-        else {
-            print("Not Editor")
-            self.addNews.isEnabled = false
-            self.addNews.tintColor = UIColor.white
-        }
-
-        if currentDate != lastCheckDate {
-            Profile.currentUser?.checkInCount = checkInCount + 1
-            Profile.currentUser?.lastCheckDate = currentDate
-            Profile.currentUser?.sync()
-        }
-        if checkInCount == 1 {
-            self.checkCount!.text = "You've checked in 1 day."
-        }
-        else{
-            self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
-        }
+        
     }
     
     //Check in ends
@@ -175,6 +151,31 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.userName!.text = username
         self.userEmail!.text = email
 
+        let checkInCount:Int = (Profile.currentUser?.checkInCount)!
+        let currentDate = Date().now()
+        let lastCheckDate = Profile.currentUser?.lastCheckDate
+        if Profile.currentUser?.editor == true {
+            print("Is Editor")
+            self.addNews.isEnabled = true
+            self.addNews.tintColor = UIColor.black
+        }
+        else {
+            print("Not Editor")
+            self.addNews.isEnabled = false
+            self.addNews.tintColor = UIColor.white
+        }
+        
+        if currentDate != lastCheckDate {
+            Profile.currentUser?.checkInCount = checkInCount + 1
+            Profile.currentUser?.lastCheckDate = currentDate
+            Profile.currentUser?.sync()
+        }
+        if checkInCount == 1 {
+            self.checkCount!.text = "You've checked in 1 day."
+        }
+        else{
+            self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

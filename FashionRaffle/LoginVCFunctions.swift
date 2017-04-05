@@ -225,7 +225,7 @@ extension LoginViewController {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         self.fbLoginButton.isHidden = true
         if error == nil {
-            
+            SVProgressHUD.show(withStatus: "Logging in...")
             let ref = FIRDatabase.database().reference()
             // link with Firebase!
             if let current = FBSDKAccessToken.current() {
@@ -233,7 +233,7 @@ extension LoginViewController {
                 FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
                     if error == nil{
                         
-                        SVProgressHUD.show(withStatus: "Logging in...")
+                        
                         let userID = user?.uid
                         ref.child("Users").child(userID!).observeSingleEvent(of: .value, with: {
                             snapshot in

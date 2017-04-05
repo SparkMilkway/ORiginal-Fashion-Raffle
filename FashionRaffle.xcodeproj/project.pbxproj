@@ -18,6 +18,8 @@
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
 		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
 		52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E831E92E96E00ADDB8C /* AddNewsViewController.swift */; };
+		52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E851E94908400ADDB8C /* BrandsViewController.swift */; };
+		52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */; };
 		522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */; };
 		522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */; };
 		522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */; };
@@ -43,6 +45,7 @@
 		52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */; };
 		52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */; };
 		52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */; };
+		52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52472E7D1E949A91008F6475 /* FeedSegmentedViewController.swift */; };
 		525D6C8D1DC58A5E00509E20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8C1DC58A5E00509E20 /* libz.tbd */; };
 		525D6C8F1DC58A6500509E20 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */; };
 		525D6CA31DC5908100509E20 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D6CA11DC5908100509E20 /* FBSDKCoreKit.framework */; };
@@ -97,6 +100,8 @@
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
 		52060FC31DEF785A00A26D8F /* RafflePoolData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflePoolData.swift; sourceTree = "<group>"; };
 		52071E831E92E96E00ADDB8C /* AddNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewsViewController.swift; sourceTree = "<group>"; };
+		52071E851E94908400ADDB8C /* BrandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
+		52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = brandCollectionViewCell.swift; sourceTree = "<group>"; };
 		522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
 		522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStruct.swift; sourceTree = "<group>"; };
 		52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
 		52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
+		52472E7D1E949A91008F6475 /* FeedSegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedSegmentedViewController.swift; sourceTree = "<group>"; };
 		525D6C8C1DC58A5E00509E20 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		525D6C8E1DC58A6500509E20 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		525D6C981DC58E2500509E20 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../FaceBook SDK/FacebookSDKs-iOS-4.17.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
@@ -319,6 +325,8 @@
 				52334DA11E78D4EB00FFB8A4 /* Data Manage */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */,
+				52071E851E94908400ADDB8C /* BrandsViewController.swift */,
+				52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -375,6 +383,7 @@
 		52334DA11E78D4EB00FFB8A4 /* Data Manage */ = {
 			isa = PBXGroup;
 			children = (
+				52472E7D1E949A91008F6475 /* FeedSegmentedViewController.swift */,
 				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 			);
 			name = "Data Manage";
@@ -686,7 +695,9 @@
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
+				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
+				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */,
@@ -700,6 +711,7 @@
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
+				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
 				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
