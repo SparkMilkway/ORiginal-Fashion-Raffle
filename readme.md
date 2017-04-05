@@ -1,4 +1,4 @@
-#Original Fasion App for iOS - Team of Fashion.
+#ORiginal Fasion App for iOS - Team of Fashion.
 
 This is an iOS social fashion app which is still under development. 
 
@@ -10,6 +10,12 @@ https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
 1. Complete user authentication system: Register, Login with email or Facebook, Reset password
 2. Pull database data from Firebase: Fashion news, raffle info and so on
 3. Manage the user's account, change and upload profile image, select brands the users like, etc.
+
+# Warnings
+Please do not try the enter raffle pool button under the raffle segment in the explore tab, otherwise the app will probably crash. We are changing this function so something won't work.
+
+
+The Apple Pay simulation requires an Apple Developer account and a valid merchant ID generated on the Apple Developer website. So now we don't allow the Apple Pay to function or it will crash.
 
 # Requirements to simulate this app
 (Tutorial of setting up Google Firebase can be found at https://firebase.google.com/docs/ios/setup)
@@ -26,4 +32,6 @@ https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
 ![Bridging](https://github.com/onespark123/ORiginal-Fashion-Raffle/blob/master/ScreenShots/Bridging.jpg)
 
 6. If there is some error in the bundle name, please change the bundle name to a unique name other than the original one, anything is fine. 
-7. If you want to view the Firebase database or you encountered other problems when simulating this app, please contact me and I'll grant you a viewer account.
+7. If you want to view the Firebase database please contact the team and I'll grant you a viewer account. Or contact the team if you have any questions.
+
+(Our Firebase database address goes https://originalfashionraffle.firebaseio.com/)
