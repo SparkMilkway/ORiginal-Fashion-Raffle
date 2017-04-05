@@ -48,7 +48,7 @@ class fusumaPhotoViewController: UIViewController, FusumaDelegate, UIPickerViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
         // Do any additional setup after loading the view
         

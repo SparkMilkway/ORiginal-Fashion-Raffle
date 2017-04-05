@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class RafflePoolData : NSObject {
@@ -27,4 +28,16 @@ class RafflePoolData : NSObject {
         super.init()
     }
     
+}
+
+class RafflePoolCell: UITableViewCell{
+    @IBOutlet weak var CellImage: UIImageView!
+    
+    @IBAction func PullMenu(_ sender: Any) {
+        
+        
+        
+    }
+    @IBOutlet weak var Subtitle: UILabel!
+    @IBOutlet weak var Title: UILabel!
 }

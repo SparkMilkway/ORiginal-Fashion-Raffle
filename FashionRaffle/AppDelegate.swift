@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,16 +18,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        
         FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = false
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
         
         self.window?.rootViewController = loginVC
-        
-        
-        
+
         // Override point for customization after application launch.
         if FIRAuth.auth()?.currentUser != nil {
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            FIRDatabase.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                guard let profilevalue = snapshot.value as? [String:Any] else {
+                    try! FIRAuth.auth()?.signOut()
+                    return
+                }
+                let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
+                Profile.currentUser = currentUser
+            })
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
             self.window?.rootViewController = viewController
@@ -64,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
