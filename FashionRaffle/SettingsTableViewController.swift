@@ -156,11 +156,13 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let lastCheckDate = Profile.currentUser?.lastCheckDate
         if Profile.currentUser?.editor == true {
             print("Is Editor")
+            self.title = "Editor Profile"
             self.addNews.isEnabled = true
             self.addNews.tintColor = UIColor.black
         }
         else {
             print("Not Editor")
+            self.title = "User Profile"
             self.addNews.isEnabled = false
             self.addNews.tintColor = UIColor.white
         }

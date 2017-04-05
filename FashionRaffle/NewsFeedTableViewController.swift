@@ -60,9 +60,10 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             let subtitle = value!["subtitle"] as! String
             let image = value!["titleImage"] as! String
             let text = value!["detailInfo"] as! String
+            let timestamp = value!["timestamp"] as! String
             
-            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
-            self.newsDatas.append(newsData)
+            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key, timestamp: timestamp)
+            self.newsDatas.insert(newsData, at: 0)
             
             self.tableView.reloadData()
             SVProgressHUD.dismiss()
@@ -171,7 +172,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         let imageURL = newstemp.image
         cell.Cellimage.image = UIImage.imageWithBase64String(base64String: imageURL)
-        
+        cell.timestamp.text = newstemp.timestamp
         cell.Title!.text = newstemp.title
         cell.Subtitle!.text = newstemp.subtitle
         

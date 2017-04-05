@@ -21,7 +21,6 @@ class RaffleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.show(withStatus: "Loading raffle pools...")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
         
@@ -40,7 +39,6 @@ class RaffleTableViewController: UITableViewController {
             let raffleData = RafflePoolData.init(title: title, subtitle: subtitle, image: image, details: details, pathKey: path)
             self.raffleDatas.append(raffleData)
             self.tableView.reloadData()
-            SVProgressHUD.dismiss()
         })
         
         
