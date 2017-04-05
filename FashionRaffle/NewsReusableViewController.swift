@@ -22,7 +22,7 @@ class NewsReusableViewController: UIViewController {
     @IBOutlet weak var Details: UILabel!
     
     let ref = FIRDatabase.database().reference()
-    var reference : FIRStorageReference!
+    var imageStr : String!
     var check = false
     var passLabel : String!
     var passDetail : String!
@@ -30,12 +30,13 @@ class NewsReusableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "likeicon"), style: .plain, target: self, action: #selector(handlelike))
         checklikes()
         self.Label1.text = passLabel
         self.Details.text = passDetail
-        self.Image.sd_setImage(with: reference)
+        self.Image.image = UIImage.imageWithBase64String(base64String: imageStr)
         
     }
     
@@ -118,7 +119,7 @@ class RaffleReusableViewController: UIViewController {
         ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
             snapshot in
             let value = snapshot.value as? NSDictionary
-            let hastickets = value!["Tickets"] as! Int
+            let hastickets = value!["tickets"] as! Int
             self.SliderTickets.minimumValue = 1
             if hastickets < 6 {
                 self.SliderTickets.maximumValue = Float(hastickets)

@@ -14,12 +14,6 @@ import SVProgressHUD
 import PassKit
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate, PKPaymentAuthorizationViewControllerDelegate {
-
-    let ref = FIRDatabase.database().reference()
-    let storage = FIRStorage.storage()
-    var defaulttickets : Int = 0
-    var nextDayYet = false
-    var checkedYet = false
     
     var paymentRequest : PKPaymentRequest!
     
@@ -27,46 +21,20 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+    @IBOutlet weak var checkCount: UILabel!
     
     //Check in Begin
-    @IBOutlet weak var dailyCheckInButton: UIButton!
-    @IBAction func dailyCheckIn(_ sender: Any) {
-
-        if checkedYet == false {
-            
-            SVProgressHUD.showSuccess(withStatus: "Checked Today!")
-            let dateFormat = DateFormatter()
-            dateFormat.dateFormat = "MM/dd/yyyy"
-            let now = dateFormat.string(from: Date())
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            let post:[String: String] = ["Last Checked In": now]
-
-            DataBaseStructure().updateUserDatabase(location: "Users", userID: userID!, post: post)
-
-            self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-            checkedYet = true
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
-                () -> Void in
-                SVProgressHUD.dismiss()
-            })
-            
-        }
-        else {
-            SVProgressHUD.showError(withStatus: "Already Checked Today!")
-            print("Good Work")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.4, execute: {
-                () -> Void in
-                SVProgressHUD.dismiss()
-            })
-        
-        }
+ 
+    @IBOutlet weak var addNews: UIBarButtonItem!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
+    
     //Check in ends
     
 
-    
     //Email Log out Begin
     
     @IBOutlet weak var emailLogOutButton: UIButton!
@@ -90,8 +58,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }()
     
     @IBAction func checkTickets(_ sender: Any) {
-        let currentUser = Profile.currentUser
-        let tickets:Int = (currentUser?.tickets)!
+        let tickets:Int = (Profile.currentUser?.tickets)!
         SettingsLauncher().showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
     }
     //Buy raffle Tickets and Update the database////////////////////////////////////////
@@ -129,13 +96,11 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
     }
     func purchaseSuccess() {
-        let currentUser = Profile.currentUser
-        var tickets:Int = (currentUser?.tickets)!
+        var tickets:Int = (Profile.currentUser?.tickets)!
         tickets = tickets + 1
         // Every time there is an update to the class, current user needs to be updated
-        currentUser?.tickets = tickets
-        Profile.currentUser = currentUser
-        currentUser?.sync()
+        Profile.currentUser?.tickets = tickets
+        Profile.currentUser?.sync()
         SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
     }
     
@@ -167,7 +132,6 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let now = Date().now()
         self.dateLabel.text = now
         profileImageView()
-        let currentUser = Profile.currentUser
         if FBSDKAccessToken.current() == nil{
             self.fbLogoutButton.isHidden = true
             self.emailLogOutButton.isHidden = false
@@ -176,9 +140,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             self.fbLogoutButton.isHidden = false
             self.emailLogOutButton.isHidden = true
         }
-        let username = currentUser?.username
-        let email = currentUser?.email
-        if let picture = currentUser?.picture {
+        let username = Profile.currentUser?.username
+        let email = Profile.currentUser?.email
+        if let picture = Profile.currentUser?.picture {
             self.profileImage.image = picture
         }
         else {
@@ -186,15 +150,32 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
         self.userName!.text = username
         self.userEmail!.text = email
-        /*
-         if checkdate == now {
-         self.checkedYet = true
-         self.dailyCheckInButton.backgroundColor = UIColor(colorLiteralRed: 153/255, green: 153/255, blue: 153/255, alpha: 1)
-         }
-         else {
-         self.checkedYet = false
-         }
-        */
+
+        let checkInCount:Int = (Profile.currentUser?.checkInCount)!
+        let currentDate = Date().now()
+        let lastCheckDate = Profile.currentUser?.lastCheckDate
+        if Profile.currentUser?.editor == true {
+            print("Is Editor")
+            self.addNews.isEnabled = true
+            self.addNews.tintColor = UIColor.black
+        }
+        else {
+            print("Not Editor")
+            self.addNews.isEnabled = false
+            self.addNews.tintColor = UIColor.white
+        }
+        
+        if currentDate != lastCheckDate {
+            Profile.currentUser?.checkInCount = checkInCount + 1
+            Profile.currentUser?.lastCheckDate = currentDate
+            Profile.currentUser?.sync()
+        }
+        if checkInCount == 1 {
+            self.checkCount!.text = "You've checked in 1 day."
+        }
+        else{
+            self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -225,11 +206,9 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     // Upload the Image to database
     func uploadProfileImage(){
-        let currentUser = Profile.currentUser
-        currentUser?.picture = self.profileImage.image
-        Profile.currentUser = currentUser
+        Profile.currentUser?.picture = self.profileImage.image
         SVProgressHUD.show(withStatus: "Uploading...")
-        currentUser?.sync()
+        Profile.currentUser?.sync()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
             
             SVProgressHUD.showSuccess(withStatus: "Uploaded")
@@ -244,6 +223,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.present(loginVC, animated: true, completion: nil)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = loginVC
+        Profile.currentUser = nil
         print("Logged Out!")
     }
     

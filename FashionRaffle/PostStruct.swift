@@ -14,15 +14,15 @@ class Post {
     let timestamp:NSDate
     let image:UIImage
     let caption:String?
-   // let brandinfo:[String]?
+    let brandinfo:[String]?
     static var feed:[Post]?
     
-    init(postID:String?,creator:String,image:UIImage, caption:String?) {
+    init(postID:String?,creator:String,image:UIImage, caption:String?, brandinfo:[String]) {
         self.postID = postID
         self.creator = creator
         self.image = image
         self.caption = caption
-        //self.brandinfo = brandinfo
+        self.brandinfo = brandinfo
         timestamp = NSDate()
     }
     
@@ -32,15 +32,15 @@ class Post {
             return nil
         }
         let caption = postDict["caption"] as? String
+        let brandinfo = postDict["brandinfo"] as? [String]
         let image = UIImage.imageWithBase64String(base64String: base64String)
-        //let brandInfo = postDict["brandInfo"] as? [String]
-        return Post(postID: postID, creator: creator, image: image, caption: caption)
+        return Post(postID: postID, creator: creator, image: image, caption: caption, brandinfo:brandinfo!)
     }
     
     func dictValue() -> [String:Any] {
         var postDict = [String:Any]()
         postDict["creator"] = creator
-        //postDict["brandinfo"] = brandinfo
+        postDict["brandinfo"] = brandinfo
         postDict["image"] = image.base64String()
         if let realcaption = caption {
             postDict["caption"] = realcaption

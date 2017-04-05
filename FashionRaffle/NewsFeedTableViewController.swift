@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
+
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     var newsDatas : [NewsFeedData] = []
@@ -24,10 +25,19 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     let storageReference = FIRStorage.storage()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SVProgressHUD.show(withStatus: "Loading news feed...")
         label?.text = self.title
-        SVProgressHUD.show(withStatus: "Loading News Feed...")
+        
         //Messing with dates and daily sign in
         /*let date = Date()
         let cal = Calendar(identifier: .gregorian)
@@ -38,26 +48,27 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
         
-        let ref = FIRDatabase.database().reference()
-
+        
+        
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             
             let key = snapshot.key
             let value = snapshot.value as? NSDictionary
-            let title = value!["Title"] as! String
-            let subtitle = value!["SubTitle"] as! String
-            let image = value!["Image"] as! String
-            let text = value!["Text"] as! String
+            let title = value!["title"] as! String
+            let subtitle = value!["subtitle"] as! String
+            let image = value!["titleImage"] as! String
+            let text = value!["detailInfo"] as! String
             
             let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
             self.newsDatas.append(newsData)
             
             self.tableView.reloadData()
+            SVProgressHUD.dismiss()
         })
         
-        SVProgressHUD.dismiss()
+        
         //self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
     }
     
@@ -159,9 +170,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         
         let imageURL = newstemp.image
-        let storage = storageReference.reference(forURL: imageURL)
-        
-        cell.Cellimage.sd_setImage(with: storage)
+        cell.Cellimage.image = UIImage.imageWithBase64String(base64String: imageURL)
         
         cell.Title!.text = newstemp.title
         cell.Subtitle!.text = newstemp.subtitle
@@ -199,9 +208,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         viewController.title = newsData.title
         
         let imageURL = newsData.image
-        let storage = storageReference.reference(forURL: imageURL)
         
-        viewController.reference = storage
+        viewController.imageStr = imageURL
         viewController.passKey = newsData.pathKey
         viewController.passLabel = newsData.title
         viewController.passDetail = newsData.details

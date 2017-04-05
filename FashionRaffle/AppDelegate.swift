@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         FIRApp.configure()
-        FIRDatabase.database().persistenceEnabled = true
+        FIRDatabase.database().persistenceEnabled = false
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
         
@@ -32,8 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let userID = FIRAuth.auth()?.currentUser?.uid
             FIRDatabase.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: {
                 snapshot in
-                let profilevalue = snapshot.value as? [String:Any]
-                let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue!)
+                guard let profilevalue = snapshot.value as? [String:Any] else {
+                    try! FIRAuth.auth()?.signOut()
+                    return
+                }
+                let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
                 Profile.currentUser = currentUser
             })
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
