@@ -18,13 +18,15 @@ class NewsFeedData : NSObject {
     var image: String
     var details: String
     var pathKey: String
+    var timestamp: String
     
-    init(title: String, subtitle: String, image: String, details: String, pathKey: String) {
+    init(title: String, subtitle: String, image: String, details: String, pathKey: String, timestamp: String) {
         self.title = title
         self.subtitle = subtitle
         self.image = image
         self.details = details
         self.pathKey = "Demos/\(pathKey)"
+        self.timestamp = timestamp
         super.init()
     }
     
@@ -104,7 +106,9 @@ class NewsDataCell: UITableViewCell{
     
     @IBOutlet weak var Cellimage: UIImageView!
     
+    
     @IBOutlet weak var Title: UILabel!
     
+    @IBOutlet weak var timestamp: UILabel!
     @IBOutlet weak var Subtitle: UILabel!
 }
