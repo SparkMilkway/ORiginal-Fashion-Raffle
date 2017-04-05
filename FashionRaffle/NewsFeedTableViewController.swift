@@ -62,7 +62,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             let text = value!["detailInfo"] as! String
             
             let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
-            self.newsDatas.append(newsData)
+            self.newsDatas.insert(newsData, at: 0)
             
             self.tableView.reloadData()
             SVProgressHUD.dismiss()

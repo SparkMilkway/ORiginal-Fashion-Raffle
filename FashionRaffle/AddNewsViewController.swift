@@ -42,7 +42,10 @@ class AddNewsViewController: UIViewController {
             ref.child("Demos").childByAutoId().setValue(newPost.dictValue())
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                 SVProgressHUD.dismiss()
-                SettingsLauncher().showAlerts(title: "Success!", message: "This piece of news is posted!", handler: nil, controller: self)
+                SettingsLauncher().showAlerts(title: "Success!", message: "This piece of news is posted!", handler: {
+                    UIAlertAction in
+                    self.navigationController?.popToRootViewController(animated: true)
+                }, controller: self)
             })
         }
     }

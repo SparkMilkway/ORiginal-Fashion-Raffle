@@ -20,12 +20,12 @@ class Profile {
     var followers:[String]
     var following:[String]
     var followBrands:[String]
-    var posts:[String]
+    var posts:[Post]
     var picture:UIImage?
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[String], picture:UIImage?) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], picture:UIImage?) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -43,7 +43,7 @@ class Profile {
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [String](), picture: nil)
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), picture: nil)
     }
     
     // Used during login
@@ -71,7 +71,7 @@ class Profile {
         if let following = profileDict["following"] as? [String] {
             profile.following = following
         }
-        if let brands = profileDict["follwBrands"] as? [String] {
+        if let brands = profileDict["followBrands"] as? [String] {
             profile.followBrands = brands
         }
         if let imgString = profileDict["picture"] as? String {
