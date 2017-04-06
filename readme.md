@@ -19,7 +19,7 @@ The Apple Pay simulation requires an Apple Developer account and a valid merchan
 
 # Requirements to simulate this app
 (Tutorial of setting up Google Firebase can be found at https://firebase.google.com/docs/ios/setup)
-1. Download Xcode from itunes and install. Must be Xcode 8.0 or above.
+1. Download Xcode from the App Store and install. Must be Xcode 8.0 or above.
 2. Download the whole master branch and unzip it.
 3. Follow the Firebase setup tutorial completely. 
 (Check the podfile in the folder, if the required pods are there then skip creating podfile step. Then run pod install in terminal)
