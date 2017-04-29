@@ -16,40 +16,27 @@ import SVProgressHUD
 
 class NewsReusableViewController: UIViewController {
     
-    @IBOutlet weak var Label1: UILabel!
     
+    @IBOutlet weak var NewsTitle: UILabel!
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var Details: UILabel!
     
-    let ref = FIRDatabase.database().reference()
-    var imageStr : String!
-    var check = false
-    var passLabel : String!
-    var passDetail : String!
-    var passKey: String!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "likeicon"), style: .plain, target: self, action: #selector(handlelike))
-        checklikes()
-        self.Label1.text = passLabel
-        self.Details.text = passDetail
-        self.Image.image = UIImage.imageWithBase64String(base64String: imageStr)
+        let selectedNews = (NewsFeed.selectedNews)!
+        self.title = selectedNews.title
+        self.NewsTitle.text = selectedNews.title
+        self.Details.text = selectedNews.detailInfo
+        self.Image.image = selectedNews.titleImage
         
     }
     
     func handlelike() {
-        let checklike = CheckLikeFuncionts()
-        checklike.handlelike(passKey: self.passKey!, check: self.check)
-        if self.check == true {
-            self.check = false
-        }
-        else {
-            self.check = true
-        }
+        
     }
+    /*
     func checklikes() {
         let child = self.passKey
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -64,6 +51,7 @@ class NewsReusableViewController: UIViewController {
             
         })
     }
+ */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -242,7 +230,7 @@ class RaffleReusableViewController: UIViewController {
         })
         self.handleDismiss()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
-            SettingsLauncher().showAlerts(title: "Congragulations!", message: "You've entered \(Tickets) tickets for \(self.passLabel!), enjoy!", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "Congragulations!", message: "You've entered \(Tickets) tickets for \(self.passLabel!), enjoy!", handler: nil, controller: self)
         })
     }
 

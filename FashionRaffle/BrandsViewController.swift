@@ -29,7 +29,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         SVProgressHUD.show(withStatus: "Updating...")
         Profile.currentUser?.sync()
         SVProgressHUD.dismiss()
-        SettingsLauncher().showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: {
+        SettingsLauncher.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: {
             UIAlertAction in
             self.dismiss(animated: true, completion: nil)
         }, controller: self)
