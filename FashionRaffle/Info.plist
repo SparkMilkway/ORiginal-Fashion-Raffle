@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSRemindersUsageDescription</key>
+	<string>$(PRODUCT_NAME) remind</string>
 	<key>AWS</key>
 	<dict>
 		<key>CredentialsProvider</key>
@@ -75,6 +77,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(PRODUCT_NAME) calendar use</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Select profile image</string>
 	<key>UILaunchStoryboardName</key>

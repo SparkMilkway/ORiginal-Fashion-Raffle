@@ -9,8 +9,6 @@ pod 'Firebase/Storage'
 pod 'FirebaseUI/Storage', '~> 0.6'
 pod 'SDWebImage', '~>3.8'
 pod 'SVProgressHUD'
-pod 'Sharaku'
-
 
 
 

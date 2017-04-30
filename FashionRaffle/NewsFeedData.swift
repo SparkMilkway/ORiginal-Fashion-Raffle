@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 import Firebase
+import EventKit
 
 class NewsFeed {
     // title, subtitle, detailInfo and tags can't be nil
     let newsID:String?
     var timestamp:String
-    //let releaseDate:Date?
+    let releaseDate:Date?
     let title:String
     let titleImage:UIImage?
     let subtitle:String
@@ -23,7 +24,7 @@ class NewsFeed {
     let tags:[String]
     static var selectedNews:NewsFeed?
     
-    init(newsID:String?, title:String, titleImage:UIImage?, subtitle:String, detailInfo:String, imagePool:[UIImage]?, tags:[String]) {
+    init(newsID:String?, releaseDate: Date?, title:String, titleImage:UIImage?, subtitle:String, detailInfo:String, imagePool:[UIImage]?, tags:[String]) {
         self.newsID = newsID
         self.title = title
         self.titleImage = titleImage
@@ -31,7 +32,7 @@ class NewsFeed {
         self.detailInfo = detailInfo
         self.imagePool = imagePool
         self.tags = tags
-        //self.releaseDate = releaseDate
+        self.releaseDate = releaseDate
         timestamp = Date().now()
     }
     // Fetch the News Feed
@@ -44,19 +45,22 @@ class NewsFeed {
         let detailInfo = contents["detailInfo"] as? String
         let tags = contents["tags"] as? [String]
         let titleImage = UIImage.imageWithBase64String(base64String: imgStr)
-        /*
-        var releaseD = Date.strToDate(Str: "11/22/2017 13:00:00 PDT")
+        
+        var releaseD : Date?
         if let releaseDstr = contents["releaseDate"] as? String {
-            releaseD = Date.strToDate(Str: releaseDstr)
+            releaseD = Date.strToDate(Str: releaseDstr)!
         }
-        */
+        else {
+            releaseD = nil
+        }
+        
         var imagePool = [UIImage]()
         if let strPool = contents["imagePool"] as? [String] {
             for imgstrs in strPool {
                 imagePool.append(UIImage.imageWithBase64String(base64String: imgstrs))
             }
         }
-        return NewsFeed(newsID: newsID, title: title, titleImage: titleImage, subtitle: subtitle!, detailInfo: detailInfo!, imagePool: imagePool, tags:tags!)
+        return NewsFeed(newsID: newsID, releaseDate: releaseD, title: title, titleImage: titleImage, subtitle: subtitle!, detailInfo: detailInfo!, imagePool: imagePool, tags:tags!)
     }
     
     func dictValue() -> [String:Any] {
@@ -69,11 +73,11 @@ class NewsFeed {
         newsDict["detailInfo"] = detailInfo
         newsDict["tags"] = tags
         //newsDict["releaseDate"] = releaseDate
-        /*
+        
         if let releaseD = releaseDate {
             newsDict["releaseDate"] = releaseD.dateToStr()
         }
-        */
+        
         if let tImgae = titleImage {
             newsDict["titleImage"] = tImgae.base64String()
         }
@@ -91,6 +95,7 @@ class NewsFeed {
         let ref = FIRDatabase.database().reference()
         ref.child("Demos").child(newsID!).setValue(dictValue())
     }
+    
 }
 
 class NewsDataCell: UITableViewCell{
@@ -102,4 +107,81 @@ class NewsDataCell: UITableViewCell{
     
     @IBOutlet weak var timestamp: UILabel!
     @IBOutlet weak var Subtitle: UILabel!
+    @IBOutlet weak var releaseDateEvent: UIButton!
+    
+    @IBAction func createEvent(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        
+        if appDelegate.eventStore == nil {
+            appDelegate.eventStore = EKEventStore()
+            
+            appDelegate.eventStore?.requestAccess(
+                to: EKEntityType.reminder, completion: {(granted, error) in
+                    if !granted {
+                        print("Access to store not granted")
+                        print(error?.localizedDescription)
+                    } else {
+                        print("Access granted")
+                    }
+            })
+        }
+        
+        if (appDelegate.eventStore != nil) {
+            createReminder()
+        }
+        open(scheme: "x-apple-reminder://")
+    
+
+    }
+    
+    func createReminder() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let reminder = EKReminder(eventStore: appDelegate.eventStore!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+
+        
+        reminder.calendar = appDelegate.eventStore!.defaultCalendarForNewReminders()
+        let dateString = "2017-12-12 5:00"//test
+        
+        reminder.title = self.Title.text! + ": "+dateString
+
+        let date = dateFormatter.date(from: dateString)
+        
+        print(dateString + "==========")
+        print(date!)
+        let alarm = EKAlarm(absoluteDate: date!)
+        
+        reminder.addAlarm(alarm)
+        
+        do {
+            try appDelegate.eventStore?.save(reminder,
+                                             commit: true)
+        } catch let error {
+            print("Reminder failed with error \(error.localizedDescription)")
+        }
+    }
+    
+    
+    }
+
+func open(scheme: String) {
+    if let url = URL(string: scheme) {
+        if #available(iOS 10, *) {
+            UIApplication.shared.open(url, options: [:],
+                                      completionHandler: {
+                                        (success) in
+                                        print("Open \(scheme): \(success)")
+            })
+        } else {
+            let success = UIApplication.shared.openURL(url)
+            print("Open \(scheme): \(success)")
+        }
+    }
 }
+

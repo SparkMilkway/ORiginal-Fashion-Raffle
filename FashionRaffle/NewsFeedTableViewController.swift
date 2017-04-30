@@ -30,6 +30,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
+       // try! FIRAuth.auth()?.signOut()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
 
@@ -150,7 +151,15 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         cell.timestamp!.text = newsCell.timestamp
         cell.Title!.text = newsCell.title
         cell.Subtitle!.text = newsCell.subtitle
+        if let releaseDate = newsCell.releaseDate {
+            let releaseStr = releaseDate.dateToStr()
+            cell.releaseDateEvent.setTitle("Release on " + releaseStr, for: .normal)
+        }
+        else {
+            cell.releaseDateEvent.setTitle("TBD", for: .normal)
+        }
         return cell
+        
         
     }
     
