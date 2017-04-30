@@ -83,16 +83,20 @@ extension Date {
         return now
     }
     
-    static func strToDate(Str: String) -> Date {
+    static func strToDate(Str: String) -> Date? {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy hh:mm:ss zzz"
-        let date = dateFormat.date(from: Str)
-        return date!
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm O"
+        guard let date = dateFormat.date(from: Str) else {
+            print("Date format not correct")
+            return nil
+            
+        }
+        return date
     }
     
     func dateToStr() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy hh:mm:ss zzz"
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm O"
         let str = dateFormat.string(from: self)
         return str
     }
