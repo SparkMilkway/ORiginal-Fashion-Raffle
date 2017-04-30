@@ -10,30 +10,11 @@ import Foundation
 import UIKit
 import Firebase
 
-
-class NewsFeedData : NSObject {
-    
-    var title: String
-    var subtitle: String
-    var image: String
-    var details: String
-    var pathKey: String
-    
-    init(title: String, subtitle: String, image: String, details: String, pathKey: String) {
-        self.title = title
-        self.subtitle = subtitle
-        self.image = image
-        self.details = details
-        self.pathKey = "Demos/\(pathKey)"
-        super.init()
-    }
-    
-}
-
 class NewsFeed {
     // title, subtitle, detailInfo and tags can't be nil
     let newsID:String?
-    let timestamp:String
+    var timestamp:String
+    //let releaseDate:Date?
     let title:String
     let titleImage:UIImage?
     let subtitle:String
@@ -41,7 +22,6 @@ class NewsFeed {
     let imagePool:[UIImage]?
     let tags:[String]
     static var selectedNews:NewsFeed?
-    static var newsFeed:[NewsFeed]?
     
     init(newsID:String?, title:String, titleImage:UIImage?, subtitle:String, detailInfo:String, imagePool:[UIImage]?, tags:[String]) {
         self.newsID = newsID
@@ -51,6 +31,7 @@ class NewsFeed {
         self.detailInfo = detailInfo
         self.imagePool = imagePool
         self.tags = tags
+        //self.releaseDate = releaseDate
         timestamp = Date().now()
     }
     // Fetch the News Feed
@@ -63,6 +44,12 @@ class NewsFeed {
         let detailInfo = contents["detailInfo"] as? String
         let tags = contents["tags"] as? [String]
         let titleImage = UIImage.imageWithBase64String(base64String: imgStr)
+        /*
+        var releaseD = Date.strToDate(Str: "11/22/2017 13:00:00 PDT")
+        if let releaseDstr = contents["releaseDate"] as? String {
+            releaseD = Date.strToDate(Str: releaseDstr)
+        }
+        */
         var imagePool = [UIImage]()
         if let strPool = contents["imagePool"] as? [String] {
             for imgstrs in strPool {
@@ -81,6 +68,12 @@ class NewsFeed {
         newsDict["subtitle"] = subtitle
         newsDict["detailInfo"] = detailInfo
         newsDict["tags"] = tags
+        //newsDict["releaseDate"] = releaseDate
+        /*
+        if let releaseD = releaseDate {
+            newsDict["releaseDate"] = releaseD.dateToStr()
+        }
+        */
         if let tImgae = titleImage {
             newsDict["titleImage"] = tImgae.base64String()
         }
@@ -104,7 +97,9 @@ class NewsDataCell: UITableViewCell{
     
     @IBOutlet weak var Cellimage: UIImageView!
     
+    
     @IBOutlet weak var Title: UILabel!
     
+    @IBOutlet weak var timestamp: UILabel!
     @IBOutlet weak var Subtitle: UILabel!
 }

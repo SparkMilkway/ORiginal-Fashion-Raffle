@@ -33,16 +33,20 @@ class AddNewsViewController: UIViewController {
         let detailEdit = self.details.text
         let imageSelect = self.titleImagePicker.image
         if (titleEdit == "" || subtitleEdit == "" || detailEdit == "" || imageSelect == nil) {
-            SettingsLauncher().showAlerts(title: "Error!", message: "Please enter all the required info", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "Error!", message: "Please enter all the required info", handler: nil, controller: self)
         }
         else {
             SVProgressHUD.show(withStatus: "Uploading new post...")
             let ref = FIRDatabase.database().reference()
+            //let someDate = Date.strToDate(Str: "Sep.17,2017 13:00:00 EST")
             let newPost = NewsFeed.init(newsID: nil, title: titleEdit!, titleImage: imageSelect, subtitle: subtitleEdit!, detailInfo: detailEdit!, imagePool: nil, tags: ["Text"])
             ref.child("Demos").childByAutoId().setValue(newPost.dictValue())
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                 SVProgressHUD.dismiss()
-                SettingsLauncher().showAlerts(title: "Success!", message: "This piece of news is posted!", handler: nil, controller: self)
+                SettingsLauncher.showAlerts(title: "Success!", message: "This piece of news is posted!", handler: {
+                    UIAlertAction in
+                    self.navigationController?.popToRootViewController(animated: true)
+                }, controller: self)
             })
         }
     }

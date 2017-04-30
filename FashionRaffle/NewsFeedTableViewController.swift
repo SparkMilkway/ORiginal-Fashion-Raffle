@@ -14,68 +14,50 @@ import SVProgressHUD
 
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
-    var newsDatas : [NewsFeedData] = []
-    
+    var newsF : [NewsFeed] = []
     // search attributes
-    var filterednewsDatas : [NewsFeedData] = []
-    
-    let searchBar = UISearchBar()
+    //var filterednewsDatas : [NewsFeedData] = []
+    //let searchBar = UISearchBar()
     var label : UILabel?
-    var shouldFiltContents = false
-    
-    let storageReference = FIRStorage.storage()
-    
-    
+    //var shouldFiltContents = false
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
+
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        SVProgressHUD.show(withStatus: "Loading news feed...")
+        SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
         
-        //Messing with dates and daily sign in
-        /*let date = Date()
-        let cal = Calendar(identifier: .gregorian)
-        let newDate = cal.startOfDay(for: date) // return as a Date
-        */
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
-        
-        
-        
-        
-        
+
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
+            guard let newsFeedData = snapshot.value as? [String:Any] else {
+                print("No Data here! Fatal error with Firebase NewsFeed Data")
+                return
+            }
             
-            let key = snapshot.key
-            let value = snapshot.value as? NSDictionary
-            let title = value!["title"] as! String
-            let subtitle = value!["subtitle"] as! String
-            let image = value!["titleImage"] as! String
-            let text = value!["detailInfo"] as! String
-            
-            let newsData = NewsFeedData.init(title: title, subtitle: subtitle, image: image, details: text, pathKey: key)
-            self.newsDatas.append(newsData)
-            
+            let newsID = snapshot.key //get newsID
+            let timestamp = newsFeedData["timestamp"] as? String
+            let newNewsData = NewsFeed.initWithNewsID(newsID: newsID, contents: newsFeedData)!
+            newNewsData.timestamp = timestamp!
+
+            self.newsF.insert(newNewsData, at: 0)
             self.tableView.reloadData()
-            SVProgressHUD.dismiss()
+            
+            SettingsLauncher.dismissLoading()
+            
         })
-        
-        
-        //self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: .valueChanged)
+
     }
     
     //The function for search bar
     
     func searchTapped() {
-        
+        /*
         searchBar.delegate = self
         searchBar.tintColor = UIColor(red: 55/255, green: 183/255, blue: 255/255, alpha: 1)
         
@@ -84,13 +66,13 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.placeholder = "Explore your interest!"
         self.navigationItem.titleView = searchBar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelsearch))
-
-        
+        */
     }
     
     //cancel the search if needed
     
     func cancelsearch() {
+        /*
         searchBar.text = ""
         shouldFiltContents = false
         self.tableView.reloadData()
@@ -98,6 +80,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         self.navigationItem.titleView = label
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
+        */
     }
     
     
@@ -106,6 +89,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     //Search Functions
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        /*
         self.filterednewsDatas = newsDatas.filter({content -> Bool in
             let title = content.title
             return title.lowercased().contains(searchText.lowercased())
@@ -119,6 +103,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             shouldFiltContents = false
             self.tableView.reloadData()
         }
+        */
         
     }
     
@@ -129,13 +114,14 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     //Close Search Bar if needed
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.endEditing(true)
+        //searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+        /*searchBar.endEditing(true)
         shouldFiltContents = true
         self.tableView.reloadData()
+ */
     }
     
     
@@ -143,11 +129,11 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        
-        
-        
+
+        /*
         self.tableView.reloadData()
         refreshControl.endRefreshing()
+        */
     }
     
     
@@ -155,68 +141,35 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
+
+        let newsCell = self.newsF[indexPath.row]
+        if let image = newsCell.titleImage {
+            cell.Cellimage.image = image
+        }
         
-        
-        var newstemp : NewsFeedData
-        
-        if shouldFiltContents == false {
-         newstemp = newsDatas[indexPath.row]
-         }
-         else {
-         newstemp = filterednewsDatas[indexPath.row]
-         }
-        
-        //newstemp = newsDatas[indexPath.row]
-        
-        
-        let imageURL = newstemp.image
-        cell.Cellimage.image = UIImage.imageWithBase64String(base64String: imageURL)
-        
-        cell.Title!.text = newstemp.title
-        cell.Subtitle!.text = newstemp.subtitle
-        
+        cell.timestamp!.text = newsCell.timestamp
+        cell.Title!.text = newsCell.title
+        cell.Subtitle!.text = newsCell.subtitle
         return cell
-        
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if shouldFiltContents == true {
-         return self.filterednewsDatas.count
-         }
-        return self.newsDatas.count
-    }
-    
+        let feed = self.newsF
+        return feed.count
 
-    
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        var newsData : NewsFeedData
-        
-        if shouldFiltContents == true {
-         newsData = filterednewsDatas[indexPath.row]
-         }
-         else {
-         newsData = newsDatas[indexPath.row]
-         }
-        
+
+        let newsCell = self.newsF[indexPath.row]
+        NewsFeed.selectedNews = newsCell
         let storyboard = UIStoryboard(name: "FirstDemo", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "NewsReusableView") as! NewsReusableViewController
-        
-        viewController.title = newsData.title
-        
-        let imageURL = newsData.image
-        
-        viewController.imageStr = imageURL
-        viewController.passKey = newsData.pathKey
-        viewController.passLabel = newsData.title
-        viewController.passDetail = newsData.details
-        
-        searchBar.endEditing(true)
+        //searchBar.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
     
     //TableView Delegates end

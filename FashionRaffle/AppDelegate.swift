@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 
 @UIApplicationMain
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
+        SVProgressHUD.setDefaultStyle(.dark)
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = false
         let storyboard = UIStoryboard(name:"Main", bundle:nil)
@@ -30,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         if FIRAuth.auth()?.currentUser != nil {
             let userID = FIRAuth.auth()?.currentUser?.uid
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+            self.window?.rootViewController = viewController
+            
             FIRDatabase.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: {
                 snapshot in
                 guard let profilevalue = snapshot.value as? [String:Any] else {
@@ -39,9 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
                 Profile.currentUser = currentUser
             })
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-            self.window?.rootViewController = viewController
+            
         }
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 

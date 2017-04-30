@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import Sharaku
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -236,10 +237,7 @@ public final class FusumaViewController: UIViewController {
         }
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
+    
 
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -261,10 +259,7 @@ public final class FusumaViewController: UIViewController {
         }
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.stopAll()
-    }
+ 
 
     override public var prefersStatusBarHidden : Bool {
         
@@ -272,10 +267,13 @@ public final class FusumaViewController: UIViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: {
+        //self.dismiss(animated: true, completion: {
             
-            self.delegate?.fusumaClosed?()
-        })
+          //  self.delegate?.fusumaClosed?()
+        //})
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        self.present(tabBarController, animated: true, completion: nil)
     }
     
     @IBAction func libraryButtonPressed(_ sender: UIButton) {
@@ -329,6 +327,8 @@ public final class FusumaViewController: UIViewController {
                         self.dismiss(animated: true, completion: {
                             self.delegate?.fusumaDismissedWithImage?(result!)
                         })
+                        
+                        
                     })
                 }
             })
@@ -339,10 +339,14 @@ public final class FusumaViewController: UIViewController {
             self.dismiss(animated: true, completion: {
                 self.delegate?.fusumaDismissedWithImage?((view?.image)!)
             })
+            
         }
+        
     }
+   
     
 }
+
 
 extension FusumaViewController: FSAlbumViewDelegate, FSCameraViewDelegate, FSVideoCameraViewDelegate {
     
@@ -500,3 +504,5 @@ private extension FusumaViewController {
         button.addBottomBorder(fusumaTintColor, width: 3)
     }
 }
+
+

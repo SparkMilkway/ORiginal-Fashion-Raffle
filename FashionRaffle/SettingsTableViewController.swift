@@ -29,7 +29,24 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        let currentDate = Date().now()
+        let currentUser = Profile.currentUser
+        if let checkInCount = currentUser?.checkInCount {
+            if currentDate != currentUser?.lastCheckDate {
+                currentUser?.checkInCount = checkInCount + 1
+                currentUser?.lastCheckDate = currentDate
+                currentUser?.sync()
+                Profile.currentUser = currentUser
+            }
+            if Profile.currentUser?.checkInCount == 1 {
+                self.checkCount!.text = "You've checked in 1 day."
+            }
+            else {
+                self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
+            }
+            
+        }
+
     }
     
     //Check in ends
@@ -59,7 +76,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     @IBAction func checkTickets(_ sender: Any) {
         let tickets:Int = (Profile.currentUser?.tickets)!
-        SettingsLauncher().showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
+        SettingsLauncher.showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
     }
     //Buy raffle Tickets and Update the database////////////////////////////////////////
     func itemToSell() -> [PKPaymentSummaryItem] {
@@ -92,7 +109,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             
         }
         else {
-            SettingsLauncher().showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
         }
     }
     func purchaseSuccess() {
@@ -101,7 +118,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         // Every time there is an update to the class, current user needs to be updated
         Profile.currentUser?.tickets = tickets
         Profile.currentUser?.sync()
-        SettingsLauncher().showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
+        SettingsLauncher.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
     }
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didSelect shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) {
@@ -151,31 +168,21 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         self.userName!.text = username
         self.userEmail!.text = email
 
-        let checkInCount:Int = (Profile.currentUser?.checkInCount)!
-        let currentDate = Date().now()
-        let lastCheckDate = Profile.currentUser?.lastCheckDate
         if Profile.currentUser?.editor == true {
             print("Is Editor")
+            self.title = "Editor Profile"
             self.addNews.isEnabled = true
             self.addNews.tintColor = UIColor.black
         }
         else {
             print("Not Editor")
+            self.title = "User Profile"
             self.addNews.isEnabled = false
             self.addNews.tintColor = UIColor.white
         }
         
-        if currentDate != lastCheckDate {
-            Profile.currentUser?.checkInCount = checkInCount + 1
-            Profile.currentUser?.lastCheckDate = currentDate
-            Profile.currentUser?.sync()
-        }
-        if checkInCount == 1 {
-            self.checkCount!.text = "You've checked in 1 day."
-        }
-        else{
-            self.checkCount!.text = "You've checked in \((Profile.currentUser?.checkInCount)!) days."
-        }
+
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -211,7 +218,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         Profile.currentUser?.sync()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
             
-            SVProgressHUD.showSuccess(withStatus: "Uploaded")
+            SVProgressHUD.showSuccess(withStatus: "Uploaded!")
             SVProgressHUD.dismiss(withDelay: 1.5)
         })
         

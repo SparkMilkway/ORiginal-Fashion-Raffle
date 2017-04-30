@@ -18,10 +18,10 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
     @IBAction func cancel(_ sender: Any) {
-        Profile.currentUser?.following = followed!
+        Profile.currentUser?.followBrands = followed!
         
         dismiss(animated: true, completion: nil)
-        print(Profile.currentUser?.following, "=====", followed)
+        print(Profile.currentUser?.followBrands, "=====", followed)
     }
     
     
@@ -29,7 +29,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         SVProgressHUD.show(withStatus: "Updating...")
         Profile.currentUser?.sync()
         SVProgressHUD.dismiss()
-        SettingsLauncher().showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: {
+        SettingsLauncher.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: {
             UIAlertAction in
             self.dismiss(animated: true, completion: nil)
         }, controller: self)
@@ -38,7 +38,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     let storageReference = FIRStorage.storage()
     let ref = FIRDatabase.database().reference()
-    let followed = Profile.currentUser?.following
+    let followed = Profile.currentUser?.followBrands
     var brandDatas : [BrandData] = []
     var i = 0
     
@@ -96,7 +96,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         
         
-        if Profile.currentUser?.following.contains(brandsTemp.name) == true {
+        if Profile.currentUser?.followBrands.contains(brandsTemp.name) == true {
             brandCell.layer.borderWidth = 5
             brandCell.layer.borderColor = UIColor.darkGray.cgColor
             brandCell.visualEffectView.alpha = 0.7
@@ -126,32 +126,32 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         print(indexPath)
         
         
+        
+        
+        
+        
+        if Profile.currentUser?.followBrands.contains(brandDatas[indexPath.row].name) == false{
+            Profile.currentUser?.followBrands.append(brandDatas[indexPath.row].name)
+            brandCell.layer.borderColor = UIColor.black.cgColor
+            brandCell.visualEffectView.alpha = 0.5
             
+        } else {
             
+            let removeName = brandDatas[indexPath.row].name
+            if let index = Profile.currentUser?.followBrands.index(of:removeName){
+                Profile.currentUser?.followBrands.remove(at: index)
+            }
             
+            print("======", Profile.currentUser?.followBrands)
             
-            if Profile.currentUser?.following.contains(brandDatas[indexPath.row].name) == false{
-                Profile.currentUser?.following.append(brandDatas[indexPath.row].name)
-                brandCell.layer.borderColor = UIColor.black.cgColor
-                brandCell.visualEffectView.alpha = 0.5
-                
-            } else {
-                
-                let removeName = brandDatas[indexPath.row].name
-                if let index = Profile.currentUser?.following.index(of:removeName){
-                    Profile.currentUser?.following.remove(at: index)
-                }
-                    
-                print("======", Profile.currentUser?.following)
-
-                brandCell.layer.borderColor = UIColor.lightGray.cgColor
-                brandCell.layer.borderWidth = 6
-                brandCell.visualEffectView.alpha = 0
-                brandCell.isSelected = false
-                }
-            
-            
-            
+            brandCell.layer.borderColor = UIColor.lightGray.cgColor
+            brandCell.layer.borderWidth = 6
+            brandCell.visualEffectView.alpha = 0
+            brandCell.isSelected = false
+        }
+        
+        
+        
         
         
     }
@@ -163,20 +163,20 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.visualEffectView.alpha = 0
         
         
-        print(Profile.currentUser?.following)
+        print(Profile.currentUser?.followBrands)
         
-        if Profile.currentUser?.following.contains(brandDatas[indexPath.row].name) == false {
-            Profile.currentUser?.following.append(brandDatas[indexPath.row].name)
+        if Profile.currentUser?.followBrands.contains(brandDatas[indexPath.row].name) == false {
+            Profile.currentUser?.followBrands.append(brandDatas[indexPath.row].name)
             cell.layer.borderColor = UIColor.black.cgColor
             cell.visualEffectView.alpha = 0.5
-            print(Profile.currentUser?.following)
+            print(Profile.currentUser?.followBrands)
         } else {
             let removeName = brandDatas[indexPath.row].name
             
-            if let index = Profile.currentUser?.following.index(of:removeName){
-                Profile.currentUser?.following.remove(at: index)
+            if let index = Profile.currentUser?.followBrands.index(of:removeName){
+                Profile.currentUser?.followBrands.remove(at: index)
             }
-            print(Profile.currentUser?.following)
+            print(Profile.currentUser?.followBrands)
         }
     }
     
