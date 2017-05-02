@@ -18,6 +18,7 @@ class SettingsLauncher: NSObject {
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(blackV)
             // Add a tag to the blackview
+            
             blackV.tag = 100
             blackV.frame = window.frame
             blackV.alpha = 0
@@ -62,7 +63,7 @@ class SettingsLauncher: NSObject {
 
 extension UIImage {
     func base64String() -> String {
-        let imageData = UIImagePNGRepresentation(self)!
+        let imageData = UIImageJPEGRepresentation(self, 0.5)!
         let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
         return base64String
     }

@@ -11,19 +11,25 @@ import UIKit
 class Post {
     let creator:String
     let postID:String?
-    let timestamp:NSDate
+    var timestamp:String
     let image:UIImage
+    let profileImage:UIImage?
     let caption:String?
     let brandinfo:[String]?
-    static var feed:[Post]?
+    static var currentPost:Post?
     
-    init(postID:String?,creator:String,image:UIImage, caption:String?, brandinfo:[String]) {
+    init(postID:String?,creator:String,image:UIImage, caption:String?, brandinfo:[String]?, profileImage:UIImage?) {
         self.postID = postID
         self.creator = creator
         self.image = image
         self.caption = caption
         self.brandinfo = brandinfo
-        timestamp = NSDate()
+        self.profileImage = profileImage
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy hh:mm:ssa"
+        let str = dateFormat.string(from: Date())
+
+        timestamp = str
     }
     
     static func initWithPostID(postID: String, postDict:[String:Any]) -> Post? {
@@ -34,7 +40,14 @@ class Post {
         let caption = postDict["caption"] as? String
         let brandinfo = postDict["brandinfo"] as? [String]
         let image = UIImage.imageWithBase64String(base64String: base64String)
-        return Post(postID: postID, creator: creator, image: image, caption: caption, brandinfo:brandinfo!)
+        let proimage : UIImage?
+        if let profileImagestr = postDict["profileImage"] as? String {
+            proimage = UIImage.imageWithBase64String(base64String: profileImagestr)
+        }
+        else{
+            proimage = #imageLiteral(resourceName: "profile1")
+        }
+        return Post(postID: postID, creator: creator, image: image, caption: caption, brandinfo:brandinfo, profileImage:proimage)
     }
     
     func dictValue() -> [String:Any] {
@@ -42,6 +55,10 @@ class Post {
         postDict["creator"] = creator
         postDict["brandinfo"] = brandinfo
         postDict["image"] = image.base64String()
+        if let image = profileImage {
+            postDict["profileImage"] = image.base64String()
+        }
+        postDict["timestamp"] = timestamp
         if let realcaption = caption {
             postDict["caption"] = realcaption
         }
@@ -55,6 +72,11 @@ class Post {
 class PostPoolCell: UITableViewCell {
     @IBOutlet weak var captionLabel:UILabel!
     @IBOutlet weak var imgView:UIImageView!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var timeStamp: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    
     
 }
 

@@ -47,11 +47,11 @@ class AddNewsTableViewController: UITableViewController {
             })
         }
     }
-
+    
     @IBAction func backToProfile(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,14 +130,14 @@ class AddNewsViewController: UIViewController {
     @IBOutlet weak var titleImagePicker: UIImageView!
     
     @IBOutlet weak var newsTitle: UITextField!
-
+    
     @IBOutlet weak var subtitle: UITextField!
     @IBOutlet weak var details: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         titleImagePicker.isUserInteractionEnabled = true
         titleImagePicker.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectNewsImageView)))
-
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -163,7 +163,7 @@ class AddNewsViewController: UIViewController {
             })
         }
     }
-
+    
     func dismissKeyboard() {
         self.view.endEditing(true)
     }

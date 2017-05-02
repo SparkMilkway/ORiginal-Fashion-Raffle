@@ -172,13 +172,13 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             print("Is Editor")
             self.title = "Editor Profile"
             self.addNews.isEnabled = true
-            self.navigationItem.rightBarButtonItems = [self.addNews]
+            self.addNews.tintColor = UIColor.black
         }
         else {
             print("Not Editor")
             self.title = "User Profile"
             self.addNews.isEnabled = false
-            self.navigationItem.rightBarButtonItems = []
+            self.addNews.tintColor = UIColor.white
         }
         
 
