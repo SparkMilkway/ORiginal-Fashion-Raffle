@@ -2,20 +2,22 @@
 
 This is an iOS social fashion app which is still under development. 
 
-#Product Video Demo
+#Product Video Demo (Out of date.)
 https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
 
 #Current Functions
 
-1. Complete user authentication system: Register, Login with email or Facebook, Reset password
-2. Pull database data from Firebase: Fashion news, raffle info and so on
-3. Manage the user's account, change and upload profile image, select brands the users like, etc.
+1. Complete user authentication system: Register, verify emails, Login with email or Facebook, Reset password via emails
+2. Pull database data from Firebase: Fashion news, raffle info, social feeds and so on.
+3. Manage the user's account, change and upload profile image, select brands the users like, check the raffle tickets possessed, etc.
+4. The editor user will be able to add a piece of news to the database and display it instantly in the news feed, which contains images, info, and release date for the stuff.
+5. The user is able to add a photo post to the social feed, functions including selecting photos and adding filters.
 
 # Warnings
-Please do not try the enter raffle pool button under the raffle segment in the explore tab, otherwise the app will probably crash. We are changing this function so something won't work.
+Please do not try the enter raffle pool button under the raffle segment in the explore tab, otherwise the app will crash. We are working on changing the functionality of the raffle part so don't touch it.
 
 
-The Apple Pay simulation requires an Apple Developer account and a valid merchant ID generated on the Apple Developer website. So now we don't allow the Apple Pay to function or it will crash.
+The Apple Pay simulation requires an Apple Developer account and a valid merchant ID generated on the Apple Developer website. So now we don't allow the Apple Pay to function. If you want to implement it you have to have the requirements.
 
 # Requirements to simulate this app
 (Tutorial of setting up Google Firebase can be found at https://firebase.google.com/docs/ios/setup)
@@ -32,6 +34,8 @@ The Apple Pay simulation requires an Apple Developer account and a valid merchan
 ![Bridging](https://github.com/onespark123/ORiginal-Fashion-Raffle/blob/master/ScreenShots/Bridging.jpg)
 
 6. If there is some error in the bundle name, please change the bundle name to a unique name other than the original one, anything is fine. 
-7. If you want to view the Firebase database please contact the team and I'll grant you a viewer account. Or contact the team if you have any questions.
+7. If you want to view the Firebase database please contact the team and we'll grant you a viewer account or cantact if you have any questions.
 
 (Our Firebase database address goes https://originalfashionraffle.firebaseio.com/)
+
+# Thank you and have fun with the simulation!
