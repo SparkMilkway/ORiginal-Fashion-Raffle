@@ -24,7 +24,7 @@ The Apple Pay simulation requires an Apple Developer account and a valid merchan
 1. Download Xcode from the App Store and install. Must be Xcode 8.0 or above.
 2. Download the whole master branch and unzip it.
 3. Follow the Firebase setup tutorial completely. 
-(Check the podfile in the folder, if the required pods are there then skip creating podfile step. Then run pod install in terminal)
+(Check the podfile in the folder, if the required pods are there then skip creating podfile step. Then run pod install in terminal to correctly install those required SDKs for this app.)
 
 4. If you encounter the problem shown below(Under Project Navigator, select FashionRaffle on the top, then select general) indicating you need to sign for the project, then under Signing, check on automatically manage signing, then under Team, use your Apple ID to sign this project.
 
