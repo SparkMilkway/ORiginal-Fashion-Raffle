@@ -7,41 +7,49 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SettingsLauncher: NSObject {
-    
-    let blackView : UIView = {
-        let view = UIView()
-        view.isUserInteractionEnabled = true
-        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        return view
-    }()
 
-    
-    func showDim() {
-
+    static func showLoading(Status: String) {
+        let blackV = UIView()
+        blackV.isUserInteractionEnabled = true
+        blackV.backgroundColor = UIColor(white: 0, alpha: 0.5)
         if let window = UIApplication.shared.keyWindow {
-
-            window.addSubview(blackView)
-            window.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-            self.blackView.frame = window.frame
-            self.blackView.alpha = 0
+            window.addSubview(blackV)
+            // Add a tag to the blackview
+            
+            blackV.tag = 100
+            blackV.frame = window.frame
+            blackV.alpha = 0
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                self.blackView.alpha = 1
-                
-            }, completion: nil)
+                blackV.alpha = 1
+            }, completion: {(completed) -> Void in
+                if completed == true {
+                    SVProgressHUD.show(withStatus: Status)
+                }
+            })
         }
-        
     }
-    
-    
-    func handleDismiss() {
-        UIView.animate(withDuration: 0.5, animations: {
+    static func dismissLoading() {
+        if let window = UIApplication.shared.keyWindow {
+            SVProgressHUD.dismiss()
+            if let blackview = window.viewWithTag(100) {
+                blackview.alpha = 1
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    blackview.alpha = 0
+                }, completion: {
+                    (completed) -> Void in
+                    if completed == true {
+                        blackview.removeFromSuperview()
+                    }
+                })
+            }
+        }
+    }
 
-            self.blackView.alpha = 0
-        })
-    }
-    func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){
+
+    static func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
         alertController.addAction(defaultAction)
@@ -55,7 +63,7 @@ class SettingsLauncher: NSObject {
 
 extension UIImage {
     func base64String() -> String {
-        let imageData = UIImagePNGRepresentation(self)!
+        let imageData = UIImageJPEGRepresentation(self, 0.5)!
         let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
         return base64String
     }
@@ -71,8 +79,27 @@ extension Date {
     // Return the date now as MM/DD/YYYY
     func now() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy"
+        dateFormat.dateFormat = "yyyy/MM/dd/"
         let now = dateFormat.string(from: Date())
         return now
     }
+    
+    static func strToDate(Str: String) -> Date? {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
+        guard let date = dateFormat.date(from: Str) else {
+            print("Date format not correct")
+            return nil
+            
+        }
+        return date
+    }
+    
+    func dateToStr() -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
+        let str = dateFormat.string(from: self)
+        return str
+    }
+    
 }

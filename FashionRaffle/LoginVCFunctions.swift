@@ -23,14 +23,14 @@ extension LoginViewController {
 
     func handleLogin() {
         if emailTextField.text == "" || passwordTextField.text == "" {
-            SettingsLauncher().showAlerts(title: "Oops", message: "Please enter valid values!", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "Oops", message: "Please enter valid values!", handler: nil, controller: self)
         }
         else {
             self.view.endEditing(true)
             let email = emailTextField.text, password = passwordTextField.text
             FIRAuth.auth()?.signIn(withEmail: email!, password: password!, completion: { (user, error) in
                 if error != nil {
-                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
+                    SettingsLauncher.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                 }
                 else {
                     guard let uid = user?.uid else{
@@ -54,7 +54,7 @@ extension LoginViewController {
                         })
                     }
                     else {
-                        SettingsLauncher().showAlerts(title: "Oops!", message: "Please verify your email address first.", handler: {
+                        SettingsLauncher.showAlerts(title: "Oops!", message: "Please verify your email address first.", handler: {
                             UIAlertAction in
                             try! FIRAuth.auth()?.signOut()
                         }, controller: self)
@@ -69,7 +69,7 @@ extension LoginViewController {
     func handleRegister() {
         if emailTextField.text == "" || passwordTextField.text == "" || nameTextField.text == ""
         {
-            SettingsLauncher().showAlerts(title: "Oops!", message: "Please enter valid values!", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "Oops!", message: "Please enter valid values!", handler: nil, controller: self)
         }
         else {
             self.view.endEditing(true)
@@ -77,7 +77,7 @@ extension LoginViewController {
             
             FIRAuth.auth()?.createUser(withEmail: email, password: password!, completion: {(user, error) in
                 if error != nil {
-                    SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
+                    SettingsLauncher.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                 }
                 else {
                     guard let uid = user?.uid else{
@@ -97,7 +97,7 @@ extension LoginViewController {
                         }
                         else {
                             SVProgressHUD.dismiss()
-                            SettingsLauncher().showAlerts(title: "Registered!", message: "Email was sent, please verify your email address now.", handler: {
+                            SettingsLauncher.showAlerts(title: "Registered!", message: "Email was sent, please verify your email address now.", handler: {
                                 UIAlertAction in
                                 self.emailTextField.text = ""
                                 self.passwordTextField.text = ""
@@ -106,11 +106,6 @@ extension LoginViewController {
                             }, controller: self)
                         }
                     })
-                    /*
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                        self.loginSuccess()
-                    })
-                    */
                 }
             })
         }
@@ -308,7 +303,7 @@ extension LoginViewController {
                     }
                     else {
                         self.fbLoginButton.isHidden = true
-                        SettingsLauncher().showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
+                        SettingsLauncher.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                     }
                 })
                 print("successfully logged in with Facebook")
