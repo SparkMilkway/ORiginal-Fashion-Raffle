@@ -79,14 +79,14 @@ extension Date {
     // Return the date now as MM/DD/YYYY
     func now() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy"
+        dateFormat.dateFormat = "yyyy/MM/dd/"
         let now = dateFormat.string(from: Date())
         return now
     }
     
     static func strToDate(Str: String) -> Date? {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy HH:mm O"
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
         guard let date = dateFormat.date(from: Str) else {
             print("Date format not correct")
             return nil
@@ -97,7 +97,7 @@ extension Date {
     
     func dateToStr() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy HH:mm O"
+        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
         let str = dateFormat.string(from: self)
         return str
     }

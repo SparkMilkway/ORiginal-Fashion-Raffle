@@ -81,7 +81,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgc-Au-5Kc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3216.8000000000002" y="631.93403298350825"/>
+            <point key="canvasLocation" x="1470" y="-121"/>
         </scene>
         <!--Ph-->
         <scene sceneID="yl2-sM-qoP">
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2NI-cu-doS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632.79999999999995" y="953.97301349325346"/>
+            <point key="canvasLocation" x="-332" y="1466"/>
         </scene>
         <!--Profile-->
         <scene sceneID="8pU-E7-Yu3">
@@ -218,7 +218,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvX-WE-giM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306" y="0.0"/>
+            <point key="canvasLocation" x="-332" y="743"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="pdO-20-G05">
@@ -664,7 +664,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urA-NO-Qo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508" y="0.0"/>
+            <point key="canvasLocation" x="447" y="743"/>
         </scene>
         <!--Post Feed Table View Controller-->
         <scene sceneID="A0Y-WM-NP1">
@@ -743,7 +743,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCL-TT-EN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="-1667.3163418290856"/>
+            <point key="canvasLocation" x="1470" y="-738"/>
         </scene>
         <!--Photos-->
         <scene sceneID="giI-6g-Bth">
@@ -758,7 +758,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sTY-2o-HDh">
-                                <rect key="frame" x="0.0" y="243" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="292" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sTY-2o-HDh" secondAttribute="height" multiplier="1:1" id="wdk-Jn-Goq"/>
                                 </constraints>
@@ -842,7 +842,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKe-Y4-3C2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2841" y="-1603"/>
+            <point key="canvasLocation" x="3961" y="-1731"/>
         </scene>
         <!--Photo Post-->
         <scene sceneID="GnY-Es-xoK">
@@ -862,7 +862,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39u-dy-ojm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="-1603"/>
+            <point key="canvasLocation" x="3217" y="-1731"/>
         </scene>
         <!--Brands View Controller-->
         <scene sceneID="E7U-Tm-BbG">
@@ -945,7 +945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDq-dH-yRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4260" y="-705"/>
+            <point key="canvasLocation" x="2135" y="1161"/>
         </scene>
         <!--Item-->
         <scene sceneID="T4R-q5-Lj3">
@@ -965,7 +965,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1k-E5-V7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1372" y="0.0"/>
+            <point key="canvasLocation" x="1306" y="1161"/>
         </scene>
         <!--ORigiNal-->
         <scene sceneID="IYY-Sd-scx">
@@ -1033,7 +1033,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRY-13-4XB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="-1667"/>
+            <point key="canvasLocation" x="633" y="-738"/>
         </scene>
         <!--ORigiNaL-->
         <scene sceneID="pop-3w-aC4">
@@ -1052,7 +1052,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bf4-h2-mR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306" y="-1667"/>
+            <point key="canvasLocation" x="-306" y="-738"/>
         </scene>
         <!--Photo-->
         <scene sceneID="cLX-9f-Pc2">
@@ -1071,7 +1071,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4Q-uV-cRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.39999999999998" y="953.97301349325346"/>
+            <point key="canvasLocation" x="-1271" y="1466"/>
         </scene>
         <!--News Feed-->
         <scene sceneID="xZs-4i-AZh">
@@ -1109,15 +1109,26 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release on 11/22/2011 13:33 GMT-4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHy-Ik-2EK">
-                                            <rect key="frame" x="8" y="304" width="359" height="29"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRw-4x-b4h">
+                                            <rect key="frame" x="44" y="303" width="288" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                            <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="11/22/2011" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm9-n2-3VV">
-                                            <rect key="frame" x="250" y="245" width="117" height="21"/>
+                                            <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="7"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="createEvent:" destination="2WW-Dn-LJY" eventType="touchUpInside" id="k5i-eY-ta8"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="11/22/2011" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm9-n2-3VV">
+                                            <rect key="frame" x="250" y="243" width="117" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1134,7 +1145,7 @@
                                     <outlet property="Cellimage" destination="Cow-E4-mYY" id="JiX-T4-1OA"/>
                                     <outlet property="Subtitle" destination="qqF-Z2-0ZG" id="pEg-3d-oK1"/>
                                     <outlet property="Title" destination="QFa-vl-SLP" id="pib-e6-QKT"/>
-                                    <outlet property="releaseDate" destination="ZHy-Ik-2EK" id="tXc-Sp-1nX"/>
+                                    <outlet property="releaseDateEvent" destination="lRw-4x-b4h" id="gT7-hg-C4i"/>
                                     <outlet property="timestamp" destination="Qm9-n2-3VV" id="EGJ-fe-tqo"/>
                                 </connections>
                             </tableViewCell>
@@ -1152,7 +1163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOK-Pb-a8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="-2188"/>
+            <point key="canvasLocation" x="1469.5999999999999" y="-1263.4182908545729"/>
         </scene>
         <!--Add New Feed-->
         <scene sceneID="bzU-Ff-Gfj">
@@ -1255,7 +1266,7 @@
                                                     </date>
                                                 </datePicker>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Lb-Nl-Onf">
-                                                    <rect key="frame" x="100" y="177" width="174" height="123"/>
+                                                    <rect key="frame" x="99" y="177" width="174" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->
@@ -1329,7 +1340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1c-wM-Urw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2802" y="-910"/>
+            <point key="canvasLocation" x="2135" y="513"/>
         </scene>
     </scenes>
     <resources>

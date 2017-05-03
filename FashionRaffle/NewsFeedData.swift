@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import EventKit
+
 
 class NewsFeed {
     // title, subtitle, detailInfo and tags can't be nil
@@ -48,6 +50,7 @@ class NewsFeed {
         var releaseD : Date?
         if let releaseDstr = contents["releaseDate"] as? String {
             releaseD = Date.strToDate(Str: releaseDstr)!
+            print(releaseD!)
         }
         else {
             releaseD = nil
@@ -105,6 +108,91 @@ class NewsDataCell: UITableViewCell{
     
     @IBOutlet weak var timestamp: UILabel!
     @IBOutlet weak var Subtitle: UILabel!
-    @IBOutlet weak var releaseDate: UILabel!
     
+    @IBOutlet weak var releaseDateEvent: UIButton!
+    
+    @IBAction func createEvent(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        print(self.releaseDateEvent.currentTitle!)
+        
+        if appDelegate.eventStore == nil {
+            appDelegate.eventStore = EKEventStore()
+            
+            appDelegate.eventStore?.requestAccess(
+                to: EKEntityType.reminder, completion: {(granted, error) in
+                    if !granted {
+                        print("Access to store not granted")
+                        print(error?.localizedDescription)
+                    } else {
+                        print("Access granted")
+                    }
+            })
+        }
+        
+        if (appDelegate.eventStore != nil) {
+            print( self.releaseDateEvent.currentTitle! + "test")//
+            if(self.releaseDateEvent.currentTitle == "TBD"){
+                return
+            }
+            else{
+                createReminder(releasedate: self.releaseDateEvent.currentTitle!)
+            }
+        }
+        open(scheme: "x-apple-reminder://")
+        
+
+    }
+    
+    func createReminder(releasedate: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let reminder = EKReminder(eventStore: appDelegate.eventStore!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        
+        
+        
+        reminder.calendar = appDelegate.eventStore!.defaultCalendarForNewReminders()
+        //let dateString = "12/12/2017 5:00"//test
+        let dateString = releasedate
+        print(releasedate + "----")
+        
+        reminder.title = self.Title.text! + ": "+dateString
+        
+        let date = dateFormatter.date(from: dateString)
+        let datesss = dateFormatter.date(from: releasedate)
+        print(datesss!,  "actual")
+        
+        
+        print(dateString + "==========")
+        print(date! , "result")
+        let alarm = EKAlarm(absoluteDate: date!)
+        
+        reminder.addAlarm(alarm)
+        
+        do {
+            try appDelegate.eventStore?.save(reminder,
+                                             commit: true)
+        } catch let error {
+            print("Reminder failed with error \(error.localizedDescription)")
+        }
+    }
+    
+
+}
+
+func open(scheme: String) {
+    if let url = URL(string: scheme) {
+        if #available(iOS 10, *) {
+            UIApplication.shared.open(url, options: [:],
+                                      completionHandler: {
+                                        (success) in
+                                        print("Open \(scheme): \(success)")
+            })
+        } else {
+            let success = UIApplication.shared.openURL(url)
+            print("Open \(scheme): \(success)")
+        }
+    }
 }

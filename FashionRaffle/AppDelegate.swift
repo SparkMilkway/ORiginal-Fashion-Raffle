@@ -9,12 +9,14 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import EventKit
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var eventStore: EKEventStore?
 
     
 

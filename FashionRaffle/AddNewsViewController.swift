@@ -72,7 +72,7 @@ class AddNewsTableViewController: UITableViewController {
         let dateFormat = DateFormatter()
         let timeFormat = DateFormatter()
         dateFormat.dateFormat = "MM/dd/yyyy"
-        timeFormat.dateFormat = "HH:mm O"
+        timeFormat.dateFormat = "HH:mm"
         let strDate = dateFormat.string(from: self.datePicker.date)
         let strTime = timeFormat.string(from: self.timePicker.date)
         self.releaseDLabel.text = strDate + " " + strTime

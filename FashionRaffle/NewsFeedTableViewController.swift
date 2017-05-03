@@ -153,10 +153,10 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         cell.Subtitle!.text = newsCell.subtitle
         if let releaseDate = newsCell.releaseDate {
             let releaseStr = releaseDate.dateToStr()
-            cell.releaseDate!.text = "Release on " + releaseStr
+            cell.releaseDateEvent.setTitle(releaseStr, for: .normal)
         }
         else {
-            cell.releaseDate!.text = "No release info."
+            cell.releaseDateEvent.setTitle("TBD", for: .normal)
         }
         return cell
         
