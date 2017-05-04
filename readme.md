@@ -1,8 +1,8 @@
-#ORiginal Fasion App for iOS - Team of Fashion.
+# ORiginal Fasion App for iOS - Team of Fashion.
 
 This is an iOS social fashion app which is still under development. 
 
-#Product Video Demo 
+# Product Video Demo 
 
 (Basic functions)
 https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
 (New functions demostration)
 https://youtu.be/aF8fN-3T-9c
 
-#Current Functions
+# Current Functions
 
 1. Complete user authentication system: Register, verify emails, Login with email or Facebook, Reset password via emails
 2. Pull database data from Firebase: Fashion news, raffle info, social feeds and so on.
