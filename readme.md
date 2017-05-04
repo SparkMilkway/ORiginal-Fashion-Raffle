@@ -2,8 +2,13 @@
 
 This is an iOS social fashion app which is still under development. 
 
-#Product Video Demo (Out of date.)
+#Product Video Demo 
+
+(Basic functions)
 https://www.youtube.com/watch?v=bMqeeF8XPwQ&feature=youtu.be
+
+(New functions demostration)
+https://youtu.be/aF8fN-3T-9c
 
 #Current Functions
 
