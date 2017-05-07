@@ -32,6 +32,7 @@ class profileMainViewController: UIViewController {
     @IBOutlet weak var userPostContainerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         
         let username = Profile.currentUser?.username
         if let picture = Profile.currentUser?.picture {

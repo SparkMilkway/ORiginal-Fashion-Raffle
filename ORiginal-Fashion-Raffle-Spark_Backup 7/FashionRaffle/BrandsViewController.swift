@@ -20,8 +20,9 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func cancel(_ sender: Any) {
         Profile.currentUser?.followBrands = followed!
         
-        
-        print(Profile.currentUser?.followBrands, "=====", followed)
+        dismiss(animated: true, completion: nil)
+        self.brandsCollectionView.reloadData()
+        print(Profile.currentUser?.followBrands, "=====cancel", followed)
     }
     
     
@@ -33,12 +34,16 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
             UIAlertAction in
             self.dismiss(animated: true, completion: nil)
         }, controller: self)
+        followed = Profile.currentUser?.followBrands
+
+        self.brandsCollectionView.reloadData()
+
     }
     
     
     let storageReference = FIRStorage.storage()
     let ref = FIRDatabase.database().reference()
-    let followed = Profile.currentUser?.followBrands
+    var followed = Profile.currentUser?.followBrands
     var brandDatas : [BrandData] = []
     var i = 0
     
