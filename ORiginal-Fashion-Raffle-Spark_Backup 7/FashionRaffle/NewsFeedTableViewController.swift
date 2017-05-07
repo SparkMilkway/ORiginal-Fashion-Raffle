@@ -30,7 +30,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
-        // try! FIRAuth.auth()?.signOut()
+        //try! FIRAuth.auth()?.signOut()      //if newsfeed cant load, run this line
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         

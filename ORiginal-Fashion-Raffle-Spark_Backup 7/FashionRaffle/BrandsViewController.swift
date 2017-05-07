@@ -20,7 +20,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func cancel(_ sender: Any) {
         Profile.currentUser?.followBrands = followed!
         
-        dismiss(animated: true, completion: nil)
+        
         print(Profile.currentUser?.followBrands, "=====", followed)
     }
     
