@@ -30,10 +30,14 @@ class profileMainViewController: UIViewController {
     @IBOutlet weak var Controller: UISegmentedControl!
     
     @IBOutlet weak var userPostContainerView: UIView!
+    
+    @IBOutlet weak var userRaffleContainerView: UIView!
+    
+    var chooseImage : Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
         let username = Profile.currentUser?.username
         if let picture = Profile.currentUser?.picture {
             self.profileImage.image = picture
@@ -49,6 +53,7 @@ class profileMainViewController: UIViewController {
         self.Controller.selectedSegmentIndex = 0
         brandsContainerView.isHidden = true
         userPostContainerView.isHidden = false
+        userRaffleContainerView.isHidden = true
 
 
         
@@ -78,10 +83,17 @@ class profileMainViewController: UIViewController {
         if Controller.selectedSegmentIndex == 0{
             userPostContainerView.isHidden = false
             brandsContainerView.isHidden = true
+            userRaffleContainerView.isHidden = true
         }
         if Controller.selectedSegmentIndex == 1{
             userPostContainerView.isHidden = true
             brandsContainerView.isHidden = false
+            userRaffleContainerView.isHidden = true
+        }
+        if Controller.selectedSegmentIndex == 2{
+            userPostContainerView.isHidden = true
+            brandsContainerView.isHidden = true
+            userRaffleContainerView.isHidden = false
         }
         
     }
@@ -93,6 +105,7 @@ class profileMainViewController: UIViewController {
         profileImage.clipsToBounds = true
         profileImage.layer.backgroundColor = UIColor.white.cgColor
         profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor.white.cgColor
         
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         profileImage.isUserInteractionEnabled = true
@@ -115,7 +128,7 @@ class profileMainViewController: UIViewController {
     func backgroundImageView() {
         
         
-        profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
         profileBackground.isUserInteractionEnabled = true
         profileBackground.contentMode = .scaleAspectFill
         

@@ -1030,8 +1030,9 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wn2-bv-f8k">
                                 <rect key="frame" x="0.0" y="282" width="375" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Posts"/>
+                                    <segment title="Brands"/>
+                                    <segment title="Raffle"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -1050,10 +1051,17 @@
                                     <segue destination="3hw-pH-yfp" kind="embed" id="5Ad-Ex-DOg"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="590-RZ-vLi">
+                                <rect key="frame" x="0.0" y="308" width="375" height="310"/>
+                                <connections>
+                                    <segue destination="EMY-VV-rbp" kind="embed" id="IfG-Um-5BO"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wn2-bv-f8k" firstAttribute="leading" secondItem="6he-9y-0A7" secondAttribute="leading" id="11G-cB-NyM"/>
+                            <constraint firstAttribute="trailing" secondItem="590-RZ-vLi" secondAttribute="trailing" id="19P-90-ICD"/>
                             <constraint firstAttribute="trailing" secondItem="wn2-bv-f8k" secondAttribute="trailing" id="1eB-oX-JWe"/>
                             <constraint firstItem="5lb-C1-cQr" firstAttribute="top" secondItem="scY-b9-OBV" secondAttribute="bottom" id="2Jx-zp-m37"/>
                             <constraint firstItem="x5X-Js-g6E" firstAttribute="leading" secondItem="6he-9y-0A7" secondAttribute="leading" id="37u-mn-JMq"/>
@@ -1065,14 +1073,18 @@
                             <constraint firstAttribute="trailing" secondItem="scY-b9-OBV" secondAttribute="trailing" id="FW5-3S-Ulo"/>
                             <constraint firstItem="5lb-C1-cQr" firstAttribute="top" secondItem="x5X-Js-g6E" secondAttribute="bottom" id="GCg-Bl-Ih8"/>
                             <constraint firstItem="scY-b9-OBV" firstAttribute="height" secondItem="x5X-Js-g6E" secondAttribute="height" id="JZ0-1G-4ig"/>
+                            <constraint firstItem="590-RZ-vLi" firstAttribute="leading" secondItem="6he-9y-0A7" secondAttribute="leading" id="NC2-p3-sme"/>
                             <constraint firstItem="1im-Gb-Cjt" firstAttribute="leading" secondItem="6he-9y-0A7" secondAttribute="leading" id="QxU-jV-jWN"/>
                             <constraint firstAttribute="trailing" secondItem="x5X-Js-g6E" secondAttribute="trailing" id="R1J-lO-r44"/>
+                            <constraint firstItem="590-RZ-vLi" firstAttribute="width" secondItem="scY-b9-OBV" secondAttribute="width" id="RAb-vH-CZp"/>
                             <constraint firstItem="scY-b9-OBV" firstAttribute="top" secondItem="wn2-bv-f8k" secondAttribute="bottom" constant="-2" id="YbW-9R-dwS"/>
                             <constraint firstItem="scY-b9-OBV" firstAttribute="leading" secondItem="6he-9y-0A7" secondAttribute="leading" id="ZTn-nl-qos"/>
                             <constraint firstItem="1im-Gb-Cjt" firstAttribute="top" secondItem="TeM-Lm-op4" secondAttribute="bottom" id="aUk-LY-B1b"/>
                             <constraint firstAttribute="trailing" secondItem="x5X-Js-g6E" secondAttribute="trailing" id="anx-ct-Ucp"/>
+                            <constraint firstItem="590-RZ-vLi" firstAttribute="height" secondItem="scY-b9-OBV" secondAttribute="height" id="gvZ-v8-nXb"/>
                             <constraint firstAttribute="trailing" secondItem="scY-b9-OBV" secondAttribute="trailing" id="sI9-Xz-D0n"/>
                             <constraint firstItem="x5X-Js-g6E" firstAttribute="width" secondItem="scY-b9-OBV" secondAttribute="width" id="w0O-2i-FKW"/>
+                            <constraint firstItem="5lb-C1-cQr" firstAttribute="top" secondItem="590-RZ-vLi" secondAttribute="bottom" id="whG-XK-6gw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LzQ-te-cdd"/>
@@ -1085,6 +1097,7 @@
                         <outlet property="profileImage" destination="tuH-6m-yCE" id="6q2-wJ-5dE"/>
                         <outlet property="userName" destination="h6L-MZ-BjA" id="yFz-Pn-wtf"/>
                         <outlet property="userPostContainerView" destination="scY-b9-OBV" id="7TE-4f-5Dx"/>
+                        <outlet property="userRaffleContainerView" destination="590-RZ-vLi" id="Y3q-fr-Ujg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dp5-lM-JtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1520,6 +1533,24 @@
             </objects>
             <point key="canvasLocation" x="1470" y="1950"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Pm5-bp-3Wj">
+            <objects>
+                <viewController id="EMY-VV-rbp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P3g-tN-C18"/>
+                        <viewControllerLayoutGuide type="bottom" id="NKH-A0-MlM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Wv-tH-jSi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SkY-AP-cA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1470" y="2355"/>
+        </scene>
         <!--Item-->
         <scene sceneID="kak-mj-rVW">
             <objects>
@@ -1540,20 +1571,6 @@
             <point key="canvasLocation" x="-332" y="1789.6551724137933"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="cge-pP-ib0">
-            <objects>
-                <viewController id="egn-rA-1M3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Trs-Nf-XpS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U3I-hP-3Rw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1631" y="2677"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="17y-S7-bso">
             <objects>
                 <viewController id="4Mo-hR-89c" sceneMemberID="viewController">
@@ -1564,6 +1581,19 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1a4-g6-519" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="slR-2g-zG4">
+            <objects>
+                <viewController id="FJm-cn-dzW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gTX-17-xwB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WfT-Vx-uiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
