@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class FeedSegmentedViewController: UIViewController {
     @IBOutlet weak var Controller: UISegmentedControl!
     @IBOutlet weak var RaffleFeedContainerView: UIView!

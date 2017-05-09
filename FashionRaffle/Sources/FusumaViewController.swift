@@ -123,11 +123,11 @@ public final class FusumaViewController: UIViewController {
         super.viewDidLoad()
     
         self.view.backgroundColor = fusumaBackgroundColor
-        
         cameraView.delegate = self
         albumView.delegate  = self
         videoView.delegate = self
 
+        self.navigationController?.isNavigationBarHidden = true
         menuView.backgroundColor = fusumaBackgroundColor
         menuView.addBottomBorder(UIColor.black, width: 1.0)
         
@@ -236,8 +236,6 @@ public final class FusumaViewController: UIViewController {
             cameraView.croppedAspectRatioConstraint.isActive = false
         }
     }
-    
-    
 
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -266,14 +264,17 @@ public final class FusumaViewController: UIViewController {
         return true
     }
     
+    
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        //self.dismiss(animated: true, completion: {
+        self.dismiss(animated: true, completion: {
             
-          //  self.delegate?.fusumaClosed?()
-        //})
+           self.delegate?.fusumaClosed?()
+        })
+        /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         self.present(tabBarController, animated: true, completion: nil)
+        */
     }
     
     @IBAction func libraryButtonPressed(_ sender: UIButton) {
@@ -322,10 +323,17 @@ public final class FusumaViewController: UIViewController {
                     result, info in
                     
                     DispatchQueue.main.async(execute: {
-                        self.delegate?.fusumaImageSelected(result!)
+                        //self.delegate?.fusumaImageSelected(result!)
                         
                         print("Called just after FusumaViewController is dismissed.")
 
+                        /*
+                        if let filterimage = result {
+                            let vc = SHViewController(image: filterimage)
+                            vc.delegate = self
+                            self.present(vc, animated: true, completion: nil)
+                        }
+ */
                         /*
                         let presentVC = self.presentingViewController
                         let filterimage = image
@@ -333,9 +341,10 @@ public final class FusumaViewController: UIViewController {
                         vc.delegate = self
                         self.present(vc, animated: true, completion:nil)
                         */
-                        self.dismiss(animated: true, completion: {
-                            self.delegate?.fusumaDismissedWithImage?(result!)
-                        })
+
+                        self.delegate?.fusumaDismissedWithImage?(result!)
+                        
+                        
  
  
                     })
@@ -344,10 +353,9 @@ public final class FusumaViewController: UIViewController {
         } else {
             print("no image crop ")
             delegate?.fusumaImageSelected((view?.image)!)
+
+            self.delegate?.fusumaDismissedWithImage?((view?.image)!)
             
-            self.dismiss(animated: true, completion: {
-                self.delegate?.fusumaDismissedWithImage?((view?.image)!)
-            })
             
         }
         
@@ -513,5 +521,4 @@ private extension FusumaViewController {
         button.addBottomBorder(fusumaTintColor, width: 3)
     }
 }
-
 

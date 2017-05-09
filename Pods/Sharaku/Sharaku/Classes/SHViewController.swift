@@ -71,6 +71,7 @@ public class SHViewController: UIViewController {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         let nib = UINib(nibName: "SHCollectionViewCell", bundle: Bundle(for: self.classForCoder))
         collectionView?.register(nib, forCellWithReuseIdentifier: "cell")
     }
@@ -151,21 +152,18 @@ public class SHViewController: UIViewController {
         if let delegate = self.delegate {
             delegate.shViewControllerDidCancel()
         }
-        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func doneButtontapped() {
         if let delegate = self.delegate {
-            delegate.shViewControllerImageDidFilter(image: (imageView?.image)!)
+            if let image = self.imageView?.image {
+                delegate.shViewControllerImageDidFilter(image: image)
+            }
         }
-        /*
-        let presentingVC: UIViewController! = self.presentingViewController
-        self.dismiss(animated: false, completion: {
-            presentingVC.dismiss(animated: true, completion: nil)
-        })
-        */
 
-        dismiss(animated: true, completion: nil)
+ 
+
+        //dismiss(animated: true, completion: nil)
     }
 }
 

@@ -57,6 +57,7 @@
 		52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52644D451DEB97500095A8FC /* RaffleTableViewController.swift */; };
 		526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526EC5151DDA7462001BE789 /* NewsFeedData.swift */; };
 		526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */; };
+		5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5277C03C1EBED0A300881B4A /* CentralTabBarController.swift */; };
 		5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5279FE061DC942440072A5B5 /* FirstDemo.storyboard */; };
 		5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */; };
 		527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */; };
@@ -144,6 +145,7 @@
 		52644D451DEB97500095A8FC /* RaffleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleTableViewController.swift; sourceTree = "<group>"; };
 		526EC5151DDA7462001BE789 /* NewsFeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedData.swift; sourceTree = "<group>"; };
 		526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewController.swift; sourceTree = "<group>"; };
+		5277C03C1EBED0A300881B4A /* CentralTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralTabBarController.swift; sourceTree = "<group>"; };
 		5279FE061DC942440072A5B5 /* FirstDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstDemo.storyboard; sourceTree = "<group>"; };
 		5279FE081DC9426D0072A5B5 /* DemoFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeatures.swift; sourceTree = "<group>"; };
 		527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 		525D6CA91DC5A1FD00509E20 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
+				5277C03C1EBED0A300881B4A /* CentralTabBarController.swift */,
 				52334DA41E78DE1000FFB8A4 /* Feeds */,
 				52334D8F1E78C31C00FFB8A4 /* Social */,
 				52334D941E78C42C00FFB8A4 /* Profile */,
@@ -559,7 +562,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -718,6 +721,7 @@
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
 				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
+				5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
@@ -892,9 +896,9 @@
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/ORiginal/Development/Spark/Spark_New/Bridging Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -918,9 +922,9 @@
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle-EC601.Raffle-F";
+				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/2016F/EC601/Projects/Raffle_Fashion/True Project/Xu/FashionRaffle copy 6/Bridging Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/OneSpark/Desktop/ORiginal/Development/Spark/Spark_New/Bridging Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

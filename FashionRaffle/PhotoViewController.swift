@@ -10,7 +10,7 @@ import UIKit
 import Sharaku
 import Firebase
 
-class PhotoViewController: UIViewController, FusumaDelegate, SHViewControllerDelegate {
+class PhotoViewController: UIViewController, FusumaDelegate{
 
     @IBOutlet var background: UIView!
     @IBOutlet weak var cancel: UIBarButtonItem!
@@ -20,21 +20,31 @@ class PhotoViewController: UIViewController, FusumaDelegate, SHViewControllerDel
     
     @IBOutlet weak var edit: UIButton!
 
+    var fusumaOne : FusumaViewController?
+    var shOne : SHViewController?
+    var passingImage : UIImage?
 
     let postref = FIRDatabase.database().reference().child("Posts")
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
+
         self.captionLabel.tintColor = UIColor.black
+
+        self.navigationController?.isNavigationBarHidden = true
+        
         let fusuma = FusumaViewController()
-        
-        //        fusumaCropImage = false
-        
         fusuma.delegate = self
-        self.fileUrlLabel.text = ""
-        present(fusuma, animated: true, completion: nil)
-        
-        
+        fusuma.view.frame = self.view.frame
+        self.addChildViewController(fusuma)
+        self.view.addSubview(fusuma.view)
+        fusuma.didMove(toParentViewController: self)
+        fusumaOne = fusuma
+
         
         
     }
@@ -55,39 +65,27 @@ class PhotoViewController: UIViewController, FusumaDelegate, SHViewControllerDel
             uniqueRef.setValue(newPost.dictValue())
             SettingsLauncher.showAlerts(title: "Success!", message: "Your post has been posted!", handler: {
                 UIAlertAction in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-                self.present(tabBarController, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }, controller: self)
         }
         
         
     }
     
-   
-    
-   
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func edit(_ sender: Any) {
-        
-        let fusuma = FusumaViewController()
-        
-        //        fusumaCropImage = false
-        
-        fusuma.delegate = self
-        present(fusuma, animated: true, completion: nil)
-    }
 
+    
     @IBAction func cancel(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-        self.present(tabBarController, animated: true, completion: nil)
+        //self.present(self.fusumaOne!, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.4, animations: {
+            self.navigationController?.isNavigationBarHidden = true
+            self.fusumaOne?.view.frame.origin.x = self.view.frame.origin.x
+            
+        })
     }
     /*
     // MARK: - Navigation
@@ -109,11 +107,22 @@ class PhotoViewController: UIViewController, FusumaDelegate, SHViewControllerDel
     
     // Return the image but called after is dismissed.
     func fusumaDismissedWithImage(_ image: UIImage) {
+        print("Called when success")
+        imageView.image = image
 
-        let filterimage = image
-        let vc = SHViewController(image: filterimage)
-        vc.delegate = self
-        self.present(vc, animated: true, completion:nil)
+        let shVC = SHViewController(image: image)
+        shVC.delegate = self
+
+        
+        self.fusumaOne?.addChildViewController(shVC)
+        shVC.view.frame = self.view.frame
+        self.fusumaOne?.view.addSubview(shVC.view)
+        shVC.didMove(toParentViewController: self.fusumaOne)
+        self.shOne = shVC
+        shVC.view.frame.origin.x = self.view.frame.width + 1
+        UIView.animate(withDuration: 0.3, animations: {
+            shVC.view.frame.origin.x = 0
+        }, completion: nil)
 
         
     }
@@ -130,15 +139,28 @@ class PhotoViewController: UIViewController, FusumaDelegate, SHViewControllerDel
         
         print("Camera roll unauthorized")
     }
-    func shViewControllerImageDidFilter(image: UIImage) {
-        
-        imageView.image = image
-    }
-    
-    func shViewControllerDidCancel() {
-        
-        
-    }
+
     
 
+}
+
+extension PhotoViewController : SHViewControllerDelegate {
+    func shViewControllerDidCancel() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.shOne?.view.frame.origin.x = self.view.frame.width + 100
+        }, completion: {
+            _ in
+            self.shOne?.view.removeFromSuperview()
+            self.shOne?.removeFromParentViewController()
+        })
+    }
+    func shViewControllerImageDidFilter(image: UIImage) {
+
+        self.imageView.image = image
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            self.navigationController?.isNavigationBarHidden = false
+            self.fusumaOne?.view.frame.origin.x = 0 - self.view.frame.width - 100
+        })
+    }
 }

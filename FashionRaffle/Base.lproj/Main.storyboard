@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dH8-RM-eww">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dH8-RM-eww">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="1470" y="-121"/>
         </scene>
-        <!--Ph-->
+        <!--Central Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="Ph" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="CentralTabBarController" customModule="FashionRaffle" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -96,8 +96,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="Gwg-jU-fNk" kind="relationship" relationship="viewControllers" id="dNH-8b-xts"/>
-                        <segue destination="w40-X4-Lat" kind="relationship" relationship="viewControllers" id="X7m-5K-cfg"/>
                         <segue destination="Iae-he-F8u" kind="relationship" relationship="viewControllers" id="xxQ-ge-KmV"/>
+                        <segue destination="w40-X4-Lat" kind="relationship" relationship="viewControllers" id="X7m-5K-cfg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -107,7 +107,7 @@
         <!--Photo View Controller-->
         <scene sceneID="jvI-22-kvb">
             <objects>
-                <viewController id="Dg0-zZ-w19" customClass="PhotoViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoVC" id="Dg0-zZ-w19" customClass="PhotoViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xJe-C1-s6v"/>
                         <viewControllerLayoutGuide type="bottom" id="WpV-f1-xPc"/>
@@ -997,16 +997,14 @@
                                     <segue destination="dvV-Jx-Q6K" kind="embed" id="iO4-nQ-U8i"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiy-oZ-Ipv">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiy-oZ-Ipv">
                                 <rect key="frame" x="0.0" y="93" width="375" height="525"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="HAu-Is-7b7" kind="embed" id="Y7s-F7-6Uq"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dQ-RL-4Qn">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dQ-RL-4Qn">
                                 <rect key="frame" x="0.0" y="93" width="375" height="525"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="LOn-fI-uE8" kind="embed" id="dOp-AX-b6H"/>
                                 </connections>
@@ -1014,11 +1012,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4dQ-RL-4Qn" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="2eS-TW-0fF"/>
+                            <constraint firstItem="wiy-oZ-Ipv" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="F0p-4F-Ojn"/>
                             <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="dd2-tn-hXg" secondAttribute="bottom" id="H1J-jj-d1R"/>
+                            <constraint firstItem="4dQ-RL-4Qn" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="KbA-XP-FbB"/>
                             <constraint firstItem="xYz-tM-OQo" firstAttribute="centerX" secondItem="aqK-SF-3RQ" secondAttribute="centerX" id="Lh1-1q-itE"/>
+                            <constraint firstItem="wiy-oZ-Ipv" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="O0G-FE-XjL"/>
+                            <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="4dQ-RL-4Qn" secondAttribute="bottom" id="Ovl-sS-CHt"/>
+                            <constraint firstAttribute="trailing" secondItem="4dQ-RL-4Qn" secondAttribute="trailing" id="TkU-Wp-wKi"/>
+                            <constraint firstAttribute="trailing" secondItem="wiy-oZ-Ipv" secondAttribute="trailing" id="XXn-DY-h3F"/>
                             <constraint firstItem="dd2-tn-hXg" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="b1V-NT-RYd"/>
                             <constraint firstAttribute="trailing" secondItem="dd2-tn-hXg" secondAttribute="trailing" id="kDj-99-M0m"/>
                             <constraint firstItem="dd2-tn-hXg" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="keL-Fo-bOS"/>
+                            <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="wiy-oZ-Ipv" secondAttribute="bottom" id="rRK-wH-chY"/>
                             <constraint firstItem="xYz-tM-OQo" firstAttribute="width" secondItem="aqK-SF-3RQ" secondAttribute="width" id="tv3-uU-JL1"/>
                             <constraint firstItem="xYz-tM-OQo" firstAttribute="top" secondItem="mtK-BD-0IK" secondAttribute="bottom" id="zZ7-bu-oZu"/>
                         </constraints>
@@ -1054,11 +1060,11 @@
             </objects>
             <point key="canvasLocation" x="-306" y="-738"/>
         </scene>
-        <!--Photo-->
+        <!--Navigation Controller-->
         <scene sceneID="cLX-9f-Pc2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iae-he-F8u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Photo" image="first" id="SGq-ME-Y40"/>
+                <navigationController storyboardIdentifier="PhotoVCNavi" automaticallyAdjustsScrollViewInsets="NO" id="Iae-he-F8u" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="first" id="SGq-ME-Y40"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2YP-uO-gwJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1259,14 +1265,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-lc-F6f">
-                                                    <rect key="frame" x="7" y="46" width="360" height="123"/>
+                                                    <rect key="frame" x="7" y="46" width="359" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->
                                                     </date>
                                                 </datePicker>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Lb-Nl-Onf">
-                                                    <rect key="frame" x="99" y="177" width="174" height="123"/>
+                                                    <rect key="frame" x="98" y="177" width="175" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->

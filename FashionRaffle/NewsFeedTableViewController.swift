@@ -27,7 +27,10 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
+        
         SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
         // try! FIRAuth.auth()?.signOut()

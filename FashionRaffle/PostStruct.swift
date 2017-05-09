@@ -66,6 +66,14 @@ class Post {
     }
 }
 
+class PhotoEdit {
+    var photo: UIImage
+    static var currentPhoto: PhotoEdit?
+    
+    init(photo: UIImage) {
+        self.photo = photo
+    }
+}
 
 
 
