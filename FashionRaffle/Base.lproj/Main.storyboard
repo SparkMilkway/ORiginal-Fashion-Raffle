@@ -1013,6 +1013,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4dQ-RL-4Qn" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="2eS-TW-0fF"/>
+                            <constraint firstItem="xYz-tM-OQo" firstAttribute="top" secondItem="aqK-SF-3RQ" secondAttribute="top" constant="64" id="5dE-XL-0jI"/>
                             <constraint firstItem="wiy-oZ-Ipv" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="F0p-4F-Ojn"/>
                             <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="dd2-tn-hXg" secondAttribute="bottom" id="H1J-jj-d1R"/>
                             <constraint firstItem="4dQ-RL-4Qn" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="KbA-XP-FbB"/>
@@ -1026,7 +1027,6 @@
                             <constraint firstItem="dd2-tn-hXg" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="keL-Fo-bOS"/>
                             <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="wiy-oZ-Ipv" secondAttribute="bottom" id="rRK-wH-chY"/>
                             <constraint firstItem="xYz-tM-OQo" firstAttribute="width" secondItem="aqK-SF-3RQ" secondAttribute="width" id="tv3-uU-JL1"/>
-                            <constraint firstItem="xYz-tM-OQo" firstAttribute="top" secondItem="mtK-BD-0IK" secondAttribute="bottom" id="zZ7-bu-oZu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ORigiNal" id="b0R-d7-Ltj"/>
@@ -1265,14 +1265,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-lc-F6f">
-                                                    <rect key="frame" x="7" y="46" width="359" height="123"/>
+                                                    <rect key="frame" x="7" y="46" width="358" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->
                                                     </date>
                                                 </datePicker>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Lb-Nl-Onf">
-                                                    <rect key="frame" x="98" y="177" width="175" height="123"/>
+                                                    <rect key="frame" x="97" y="177" width="175" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->

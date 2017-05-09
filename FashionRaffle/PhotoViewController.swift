@@ -65,7 +65,10 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             uniqueRef.setValue(newPost.dictValue())
             SettingsLauncher.showAlerts(title: "Success!", message: "Your post has been posted!", handler: {
                 UIAlertAction in
-                self.dismiss(animated: true, completion: nil)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.dismiss(animated: true, completion: nil)
+                })
+                
             }, controller: self)
         }
         
