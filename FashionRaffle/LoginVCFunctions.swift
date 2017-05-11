@@ -285,18 +285,6 @@ extension LoginViewController {
                             }
                             Profile.currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
                         })
-                        
-                        
-                        /*
-                         let currentUser = Profile.currentUser
-                         print(currentUser?.username)
-                         print(currentUser?.userID)
-                         print(currentUser?.checkInCount)
-                         print(currentUser?.lastCheckDate)
-                         print(currentUser?.email)
-                         print(currentUser?.tickets)
-                         print(currentUser?.editor)
-                         */
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                             self.loginSuccess()
                         })

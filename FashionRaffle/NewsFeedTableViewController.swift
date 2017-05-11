@@ -23,7 +23,16 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        if FIRAuth.auth()?.currentUser == nil {
+            print("User not signed in. Will go to log in page")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = loginVC
+        }
+ 
     }
     
     override func viewDidLoad() {
@@ -33,7 +42,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
-        // try! FIRAuth.auth()?.signOut()
+        //try! FIRAuth.auth()?.signOut()
+        
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         

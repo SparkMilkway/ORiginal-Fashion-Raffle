@@ -265,11 +265,10 @@ public final class FusumaViewController: UIViewController {
     
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.dismiss(animated: true, completion: {
-                
-                self.delegate?.fusumaClosed?()
-            })
+
+        UIView.animate(withDuration: 0.4, animations: {
+            self.dismiss(animated: true, completion: nil)
+            self.delegate?.fusumaClosed?()
         })
 
     }
@@ -324,26 +323,8 @@ public final class FusumaViewController: UIViewController {
                         
                         print("Called just after FusumaViewController is dismissed.")
 
-                        /*
-                        if let filterimage = result {
-                            let vc = SHViewController(image: filterimage)
-                            vc.delegate = self
-                            self.present(vc, animated: true, completion: nil)
-                        }
- */
-                        /*
-                        let presentVC = self.presentingViewController
-                        let filterimage = image
-                        let vc = SHViewController(image: filterimage)
-                        vc.delegate = self
-                        self.present(vc, animated: true, completion:nil)
-                        */
-
                         self.delegate?.fusumaDismissedWithImage?(result!)
-                        
-                        
- 
- 
+
                     })
                 }
             })

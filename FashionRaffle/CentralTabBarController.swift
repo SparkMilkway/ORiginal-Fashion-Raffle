@@ -41,18 +41,14 @@ class CentralTabBarController: UITabBarController {
     func centralAction() {
         
         let story = UIStoryboard(name: "Main", bundle: nil)
-        let photoVC = story.instantiateViewController(withIdentifier: "PhotoVCNavi")
-        let height = self.view.frame.height
-        let width = self.view.frame.width
-        let center = self.view.center
-        
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.frame.size.height = height * 0.96
-            self.view.frame.size.width = width * 0.96
-            self.view.center = center
-            self.tabBar.frame.size.width = width
-            self.present(photoVC, animated: true, completion: nil)
+        let photoVCNavi = story.instantiateViewController(withIdentifier: "PhotoVCNavi") as! UINavigationController
+
+        let photoVC = photoVCNavi.topViewController as! PhotoViewController
+        photoVC.centralVC = self
+        UIView.animate(withDuration: 0.4, animations: {
+            self.view.alpha = 0.3
+
+            self.present(photoVCNavi, animated: true, completion: nil)
         })
         
  

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Cache.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CryptoSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FashionRaffle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>079660EE0A23665CBB2C787BE94440F6</key>
+		<key>211412599AED94810745EFA1400B1C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67FE818B9CA1692F5F9B7FB550794844</key>
+		<key>27EF227C98FC88F64B0E5D4B92E3F189</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC43D9FA3410AA72087830B8BE6F29E6</key>
+		<key>6174336994A32A2029EF49A7AAB95EB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4D9B042B35895CD629DC27210BF76A4</key>
+		<key>AB1766BA6C13EB0E47033C53189C7CA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B20D8B17093776ACFA3954EACCB82C7E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEE131C1A6C1AFD15D2BB3C5BAD505F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

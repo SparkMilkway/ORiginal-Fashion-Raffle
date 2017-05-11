@@ -9,6 +9,7 @@
 import UIKit
 import Sharaku
 import Firebase
+import Cache
 
 class PhotoViewController: UIViewController, FusumaDelegate{
 
@@ -24,6 +25,8 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     var shOne : SHViewController?
     var passingImage : UIImage?
 
+    var centralVC : CentralTabBarController?
+    
     let postref = FIRDatabase.database().reference().child("Posts")
     
     override var prefersStatusBarHidden: Bool {
@@ -33,6 +36,11 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
+        let cache = HybridCache(name: "test")
+        
+        cache.add("some", object: "This is some", expiry: Expiry.seconds(1000), completion: nil)
+ */
         self.captionLabel.tintColor = UIColor.black
 
         self.navigationController?.isNavigationBarHidden = true
@@ -65,8 +73,16 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             uniqueRef.setValue(newPost.dictValue())
             SettingsLauncher.showAlerts(title: "Success!", message: "Your post has been posted!", handler: {
                 UIAlertAction in
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.4, animations: {
                     self.dismiss(animated: true, completion: nil)
+                    if let central = self.centralVC {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                            UIView.animate(withDuration: 0.3, animations: {
+                                central.view.alpha = 1
+                            })
+                        })
+                        
+                    }
                 })
                 
             }, controller: self)
@@ -83,12 +99,13 @@ class PhotoViewController: UIViewController, FusumaDelegate{
 
     
     @IBAction func cancel(_ sender: Any) {
-        //self.present(self.fusumaOne!, animated: true, completion: nil)
+        
         UIView.animate(withDuration: 0.4, animations: {
             self.navigationController?.isNavigationBarHidden = true
             self.fusumaOne?.view.frame.origin.x = self.view.frame.origin.x
             
         })
+        
     }
     /*
     // MARK: - Navigation
@@ -142,9 +159,15 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
         print("Camera roll unauthorized")
     }
-
-    
-
+    func fusumaClosed() {
+        if let central = self.centralVC {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                UIView.animate(withDuration: 0.3, animations: {
+                    central.view.alpha = 1
+                })
+            })
+        }
+    }
 }
 
 extension PhotoViewController : SHViewControllerDelegate {

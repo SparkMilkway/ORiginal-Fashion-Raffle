@@ -1,4 +1,7 @@
 PODS:
+  - Cache (2.2.2):
+    - CryptoSwift
+  - CryptoSwift (0.6.9)
   - Firebase/Auth (3.7.1):
     - Firebase/Core
     - FirebaseAuth (= 3.0.5)
@@ -46,6 +49,7 @@ PODS:
   - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - Cache
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -56,6 +60,8 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Cache: b00196618af3facf17986fadda228cc77b5a5a10
+  CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
@@ -72,6 +78,6 @@ SPEC CHECKSUMS:
   Sharaku: c18de569fc99f6e936f46ca812b571826cc658a7
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 57aab939172a6639f185ee744b740e3247332610
+PODFILE CHECKSUM: cdd6ff1da292832a6affdc55f7b33fcf07313d4c
 
 COCOAPODS: 1.2.1
