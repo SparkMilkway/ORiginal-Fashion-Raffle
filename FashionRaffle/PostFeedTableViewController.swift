@@ -12,6 +12,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorageUI
 import SVProgressHUD
+import Cache
 
 class PostFeedTableViewController: UITableViewController {
     
@@ -21,6 +22,7 @@ class PostFeedTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,6 @@
 import UIKit
 import Sharaku
 import Firebase
-import Cache
 
 class PhotoViewController: UIViewController, FusumaDelegate{
 
@@ -36,15 +35,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /*
-        let cache = HybridCache(name: "test")
-        
-        cache.add("some", object: "This is some", expiry: Expiry.seconds(1000), completion: nil)
- */
-        self.captionLabel.tintColor = UIColor.black
-
         self.navigationController?.isNavigationBarHidden = true
-        
         let fusuma = FusumaViewController()
         fusuma.delegate = self
         fusuma.view.frame = self.view.frame

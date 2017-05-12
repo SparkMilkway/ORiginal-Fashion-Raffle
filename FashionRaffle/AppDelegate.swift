@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import EventKit
+import Cache
 
 
 @UIApplicationMain
@@ -25,28 +26,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setDefaultStyle(.dark)
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = false
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-        
-        self.window?.rootViewController = loginVC
+        rootToLogIn()
+
 
         // Override point for customization after application launch.
         if FIRAuth.auth()?.currentUser != nil {
             let userID = FIRAuth.auth()?.currentUser?.uid
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-            self.window?.rootViewController = viewController
             
-            FIRDatabase.database().reference().child("Users").child(userID!).observeSingleEvent(of: .value, with: {
-                snapshot in
-                guard let profilevalue = snapshot.value as? [String:Any] else {
-                    try! FIRAuth.auth()?.signOut()
-                    return
+            let userCache = HybridCache(name: "UserCache")
+            let syncUserCache = SyncHybridCache(userCache)
+            print("=========")
+            if let json:JSON = syncUserCache.object("UserProfile") {
+                let datadic = json.object as? [String:Any]
+                print("Has Cache Value!")
+                Profile.currentUser = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
+                print("CurrentUser data inputs successfully.")
+                self.rootToMainTab()
+            }
+            else {
+                // This part can later be used as an option that the user doesn't want to cache the user data
+                print("No cache data, will log out")
+                try! FIRAuth.auth()?.signOut()
+                if FBSDKAccessToken.current() != nil {
+                    FBSDKLoginManager().logOut()
                 }
-                let currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
-                Profile.currentUser = currentUser
-            })
+            }
+
+            print("=========")
             
+
+
         }
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
@@ -84,6 +93,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+        //Cache the profile Info so don't need to retrieve again from DB
+        //It will reserve for 7 days and then cleaned automatically
+         let cache = HybridCache(name: "UserCache")
+         let syncCache = SyncHybridCache(cache)
+         let currentUserProfile = Profile.currentUser?.dictValue()
+         let jsonDic = JSON.dictionary(currentUserProfile!)
+         syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
+         print("User Profile Caches Successfully")
+
+
+        
+    }
+    private func rootToLogIn() {
+    
+        let storyboard = UIStoryboard(name:"Main", bundle:nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        self.window?.rootViewController = loginVC
+    }
+    
+    private func rootToMainTab() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        self.window?.rootViewController = viewController
     }
 
 

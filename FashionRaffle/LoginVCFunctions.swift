@@ -290,7 +290,8 @@ extension LoginViewController {
                         })
                     }
                     else {
-                        self.fbLoginButton.isHidden = true
+                        self.fbLoginButton.isHidden = false
+                        SVProgressHUD.dismiss()
                         SettingsLauncher.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
                     }
                 })
@@ -298,12 +299,15 @@ extension LoginViewController {
             }
             else{
                 self.fbLoginButton.isHidden = false
+                SVProgressHUD.dismiss()
             }
             
         }
         else {
             self.fbLoginButton.isHidden = false
+            SVProgressHUD.dismiss()
             return}
+        
         
         
     }

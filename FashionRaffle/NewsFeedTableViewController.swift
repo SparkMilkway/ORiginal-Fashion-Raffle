@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import SVProgressHUD
+import Cache
 
 
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
@@ -25,7 +26,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         if FIRAuth.auth()?.currentUser == nil {
             print("User not signed in. Will go to log in page")
-            
+            SVProgressHUD.dismiss()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
             self.present(loginVC, animated: true, completion: nil)
@@ -42,7 +43,6 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
-        //try! FIRAuth.auth()?.signOut()
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
@@ -62,7 +62,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             self.newsF.insert(newNewsData, at: 0)
             self.tableView.reloadData()
             
-            SettingsLauncher.dismissLoading()
+           SettingsLauncher.dismissLoading()
             
         })
         

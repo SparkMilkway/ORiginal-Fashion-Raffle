@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseStorageUI
 import SVProgressHUD
+import Cache
 import PassKit
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate, PKPaymentAuthorizationViewControllerDelegate {
@@ -29,6 +30,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         let currentDate = Date().now()
         let currentUser = Profile.currentUser
         if let checkInCount = currentUser?.checkInCount {
@@ -146,6 +148,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         super.viewDidLoad()
         tableView.allowsSelection = false
         fbLogoutButton.delegate = self
+
+        
         let now = Date().now()
         self.dateLabel.text = now
         profileImageView()
