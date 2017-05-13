@@ -28,22 +28,33 @@ class FeedSegmentedViewController: UIViewController {
     }
     
     @IBAction func changeView(_ sender: Any) {
+
+        
         
         if Controller.selectedSegmentIndex == 0{
-            NewsFeedContainerView.isHidden = false
-            RaffleFeedContainerView.isHidden = true
-            SocialFeedContainerView.isHidden = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.NewsFeedContainerView.isHidden = false
+                self.RaffleFeedContainerView.isHidden = true
+                self.SocialFeedContainerView.isHidden = true
+            })
+            
         }
         
         if Controller.selectedSegmentIndex == 1{
-            NewsFeedContainerView.isHidden = true
-            RaffleFeedContainerView.isHidden = true
-            SocialFeedContainerView.isHidden = false
+            UIView.animate(withDuration: 0.2, animations: {
+                self.NewsFeedContainerView.isHidden = true
+                self.RaffleFeedContainerView.isHidden = true
+                self.SocialFeedContainerView.isHidden = false
+            })
+
         }
         if Controller.selectedSegmentIndex == 2{
-            NewsFeedContainerView.isHidden = true
-            RaffleFeedContainerView.isHidden = false
-            SocialFeedContainerView.isHidden = true
+            UIView.animate(withDuration: 0.2, animations: {
+                self.NewsFeedContainerView.isHidden = true
+                self.RaffleFeedContainerView.isHidden = false
+                self.SocialFeedContainerView.isHidden = true
+            })
+
         }
 
     }

@@ -59,6 +59,8 @@ class AddNewsTableViewController: UITableViewController {
         titleImage.isUserInteractionEnabled = true
         titleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectNewsImageView)))
         
+    
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.updateDateLabel()

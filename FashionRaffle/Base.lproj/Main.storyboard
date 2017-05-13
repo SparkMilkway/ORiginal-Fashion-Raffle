@@ -86,7 +86,7 @@
         <!--Central Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="CentralTabBarController" customModule="FashionRaffle" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalTransitionStyle="flipHorizontal" id="49e-Tb-3d3" customClass="CentralTabBarController" customModule="FashionRaffle" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -223,7 +223,7 @@
         <!--Login View Controller-->
         <scene sceneID="pdO-20-G05">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="dH8-RM-eww" customClass="LoginViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" modalTransitionStyle="flipHorizontal" id="dH8-RM-eww" customClass="LoginViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e6M-Ai-CHy"/>
                         <viewControllerLayoutGuide type="bottom" id="Qh5-Bq-yK2"/>
@@ -950,7 +950,7 @@
         <!--Item-->
         <scene sceneID="T4R-q5-Lj3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HCo-fB-uj7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="HCo-fB-uj7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="quZ-rJ-DXu"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="4Yr-K0-H9U"/>
@@ -1041,10 +1041,10 @@
             </objects>
             <point key="canvasLocation" x="633" y="-738"/>
         </scene>
-        <!--ORigiNaL-->
+        <!--Explore-->
         <scene sceneID="pop-3w-aC4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gwg-jU-fNk" userLabel="ORigiNaL" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gwg-jU-fNk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Explore" image="first" id="CR1-qj-yHx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tbP-zW-Lwh">
@@ -1265,14 +1265,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-lc-F6f">
-                                                    <rect key="frame" x="7" y="46" width="358" height="123"/>
+                                                    <rect key="frame" x="7" y="46" width="357" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->
                                                     </date>
                                                 </datePicker>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Lb-Nl-Onf">
-                                                    <rect key="frame" x="97" y="177" width="175" height="123"/>
+                                                    <rect key="frame" x="96" y="177" width="176" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="515197669.98188102">
                                                         <!--2017-04-29 22:27:49 +0000-->

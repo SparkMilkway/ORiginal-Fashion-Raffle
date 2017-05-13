@@ -388,7 +388,6 @@
 		52334DA11E78D4EB00FFB8A4 /* Data Manage */ = {
 			isa = PBXGroup;
 			children = (
-				52472E7D1E949A91008F6475 /* FeedSegmentedViewController.swift */,
 				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 			);
 			name = "Data Manage";
@@ -397,6 +396,7 @@
 		52334DA41E78DE1000FFB8A4 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				52472E7D1E949A91008F6475 /* FeedSegmentedViewController.swift */,
 				52334DA51E78DE1A00FFB8A4 /* Data Manage */,
 				5279FE051DC9421F0072A5B5 /* News Feed */,
 				52334D951E78C43500FFB8A4 /* Raffle Feed */,

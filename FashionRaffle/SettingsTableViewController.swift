@@ -30,7 +30,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         let currentDate = Date().now()
         let currentUser = Profile.currentUser
         if let checkInCount = currentUser?.checkInCount {
@@ -229,13 +229,16 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     func logOut() {
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-        self.present(loginVC, animated: true, completion: nil)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = loginVC
-        Profile.currentUser = nil
-        print("Logged Out!")
+        self.present(loginVC, animated: true, completion: {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = loginVC
+            Profile.currentUser = nil
+            print("Logged Out!")
+        })
+        
     }
     
     

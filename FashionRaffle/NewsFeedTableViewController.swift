@@ -47,6 +47,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
+
+        
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             guard let newsFeedData = snapshot.value as? [String:Any] else {
@@ -65,7 +67,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
            SettingsLauncher.dismissLoading()
             
         })
-        
+ 
     }
     
     //The function for search bar
