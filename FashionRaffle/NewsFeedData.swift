@@ -23,9 +23,10 @@ class NewsFeed {
     let detailInfo:String
     let imagePool:[UIImage]?
     let tags:[String]
+    let likedUsers:[String]?
     static var selectedNews:NewsFeed?
     
-    init(newsID:String?, releaseDate: Date?, title:String, titleImage:UIImage?, subtitle:String, detailInfo:String, imagePool:[UIImage]?, tags:[String]) {
+    init(newsID:String?, releaseDate: Date?, title:String, titleImage:UIImage?, subtitle:String, detailInfo:String, imagePool:[UIImage]?, tags:[String], likedUsers:[String]?) {
         self.newsID = newsID
         self.title = title
         self.titleImage = titleImage
@@ -34,6 +35,7 @@ class NewsFeed {
         self.imagePool = imagePool
         self.tags = tags
         self.releaseDate = releaseDate
+        self.likedUsers = likedUsers
         timestamp = Date().now()
     }
     // Fetch the News Feed
@@ -56,13 +58,15 @@ class NewsFeed {
             releaseD = nil
         }
         
+        let likedUsers = contents["likedUsers"] as? [String]
+        
         var imagePool = [UIImage]()
         if let strPool = contents["imagePool"] as? [String] {
             for imgstrs in strPool {
                 imagePool.append(UIImage.imageWithBase64String(base64String: imgstrs))
             }
         }
-        return NewsFeed(newsID: newsID, releaseDate: releaseD, title: title, titleImage: titleImage, subtitle: subtitle!, detailInfo: detailInfo!, imagePool: imagePool, tags:tags!)
+        return NewsFeed(newsID: newsID, releaseDate: releaseD, title: title, titleImage: titleImage, subtitle: subtitle!, detailInfo: detailInfo!, imagePool: imagePool, tags:tags!, likedUsers:likedUsers)
     }
     
     func dictValue() -> [String:Any] {
@@ -74,6 +78,7 @@ class NewsFeed {
         newsDict["subtitle"] = subtitle
         newsDict["detailInfo"] = detailInfo
         newsDict["tags"] = tags
+        newsDict["likedUsers"] = likedUsers
         //newsDict["releaseDate"] = releaseDate
         
         if let releaseD = releaseDate {
