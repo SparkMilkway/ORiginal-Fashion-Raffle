@@ -35,9 +35,9 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.dismiss(animated: true, completion: nil)
         }, controller: self)
         followed = Profile.currentUser?.followBrands
-        
+
         self.brandsCollectionView.reloadData()
-        
+
     }
     
     
@@ -55,7 +55,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.brandsCollectionView.dataSource = self
         self.brandsCollectionView.allowsMultipleSelection = true
         
-        
+     
         
         ref.child("Brands").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in

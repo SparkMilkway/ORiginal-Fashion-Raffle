@@ -140,7 +140,7 @@ class NewsDataCell: UITableViewCell{
         }
         open(scheme: "x-apple-reminder://")
         
-
+        
     }
     
     func createReminder(releasedate: String) {
@@ -179,7 +179,7 @@ class NewsDataCell: UITableViewCell{
         }
     }
     
-
+    
 }
 
 func open(scheme: String) {

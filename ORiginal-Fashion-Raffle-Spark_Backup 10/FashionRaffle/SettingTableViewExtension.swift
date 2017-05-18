@@ -36,7 +36,7 @@ extension SettingTableViewController: UIImagePickerControllerDelegate,UINavigati
             
             selectedImageFromPicker = originalImage
         }
-        
+      
         if let selectedImage = selectedImageFromPicker {
             profileImage.image = selectedImage
         }

@@ -12,6 +12,9 @@ pod 'SVProgressHUD'
 pod 'Sharaku'
 
 
+pod 'HGCircularSlider', '~> 2.0.0'
+pod 'AnimatedDropdownMenu'
+
 
 
 end

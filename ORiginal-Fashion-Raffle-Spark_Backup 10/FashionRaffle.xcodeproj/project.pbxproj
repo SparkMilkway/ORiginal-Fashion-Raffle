@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		045482C61EC0E74600DFE4B5 /* profileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045482C51EC0E74600DFE4B5 /* profileMainViewController.swift */; };
-		045482C81EC0E77B00DFE4B5 /* profileMainViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045482C71EC0E77B00DFE4B5 /* profileMainViewExtension.swift */; };
-		045482CC1EC0EA4600DFE4B5 /* userRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045482C91EC0EA4600DFE4B5 /* userRaffleViewController.swift */; };
-		045482CD1EC0EA4600DFE4B5 /* userPostsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045482CA1EC0EA4600DFE4B5 /* userPostsCollectionViewController.swift */; };
-		045482CE1EC0EA4600DFE4B5 /* userPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045482CB1EC0EA4600DFE4B5 /* userPostsCollectionViewCell.swift */; };
+		042858C01EC8D5720066EC31 /* userPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858BF1EC8D5720066EC31 /* userPostsCollectionViewCell.swift */; };
+		042858C21EC8D5840066EC31 /* userPostsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858C11EC8D5840066EC31 /* userPostsCollectionViewController.swift */; };
+		042858C41EC8D5BA0066EC31 /* profileMainViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858C31EC8D5BA0066EC31 /* profileMainViewExtension.swift */; };
+		042858C61EC8D5C50066EC31 /* profileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858C51EC8D5C50066EC31 /* profileMainViewController.swift */; };
+		042858C81EC8D5DE0066EC31 /* userRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858C71EC8D5DE0066EC31 /* userRaffleViewController.swift */; };
+		042858CC1EC8DC2D0066EC31 /* giveAwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042858CB1EC8DC2D0066EC31 /* giveAwayViewController.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -89,11 +90,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		045482C51EC0E74600DFE4B5 /* profileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profileMainViewController.swift; path = "../../ORiginal-Fashion-Raffle-Spark_Backup 7/FashionRaffle/profileMainViewController.swift"; sourceTree = "<group>"; };
-		045482C71EC0E77B00DFE4B5 /* profileMainViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profileMainViewExtension.swift; path = "../../ORiginal-Fashion-Raffle-Spark_Backup 7/FashionRaffle/profileMainViewExtension.swift"; sourceTree = "<group>"; };
-		045482C91EC0EA4600DFE4B5 /* userRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = userRaffleViewController.swift; path = "../../ORiginal-Fashion-Raffle-Spark_Backup 7/FashionRaffle/userRaffleViewController.swift"; sourceTree = "<group>"; };
-		045482CA1EC0EA4600DFE4B5 /* userPostsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = userPostsCollectionViewController.swift; path = "../../ORiginal-Fashion-Raffle-Spark_Backup 7/FashionRaffle/userPostsCollectionViewController.swift"; sourceTree = "<group>"; };
-		045482CB1EC0EA4600DFE4B5 /* userPostsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = userPostsCollectionViewCell.swift; path = "../../ORiginal-Fashion-Raffle-Spark_Backup 7/FashionRaffle/userPostsCollectionViewCell.swift"; sourceTree = "<group>"; };
+		042858BF1EC8D5720066EC31 /* userPostsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userPostsCollectionViewCell.swift; sourceTree = "<group>"; };
+		042858C11EC8D5840066EC31 /* userPostsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userPostsCollectionViewController.swift; sourceTree = "<group>"; };
+		042858C31EC8D5BA0066EC31 /* profileMainViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileMainViewExtension.swift; sourceTree = "<group>"; };
+		042858C51EC8D5C50066EC31 /* profileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileMainViewController.swift; sourceTree = "<group>"; };
+		042858C71EC8D5DE0066EC31 /* userRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userRaffleViewController.swift; sourceTree = "<group>"; };
+		042858CB1EC8DC2D0066EC31 /* giveAwayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = giveAwayViewController.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -340,12 +342,12 @@
 				52334DA11E78D4EB00FFB8A4 /* Data Manage */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */,
-				045482C91EC0EA4600DFE4B5 /* userRaffleViewController.swift */,
-				045482CA1EC0EA4600DFE4B5 /* userPostsCollectionViewController.swift */,
-				045482CB1EC0EA4600DFE4B5 /* userPostsCollectionViewCell.swift */,
+				042858C71EC8D5DE0066EC31 /* userRaffleViewController.swift */,
+				042858C51EC8D5C50066EC31 /* profileMainViewController.swift */,
+				042858BF1EC8D5720066EC31 /* userPostsCollectionViewCell.swift */,
+				042858C11EC8D5840066EC31 /* userPostsCollectionViewController.swift */,
 				52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */,
-				045482C51EC0E74600DFE4B5 /* profileMainViewController.swift */,
-				045482C71EC0E77B00DFE4B5 /* profileMainViewExtension.swift */,
+				042858C31EC8D5BA0066EC31 /* profileMainViewExtension.swift */,
 				52071E851E94908400ADDB8C /* BrandsViewController.swift */,
 			);
 			name = Profile;
@@ -455,6 +457,7 @@
 				52334D8E1E78C25D00FFB8A4 /* Login */,
 				525D6CA91DC5A1FD00509E20 /* TabViews */,
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
+				042858CB1EC8DC2D0066EC31 /* giveAwayViewController.swift */,
 				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
 			);
 			name = "Main Interface";
@@ -716,18 +719,14 @@
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
-				045482CD1EC0EA4600DFE4B5 /* userPostsCollectionViewController.swift in Sources */,
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
-				045482CE1EC0EA4600DFE4B5 /* userPostsCollectionViewCell.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
-				045482C81EC0E77B00DFE4B5 /* profileMainViewExtension.swift in Sources */,
-				045482CC1EC0EA4600DFE4B5 /* userRaffleViewController.swift in Sources */,
 				522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
@@ -735,8 +734,12 @@
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */,
+				042858CC1EC8DC2D0066EC31 /* giveAwayViewController.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
 				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
+				042858C81EC8D5DE0066EC31 /* userRaffleViewController.swift in Sources */,
+				042858C21EC8D5840066EC31 /* userPostsCollectionViewController.swift in Sources */,
+				042858C41EC8D5BA0066EC31 /* profileMainViewExtension.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
 				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
@@ -750,8 +753,9 @@
 				522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				52F970811DFDED2200E396CD /* Settings&Extensions.swift in Sources */,
+				042858C01EC8D5720066EC31 /* userPostsCollectionViewCell.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
-				045482C61EC0E74600DFE4B5 /* profileMainViewController.swift in Sources */,
+				042858C61EC8D5C50066EC31 /* profileMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +922,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Mac/Desktop/HYPERelease/untitled folder/ORiginal-Fashion-Raffle-Spark_Backup 10/Bridging Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Mac/Desktop/HYPERelease/CGCircular/ORiginal-Fashion-Raffle-Spark_Backup 10/Bridging Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -944,7 +948,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FashionRaffle.Raffle-F";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Mac/Desktop/HYPERelease/untitled folder/ORiginal-Fashion-Raffle-Spark_Backup 10/Bridging Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Mac/Desktop/HYPERelease/CGCircular/ORiginal-Fashion-Raffle-Spark_Backup 10/Bridging Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

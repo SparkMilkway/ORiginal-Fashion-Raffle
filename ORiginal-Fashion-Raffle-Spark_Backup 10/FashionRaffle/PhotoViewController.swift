@@ -9,6 +9,8 @@
 import UIKit
 import Sharaku
 import Firebase
+import AnimatedDropdownMenu
+
 
 class PhotoViewController: UIViewController, FusumaDelegate{
 
@@ -18,12 +20,28 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     @IBOutlet weak var fileUrlLabel: UILabel!
     @IBOutlet weak var captionLabel: UITextView!
     
+    @IBOutlet weak var giveAwayContainer: UIView!
 
     var fusumaOne : FusumaViewController?
     var shOne : SHViewController?
     var passingImage : UIImage?
 
     let postref = FIRDatabase.database().reference().child("Posts")
+    
+    //set up dropdown menu
+    fileprivate let dropdownItems: [AnimatedDropdownMenu.Item] = [
+        AnimatedDropdownMenu.Item.init("New Post", nil, nil),
+        AnimatedDropdownMenu.Item.init("Direct Message", nil, nil),
+        AnimatedDropdownMenu.Item.init("Give Away Post", nil, nil)
+    ]
+    
+    fileprivate var selectedStageIndex: Int = 0
+    fileprivate var lastStageIndex: Int = 0
+    fileprivate var dropdownMenu: AnimatedDropdownMenu!
+    //
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +59,17 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         fusuma.didMove(toParentViewController: self)
         fusumaOne = fusuma
 
+        setupAnimatedDropdownMenu()
         
+        giveAwayContainer.isHidden = true
+
+
         
     }
+    
+    
+    
+   
     
     @IBAction func uploadPost(_ sender: Any) {
         let image = self.imageView.image
@@ -77,11 +103,17 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     
     @IBAction func cancel(_ sender: Any) {
         //self.present(self.fusumaOne!, animated: true, completion: nil)
+        
+        //when navigation dropdown menu open, click back, menu won't disappear. Need attention!!!!!!!!!!!
+        
         UIView.animate(withDuration: 0.4, animations: {
+            
             self.navigationController?.isNavigationBarHidden = true
             self.fusumaOne?.view.frame.origin.x = self.view.frame.origin.x
             
+            
         })
+        
     }
     /*
     // MARK: - Navigation
@@ -135,6 +167,71 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
         print("Camera roll unauthorized")
     }
+    
+    fileprivate func setupAnimatedDropdownMenu() {
+        
+        let dropdownMenu = AnimatedDropdownMenu(navigationController: navigationController, containerView: view, selectedIndex: selectedStageIndex, items: dropdownItems)
+        
+        dropdownMenu.cellBackgroundColor = UIColor.white
+        dropdownMenu.cellSelectedColor = UIColor.lightGray
+        dropdownMenu.menuTitleColor = UIColor.black
+        dropdownMenu.menuArrowTintColor = UIColor.black
+        dropdownMenu.cellTextColor = UIColor.black
+        
+        dropdownMenu.cellTextAlignment = .center
+        dropdownMenu.cellSeparatorColor = .clear
+        
+        dropdownMenu.didSelectItemAtIndexHandler = {
+            [weak self] selectedIndex in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.lastStageIndex = strongSelf.selectedStageIndex
+            strongSelf.selectedStageIndex = selectedIndex
+            
+            guard strongSelf.selectedStageIndex != strongSelf.lastStageIndex else {
+                return
+            }
+            
+            //Configure Selected Action
+            strongSelf.selectedAction()
+        }
+        
+        self.dropdownMenu = dropdownMenu
+        navigationItem.titleView = dropdownMenu
+    }
+    
+    private func selectedAction() {
+        
+        if selectedStageIndex == 0{
+            giveAwayContainer.isHidden = true
+        }
+        if selectedStageIndex == 1{
+            giveAwayContainer.isHidden = true
+        }
+        if selectedStageIndex == 2{
+            giveAwayContainer.isHidden = false
+        }
+        print("\(dropdownItems[selectedStageIndex].title)")
+    }
+
+    
+    fileprivate func resetNavigationBarColor() {
+        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = UIColor.brown
+        
+        let textAttributes: [String: Any] = [
+            NSForegroundColorAttributeName: UIColor.purple,
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 6)
+        ]
+        
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+
+
 
     
 

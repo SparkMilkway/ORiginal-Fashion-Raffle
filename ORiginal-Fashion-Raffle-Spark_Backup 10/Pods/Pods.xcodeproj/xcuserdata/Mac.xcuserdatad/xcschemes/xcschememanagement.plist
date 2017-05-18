@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AnimatedDropdownMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HGCircularSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FashionRaffle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>079660EE0A23665CBB2C787BE94440F6</key>
+		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67FE818B9CA1692F5F9B7FB550794844</key>
+		<key>0BD5E255DDEF0D0F4AB7284ADBA2CC2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC43D9FA3410AA72087830B8BE6F29E6</key>
+		<key>2873C9425EB452EDE4D4DF52FA0D732C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4D9B042B35895CD629DC27210BF76A4</key>
+		<key>4A5DC8D5D08BC991B694951989214D92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C6CCD8EDE4093620BA3428A11BAE287</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AB8158C22DE2D8313075D132D08F7D37</key>
 		<dict>
 			<key>primary</key>
 			<true/>
