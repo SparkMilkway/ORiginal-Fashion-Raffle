@@ -36,7 +36,7 @@ class AddNewsTableViewController: UITableViewController {
         }
         else {
             SettingsLauncher.showLoading(Status: "Uploading new post...")
-            let newPost = NewsFeed.init(newsID: nil, releaseDate: releaseD, title: titleEdit!, titleImage: imageSelect, subtitle: subtitleEdit!, detailInfo: detailEdit!, imagePool: nil, tags: ["Text"], likedUsers: [String]())
+            let newPost = NewsFeed.init(newsID: nil, releaseDate: releaseD, title: titleEdit!, titleImage: imageSelect, subtitle: subtitleEdit!, detailInfo: detailEdit!, imagePool: nil, tags: nil, likedUsers: [String]())
             ref.child("Demos").childByAutoId().setValue(newPost.dictValue())
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
                 SettingsLauncher.dismissLoading()

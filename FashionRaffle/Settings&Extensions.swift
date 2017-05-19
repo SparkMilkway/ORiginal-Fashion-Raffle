@@ -63,7 +63,7 @@ class SettingsLauncher: NSObject {
 
 extension UIImage {
     func base64String() -> String {
-        let imageData = UIImageJPEGRepresentation(self, 0.5)!
+        let imageData = UIImageJPEGRepresentation(self, 0.4)!
         let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
         return base64String
     }

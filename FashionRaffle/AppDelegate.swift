@@ -39,7 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let json:JSON = syncUserCache.object("UserProfile") {
                 let datadic = json.object as? [String:Any]
                 print("Has Cache Value!")
-                Profile.currentUser = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
+                let userProfile = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
+                if userProfile?.lastCheckDate != Date().now() {
+                    userProfile?.lastCheckDate = Date().now()
+                    let count = userProfile?.checkInCount
+                    userProfile?.checkInCount = count! + 1
+                }
+                Profile.currentUser = userProfile!
                 print("CurrentUser data inputs successfully.")
                 self.rootToMainTab()
             }
