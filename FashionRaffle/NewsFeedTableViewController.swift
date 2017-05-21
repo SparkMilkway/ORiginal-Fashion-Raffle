@@ -59,9 +59,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             }
             
             let newsID = snapshot.key //get newsID
-            let timestamp = newsFeedData["timestamp"] as? String
             let newNewsData = NewsFeed.initWithNewsID(newsID: newsID, contents: newsFeedData)!
-            newNewsData.timestamp = timestamp!
             
             self.newsF.insert(newNewsData, at: 0)
             self.tableView.reloadData()
@@ -161,16 +159,15 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
         
         let newsCell = self.newsF[indexPath.row]
-        if let image = newsCell.titleImage {
-            cell.Cellimage.image = image
+        if let imageStr = newsCell.headImageUrl {
+            cell.Cellimage.image = nil
         }
         
         cell.timestamp!.text = newsCell.timestamp
         cell.Title!.text = newsCell.title
         cell.Subtitle!.text = newsCell.subtitle
         if let releaseDate = newsCell.releaseDate {
-            let releaseStr = releaseDate.dateToStr()
-            cell.releaseDateEvent.setTitle(releaseStr, for: .normal)
+            cell.releaseDateEvent.setTitle(releaseDate, for: .normal)
         }
         else {
             cell.releaseDateEvent.setTitle("TBD", for: .normal)

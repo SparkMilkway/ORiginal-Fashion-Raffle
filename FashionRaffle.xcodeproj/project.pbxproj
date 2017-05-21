@@ -36,10 +36,6 @@
 		522EC6811DFE2B4100CA7AA6 /* FusumaViewController.swift.orig in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6731DFE2B4100CA7AA6 /* FusumaViewController.swift.orig */; };
 		522EC6821DFE2B4100CA7AA6 /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */; };
 		522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6831DFE2B6B00CA7AA6 /* Sources */; };
-		522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */; };
-		522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6861DFE2BC700CA7AA6 /* headerView.swift */; };
-		522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6871DFE2BC700CA7AA6 /* homeVC.swift */; };
-		522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6881DFE2BC700CA7AA6 /* tags.swift */; };
 		522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */; };
 		52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */; };
 		52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */; };
@@ -120,10 +116,6 @@
 		522EC6731DFE2B4100CA7AA6 /* FusumaViewController.swift.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FusumaViewController.swift.orig; path = Sources/FusumaViewController.swift.orig; sourceTree = "<group>"; };
 		522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
 		522EC6831DFE2B6B00CA7AA6 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
-		522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fusumaPhotoViewController.swift; sourceTree = "<group>"; };
-		522EC6861DFE2BC700CA7AA6 /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
-		522EC6871DFE2BC700CA7AA6 /* homeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
-		522EC6881DFE2BC700CA7AA6 /* tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tags.swift; sourceTree = "<group>"; };
 		522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckLikeFunctions.swift; sourceTree = "<group>"; };
 		52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewExtension.swift; sourceTree = "<group>"; };
@@ -290,10 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				522EC6481DFE299500CA7AA6 /* Sources */,
-				522EC6851DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift */,
-				522EC6861DFE2BC700CA7AA6 /* headerView.swift */,
-				522EC6871DFE2BC700CA7AA6 /* homeVC.swift */,
-				522EC6881DFE2BC700CA7AA6 /* tags.swift */,
 			);
 			name = "Camera Handle";
 			sourceTree = "<group>";
@@ -706,10 +694,8 @@
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
-				522EC68C1DFE2BC700CA7AA6 /* tags.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
-				522EC68B1DFE2BC700CA7AA6 /* homeVC.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
@@ -720,7 +706,6 @@
 				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
-				522EC68A1DFE2BC700CA7AA6 /* headerView.swift in Sources */,
 				5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
@@ -728,7 +713,6 @@
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
-				522EC6891DFE2BC700CA7AA6 /* fusumaPhotoViewController.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				52F970811DFDED2200E396CD /* Settings&Extensions.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,

@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Imaginary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NohanaImagePicker-NohanaImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NohanaImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FashionRaffle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,27 +52,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1CA3A09DC5C73A7CF7E166CA61C30139</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>211412599AED94810745EFA1400B1C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>27EF227C98FC88F64B0E5D4B92E3F189</key>
+		<key>24855802859600A7A9A70777EEA8CC5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6174336994A32A2029EF49A7AAB95EB7</key>
+		<key>557EF6D0EC0A2C51D37F961DBB1824C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB1766BA6C13EB0E47033C53189C7CA2</key>
+		<key>976BC6E60EF839E40BE1B9D169B218F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B20D8B17093776ACFA3954EACCB82C7E</key>
+		<key>9AD86E96D7F6AD82354B69CFECA32D37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBF28DD1CEFD27AB28110B0BF0091B78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F10CC51DDD5E22CA7C3059ACA7CB4C10</key>
 		<dict>
 			<key>primary</key>
 			<true/>

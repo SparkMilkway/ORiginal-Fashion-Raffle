@@ -10,9 +10,18 @@ import Foundation
 import UIKit
 import Firebase
 import SVProgressHUD
+import Photos
+import NohanaImagePicker
 
 class AddNewsTableViewController: UITableViewController {
     
+    let storageRef = FIRStorage.storage().reference()
+    
+    var imagePool : [UIImage?] = []
+    
+    var maxSelection : Int = 8
+    
+    var showDetails: Bool?
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var subtitleText: UITextField!
@@ -21,47 +30,110 @@ class AddNewsTableViewController: UITableViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var detailText: UITextView!
     
+    @IBOutlet var imageCollectionView: UICollectionView!
+    @IBOutlet var addDetailsTableCell: UITableViewCell!
+    @IBOutlet var releaseHandleTable: UITableViewCell!
+    @IBOutlet var detailbutton: UIButton!
+    
+    @IBOutlet var datapickerCell: UITableViewCell!
+    
+    @IBAction func HideShowButton(_ sender: Any) {
+        if self.showDetails == false {
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                //self.releaseHandleTable.frame.size.height = 324
+                self.datapickerCell.frame.size.height = 274
+                self.detailbutton.setTitle("△", for: .normal)
+            })
+            self.showDetails = true
+            print("show is true")
+            return
+        }
+        else {
+
+            UIView.animate(withDuration: 0.3, animations: {
+                //self.releaseHandleTable.frame.size.height = 50
+                self.datapickerCell.frame.size.height = 0
+                self.detailbutton.setTitle("▽", for: .normal)
+            })
+            self.showDetails = false
+            print("show is false")
+            return
+            
+        }
+        
+    }
+    
+    
+    
     @IBAction func postNews(_ sender: Any) {
         let titleEdit = self.titleText.text
         let subtitleEdit = self.subtitleText.text
         let detailEdit = self.detailText.text
         let imageSelect = self.titleImage.image
-        let releaseDstr = self.releaseDLabel.text
-        guard let releaseD = Date.strToDate(Str: releaseDstr!) else {
-            SettingsLauncher.showAlerts(title: "Error!", message: "Date format is not correct", handler: nil, controller: self)
-            return
-        }
+        let releaseDstr = self.releaseDLabel!.text
+
         if (titleEdit == "" || subtitleEdit == "" || detailEdit == "" || imageSelect == nil) {
             SettingsLauncher.showAlerts(title: "Error!", message: "Please enter all the required info", handler: nil, controller: self)
         }
         else {
             SettingsLauncher.showLoading(Status: "Uploading new post...")
-            let newPost = NewsFeed.init(newsID: nil, releaseDate: releaseD, title: titleEdit!, titleImage: imageSelect, subtitle: subtitleEdit!, detailInfo: detailEdit!, imagePool: nil, tags: nil, likedUsers: [String]())
-            ref.child("Demos").childByAutoId().setValue(newPost.dictValue())
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
+            
+            
+            let newFeedRef = ref.child("ReleaseNews").childByAutoId()
+            
+            let imageData = UIImageJPEGRepresentation(imageSelect!, 0.4)!
+            let headImagePath = storageRef.child("ReleaseNews/\(titleEdit!)/headImage.jpg")
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            headImagePath.put(imageData, metadata: metadata, completion: {
+                (metadata, error) in
+                if error != nil {
+                    print(error?.localizedDescription)
+                    return
+                }
+                guard let metadata = metadata else{
+                    return
+                }
+                let downloadURL = metadata.downloadURL()
+                let newReleaseNews = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: "\(downloadURL!)", detailImageURLs: nil)
+                
+                newFeedRef.setValue(newReleaseNews?.dictValue())
                 SettingsLauncher.dismissLoading()
-                SettingsLauncher.showAlerts(title: "Success!", message: "This piece of news is posted!", handler: {
+                SettingsLauncher.showAlerts(title: "Success!", message: "Upload completed.", handler: {
                     UIAlertAction in
-                    self.navigationController?.popToRootViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }, controller: self)
+                
             })
         }
     }
     
     @IBAction func backToProfile(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showDetails = false
         tableView.allowsSelection = false
         titleImage.isUserInteractionEnabled = true
         titleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectNewsImageView)))
-        
     
+
+        self.imageCollectionView.delegate = self
+        self.imageCollectionView.dataSource = self
+        self.imageCollectionView.allowsSelection = true
+
+        self.titleImage.layer.borderColor = UIColor.black.cgColor
+        self.titleImage.layer.borderWidth = 1
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         self.updateDateLabel()
         
@@ -69,6 +141,7 @@ class AddNewsTableViewController: UITableViewController {
         timePicker.addTarget(self, action: #selector(timePickerChanged(timePicker:)), for: .valueChanged)
         
     }
+    
     
     func updateDateLabel() {
         let dateFormat = DateFormatter()
@@ -97,7 +170,7 @@ class AddNewsTableViewController: UITableViewController {
     }
 }
 
-extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate,NohanaImagePickerControllerDelegate {
     func handleSelectNewsImageView() {
         let imagePC = UIImagePickerController()
         imagePC.sourceType = .photoLibrary
@@ -122,6 +195,93 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //NohanaIP delegates
+    func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]) {
+        //
+
+        let imageManager = PHImageManager.init()
+        let options = PHImageRequestOptions.init()
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .exact
+        options.isSynchronous = true
+        
+        for assets: PHAsset in pickedAssts {
+            let width = self.view.frame.width
+            let height = self.view.frame.height
+            let cgSize = CGSize(width: width, height: height)
+            imageManager.requestImage(for: assets, targetSize: cgSize, contentMode: .aspectFit, options: options, resultHandler: {
+                (image, info) in
+                
+                self.imagePool.append(image!)
+            })
+        }
+        //Results are put in imagePool
+        self.imageCollectionView.reloadData()
+        dismiss(animated: true, completion: nil)
+        
+    }
+
+    //Delegates for collection view
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        
+        if indexPath.row == self.imagePool.count {
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionHeaderCell", for: indexPath)
+            let imageV = cell2.viewWithTag(2) as! UIImageView
+            imageV.layer.borderColor = UIColor.black.cgColor
+            imageV.layer.borderWidth = 1
+            
+            return cell2
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
+            let imageView = cell.viewWithTag(5) as! UIImageView
+            imageView.image = self.imagePool[indexPath.row]
+            return cell
+        }
+        
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let count = self.imagePool.count + 1
+        return count
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == self.imagePool.count {
+            print("Photo Picker Revoked")
+            let ipicker = NohanaImagePickerController()
+            let count = self.imagePool.count
+            if count == 8 {
+                SettingsLauncher.showAlerts(title: "Oops", message: "You've selected maximum number of photos", handler: {
+                    UIAlertAction in
+                    return
+                }, controller: self)
+            }
+            ipicker.maximumNumberOfSelection = self.maxSelection - count
+            ipicker.shouldShowMoment = false
+            ipicker.shouldShowEmptyAlbum = false
+            ipicker.toolbarHidden = false
+            ipicker.delegate = self
+            present(ipicker, animated: true, completion: nil)
+            
+        }
+        else {
+            print("----")
+            print("Pre selection")
+            print("Index is now \(indexPath.row)")
+            print("-----")
+            
+        }
     }
 }
 

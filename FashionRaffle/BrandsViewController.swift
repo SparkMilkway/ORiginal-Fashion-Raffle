@@ -125,11 +125,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         let brandCell = brandsCollectionView.cellForItem(at: indexPath) as! brandCollectionViewCell
         print(indexPath)
         
-        
-        
-        
-        
-        
+
         if Profile.currentUser?.followBrands.contains(brandDatas[indexPath.row].name) == false{
             Profile.currentUser?.followBrands.append(brandDatas[indexPath.row].name)
             brandCell.layer.borderColor = UIColor.black.cgColor

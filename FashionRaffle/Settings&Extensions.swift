@@ -63,7 +63,7 @@ class SettingsLauncher: NSObject {
 
 extension UIImage {
     func base64String() -> String {
-        let imageData = UIImageJPEGRepresentation(self, 0.4)!
+        let imageData = UIImageJPEGRepresentation(self, 0.1)!
         let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
         return base64String
     }
@@ -76,10 +76,10 @@ extension UIImage {
 }
 
 extension Date {
-    // Return the date now as MM/DD/YYYY
+    // Return the date now as MM/DD/YYYY hh:mma
     func now() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy/MM/dd"
+        dateFormat.dateFormat = "yyyy/MM/dd hh:mma"
         let now = dateFormat.string(from: Date())
         return now
     }

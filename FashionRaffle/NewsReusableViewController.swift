@@ -29,7 +29,7 @@ class NewsReusableViewController: UIViewController {
         self.title = selectedNews.title
         self.NewsTitle.text = selectedNews.title
         self.Details.text = selectedNews.detailInfo
-        self.Image.image = selectedNews.titleImage
+        self.Image.image = nil
         
     }
     

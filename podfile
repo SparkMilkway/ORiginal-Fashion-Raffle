@@ -11,7 +11,8 @@ pod 'SDWebImage', '~>3.8'
 pod 'SVProgressHUD'
 pod 'Sharaku'
 pod 'Cache'
-
+pod 'Imaginary'
+pod 'NohanaImagePicker'
 
 
 end

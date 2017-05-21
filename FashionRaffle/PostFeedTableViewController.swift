@@ -36,9 +36,7 @@ class PostFeedTableViewController: UITableViewController {
             }
             
             let postID = snapshot.key //get newsID
-            let time = postFeed["timestamp"] as? String
             let newPost = Post.initWithPostID(postID: postID, postDict: postFeed)
-            newPost?.timestamp = time!
             self.postFeeds.insert(newPost!, at: 0)
             self.tableView.reloadData()
 

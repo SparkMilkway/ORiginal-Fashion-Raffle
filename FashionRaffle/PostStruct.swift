@@ -18,18 +18,14 @@ class Post {
     let brandinfo:[String]?
     static var currentPost:Post?
     
-    init(postID:String?,creator:String,image:UIImage, caption:String?, brandinfo:[String]?, profileImage:UIImage?) {
+    init(postID:String?,creator:String,image:UIImage, caption:String?, brandinfo:[String]?, profileImage:UIImage?, timestamp: String) {
         self.postID = postID
         self.creator = creator
         self.image = image
         self.caption = caption
         self.brandinfo = brandinfo
         self.profileImage = profileImage
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy hh:mm:ssa"
-        let str = dateFormat.string(from: Date())
-
-        timestamp = str
+        self.timestamp = timestamp
     }
     
     static func initWithPostID(postID: String, postDict:[String:Any]) -> Post? {
@@ -38,6 +34,7 @@ class Post {
             return nil
         }
         let caption = postDict["caption"] as? String
+        let timestamp = postDict["timestamp"] as? String
         let brandinfo = postDict["brandinfo"] as? [String]
         let image = UIImage.imageWithBase64String(base64String: base64String)
         let proimage : UIImage?
@@ -47,7 +44,7 @@ class Post {
         else{
             proimage = #imageLiteral(resourceName: "profile1")
         }
-        return Post(postID: postID, creator: creator, image: image, caption: caption, brandinfo:brandinfo, profileImage:proimage)
+        return Post(postID: postID, creator: creator, image: image, caption: caption, brandinfo: brandinfo, profileImage: proimage, timestamp: timestamp!)
     }
     
     func dictValue() -> [String:Any] {

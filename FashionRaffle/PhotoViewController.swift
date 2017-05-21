@@ -59,7 +59,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             self.view.endEditing(true)
             
             let proImage = Profile.currentUser?.picture
-            let newPost = Post.init(postID: nil, creator: (Profile.currentUser?.username)!, image: image!, caption: caption, brandinfo: ["example1","example2"], profileImage: proImage)
+            let newPost = Post.init(postID: nil, creator: (Profile.currentUser?.username)!, image: image!, caption: caption, brandinfo: ["example1","example2"], profileImage: proImage, timestamp: Date().now())
             let uniqueRef = postref.childByAutoId()
             uniqueRef.setValue(newPost.dictValue())
             SettingsLauncher.showAlerts(title: "Success!", message: "Your post has been posted!", handler: {
