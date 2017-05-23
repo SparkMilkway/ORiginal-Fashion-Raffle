@@ -21,6 +21,7 @@
 		52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E831E92E96E00ADDB8C /* AddNewsViewController.swift */; };
 		52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E851E94908400ADDB8C /* BrandsViewController.swift */; };
 		52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */; };
+		520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */; };
 		522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */; };
 		522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */; };
 		522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */; };
@@ -59,6 +60,8 @@
 		527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */; };
 		527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA0711DDFED8B00379312 /* DataBaseStructure.swift */; };
 		52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DCFD991E68A63400B5C748 /* LoginVCFunctions.swift */; };
+		52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */; };
+		52E377401ED3B9AE00F2D609 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3773F1ED3B9AE00F2D609 /* Size.swift */; };
 		52F970811DFDED2200E396CD /* Settings&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F970801DFDED2200E396CD /* Settings&Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +104,7 @@
 		52071E831E92E96E00ADDB8C /* AddNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewsViewController.swift; sourceTree = "<group>"; };
 		52071E851E94908400ADDB8C /* BrandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = brandCollectionViewCell.swift; sourceTree = "<group>"; };
+		520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableDetailViewController.swift; sourceTree = "<group>"; };
 		522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
 		522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 		527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableViewController.swift; sourceTree = "<group>"; };
 		527CA0711DDFED8B00379312 /* DataBaseStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseStructure.swift; sourceTree = "<group>"; };
 		52DCFD991E68A63400B5C748 /* LoginVCFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCFunctions.swift; sourceTree = "<group>"; };
+		52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCollectionCell.swift; sourceTree = "<group>"; };
+		52E3773F1ED3B9AE00F2D609 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		52F970801DFDED2200E396CD /* Settings&Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings&Extensions.swift"; sourceTree = "<group>"; };
 		7F39338E81D732C7C9A50156 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +280,8 @@
 				52334D901E78C32300FFB8A4 /* Camera Handle */,
 				52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */,
 				04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */,
+				520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */,
+				52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				52F970801DFDED2200E396CD /* Settings&Extensions.swift */,
+				52E3773F1ED3B9AE00F2D609 /* Size.swift */,
 				52334D921E78C3CC00FFB8A4 /* Database Structures */,
 			);
 			name = "Settings and Handlings";
@@ -689,12 +698,14 @@
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
+				52E377401ED3B9AE00F2D609 /* Size.swift in Sources */,
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				527CA0721DDFED8B00379312 /* DataBaseStructure.swift in Sources */,
+				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
@@ -712,6 +723,7 @@
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,
+				52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				52F970811DFDED2200E396CD /* Settings&Extensions.swift in Sources */,

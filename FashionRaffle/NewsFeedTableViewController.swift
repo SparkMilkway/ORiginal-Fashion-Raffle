@@ -43,13 +43,13 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         super.viewDidLoad()
         
-        SettingsLauncher.showLoading(Status: "Loading...")
+        //SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
-
+/*
         
         ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
@@ -67,6 +67,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
            SettingsLauncher.dismissLoading()
             
         })
+        */
  
     }
     

@@ -28,6 +28,8 @@ class PostFeedTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.allowsSelection = false
 
+        /*
+        
         ref.child("Posts").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             guard let postFeed = snapshot.value as? [String:Any] else {
@@ -43,7 +45,7 @@ class PostFeedTableViewController: UITableViewController {
             
         })
         
-        
+        */
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

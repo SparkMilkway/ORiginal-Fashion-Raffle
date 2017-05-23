@@ -1144,6 +1144,9 @@
                                                                 <constraint firstItem="aUQ-Ab-1bA" firstAttribute="centerX" secondItem="Zei-NY-tRA" secondAttribute="centerX" id="1cF-2r-D1p"/>
                                                                 <constraint firstItem="aUQ-Ab-1bA" firstAttribute="centerY" secondItem="Zei-NY-tRA" secondAttribute="centerY" id="eXb-Lz-lxA"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <segue destination="CQm-uU-lBQ" kind="show" id="Jq8-Qh-3r4"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionHeaderCell" id="nTe-A5-RK2">
                                                             <rect key="frame" x="102" y="19" width="90" height="90"/>
@@ -1385,56 +1388,84 @@
             </objects>
             <point key="canvasLocation" x="2133.5999999999999" y="512.29385307346331"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8PL-AA-cOd">
+        <!--Reusable Detai View Controller-->
+        <scene sceneID="NC7-6V-c5f">
             <objects>
-                <navigationController id="3Ob-53-AWR" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9a-WM-gKn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="f1D-oD-EVG" kind="relationship" relationship="rootViewController" id="mkK-WL-oaE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J7O-VO-013" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2871" y="511"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="ab7-tx-5aa">
-            <objects>
-                <collectionViewController id="f1D-oD-EVG" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="zHS-Tg-zbP">
+                <collectionViewController id="CQm-uU-lBQ" customClass="ReusableDetaiViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="HOP-6g-84z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9hM-UI-1s4">
-                            <size key="itemSize" width="374" height="588"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="G6d-pa-cqi">
+                            <size key="itemSize" width="375" height="400"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="zjO-Tr-VRI">
-                                <rect key="frame" x="0.0" y="8" width="374" height="588"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionDetailCell" id="KFA-WH-SDs" customClass="ReusableCollectionCell" customModule="FashionRaffle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="79.5" width="375" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="588"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syf-H0-qU6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHY-kT-Ikb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fHY-kT-Ikb" secondAttribute="bottom" id="4cK-sk-PhL"/>
+                                                <constraint firstItem="fHY-kT-Ikb" firstAttribute="centerX" secondItem="Syf-H0-qU6" secondAttribute="centerX" id="CiD-G6-XCf"/>
+                                                <constraint firstAttribute="trailing" secondItem="fHY-kT-Ikb" secondAttribute="trailing" id="eFA-kI-oeE"/>
+                                                <constraint firstItem="fHY-kT-Ikb" firstAttribute="leading" secondItem="Syf-H0-qU6" secondAttribute="leading" id="gvZ-Wq-7Vb"/>
+                                                <constraint firstItem="fHY-kT-Ikb" firstAttribute="centerY" secondItem="Syf-H0-qU6" secondAttribute="centerY" id="ri2-EA-o0n"/>
+                                                <constraint firstItem="fHY-kT-Ikb" firstAttribute="top" secondItem="Syf-H0-qU6" secondAttribute="top" id="udr-Eh-Adj"/>
+                                            </constraints>
+                                        </scrollView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Syf-H0-qU6" firstAttribute="leading" secondItem="KFA-WH-SDs" secondAttribute="leading" id="0X5-JO-C51"/>
+                                    <constraint firstAttribute="bottom" secondItem="Syf-H0-qU6" secondAttribute="bottom" id="6wm-Q3-aL8"/>
+                                    <constraint firstItem="Syf-H0-qU6" firstAttribute="centerX" secondItem="KFA-WH-SDs" secondAttribute="centerX" id="BIE-DH-ffG"/>
+                                    <constraint firstItem="Syf-H0-qU6" firstAttribute="top" secondItem="KFA-WH-SDs" secondAttribute="top" id="JMn-DS-gAk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Syf-H0-qU6" secondAttribute="trailing" id="sc7-de-hL3"/>
+                                    <constraint firstItem="Syf-H0-qU6" firstAttribute="centerY" secondItem="KFA-WH-SDs" secondAttribute="centerY" id="tIt-g8-SPA"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="collectionImageView" destination="fHY-kT-Ikb" id="pYZ-Dw-vjN"/>
+                                    <outlet property="collectionScrollView" destination="Syf-H0-qU6" id="eXP-8N-Mln"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="f1D-oD-EVG" id="u3h-kW-mW0"/>
-                            <outlet property="delegate" destination="f1D-oD-EVG" id="q0j-wU-zcO"/>
+                            <outlet property="dataSource" destination="CQm-uU-lBQ" id="lDt-JI-mSm"/>
+                            <outlet property="delegate" destination="CQm-uU-lBQ" id="hmN-aO-i5j"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="abE-Cr-Etd"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="EMo-nt-lSg">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="PcM-Qz-JBZ">
+                            <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteAction:" destination="CQm-uU-lBQ" id="KTn-Wp-TEH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="PcM-Qz-JBZ" id="HyV-yS-oYM"/>
+                    </connections>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pvt-SA-tqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SU8-3L-zFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3653.5999999999999" y="509.59520239880067"/>
+            <point key="canvasLocation" x="2972" y="512"/>
         </scene>
     </scenes>
     <resources>

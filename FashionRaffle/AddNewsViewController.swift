@@ -19,9 +19,12 @@ class AddNewsTableViewController: UITableViewController {
     
     var imagePool : [UIImage?] = []
     
+    var imageDetailPool : [UIImage?] = []
+    
     var maxSelection : Int = 8
     
     var showDetails: Bool?
+    
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var subtitleText: UITextField!
@@ -168,6 +171,20 @@ class AddNewsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //Mess with views
+
+    // push detail contents.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let selectedIndexPath = imageCollectionView.indexPathsForSelectedItems?.first else{
+            return
+        }
+        let reusableVC = segue.destination as! ReusableDetaiViewController
+        reusableVC.imageAssets = self.imageDetailPool
+        reusableVC.currentIndexPath = selectedIndexPath
+        reusableVC.deletable = true
+        reusableVC.rootCollectionViewController = self
+    }
 }
 
 extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate,NohanaImagePickerControllerDelegate {
@@ -204,6 +221,7 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]) {
         //
 
+        
         let imageManager = PHImageManager.init()
         let options = PHImageRequestOptions.init()
         options.deliveryMode = .highQualityFormat
@@ -211,16 +229,25 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
         options.isSynchronous = true
         
         for assets: PHAsset in pickedAssts {
-            let width = self.view.frame.width
-            let height = self.view.frame.height
-            let cgSize = CGSize(width: width, height: height)
+            
+            let cgSize = CGSize(width: 250, height: 250)
+            let width = self.view.frame.width * 2
+            let height = self.view.frame.height * 2
+            let cgSize2 = CGSize(width: width, height: height)
+            
             imageManager.requestImage(for: assets, targetSize: cgSize, contentMode: .aspectFit, options: options, resultHandler: {
                 (image, info) in
                 
                 self.imagePool.append(image!)
             })
+            imageManager.requestImage(for: assets, targetSize: cgSize2, contentMode: .aspectFit, options: options, resultHandler: {
+                (image, info) in
+                
+                self.imageDetailPool.append(image!)
+            })
         }
         //Results are put in imagePool
+
         self.imageCollectionView.reloadData()
         dismiss(animated: true, completion: nil)
         
@@ -242,6 +269,7 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
             let imageView = cell.viewWithTag(5) as! UIImageView
+
             imageView.image = self.imagePool[indexPath.row]
             return cell
         }

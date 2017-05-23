@@ -23,6 +23,7 @@ class RaffleTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
+        /*
         
         self.ref.child("Raffles").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
@@ -41,7 +42,7 @@ class RaffleTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
         
-        
+        */
         
     }
     

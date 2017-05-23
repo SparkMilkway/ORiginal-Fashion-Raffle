@@ -61,12 +61,12 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBAction func emailLogOut(_ sender: Any) {
         let refreshAlert = UIAlertController(title: "Sign Out", message: "Are you sure to sign out?", preferredStyle: .alert)
         
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) -> Void in
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: {
+            UIAlertAction in
             try! FIRAuth.auth()?.signOut()
             self.logOut()
-            
         }))
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         present(refreshAlert, animated: true, completion: nil)
     }
     //Ends
@@ -149,6 +149,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         tableView.allowsSelection = false
         fbLogoutButton.delegate = self
 
+        navigationController?.navigationBar.backgroundColor = UIColor.white
         
         let now = Date().now()
         self.dateLabel.text = now
@@ -175,6 +176,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         if Profile.currentUser?.editor == true {
             print("Is Editor")
             self.title = "Editor Profile"
+            
             self.addNews.isEnabled = true
             self.addNews.tintColor = UIColor.black
         }
