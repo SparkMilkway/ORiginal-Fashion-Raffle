@@ -71,9 +71,8 @@ extension profileMainViewController: UIImagePickerControllerDelegate, UINavigati
             }
             dismiss(animated: true, completion: {
                 () -> Void in
-                self.uploadProfileImage()
+                self.uploadBackgroundImage()
             })
-            dismiss(animated: true, completion: nil)
             
         }
         

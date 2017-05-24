@@ -13,12 +13,6 @@ import FirebaseStorageUI
 import SVProgressHUD
 import PassKit
 
-enum ActionButtonState: String {
-    case CurrentUser = "Edit Profile"
-    case NotFollowing = "+ Follow"
-    case Following = "✓ Following"
-}
-
 
 
 class profileMainViewController: UIViewController {
@@ -150,11 +144,19 @@ class profileMainViewController: UIViewController {
             Profile.currentUser?.profilePicUrl = url
             Profile.currentUser?.sync()
             SettingsLauncher.dismissLoading()
+            
         })
         
+        
+
+        
+    }
+    func uploadBackgroundImage(){
+        SettingsLauncher.showLoading(Status: "Uploading Background Picture...")
+        let userID = Profile.currentUser?.userID
         let backgroundImageData = UIImageJPEGRepresentation(self.profileBackground.image!, 0.7)
         let backgroundPath = "UserInfo/\(userID!)/backgroundPic/backgroundImage.jpg"
-
+        
         SettingsLauncher.uploadDatatoStorage(data: backgroundImageData!, itemStoragePath: backgroundPath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let meta = metadata else{
@@ -164,11 +166,13 @@ class profileMainViewController: UIViewController {
             let url = meta.downloadURL()
             Profile.currentUser?.backgroundPictureUrl = url
             Profile.currentUser?.sync()
-            //SettingsLauncher.dismissLoading()
+            SettingsLauncher.dismissLoading()
+            
+            
         })
 
-        
     }
+    
     
     
     func backgroundImageView() {
@@ -177,7 +181,7 @@ class profileMainViewController: UIViewController {
         profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
         profileBackground.isUserInteractionEnabled = true
         profileBackground.contentMode = .scaleAspectFill
-        profileBackground.alpha = 0.6
+        profileBackground.alpha = 0.8
         
     }
 
