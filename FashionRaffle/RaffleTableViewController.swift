@@ -9,40 +9,37 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseDatabase
-import FirebaseStorageUI
+import Imaginary
 import SVProgressHUD
 
 class RaffleTableViewController: UITableViewController {
     
-    var raffleDatas : [RafflePoolData] = []
+    var raffleFeedDatas = [RaffleFeed]()
     let storageReference = FIRStorage.storage()
     let ref = FIRDatabase.database().reference()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-
-        /*
         
-        self.ref.child("Raffles").queryOrderedByKey().observe(.childAdded, with: {
+        ref.child("Raffles").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
-
-            let path = snapshot.key
-            let value = snapshot.value as? NSDictionary
-            let imagechild = snapshot.childSnapshot(forPath: "ImagePool")
-            let childvalue = imagechild.value as? NSDictionary
-            let image = childvalue!["Image1"] as! String
-            let title = value!["Title"] as! String
-            let subtitle = value!["SubTitle"] as! String
-            let details = value!["Text"] as! String
-            
-            let raffleData = RafflePoolData.init(title: title, subtitle: subtitle, image: image, details: details, pathKey: path)
-            self.raffleDatas.append(raffleData)
+            guard let raffleData = snapshot.value as? [String:Any] else {
+                print("No data here!")
+                return
+            }
+            let raffleID = snapshot.key
+            let newRaffleData = RaffleFeed.initWithRaffleID(raffleID: raffleID, contents: raffleData)!
+            self.raffleFeedDatas.insert(newRaffleData, at: 0)
             self.tableView.reloadData()
+
         })
-        
-        */
+
         
     }
     
@@ -51,16 +48,16 @@ class RaffleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.raffleDatas.count
+        return self.raffleFeedDatas.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "RaffleMainCell", for: indexPath) as! RafflePoolCell
         
-        let raffledata = raffleDatas[indexPath.row]
-        let imageURL = raffledata.image1
-        let storage = self.storageReference.reference(forURL: imageURL)
-        cell.CellImage.sd_setImage(with: storage)
+        
+        let raffledata = raffleFeedDatas[indexPath.row]
+        let imageURL = raffledata.headImageUrl
+        cell.CellImage.setImage(url: imageURL)
         cell.Title!.text = raffledata.title
         cell.Subtitle!.text = raffledata.subtitle
         return cell
@@ -68,7 +65,9 @@ class RaffleTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let raffledata = self.raffleDatas[indexPath.row]
+        print("Hooray!")
+        /*
+        let raffledata = self.raffleFeedDatas[indexPath.row]
         let storyboard = UIStoryboard(name: "FirstDemo", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RaffleReusableView") as! RaffleReusableViewController
 
@@ -82,7 +81,7 @@ class RaffleTableViewController: UITableViewController {
         viewController.passKey = raffledata.pathKey
         
         self.navigationController?.pushViewController(viewController, animated: true)
-        
+        */
     }
     
 }

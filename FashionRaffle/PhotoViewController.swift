@@ -56,27 +56,47 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             return
         }
         else{
-            self.view.endEditing(true)
             
-            let proImage = Profile.currentUser?.picture
-            let newPost = Post.init(postID: nil, creator: (Profile.currentUser?.username)!, image: image!, caption: caption, brandinfo: ["example1","example2"], profileImage: proImage, timestamp: Date().now())
-            let uniqueRef = postref.childByAutoId()
-            uniqueRef.setValue(newPost.dictValue())
-            SettingsLauncher.showAlerts(title: "Success!", message: "Your post has been posted!", handler: {
-                UIAlertAction in
-                UIView.animate(withDuration: 0.4, animations: {
-                    self.dismiss(animated: true, completion: nil)
-                    if let central = self.centralVC {
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
-                            UIView.animate(withDuration: 0.3, animations: {
-                                central.view.alpha = 1
+            self.view.endEditing(true)
+            SettingsLauncher.showLoading(Status: "Uploading...")
+            let profilePicUrl = Profile.currentUser?.profilePicUrl
+            let imageData = UIImageJPEGRepresentation(image!, 0.6)!
+            let userID = Profile.currentUser?.userID
+            let userName = Profile.currentUser?.username
+            let now = Date().now()
+            let postPath = "UserInfo/\(userID!)/posts/\(now)/postPic.jpg"
+            
+            SettingsLauncher.uploadDatatoStorage(data: imageData, itemStoragePath: postPath, contentType: "image/jpeg", completion: {
+                metadata, error in
+                if error != nil {
+                    print("Error happens when uploading")
+                    return
+                }
+                guard let meta = metadata else{
+                    return
+                }
+                let url = meta.downloadURL()
+                let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil)
+                let uniqueRef = self.postref.childByAutoId()
+                uniqueRef.setValue(newPost.dictValue())
+                SettingsLauncher.dismissLoading()
+                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
+                    UIAlertAction in
+                    UIView.animate(withDuration: 0.4, animations: {
+                        self.dismiss(animated: true, completion: nil)
+                        if let central = self.centralVC {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                                UIView.animate(withDuration: 0.3, animations: {
+                                    central.view.alpha = 1
+                                })
                             })
-                        })
-                        
-                    }
-                })
+                        }
+                    })
+                    
+                    
+                }, controller: self)
                 
-            }, controller: self)
+            })
         }
         
         

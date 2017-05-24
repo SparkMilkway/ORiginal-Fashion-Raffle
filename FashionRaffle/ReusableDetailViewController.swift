@@ -93,9 +93,7 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
             return
         }
         let indexPath = currentIndexPath
-        let refreshAlert = UIAlertController(title: "Delete this photo?", message: "", preferredStyle: .alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: {
+        SettingsLauncher.showAlertsWithOptions(title: "Delete this photo?", message: "", controller: self, yesHandler: {
             UIAlertAction in
             SVProgressHUD.showSuccess(withStatus: "Deleted!")
             
@@ -103,24 +101,15 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
                 SVProgressHUD.dismiss()
                 self.deleteRootCollectionViewItem(at: indexPath)
                 if self.imageAssets.count == 1 {
-                    
                     self.navigationController?.popToRootViewController(animated: true)
                     return
                 }
                 self.imageAssets.remove(at: indexPath.item)
                 self.collectionView?.reloadData()
                 self.updateCurrentIndexPath()
-                
-                
             })
             
-
-            
-            
-            
-        }))
-        refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-        self.present(refreshAlert, animated: true, completion: nil)
+        }, cancelHandler:nil)
     }
     
     

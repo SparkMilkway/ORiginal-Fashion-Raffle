@@ -67,51 +67,100 @@ class AddNewsTableViewController: UITableViewController {
         
     }
     
-    
+    //Upload this release news.
     
     @IBAction func postNews(_ sender: Any) {
         let titleEdit = self.titleText.text
         let subtitleEdit = self.subtitleText.text
         let detailEdit = self.detailText.text
         let imageSelect = self.titleImage.image
-        let releaseDstr = self.releaseDLabel!.text
 
         if (titleEdit == "" || subtitleEdit == "" || detailEdit == "" || imageSelect == nil) {
-            SettingsLauncher.showAlerts(title: "Error!", message: "Please enter all the required info", handler: nil, controller: self)
+            SettingsLauncher.showAlerts(title: "", message:"Release News title, subtitle, details and title image are required!", handler: nil, controller: self)
+            return
+        }else if imageDetailPool.count == 0 {
+            SettingsLauncher.showAlertsWithOptions(title: "", message: "Upload without detail photos?", controller: self, yesHandler: {
+                UIAlertAction in
+                self.beginUpload()
+                
+            }, cancelHandler: nil)
         }
         else {
-            SettingsLauncher.showLoading(Status: "Uploading new post...")
+            SettingsLauncher.showAlertsWithOptions(title: "", message: "Upload?", controller: self, yesHandler: {
+                UIAlertAction in
+                self.beginUpload()
+            }, cancelHandler: nil)
             
-            
-            let newFeedRef = ref.child("ReleaseNews").childByAutoId()
-            
-            let imageData = UIImageJPEGRepresentation(imageSelect!, 0.4)!
-            let headImagePath = storageRef.child("ReleaseNews/\(titleEdit!)/headImage.jpg")
-            let metadata = FIRStorageMetadata()
-            metadata.contentType = "image/jpeg"
-            
-            headImagePath.put(imageData, metadata: metadata, completion: {
-                (metadata, error) in
-                if error != nil {
-                    print(error?.localizedDescription)
-                    return
-                }
-                guard let metadata = metadata else{
-                    return
-                }
-                let downloadURL = metadata.downloadURL()
-                let newReleaseNews = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: "\(downloadURL!)", detailImageURLs: nil)
-                
-                newFeedRef.setValue(newReleaseNews?.dictValue())
+        }
+    }
+    
+    func beginUpload() {
+        
+        SettingsLauncher.showLoading(Status: "Uploading...")
+        
+        let newFeedRef = ref.child("ReleaseNews").childByAutoId()
+        let titleEdit = self.titleText.text
+        let subtitleEdit = self.subtitleText.text
+        let detailEdit = self.detailText.text
+        let imageSelect = self.titleImage.image
+        let releaseDstr = self.releaseDLabel!.text
+        let now = Date().now()
+        let itemStorageFolderName = now + " " + titleEdit!
+        var detailImageURLs = [URL]()
+        
+        let imageData = UIImageJPEGRepresentation(imageSelect!, 0.8)!
+        let headImagePath = "ReleaseNews/\(itemStorageFolderName)/headImage.jpg"
+        SettingsLauncher.uploadDatatoStorage(data: imageData, itemStoragePath: headImagePath, contentType: "image/jpeg", completion: {
+            metadata, error in
+            guard let metadata = metadata else{
                 SettingsLauncher.dismissLoading()
-                SettingsLauncher.showAlerts(title: "Success!", message: "Upload completed.", handler: {
+                return
+            }
+            let url = metadata.downloadURL()
+            
+            let newFeed = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: url, detailImageURLs: [])
+            if self.imageDetailPool.count == 0 {
+                newFeedRef.setValue(newFeed?.dictValue())
+                SettingsLauncher.dismissLoading()
+                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
                     UIAlertAction in
                     self.dismiss(animated: true, completion: nil)
                 }, controller: self)
                 
-            })
-        }
+            }else {
+                for i in 0..<self.imageDetailPool.count {
+                    let currentDetailImage = self.imageDetailPool[i]
+                    let currentImageData = UIImageJPEGRepresentation(currentDetailImage!, 0.8)!
+                    let uploadPath = "ReleaseNews/\(itemStorageFolderName)/detailImage\(i+1).jpg"
+                    SettingsLauncher.uploadDatatoStorage(data: currentImageData, itemStoragePath: uploadPath, contentType: "image/jpeg", completion: {
+                        meta2, error in
+                        guard let detailmeta = meta2 else{
+                            SettingsLauncher.dismissLoading()
+                            return
+                        }
+                        let detailUrl = detailmeta.downloadURL()
+                        detailImageURLs.append(detailUrl!)
+                        newFeed?.detailImageUrls = detailImageURLs
+                        DispatchQueue.main.async {
+                            if detailImageURLs.count == self.imageDetailPool.count {
+                                newFeedRef.setValue(newFeed?.dictValue())
+                                
+                                SettingsLauncher.dismissLoading()
+                                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
+                                    UIAlertAction in
+                                    self.dismiss(animated: true, completion: nil)
+                                }, controller: self)
+                            }
+                        }
+                    })
+                }
+            }
+
+        })
+
     }
+    
+    //Finish
     
     @IBAction func backToProfile(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

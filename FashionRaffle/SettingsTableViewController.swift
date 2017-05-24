@@ -13,6 +13,7 @@ import FirebaseStorageUI
 import SVProgressHUD
 import Cache
 import PassKit
+import Imaginary
 
 class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegate, PKPaymentAuthorizationViewControllerDelegate {
     
@@ -23,6 +24,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var checkCount: UILabel!
+    
+    
     
     //Check in Begin
  
@@ -59,15 +62,13 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBOutlet weak var emailLogOutButton: UIButton!
     
     @IBAction func emailLogOut(_ sender: Any) {
-        let refreshAlert = UIAlertController(title: "Sign Out", message: "Are you sure to sign out?", preferredStyle: .alert)
-        
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: {
+        SettingsLauncher.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
             UIAlertAction in
             try! FIRAuth.auth()?.signOut()
             self.logOut()
-        }))
-        refreshAlert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-        present(refreshAlert, animated: true, completion: nil)
+            
+        }, cancelHandler: nil)
+
     }
     //Ends
     
@@ -129,7 +130,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         completion(PKPaymentAuthorizationStatus.success)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             controller.dismiss(animated: true, completion: {
                 self.purchaseSuccess()
             })
@@ -164,11 +165,11 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         }
         let username = Profile.currentUser?.username
         let email = Profile.currentUser?.email
-        if let picture = Profile.currentUser?.picture {
-            self.profileImage.image = picture
+        if let profileUrl = Profile.currentUser?.profilePicUrl {
+            self.profileImage.setImage(url: profileUrl)
         }
         else {
-            self.profileImage.image = UIImage(named: "background")
+            self.profileImage.image = UIImage(named: "UserIcon")
         }
         self.userName!.text = username
         self.userEmail!.text = email
@@ -184,11 +185,8 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             print("Not Editor")
             self.title = "User Profile"
             self.addNews.isEnabled = false
-            self.addNews.tintColor = UIColor.white
+            self.addNews.tintColor = self.navigationController?.navigationBar.tintColor
         }
-        
-
-
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -219,25 +217,35 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     // Upload the Image to database
     func uploadProfileImage(){
-        Profile.currentUser?.picture = self.profileImage.image
-        SVProgressHUD.show(withStatus: "Uploading...")
-        Profile.currentUser?.sync()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-            
-            SVProgressHUD.showSuccess(withStatus: "Uploaded!")
-            SVProgressHUD.dismiss(withDelay: 1.5)
+        SettingsLauncher.showLoading(Status: "Uploading Profile Picture...")
+        let userID = Profile.currentUser?.userID
+        let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
+        let profilePath = "UserInfo/\(userID!)/profilePic/profileImage.jpg"
+        SettingsLauncher.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
+            metadata, error in
+            guard let meta = metadata else{
+                print("Upload Error")
+                return
+            }
+            let url = meta.downloadURL()
+            Profile.currentUser?.profilePicUrl = url
+            Profile.currentUser?.sync()
+            SettingsLauncher.dismissLoading()
         })
-        
     }
 
     func logOut() {
-        
+        Profile.currentUser = nil
+        let cache = HybridCache(name: "UserCache")
+        let syncCache = SyncHybridCache(cache)
+        syncCache.remove("UserProfile")
+        print("Cache Removed")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
         self.present(loginVC, animated: true, completion: {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = loginVC
-            Profile.currentUser = nil
+            
             print("Logged Out!")
         })
         

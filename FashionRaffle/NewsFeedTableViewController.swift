@@ -11,13 +11,12 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import Cache
-
+import Imaginary
 
 class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     
     var newsF : [NewsFeed] = []
     // search attributes
-    //var filterednewsDatas : [NewsFeedData] = []
     //let searchBar = UISearchBar()
     var label : UILabel?
     //var shouldFiltContents = false
@@ -36,22 +35,14 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
  
     }
     
-    
-    
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         
-        //SettingsLauncher.showLoading(Status: "Loading...")
+        SettingsLauncher.showLoading(Status: "Loading...")
         label?.text = self.title
-        
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
-/*
-        
-        ref.child("Demos").queryOrderedByKey().observe(.childAdded, with: {
+        ref.child("ReleaseNews").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             guard let newsFeedData = snapshot.value as? [String:Any] else {
                 print("No Data here! Fatal error with Firebase NewsFeed Data")
@@ -64,10 +55,9 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             self.newsF.insert(newNewsData, at: 0)
             self.tableView.reloadData()
             
-           SettingsLauncher.dismissLoading()
+            SettingsLauncher.dismissLoading()
             
         })
-        */
  
     }
     
@@ -160,9 +150,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
         
         let newsCell = self.newsF[indexPath.row]
-        if let imageStr = newsCell.headImageUrl {
-            cell.Cellimage.image = nil
-        }
+        let imageUrl = newsCell.headImageUrl
+        cell.Cellimage.setImage(url: imageUrl!)
         
         cell.timestamp!.text = newsCell.timestamp
         cell.Title!.text = newsCell.title
@@ -174,8 +163,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             cell.releaseDateEvent.setTitle("TBD", for: .normal)
         }
         return cell
-        
-        
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -188,20 +176,21 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        /*
         let newsCell = self.newsF[indexPath.row]
         NewsFeed.selectedNews = newsCell
         let storyboard = UIStoryboard(name: "FirstDemo", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "NewsReusableView") as! NewsReusableViewController
         //searchBar.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)
+ */
+        print("CoolCool")
     }
     
     //TableView Delegates end
     
     
-    
     //Search bar delegates
-    
     
     /*
      func updateSearchResults(for searchController: UISearchController) {

@@ -21,11 +21,11 @@ class Profile {
     var following:[String]
     var followBrands:[String]
     var posts:[Post]
-    var picture:UIImage?
+    var profilePicUrl:URL?
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], picture:UIImage?) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -35,7 +35,7 @@ class Profile {
         self.followBrands = followBrands
         self.checkInCount = checkInCount
         self.posts = posts
-        self.picture = picture
+        self.profilePicUrl = profilePicUrl
         lastCheckDate = Date().now()
         editor = false
         // Check in upon login
@@ -43,7 +43,7 @@ class Profile {
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), picture: nil)
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil)
     }
     
     // Used during login
@@ -74,8 +74,8 @@ class Profile {
         if let brands = profileDict["followBrands"] as? [String] {
             profile.followBrands = brands
         }
-        if let imgString = profileDict["picture"] as? String {
-            profile.picture = UIImage.imageWithBase64String(base64String: imgString)
+        if let imgUrlString = profileDict["profilePicUrl"] as? String {
+            profile.profilePicUrl = URL(string: imgUrlString)
         }
         if profileDict["editor"] != nil {
             profile.editor = true
@@ -87,6 +87,7 @@ class Profile {
     }
     // put all info into dict
     func dictValue() -> [String:Any] {
+        
         var profileDict:[String:Any] = [:]
         //fetch userID,username,email,tickets,checkInCount,followers,following, followBrands,posts, picture
         profileDict["userID"] = userID
@@ -102,8 +103,8 @@ class Profile {
         if editor == true {
             profileDict["editor"] = "yes"
         }
-        if let profilepic = picture {
-            profileDict["picture"] = profilepic.base64String()
+        if let profilepicurl = profilePicUrl {
+            profileDict["profilePicUrl"] = "\(profilepicurl)"
         }
         return profileDict
     }

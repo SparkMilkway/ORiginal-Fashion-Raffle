@@ -24,6 +24,7 @@ class NewsReusableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "likeicon"), style: .plain, target: self, action: #selector(handlelike))
         let selectedNews = (NewsFeed.selectedNews)!
         self.title = selectedNews.title
@@ -59,6 +60,10 @@ class NewsReusableViewController: UIViewController {
     
     
 }
+
+
+
+
 
 class RaffleReusableViewController: UIViewController {
     @IBOutlet weak var Label1: UILabel!

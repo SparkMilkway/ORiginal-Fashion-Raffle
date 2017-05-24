@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Firebase
 
 class SettingsLauncher: NSObject {
 
@@ -48,13 +49,36 @@ class SettingsLauncher: NSObject {
         }
     }
 
-
+//Show an alert
     static func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title:"OK", style: .cancel, handler: handler)
         alertController.addAction(defaultAction)
         controller.present(alertController, animated: true, completion: nil)
     }
+    
+    //Show an alert with options
+    static func showAlertsWithOptions(title: String, message: String, controller:UIViewController, yesHandler:((UIAlertAction) -> Void)?, cancelHandler:((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: yesHandler))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: cancelHandler))
+        controller.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    //FireStorageUpload
+    static func uploadDatatoStorage (data: Data,itemStoragePath: String, contentType: String?, completion: ((FIRStorageMetadata?, Error?) -> Void)?) {
+        let storageRef = FIRStorage.storage().reference()
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = contentType
+        
+        storageRef.child(itemStoragePath).put(data, metadata: metadata, completion: completion)
+        
+        
+    }
+    
+    
     
     override init() {
         super.init()
@@ -79,14 +103,14 @@ extension Date {
     // Return the date now as MM/DD/YYYY hh:mma
     func now() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy/MM/dd hh:mma"
+        dateFormat.dateFormat = "MM.dd.yyyy hh:mma"
         let now = dateFormat.string(from: Date())
         return now
     }
     
     static func strToDate(Str: String) -> Date? {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
+        dateFormat.dateFormat = "MM.dd.yyyy HH:mm"
         guard let date = dateFormat.date(from: Str) else {
             print("Date format not correct")
             return nil
@@ -97,7 +121,7 @@ extension Date {
     
     func dateToStr() -> String {
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "MM/dd/yyyy HH:mm"
+        dateFormat.dateFormat = "MM.dd.yyyy HH:mm"
         let str = dateFormat.string(from: self)
         return str
     }

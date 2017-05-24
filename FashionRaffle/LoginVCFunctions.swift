@@ -274,9 +274,7 @@ extension LoginViewController {
                                         print("Can't retrieve the profile image URL.")
                                         return
                                     }
-                                    let imagedata = try? Data(contentsOf: imageURL)
-                                    let image = UIImage(data: imagedata!)
-                                    newuser.picture = image
+                                    newuser.profilePicUrl = imageURL
                                     Profile.currentUser = newuser
                                     newuser.sync()
                                     
