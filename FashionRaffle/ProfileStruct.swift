@@ -36,7 +36,7 @@ class Profile {
         self.checkInCount = checkInCount
         self.posts = posts
         self.profilePicUrl = profilePicUrl
-        lastCheckDate = Date().now()
+        lastCheckDate = Date.nowDate()
         editor = false
         // Check in upon login
         //It's the local time, later it should be a world time and can't be changed from the user's calendar

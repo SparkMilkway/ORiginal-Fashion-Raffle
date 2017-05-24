@@ -108,6 +108,13 @@ extension Date {
         return now
     }
     
+    static func nowDate() -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM.dd.yyyy"
+        let now = dateFormat.string(from: Date())
+        return now
+    }
+    
     static func strToDate(Str: String) -> Date? {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "MM.dd.yyyy HH:mm"

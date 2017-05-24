@@ -257,8 +257,7 @@ extension LoginViewController {
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: current.tokenString)
                 FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
                     if error == nil{
-                        
-                        
+
                         let userID = user?.uid
                         ref.child("Users").child(userID!).observeSingleEvent(of: .value, with: {
                             snapshot in

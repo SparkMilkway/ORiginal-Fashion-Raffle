@@ -50,12 +50,15 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             }
             
             let newsID = snapshot.key //get newsID
-            let newNewsData = NewsFeed.initWithNewsID(newsID: newsID, contents: newsFeedData)!
+            DispatchQueue.main.async {
+                let newNewsData = NewsFeed.initWithNewsID(newsID: newsID, contents: newsFeedData)!
+                
+                self.newsF.insert(newNewsData, at: 0)
+                self.tableView.reloadData()
+                
+                SettingsLauncher.dismissLoading()
+            }
             
-            self.newsF.insert(newNewsData, at: 0)
-            self.tableView.reloadData()
-            
-            SettingsLauncher.dismissLoading()
             
         })
  
@@ -150,8 +153,10 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
         
         let newsCell = self.newsF[indexPath.row]
-        let imageUrl = newsCell.headImageUrl
-        cell.Cellimage.setImage(url: imageUrl!)
+        if let imageUrl = newsCell.headImageUrl{
+            cell.Cellimage.setImage(url: imageUrl)
+        }
+        
         
         cell.timestamp!.text = newsCell.timestamp
         cell.Title!.text = newsCell.title

@@ -39,15 +39,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let json:JSON = syncUserCache.object("UserProfile") {
                 let datadic = json.object as? [String:Any]
                 print("Has Cache Value!")
-                let userProfile = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
-                if userProfile?.lastCheckDate != Date().now() {
-                    userProfile?.lastCheckDate = Date().now()
-                    let count = userProfile?.checkInCount
-                    userProfile?.checkInCount = count! + 1
+                // Need to check if the current user is actually the user logged in last time.
+                let cachedID = datadic!["userID"] as? String
+                if cachedID == userID {
+                    let userProfile = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
+                    if userProfile?.lastCheckDate != Date.nowDate() {
+                        userProfile?.lastCheckDate = Date.nowDate()
+                        let count = userProfile?.checkInCount
+                        userProfile?.checkInCount = count! + 1
+                    }
+                    Profile.currentUser = userProfile!
+                    Profile.currentUser?.sync()
+                    print("CurrentUser data inputs successfully.")
+                    self.rootToMainTab()
                 }
-                Profile.currentUser = userProfile!
-                print("CurrentUser data inputs successfully.")
-                self.rootToMainTab()
+                else {
+                    print("The user now is not who get cached before.")
+                    print("Will log out")
+                    try! FIRAuth.auth()?.signOut()
+                    if FBSDKAccessToken.current() != nil{
+                        FBSDKLoginManager().logOut()
+                    }
+                }
+            
+                
+                
+                
             }
             else {
                 // This part can later be used as an option that the user doesn't want to cache the user data
@@ -63,6 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         }
+        else {
+            print("=----------=")
+            print("No User Signed in")
+        }
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         

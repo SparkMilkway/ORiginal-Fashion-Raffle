@@ -34,7 +34,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let currentDate = Date().now()
+        let currentDate = Date.nowDate()
         let currentUser = Profile.currentUser
         if let checkInCount = currentUser?.checkInCount {
             if currentDate != currentUser?.lastCheckDate {
@@ -152,7 +152,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
 
         navigationController?.navigationBar.backgroundColor = UIColor.white
         
-        let now = Date().now()
+        let now = Date.nowDate()
         self.dateLabel.text = now
         profileImageView()
         if FBSDKAccessToken.current() == nil{
@@ -235,17 +235,17 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     func logOut() {
-        Profile.currentUser = nil
-        let cache = HybridCache(name: "UserCache")
-        let syncCache = SyncHybridCache(cache)
-        syncCache.remove("UserProfile")
-        print("Cache Removed")
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
         self.present(loginVC, animated: true, completion: {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = loginVC
-            
+            Profile.currentUser = nil
+            let cache = HybridCache(name: "UserCache")
+            let syncCache = SyncHybridCache(cache)
+            syncCache.remove("UserProfile")
+            print("Cache Removed")
             print("Logged Out!")
         })
         
