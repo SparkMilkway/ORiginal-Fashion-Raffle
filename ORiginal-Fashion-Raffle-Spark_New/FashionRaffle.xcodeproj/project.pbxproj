@@ -13,6 +13,7 @@
 		045FDA541ED62AAD004C9BC0 /* userPostsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA531ED62AAD004C9BC0 /* userPostsCollectionViewController.swift */; };
 		045FDA561ED62AB8004C9BC0 /* userRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA551ED62AB8004C9BC0 /* userRaffleViewController.swift */; };
 		045FDA581ED62D88004C9BC0 /* profileMainViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */; };
+		045FDA5A1ED655C8004C9BC0 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA591ED655C8004C9BC0 /* guestVC.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		045FDA531ED62AAD004C9BC0 /* userPostsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userPostsCollectionViewController.swift; sourceTree = "<group>"; };
 		045FDA551ED62AB8004C9BC0 /* userRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userRaffleViewController.swift; sourceTree = "<group>"; };
 		045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileMainViewExtension.swift; sourceTree = "<group>"; };
+		045FDA591ED655C8004C9BC0 /* guestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045FDA5B1ED6AD21004C9BC0 /* guest */ = {
+			isa = PBXGroup;
+			children = (
+				045FDA591ED655C8004C9BC0 /* guestVC.swift */,
+			);
+			name = guest;
+			sourceTree = "<group>";
+		};
 		04D8A1D11DC36C53008B1989 = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +347,7 @@
 		52334D941E78C42C00FFB8A4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				045FDA5B1ED6AD21004C9BC0 /* guest */,
 				52334DA11E78D4EB00FFB8A4 /* Data Manage */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
 				52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */,
@@ -730,6 +741,7 @@
 				045FDA581ED62D88004C9BC0 /* profileMainViewExtension.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				045FDA5A1ED655C8004C9BC0 /* guestVC.swift in Sources */,
 				045FDA521ED62AA2004C9BC0 /* userPostsCollectionViewCell.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,

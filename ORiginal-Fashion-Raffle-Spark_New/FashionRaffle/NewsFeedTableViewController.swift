@@ -42,6 +42,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         label?.text = self.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
         
+        //ref.child("ReleaseNews").queryOrdered(byChild: "timestamp").queryEnding(atValue: lastTimeStamp - 1).queryLimited(toLast: 10).observe(.value, with: { (snapshot) in
+        
         ref.child("ReleaseNews").queryOrderedByKey().observe(.childAdded, with: {
             snapshot in
             guard let newsFeedData = snapshot.value as? [String:Any] else {

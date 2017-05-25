@@ -20,6 +20,7 @@ class Post {
     let brandinfo:[String]?
     static var currentPost:Post?
     
+    
     init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, profileImageUrl:URL?, timestamp: String, likedUsers: [String]?) {
         self.postID = postID
         self.creator = creator
@@ -147,6 +148,9 @@ class PostPoolCell: UITableViewCell {
     @IBOutlet weak var timeStamp: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var viewProfile: UIButton!
+    
+    @IBOutlet weak var creatorID: UILabel!
     
 }
 
