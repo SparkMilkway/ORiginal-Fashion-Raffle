@@ -807,13 +807,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AU-ZS-muw">
-                                        <rect key="frame" x="23" y="149" width="329" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du5-He-haq">
                                         <rect key="frame" x="144" y="149" width="87" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -822,6 +815,22 @@
                                         </state>
                                         <connections>
                                             <action selector="actionButton:" destination="liL-as-zXg" eventType="touchUpInside" id="Woy-mq-oXZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wps-DU-5ps">
+                                        <rect key="frame" x="288" y="96" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="followerTapped:" destination="liL-as-zXg" eventType="touchUpInside" id="bWN-yY-lP7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzZ-Iu-kzc">
+                                        <rect key="frame" x="23" y="96" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="followingTapped:" destination="liL-as-zXg" eventType="touchUpInside" id="Nlo-WD-qMb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -911,17 +920,55 @@
                     <connections>
                         <outlet property="actionButton" destination="du5-He-haq" id="7gq-Rk-AqS"/>
                         <outlet property="brandsCollectionView" destination="hLI-7I-aus" id="dIA-w7-qeo"/>
+                        <outlet property="followerButton" destination="Wps-DU-5ps" id="yb8-Ms-7ig"/>
                         <outlet property="followers" destination="jSL-9x-vxh" id="HJt-LZ-gYt"/>
                         <outlet property="following" destination="taR-5p-2Yk" id="eZa-Ea-1i7"/>
+                        <outlet property="followingButton" destination="tzZ-Iu-kzc" id="ccn-pM-lng"/>
                         <outlet property="guestProfilSegmentControl" destination="UbD-Ke-TUF" id="bKh-SJ-AcE"/>
                         <outlet property="profileBackground" destination="Pcd-Q5-2qc" id="yk6-CL-lnO"/>
                         <outlet property="profileImage" destination="0VD-3c-Sv5" id="cxu-bx-JXg"/>
-                        <outlet property="tempL" destination="7AU-ZS-muw" id="R3m-an-MD1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b17-Ef-EC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4332" y="-1125.7871064467768"/>
+        </scene>
+        <!--FollowersVC Table View Controller-->
+        <scene sceneID="Gbt-If-5rk">
+            <objects>
+                <tableViewController storyboardIdentifier="followersVC" id="HdK-jS-bbg" customClass="followersVCTableViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jJ8-DC-NBo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v1P-Su-txW">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v1P-Su-txW" id="Yo6-eo-O3r">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPC-tx-bd6">
+                                            <rect key="frame" x="33" y="11" width="298" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HdK-jS-bbg" id="yyc-A0-j4s"/>
+                            <outlet property="delegate" destination="HdK-jS-bbg" id="qMx-7W-SoR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdi-jU-gWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5366" y="-1327"/>
         </scene>
         <!--ORigiNal-->
         <scene sceneID="IYY-Sd-scx">

@@ -12,6 +12,9 @@ var guestname = [String]()
 var guestId = [String]()
 var followingBrand = [String]()
 
+var followingArray = [String]()
+var followerArray = [String]()
+
 enum ActionButtonState: String {
     case CurrentUser = "Edit Profile"
     case NotFollowing = "+ Follow"
@@ -35,7 +38,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
 
     @IBOutlet weak var brandsCollectionView: UICollectionView!
 
-    @IBOutlet weak var tempL: UILabel!
+    
     
     @IBOutlet weak var guestProfilSegmentControl: UISegmentedControl!
     
@@ -43,7 +46,15 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     var brandDatas = [String]()
     var followingBrands = [String]()
     let storageReference = FIRStorage.storage()
+    var fingArray = [String]()
+    var ferArray = [String]()
+
+    var userProfile: Profile? // Fetch a user's profile if necessary
+
     
+    @IBOutlet weak var followingButton: UIButton!
+    
+    @IBOutlet weak var followerButton: UIButton!
     var actionButtonState: ActionButtonState = .CurrentUser {
         willSet(newState) {
             switch  newState {
@@ -67,6 +78,8 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        
         actionButton.layer.cornerRadius = 3
 
         self.brandsCollectionView.delegate = self
@@ -75,31 +88,39 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         
         self.navigationItem.title = guestname.last?.uppercased()
         
+        
         ref.child("Users").child(guestId.last!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
+            let value = snapshot.value as? [String: Any]
+            
+            self.userProfile = Profile.initWithUserID(userID: guestId.last!, profileDict: value!)
             
             
-            
-            if let profileUrl = NSURL(string: value?["profilePicUrl"] as! String) {
-            
-                self.profileImage.setImage(url: profileUrl as URL)
-            } else {
-                self.profileImage.image = UIImage(named: "UserIcon")
+            if let profileUrl = self.userProfile?.profilePicUrl{
+                self.profileImage.setImage(url: profileUrl)
+            }
+            else {
+                self.profileImage.image = UIImage(named:"background")
+            }
+            if let bgUrl = self.userProfile?.backgroundPictureUrl{
+                self.profileBackground.setImage(url: bgUrl)
+            }
+            else {
+                self.profileBackground.image = UIImage(named:"background")
+            }
+            if let fingArray = self.userProfile?.followers{
+                self.fingArray = fingArray
+                
+            }
+            if let ferArray = self.userProfile?.following{
+                self.ferArray = ferArray
             }
             
-            
-            if let bgpicUrl = NSURL(string: value?["backgroundPictureUrl"] as! String){
-            
-                self.profileBackground.setImage(url: bgpicUrl as URL)
-            } else {
-                self.profileBackground.image = UIImage(named: "background")
-            }
-            
+            followingArray = self.fingArray
+            followerArray = self.ferArray
             
             self.followingBrands = value?["followBrands"] as! [String]
             self.brandDatas = self.followingBrands
             
-            print(self.brandDatas, "SSSSSSSSS")
             
             
                 
@@ -111,7 +132,6 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         }) { (error) in
             print(error.localizedDescription)
         }
-       
         
         let guestTmp = guestId.last as! String
 
@@ -120,10 +140,9 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         self.guestProfilSegmentControl.selectedSegmentIndex = 0
         
         
-        print(guestTmp, "===???", Profile.currentUser?.userID)
+        print(self.fingArray , "===",self.ferArray,"???", followerArray, "===", followingArray)
         self.actionButtonState = .CurrentUser
         if guestTmp != Profile.currentUser?.userID {
-            print("currentUser")
             if (Profile.currentUser?.following.contains(guestTmp))! {
                 // Following
                 self.actionButtonState = .Following
@@ -136,6 +155,21 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func followerTapped(_ sender: Any) {
+        
+        userId = guestId.last!
+        category = "followers"
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVCTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    @IBAction func followingTapped(_ sender: Any) {
+        userId = guestId.last!
+        category = "followings"
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVCTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
+
+    }
     
     @IBAction func actionButton(_ sender: AnyObject) {
         switch actionButtonState {
@@ -144,19 +178,20 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         case .NotFollowing:
             actionButtonState = .Following
             Profile.currentUser?.following.append(guestId.last!)
-            print(guestId.last!, "???")
-            //userProfile?.followers.append(Profile.currentUser!.username)
-            //userProfile?.sync()
+            
+            userProfile?.followers.append(Profile.currentUser!.userID)
+            userProfile?.sync()
             Profile.currentUser?.sync()
         case .Following:
             actionButtonState = .NotFollowing
             if let index = Profile.currentUser?.following.index(of: guestId.last!) {
                 Profile.currentUser?.following.remove(at: index)
             }
-            //if let index = userProfile?.followers.index(of: (Profile.currentUser?.username)!) {
-              //  userProfile?.followers.remove(at: index)
-            //}
-            //userProfile?.sync()
+            
+            if let index = userProfile?.followers.index(of: (Profile.currentUser?.userID)!) {
+                userProfile?.followers.remove(at: index)
+            }
+            userProfile?.sync()
             Profile.currentUser?.sync()
         }
         
@@ -165,6 +200,11 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
+        followingArray = self.fingArray
+        followerArray = self.ferArray
+        
+        print(self.fingArray , "===",self.ferArray,"???", followerArray, "===", followingArray)
+
         return self.brandDatas.count
     }
     
@@ -178,8 +218,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         
         
      
-            print(self.brandDatas[indexPath.row])
-            
+        
             ref.child("Brands").child(self.brandDatas[indexPath.row]).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
  

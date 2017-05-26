@@ -14,6 +14,7 @@
 		045FDA561ED62AB8004C9BC0 /* userRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA551ED62AB8004C9BC0 /* userRaffleViewController.swift */; };
 		045FDA581ED62D88004C9BC0 /* profileMainViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */; };
 		045FDA5A1ED655C8004C9BC0 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA591ED655C8004C9BC0 /* guestVC.swift */; };
+		045FDA651ED7C469004C9BC0 /* followersVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 		045FDA551ED62AB8004C9BC0 /* userRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userRaffleViewController.swift; sourceTree = "<group>"; };
 		045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileMainViewExtension.swift; sourceTree = "<group>"; };
 		045FDA591ED655C8004C9BC0 /* guestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
+		045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersVCTableViewController.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				045FDA591ED655C8004C9BC0 /* guestVC.swift */,
+				045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */,
 			);
 			name = guest;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				045FDA521ED62AA2004C9BC0 /* userPostsCollectionViewCell.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				5279FE091DC9426D0072A5B5 /* DemoFeatures.swift in Sources */,
+				045FDA651ED7C469004C9BC0 /* followersVCTableViewController.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
