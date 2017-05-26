@@ -12,6 +12,11 @@ var guestname = [String]()
 var guestId = [String]()
 var followingBrand = [String]()
 
+enum ActionButtonState: String {
+    case CurrentUser = "Edit Profile"
+    case NotFollowing = "+ Follow"
+    case Following = "✓ Following"
+}
 
 
 
@@ -34,15 +39,36 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     
     @IBOutlet weak var guestProfilSegmentControl: UISegmentedControl!
     
+    @IBOutlet weak var actionButton: UIButton!
     var brandDatas = [String]()
     var followingBrands = [String]()
     let storageReference = FIRStorage.storage()
-
+    
+    var actionButtonState: ActionButtonState = .CurrentUser {
+        willSet(newState) {
+            switch  newState {
+            case .CurrentUser:
+                actionButton.backgroundColor = UIColor.blue
+                actionButton.layer.borderWidth = 1
+                
+            case .NotFollowing:
+                actionButton.backgroundColor = UIColor.white
+                actionButton.layer.borderColor = UIColor.gray.cgColor
+                actionButton.layer.borderWidth = 1
+            case .Following:
+                actionButton.backgroundColor = UIColor.red
+                actionButton.layer.borderWidth = 0
+            }
+            actionButton.setTitle(newState.rawValue, for: UIControlState())
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        actionButton.layer.cornerRadius = 3
+
         self.brandsCollectionView.delegate = self
         self.brandsCollectionView.dataSource = self
 
@@ -87,18 +113,54 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         }
        
         
-        
+        let guestTmp = guestId.last as! String
 
         profileImageView()
         backgroundImageView()
         self.guestProfilSegmentControl.selectedSegmentIndex = 0
         
         
-        
+        print(guestTmp, "===???", Profile.currentUser?.userID)
+        self.actionButtonState = .CurrentUser
+        if guestTmp != Profile.currentUser?.userID {
+            print("currentUser")
+            if (Profile.currentUser?.following.contains(guestTmp))! {
+                // Following
+                self.actionButtonState = .Following
+            } else {
+                // Not following
+                self.actionButtonState = .NotFollowing
+            }
+        }
+
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func actionButton(_ sender: AnyObject) {
+        switch actionButtonState {
+        case .CurrentUser:
+            actionButtonState = .CurrentUser
+        case .NotFollowing:
+            actionButtonState = .Following
+            Profile.currentUser?.following.append(guestId.last!)
+            print(guestId.last!, "???")
+            //userProfile?.followers.append(Profile.currentUser!.username)
+            //userProfile?.sync()
+            Profile.currentUser?.sync()
+        case .Following:
+            actionButtonState = .NotFollowing
+            if let index = Profile.currentUser?.following.index(of: guestId.last!) {
+                Profile.currentUser?.following.remove(at: index)
+            }
+            //if let index = userProfile?.followers.index(of: (Profile.currentUser?.username)!) {
+              //  userProfile?.followers.remove(at: index)
+            //}
+            //userProfile?.sync()
+            Profile.currentUser?.sync()
+        }
+        
+    }
     
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

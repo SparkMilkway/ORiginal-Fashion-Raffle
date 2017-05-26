@@ -814,6 +814,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du5-He-haq">
+                                        <rect key="frame" x="144" y="149" width="87" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionButton:" destination="liL-as-zXg" eventType="touchUpInside" id="Woy-mq-oXZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -899,6 +909,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yVj-mb-7rM"/>
                     <connections>
+                        <outlet property="actionButton" destination="du5-He-haq" id="7gq-Rk-AqS"/>
                         <outlet property="brandsCollectionView" destination="hLI-7I-aus" id="dIA-w7-qeo"/>
                         <outlet property="followers" destination="jSL-9x-vxh" id="HJt-LZ-gYt"/>
                         <outlet property="following" destination="taR-5p-2Yk" id="eZa-Ea-1i7"/>
@@ -2091,7 +2102,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l8J-5M-hME" customClass="userPostsCollectionViewCell" customModule="FashionRaffle" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pictureCell" id="l8J-5M-hME" customClass="userPostsCollectionViewCell" customModule="FashionRaffle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2109,6 +2120,9 @@
                                     <constraint firstAttribute="trailing" secondItem="eqw-gm-aEQ" secondAttribute="trailing" id="g73-cA-WO9"/>
                                     <constraint firstItem="eqw-gm-aEQ" firstAttribute="leading" secondItem="l8J-5M-hME" secondAttribute="leading" id="ouh-8h-EuC"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="userPostsImage" destination="eqw-gm-aEQ" id="uhK-dv-ePR"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
