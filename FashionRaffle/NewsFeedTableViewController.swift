@@ -21,7 +21,7 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
     //let searchBar = UISearchBar()
     var label : UILabel?
     
-    var currentLoad : UInt = 2
+    var currentLoad : UInt = 4
     var singleLoadLimit: UInt = 2
     //var shouldFiltContents = false
     override func viewWillAppear(_ animated: Bool) {
@@ -146,6 +146,15 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
             currentLoad = currentLoad + singleLoadLimit
             let checkCount = self.newsF.count
             self.newsF.removeAll()
+            
+            var fetchCount:UInt = 0
+            ref.child("ReleaseNews").queryLimited(toLast: self.currentLoad).observeSingleEvent(of: .value, with: {
+                snapshot in
+                fetchCount = snapshot.childrenCount
+                //Get the count actually
+                //print(fetchCount)
+            })
+            
             ref.child("ReleaseNews").queryOrderedByKey().queryLimited(toLast: self.currentLoad).observe(.childAdded, with: {
                 snapshot in
                 guard let newsFeed = snapshot.value as? [String:Any] else{
@@ -155,39 +164,44 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
                 let newsID = snapshot.key
                 let new = NewsFeed.initWithNewsID(newsID: newsID, contents: newsFeed)
                 self.newsF.insert(new!, at: 0)
-                DispatchQueue.main.async {
-                    
-                    if self.newsF.count == checkCount {
-                        // No more data
-                        print("No more data")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
-                            self.tableView.es_noticeNoMoreData()
+                // When fetched all the data
+                if self.newsF.count == Int(fetchCount) {
+                    //print(self.newsF.count)
+                    if self.newsF.count > checkCount {
+                        // Has more data
+                        print("Has more data")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                            
+                            self.tableView.reloadData()
+                            self.tableView.es_stopLoadingMore()
                             ref.child("ReleaseNews").removeAllObservers()
                             return
                         })
                     }
-                    if self.newsF.count > checkCount {
-                        // Has more data
-                        print("Has more data")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
-                            self.tableView.es_stopLoadingMore()
-                            self.tableView.reloadData()
+                    else {
+                        print("No more data now")
+                        DispatchQueue.main.async {
+                            self.tableView.es_noticeNoMoreData()
                             ref.child("ReleaseNews").removeAllObservers()
-                        })
-                        
-
+                            return
+                        }
                     }
+                    
                 }
+                
+
             }, withCancel:{
                 error in
                 print(error.localizedDescription)
             })
+            // No more data actually
+            
 
         }
         else {
             //No more data
             print("No more data to load")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
                 self.tableView.es_noticeNoMoreData()
             })
             
