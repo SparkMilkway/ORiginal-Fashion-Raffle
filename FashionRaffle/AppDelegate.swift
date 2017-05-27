@@ -61,10 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         FBSDKLoginManager().logOut()
                     }
                 }
-            
-                
-                
-                
             }
             else {
                 // This part can later be used as an option that the user doesn't want to cache the user data
@@ -76,9 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             print("=========")
-            
-
-
         }
         else {
             print("=----------=")

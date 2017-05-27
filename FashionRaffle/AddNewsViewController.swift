@@ -280,8 +280,8 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
         for assets: PHAsset in pickedAssts {
             
             let cgSize = CGSize(width: 250, height: 250)
-            let width = self.view.frame.width * 2
-            let height = self.view.frame.height * 2
+            let width = self.view.frame.width * 3
+            let height = self.view.frame.height * 3
             let cgSize2 = CGSize(width: width, height: height)
             
             imageManager.requestImage(for: assets, targetSize: cgSize, contentMode: .aspectFit, options: options, resultHandler: {

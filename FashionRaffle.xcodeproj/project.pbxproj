@@ -280,8 +280,6 @@
 				52334D901E78C32300FFB8A4 /* Camera Handle */,
 				52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */,
 				04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */,
-				520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */,
-				52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -299,6 +297,8 @@
 			children = (
 				52F970801DFDED2200E396CD /* Settings&Extensions.swift */,
 				52E3773F1ED3B9AE00F2D609 /* Size.swift */,
+				520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */,
+				52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */,
 				52334D921E78C3CC00FFB8A4 /* Database Structures */,
 			);
 			name = "Settings and Handlings";
