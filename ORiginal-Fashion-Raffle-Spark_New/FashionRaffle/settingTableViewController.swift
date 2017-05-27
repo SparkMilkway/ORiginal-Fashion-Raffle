@@ -79,7 +79,12 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         self.username.text = username
         if let Bio = Profile.currentUser?.bio {
+            if Bio == ""{
+                self.Bio.text = "Bio"
+                self.Bio.textColor = UIColor.lightGray
+            } else {
             self.Bio.text = Bio
+            }
         }
         if let web = Profile.currentUser?.website{
             self.Website.text = web

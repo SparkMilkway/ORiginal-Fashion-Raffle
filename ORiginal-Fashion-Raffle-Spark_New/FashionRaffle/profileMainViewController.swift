@@ -20,11 +20,10 @@ class profileMainViewController: UIViewController {
     
     @IBOutlet weak var profileBackground: UIImageView!
     
-    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var bio: UITextView!
     
-    @IBOutlet weak var following: UILabel!
-    
-    @IBOutlet weak var followers: UILabel!
+    @IBOutlet weak var infoVE: UIVisualEffectView!
+ 
     
     @IBOutlet weak var brandsContainerView: UIView!
 
@@ -36,16 +35,20 @@ class profileMainViewController: UIViewController {
     
     var chooseImage : Bool!
     
-    var userProfile: Profile?
+    var fingArray = [String]()
+    var ferArray = [String]()
+    
+    @IBOutlet weak var followingButton: UIButton!
+    
+    @IBOutlet weak var followerButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        let username = Profile.currentUser?.username
         
-        self.userName!.text = username
+        infoVE.alpha = 0.5
         
-        self.userName.isHidden = true
         
         if let profileUrl = Profile.currentUser?.profilePicUrl {
             self.profileImage.setImage(url: profileUrl)
@@ -61,6 +64,44 @@ class profileMainViewController: UIViewController {
             self.profileBackground.image = UIImage(named: "background")
         }
         
+        if let fingArray = Profile.currentUser?.following{
+            followingArray = fingArray
+            self.fingArray = fingArray
+            self.followingButton.setTitle("Following: " + String(self.fingArray.count), for: .normal)
+            
+            if self.fingArray.count == 0 {
+                self.followingButton.isUserInteractionEnabled = false
+            }
+            
+            
+        }
+        if let ferArray = Profile.currentUser?.followers{
+            followerArray = ferArray
+            self.ferArray = ferArray
+            self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
+            if self.ferArray.count == 0 {
+                self.followerButton.isUserInteractionEnabled = false
+                
+            }
+            
+        }
+        if let bio = Profile.currentUser?.bio{
+            if let web = Profile.currentUser?.website{
+                self.bio.text = bio + "\n" + web
+            }
+            else{
+                self.bio.text = bio
+            }
+        }else {
+            if let web = Profile.currentUser?.website{
+                self.bio.text = web
+            }
+            else{
+                self.bio.isHidden = true
+            }
+        }
+
+        
         self.Controller.selectedSegmentIndex = 0
         brandsContainerView.isHidden = true
         userPostContainerView.isHidden = false
@@ -74,6 +115,23 @@ class profileMainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        
+    }
+    
+    @IBAction func followerTapped(_ sender: Any) {
+        
+        userId = (Profile.currentUser?.userID)!
+
+        category = "followers"
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVCTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    @IBAction func followingTapped(_ sender: Any) {
+        userId = (Profile.currentUser?.userID)!
+        category = "followings"
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVCTableViewController
+        self.navigationController?.pushViewController(followers, animated: true)
         
     }
     
