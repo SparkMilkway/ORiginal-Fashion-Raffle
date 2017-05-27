@@ -23,10 +23,12 @@ class Profile {
     var posts:[Post]
     var profilePicUrl:URL?
     var backgroundPictureUrl: URL?
+    var bio: String
+    var website: String
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?, backgroundPictureUrl: URL?) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String, website: String) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -38,6 +40,8 @@ class Profile {
         self.posts = posts
         self.profilePicUrl = profilePicUrl
         self.backgroundPictureUrl = backgroundPictureUrl
+        self.bio = bio
+        self.website = website
         lastCheckDate = Date().now()
         editor = false
         // Check in upon login
@@ -45,7 +49,7 @@ class Profile {
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil, backgroundPictureUrl: nil)
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: String(), website: String())
     }
     
     // Used during login
@@ -83,6 +87,12 @@ class Profile {
         if let bgimgUrlString = profileDict["backgroundPictureUrl"] as? String {
             profile.backgroundPictureUrl = URL(string:bgimgUrlString)
         }
+        if let bio = profileDict["bio"] as? String{
+            profile.bio = bio
+        }
+        if let website = profileDict["website"] as? String{
+            profile.website = website
+        }
         if profileDict["editor"] != nil {
             profile.editor = true
         }
@@ -106,6 +116,8 @@ class Profile {
         profileDict["followBrands"] = followBrands
         profileDict["posts"] = posts
         profileDict["lastCheckDate"] = lastCheckDate
+        profileDict["bio"] = bio
+        profileDict["website"] = website
         if editor == true {
             profileDict["editor"] = "yes"
         }

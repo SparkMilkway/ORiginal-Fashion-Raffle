@@ -24,21 +24,20 @@ enum ActionButtonState: String {
 
 
 
-class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewDataSource {
+class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewDataSource, UITextViewDelegate {
 
     
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var profileBackground: UIImageView!
     
-    
-    @IBOutlet weak var following: UILabel!
-    
-    @IBOutlet weak var followers: UILabel!
 
     @IBOutlet weak var brandsCollectionView: UICollectionView!
 
+    @IBOutlet weak var bio: UITextView!
     
+    
+    @IBOutlet weak var infoVE: UIVisualEffectView!
     
     @IBOutlet weak var guestProfilSegmentControl: UISegmentedControl!
     
@@ -79,6 +78,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         super.viewDidLoad()
         
        
+        infoVE.alpha = 0.5
         
         actionButton.layer.cornerRadius = 3
 
@@ -107,13 +107,41 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             else {
                 self.profileBackground.image = UIImage(named:"background")
             }
-            if let fingArray = self.userProfile?.followers{
+            if let fingArray = self.userProfile?.following{
                 self.fingArray = fingArray
+                self.followingButton.setTitle("Following: " + String(self.fingArray.count), for: .normal)
+                
+                if self.fingArray.count == 0 {
+                    self.followingButton.isUserInteractionEnabled = false
+                }
+                
                 
             }
-            if let ferArray = self.userProfile?.following{
+            if let ferArray = self.userProfile?.followers{
                 self.ferArray = ferArray
+                self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
+                if self.ferArray.count == 0 {
+                    self.followerButton.isUserInteractionEnabled = false
+
+                }
+
             }
+            if let bio = self.userProfile?.bio{
+                if let web = self.userProfile?.website{
+                    self.bio.text = bio + "\n" + web
+                }
+                else{
+                    self.bio.text = bio
+                }
+            }else {
+                if let web = self.userProfile?.website{
+                    self.bio.text = web
+                }
+                else{
+                    self.bio.isHidden = true
+                }
+            }
+            
             
             followingArray = self.fingArray
             followerArray = self.ferArray
@@ -155,6 +183,12 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
 
         // Do any additional setup after loading the view.
     }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL, options: [:])
+        return false
+    }
+    
     @IBAction func followerTapped(_ sender: Any) {
         
         userId = guestId.last!
@@ -182,6 +216,9 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             userProfile?.followers.append(Profile.currentUser!.userID)
             userProfile?.sync()
             Profile.currentUser?.sync()
+            
+            
+
         case .Following:
             actionButtonState = .NotFollowing
             if let index = Profile.currentUser?.following.index(of: guestId.last!) {
@@ -190,12 +227,17 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             
             if let index = userProfile?.followers.index(of: (Profile.currentUser?.userID)!) {
                 userProfile?.followers.remove(at: index)
+                
             }
             userProfile?.sync()
             Profile.currentUser?.sync()
+            
+           
         }
         
     }
+    
+    
     
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

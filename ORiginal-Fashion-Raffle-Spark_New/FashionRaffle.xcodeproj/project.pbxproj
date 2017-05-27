@@ -15,6 +15,8 @@
 		045FDA581ED62D88004C9BC0 /* profileMainViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */; };
 		045FDA5A1ED655C8004C9BC0 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA591ED655C8004C9BC0 /* guestVC.swift */; };
 		045FDA651ED7C469004C9BC0 /* followersVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */; };
+		045FDA671ED806E4004C9BC0 /* followerVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA661ED806E4004C9BC0 /* followerVCTableViewCell.swift */; };
+		045FDA691ED8C878004C9BC0 /* settingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA681ED8C878004C9BC0 /* settingTableViewController.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -99,6 +101,8 @@
 		045FDA571ED62D88004C9BC0 /* profileMainViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileMainViewExtension.swift; sourceTree = "<group>"; };
 		045FDA591ED655C8004C9BC0 /* guestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersVCTableViewController.swift; sourceTree = "<group>"; };
+		045FDA661ED806E4004C9BC0 /* followerVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followerVCTableViewCell.swift; sourceTree = "<group>"; };
+		045FDA681ED8C878004C9BC0 /* settingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingTableViewController.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 			children = (
 				045FDA591ED655C8004C9BC0 /* guestVC.swift */,
 				045FDA641ED7C469004C9BC0 /* followersVCTableViewController.swift */,
+				045FDA661ED806E4004C9BC0 /* followerVCTableViewCell.swift */,
 			);
 			name = guest;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 				045FDA5B1ED6AD21004C9BC0 /* guest */,
 				52334DA11E78D4EB00FFB8A4 /* Data Manage */,
 				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
+				045FDA681ED8C878004C9BC0 /* settingTableViewController.swift */,
 				52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */,
 				52071E851E94908400ADDB8C /* BrandsViewController.swift */,
 				52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */,
@@ -735,6 +741,7 @@
 				042DCA081ED623520079B37B /* giveAwayViewController.swift in Sources */,
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
+				045FDA671ED806E4004C9BC0 /* followerVCTableViewCell.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
@@ -765,6 +772,7 @@
 				52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
+				045FDA691ED8C878004C9BC0 /* settingTableViewController.swift in Sources */,
 				52F970811DFDED2200E396CD /* Settings&Extensions.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
 				045FDA501ED62A67004C9BC0 /* profileMainViewController.swift in Sources */,

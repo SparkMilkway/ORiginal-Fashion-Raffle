@@ -162,9 +162,6 @@ class AddNewsTableViewController: UITableViewController {
     
     //Finish
     
-    @IBAction func backToProfile(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
 
     

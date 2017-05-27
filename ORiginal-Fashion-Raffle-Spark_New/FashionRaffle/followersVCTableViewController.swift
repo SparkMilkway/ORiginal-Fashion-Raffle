@@ -12,12 +12,15 @@ var category = String()
 
 
 class followersVCTableViewController: UITableViewController {
+    
+    var refresher = UIRefreshControl()
+    
     var userIdArray = [String]()
     var userPicArray = [String]()
     var followArray = [String]()
     var userProfile: Profile? // Fetch a user's profile if necessary
 
-
+    var page : Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,47 +29,37 @@ class followersVCTableViewController: UITableViewController {
         self.navigationItem.title = category.uppercased()
         print(category)
         if category == "followers" {
-            loadFollowers()
+            followArray = followerArray
         }
         if category == "followings"{
-            loadFollowings()
+            followArray = followingArray
         }
     }
     
-    func loadFollowers(){
-        print("followers")
-        ref.child("Users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? [String: Any]
-            
-            self.userProfile = Profile.initWithUserID(userID: userId, profileDict: value!)
-            self.followArray = (self.userProfile?.followers)!
-            print(self.followArray)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    func loadFollowings(){
-        print("following")
-        ref.child("Users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? [String: Any]
-            
-            self.userProfile = Profile.initWithUserID(userID: userId, profileDict: value!)
-            self.followArray = (self.userProfile?.following)!
-            print(self.followArray)
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-       
-    }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height * 2 {
+            loadMore()
+        }
+    }
+    //pagination
+    func loadMore(){
+        if page <= followArray.count{
+            //start animating indicator
+            //indicator.startAnimating()
+            
+            //load 1more cell
+            page = page + 1
+            
+        }
+    }
    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,10 +69,15 @@ class followersVCTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.frame.size.width / 4
+        return self.view.frame.size.width / 6
     }
 
 
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "followerCell", for: indexPath) as! followerVCTableViewCell
+        cell.label.text  = followArray[indexPath.row]
+        
+        return cell
+    }
 
 }
