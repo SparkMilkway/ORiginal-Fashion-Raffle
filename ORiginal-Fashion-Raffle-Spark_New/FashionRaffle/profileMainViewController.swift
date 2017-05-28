@@ -239,7 +239,7 @@ class profileMainViewController: UIViewController {
         profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
         profileBackground.isUserInteractionEnabled = true
         profileBackground.contentMode = .scaleAspectFill
-        profileBackground.alpha = 0.8
+        profileBackground.alpha = 0.9
         
     }
 

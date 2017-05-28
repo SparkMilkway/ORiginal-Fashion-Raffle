@@ -20,8 +20,9 @@ class followersVCTableViewController: UITableViewController {
     var followArray = [String]()
     var userProfile: Profile? // Fetch a user's profile if necessary
 
-    var page : Int = 1
-
+    var currentLoad : Int = 1
+    var singleLoadLimit: Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(followerArray, "===!!!!!!!!!!!!", followingArray)
@@ -51,16 +52,11 @@ class followersVCTableViewController: UITableViewController {
     }
     //pagination
     func loadMore(){
-        if page <= followArray.count{
-            //start animating indicator
-            //indicator.startAnimating()
-            
-            //load 1more cell
-            page = page + 1
+        if currentLoad <= followArray.count {
+            currentLoad = currentLoad + singleLoadLimit
             
         }
     }
-   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

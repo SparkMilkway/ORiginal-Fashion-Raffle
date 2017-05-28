@@ -64,6 +64,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        let defaults = UserDefaults.standard
+        let defaultValue = ["Day": 0, "Hour": 5, "minute": 10]
+        defaults.register(defaults: defaultValue)
+        
 
         
         return true

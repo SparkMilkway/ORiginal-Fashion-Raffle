@@ -178,13 +178,17 @@ class NewsDataCell: UITableViewCell{
         reminder.title = self.Title.text! + ": "+dateString
         
         let date = dateFormatter.date(from: dateString)
-        let datesss = dateFormatter.date(from: releasedate)
-        print(datesss!,  "actual")
+        let defaults = UserDefaults.standard
+        let alarmTime = -(defaults.double(forKey:"Day")*24*60*60 + defaults.double(forKey:"Hour")*3600 + defaults.double(forKey:"minute")*60)
+        
+        let newDate = date?.addingTimeInterval(alarmTime)
+        
+        print(alarmTime)
         
         
-        print(dateString + "==========")
-        print(date! , "result")
-        let alarm = EKAlarm(absoluteDate: date!)
+        
+        let alarm = EKAlarm(absoluteDate: newDate!)
+        
         
         reminder.addAlarm(alarm)
         
