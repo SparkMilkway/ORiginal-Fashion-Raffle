@@ -179,8 +179,7 @@ class NewsDataCell: UITableViewCell{
         
         let date = dateFormatter.date(from: dateString)
         let defaults = UserDefaults.standard
-        let alarmTime = -(defaults.double(forKey:"Day")*24*60*60 + defaults.double(forKey:"Hour")*3600 + defaults.double(forKey:"minute")*60)
-        
+        let alarmTime = -(defaults.double(forKey:"AlarmTime"))
         let newDate = date?.addingTimeInterval(alarmTime)
         
         print(alarmTime)

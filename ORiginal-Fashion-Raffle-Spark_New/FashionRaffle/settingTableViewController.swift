@@ -15,6 +15,23 @@ import PassKit
 import Imaginary
 import Foundation
 
+class dayPickerModel {
+    func cateValues() -> [String] {
+        return ["Day", "Hour", "Minute"]
+    }
+    
+    func modelValues(make: String) -> [String] {
+        if make == "Day" {
+            return ["0","1", "2", "3", "4", "5"]
+        } else if make == "Hour" {
+            return ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10","11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21", "22", "23", "24"]
+        } else {
+            return ["0", "5", "10", "15", "20", "25", "30", "35", "40", "45","50", "55", "60"]
+        }
+    }
+}
+
+var temp = 24*60*60
 
 
 
@@ -31,10 +48,15 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBOutlet weak var emailLogoutButton: UIButton!
     
     @IBOutlet weak var dayPicker: UIPickerView!
-    var time = [["0 Day", "1 Day", "2 Day", "3 Day", "4 Day", "5 Day","6 Day", "7 Day"],["0 Hour", "1 Hour", "2 Hour", "3 Hour", "4 Hour", "5 Hour", "6 Hour", "7 Hour", "8 Hour", "9 Hour", "10 Hour", "11 Hour", "12 Hour", "13 Hour", "14 Hour", "15 Hour", "16 Hour", "17 Hour", "18 Hour", "19 Hour", "20 Hour", "21 Hour", "22 Hour", "23 Hour"],["0 Minuete", "5 Minuete", "10 Minuete", "15 Minuete", "20 Minuete", "25 Minuete","30 Minuete","35 Minuete","40 Minuete","45 Minuete","50 Minuete","55 Minuete" ]]
+    
+    
+    var picker1Options:[String] = []
+    var picker2Options:[String] = []
+    
     var day = Double()
     var hour = Double()
     var minute = Double()
+    var alarmTime = Int()
     
    
     
@@ -48,9 +70,39 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
     
     @IBOutlet weak var setAlarmButton: UIButton!
+    @IBOutlet weak var cancelAlarmButton: UIButton!
+    @IBOutlet weak var submitAlarmButton: UIButton!
     
     @IBOutlet weak var alarmCell: UITableViewCell!
     @IBAction func setAlarmButtonTapped(_ sender: Any) {
+        setAlarmButton.isHidden = true
+        dayPicker.isHidden = false
+        cancelAlarmButton.isHidden = false
+        submitAlarmButton.isHidden = false
+    }
+    
+    @IBAction func cancelSetAlarm(_ sender: Any) {
+        setAlarmButton.isHidden = false
+        dayPicker.isHidden = true
+        cancelAlarmButton.isHidden = true
+        submitAlarmButton.isHidden = true
+        //setDayPicker()
+        
+    }
+    
+    @IBAction func submitAlarm(_ sender: Any) {
+        setAlarmButton.isHidden = false
+        dayPicker.isHidden = true
+        cancelAlarmButton.isHidden = true
+        submitAlarmButton.isHidden = true
+        print(alarmTime)
+        let defaults = UserDefaults.standard
+        defaults.set(alarmTime, forKey:"AlarmTime")
+        
+        
+        setAlarmButtonTitle()
+
+
         
     }
     
@@ -71,19 +123,56 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         
         
     }
-  
     
+    func setAlarmButtonTitle(){
+        let defaults = UserDefaults.standard
+        let D = Int(defaults.double(forKey: "AlarmTime"))
+        
+        
+        print("Test",D)
+        var t = "0 Minute"
+        if D/86400 >= 1{
+            t = String(Int(D/86400)) + " Day"
+        } else if D/3600 >= 1{
+            t = String(Int(D/3600)) + " Hour"
+        } else if D/60 >= 1{
+            t = String(Int(D/60)) + " Minute"
+        }
+        
+        
+        setAlarmButton.setTitle(t, for: .normal)
+
+        
+        
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func setDayPicker() {
         let defaults = UserDefaults.standard
         let Day = defaults.double(forKey: "Day")
         let Hour = defaults.double(forKey: "Hour")
         let minute = defaults.double(forKey: "minute")
-        
         dayPicker.selectRow(Int(Day), inComponent: 0, animated: false)
         dayPicker.selectRow(Int(Hour), inComponent: 1, animated: false)
         dayPicker.selectRow(Int(minute/5), inComponent: 2, animated: false)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setAlarmButtonTitle()
+        
+        setAlarmButton.layer.cornerRadius = setAlarmButton.frame.size.height / 2
+        submitAlarmButton.isEnabled = false
+        submitAlarmButton.layer.cornerRadius = submitAlarmButton.frame.size.width / 2
+        cancelAlarmButton.layer.cornerRadius = submitAlarmButton.frame.size.width / 2
+        submitAlarmButton.isHidden = true
+        cancelAlarmButton.isHidden = true
+        dayPicker.isHidden = true
+        
+        let makeAndModel = dayPickerModel();
+        picker1Options = makeAndModel.cateValues()
+        let firstValue = picker1Options[0]
+        picker2Options = makeAndModel.modelValues(make: firstValue)
+
         
         
         dayPicker.delegate = self
@@ -166,39 +255,46 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return time.count
+        return 2
     }
     func pickerView ( _ dayPicker: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return time[component].count
+        if (component == 0) {
+            return picker1Options.count
+        } else {
+            return picker2Options.count
+        }
+        
     }
     
     func pickerView (_ dayPicker: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return time[component][row]
-    }
-    
-    func pickerView (_ dayPicker: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        switch (component){
-        case 0:
-            day = Double(time[component][row])!
-            let defaults = UserDefaults.standard
-            defaults.set(day, forKey:"Day")
-            print(day)
-        case 1:
-            hour = Double(time[component][row])!
-            print(hour)
-            let defaults = UserDefaults.standard
-            defaults.set(hour, forKey:"Hour")
-        case 2:
-            minute = Double(time[component][row])!
-            print(minute)
-            let defaults = UserDefaults.standard
-            defaults.set(minute, forKey:"minute")
-        default: break
+        if component == 0 {
+            return "\(picker1Options[row])"
+        } else {
+            return "\(picker2Options[row])"
         }
     }
     
-
+    func pickerView (_ dayPicker: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        let factor = [24*60*60, 3600, 5*60]
+        
+        if component == 0 {
+            let makeAndModel = dayPickerModel();
+            let currentValue = picker1Options[row]
+            picker2Options = makeAndModel.modelValues(make: currentValue)
+            temp = factor[row]
+            print(temp)
+            submitAlarmButton.isEnabled = false
+            dayPicker.reloadAllComponents()
+        } else {
+            alarmTime = row * temp
+            print(row * temp)
+        
+            submitAlarmButton.isEnabled = true
+        }
+        
+    }
+    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         
     }

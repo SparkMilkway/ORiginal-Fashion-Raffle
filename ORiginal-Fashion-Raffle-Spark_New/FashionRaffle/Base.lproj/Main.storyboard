@@ -2506,19 +2506,57 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifw-uq-Iv6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                    <rect key="frame" x="8" y="0.0" width="275" height="50"/>
                                                     <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="M2b-Lx-srv" id="2Vk-pC-y7d"/>
                                                         <outlet property="delegate" destination="M2b-Lx-srv" id="SVH-G3-NML"/>
                                                     </connections>
                                                 </pickerView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbS-3w-LMm">
+                                                    <rect key="frame" x="8" y="10.5" width="359" height="30"/>
+                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="rxF-dD-Sj1"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="setAlarmButtonTapped:" destination="M2b-Lx-srv" eventType="touchUpInside" id="kVM-1v-rJt"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRs-MR-yhC">
+                                                    <rect key="frame" x="337" y="10" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="✓"/>
+                                                    <connections>
+                                                        <action selector="submitAlarm:" destination="M2b-Lx-srv" eventType="touchUpInside" id="6Xz-l9-1kX"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxs-55-PUx">
+                                                    <rect key="frame" x="299" y="10" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="x">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="cancelSetAlarm:" destination="M2b-Lx-srv" eventType="touchUpInside" id="vNd-S7-0Dh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ifw-uq-Iv6" firstAttribute="leading" secondItem="m9I-F4-44G" secondAttribute="leading" id="3jb-b0-nwb"/>
+                                                <constraint firstItem="Ifw-uq-Iv6" firstAttribute="leading" secondItem="m9I-F4-44G" secondAttribute="leading" constant="8" id="3jb-b0-nwb"/>
                                                 <constraint firstItem="Ifw-uq-Iv6" firstAttribute="top" secondItem="m9I-F4-44G" secondAttribute="top" id="D4L-Ra-qXO"/>
+                                                <constraint firstItem="Sxs-55-PUx" firstAttribute="centerY" secondItem="FbS-3w-LMm" secondAttribute="centerY" id="DoL-ZB-5rm"/>
+                                                <constraint firstItem="Sxs-55-PUx" firstAttribute="height" secondItem="FbS-3w-LMm" secondAttribute="height" id="E09-Dz-MYy"/>
+                                                <constraint firstItem="pRs-MR-yhC" firstAttribute="leading" secondItem="Sxs-55-PUx" secondAttribute="trailing" constant="8" id="HFt-Q2-4XJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ifw-uq-Iv6" secondAttribute="bottom" id="JSP-72-bCA"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ifw-uq-Iv6" secondAttribute="trailing" id="hqT-NV-Z03"/>
+                                                <constraint firstItem="FbS-3w-LMm" firstAttribute="trailing" secondItem="m9I-F4-44G" secondAttribute="trailingMargin" id="Qt9-lj-3yU"/>
+                                                <constraint firstItem="pRs-MR-yhC" firstAttribute="centerY" secondItem="FbS-3w-LMm" secondAttribute="centerY" id="VGs-3F-Uqy"/>
+                                                <constraint firstItem="FbS-3w-LMm" firstAttribute="leading" secondItem="m9I-F4-44G" secondAttribute="leadingMargin" id="dZ9-dx-SK7"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ifw-uq-Iv6" secondAttribute="trailing" constant="92" id="hqT-NV-Z03"/>
+                                                <constraint firstItem="FbS-3w-LMm" firstAttribute="centerY" secondItem="m9I-F4-44G" secondAttribute="centerY" constant="1.25" id="rSo-v1-Sq1"/>
+                                                <constraint firstItem="pRs-MR-yhC" firstAttribute="trailing" secondItem="m9I-F4-44G" secondAttribute="trailingMargin" id="upn-Gf-PnJ"/>
+                                                <constraint firstItem="pRs-MR-yhC" firstAttribute="height" secondItem="FbS-3w-LMm" secondAttribute="height" id="x9l-uD-6aT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2602,10 +2640,13 @@
                         <outlet property="Website" destination="NHs-2z-F5B" id="MNK-3X-P7m"/>
                         <outlet property="addNews" destination="5ej-rK-wLY" id="0LK-R3-FAp"/>
                         <outlet property="alarmCell" destination="0Ty-dT-EFw" id="II0-mO-1x2"/>
+                        <outlet property="cancelAlarmButton" destination="Sxs-55-PUx" id="rVG-mW-dFr"/>
                         <outlet property="dayPicker" destination="Ifw-uq-Iv6" id="ntc-lN-9tm"/>
                         <outlet property="email" destination="mC5-J1-nHX" id="vAx-IT-8rC"/>
                         <outlet property="emailLogoutButton" destination="i0C-so-DKP" id="1Fm-Bo-1jo"/>
                         <outlet property="fbLogoutButton" destination="W9M-kv-5mJ" id="Oa5-Ai-fhM"/>
+                        <outlet property="setAlarmButton" destination="FbS-3w-LMm" id="b4E-ik-3jo"/>
+                        <outlet property="submitAlarmButton" destination="pRs-MR-yhC" id="Q1w-Yh-dqE"/>
                         <outlet property="username" destination="Rh4-tO-Ai9" id="VQE-Rx-s88"/>
                     </connections>
                 </tableViewController>
