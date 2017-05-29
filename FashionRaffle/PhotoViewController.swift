@@ -9,24 +9,41 @@
 import UIKit
 import Sharaku
 import Firebase
+import AnimatedDropdownMenu
+
 
 class PhotoViewController: UIViewController, FusumaDelegate{
-
+    
     @IBOutlet var background: UIView!
     @IBOutlet weak var cancel: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fileUrlLabel: UILabel!
     @IBOutlet weak var captionLabel: UITextView!
     
-    @IBOutlet weak var edit: UIButton!
-
+    @IBOutlet weak var giveAwayContainer: UIView!
+    
+    
     var fusumaOne : FusumaViewController?
     var shOne : SHViewController?
     var passingImage : UIImage?
-
+    
     var centralVC : CentralTabBarController?
     
     let postref = FIRDatabase.database().reference().child("Posts")
+    
+    //set up dropdown menu
+    fileprivate let dropdownItems: [AnimatedDropdownMenu.Item] = [
+        AnimatedDropdownMenu.Item.init("New Post", nil, nil),
+        AnimatedDropdownMenu.Item.init("Direct Message", nil, nil),
+        AnimatedDropdownMenu.Item.init("Give Away Post", nil, nil)
+    ]
+    
+    fileprivate var selectedStageIndex: Int = 0
+    fileprivate var lastStageIndex: Int = 0
+    fileprivate var dropdownMenu: AnimatedDropdownMenu!
+    //
+    
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -34,7 +51,10 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.captionLabel.tintColor = UIColor.black
+        
+        self.fileUrlLabel.isHidden = true
+        
         self.navigationController?.isNavigationBarHidden = true
         let fusuma = FusumaViewController()
         fusuma.delegate = self
@@ -43,7 +63,11 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         self.view.addSubview(fusuma.view)
         fusuma.didMove(toParentViewController: self)
         fusumaOne = fusuma
-
+        
+        setupAnimatedDropdownMenu()
+        
+        giveAwayContainer.isHidden = true
+        
         
         
     }
@@ -102,12 +126,12 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     @IBAction func cancel(_ sender: Any) {
         
@@ -119,14 +143,14 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func fusumaImageSelected(_ image: UIImage) {
         
@@ -140,10 +164,10 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     func fusumaDismissedWithImage(_ image: UIImage) {
         print("Called when success")
         imageView.image = image
-
+        
         let shVC = SHViewController(image: image)
         shVC.delegate = self
-
+        
         
         self.fusumaOne?.addChildViewController(shVC)
         shVC.view.frame = self.view.frame
@@ -154,7 +178,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         UIView.animate(withDuration: 0.3, animations: {
             shVC.view.frame.origin.x = 0
         }, completion: nil)
-
+        
         
     }
     
@@ -179,6 +203,76 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             })
         }
     }
+    
+    
+    //dropdown menu
+    
+    fileprivate func setupAnimatedDropdownMenu() {
+        
+        let dropdownMenu = AnimatedDropdownMenu(navigationController: navigationController, containerView: view, selectedIndex: selectedStageIndex, items: dropdownItems)
+        
+        dropdownMenu.cellBackgroundColor = UIColor.white
+        dropdownMenu.cellSelectedColor = UIColor.lightGray
+        dropdownMenu.menuTitleColor = UIColor.black
+        dropdownMenu.menuArrowTintColor = UIColor.black
+        dropdownMenu.cellTextColor = UIColor.black
+        
+        dropdownMenu.cellTextAlignment = .center
+        dropdownMenu.cellSeparatorColor = .clear
+        
+        dropdownMenu.didSelectItemAtIndexHandler = {
+            [weak self] selectedIndex in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.lastStageIndex = strongSelf.selectedStageIndex
+            strongSelf.selectedStageIndex = selectedIndex
+            
+            guard strongSelf.selectedStageIndex != strongSelf.lastStageIndex else {
+                return
+            }
+            
+            //Configure Selected Action
+            strongSelf.selectedAction()
+        }
+        
+        self.dropdownMenu = dropdownMenu
+        navigationItem.titleView = dropdownMenu
+    }
+    
+    private func selectedAction() {
+        
+        if selectedStageIndex == 0{
+            giveAwayContainer.isHidden = true
+        }
+        if selectedStageIndex == 1{
+            giveAwayContainer.isHidden = true
+        }
+        if selectedStageIndex == 2{
+            giveAwayContainer.isHidden = false
+        }
+        print("\(dropdownItems[selectedStageIndex].title)")
+    }
+    
+    
+    fileprivate func resetNavigationBarColor() {
+        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = UIColor.brown
+        
+        let textAttributes: [String: Any] = [
+            NSForegroundColorAttributeName: UIColor.purple,
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 6)
+        ]
+        
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    
+    
+    
 }
 
 extension PhotoViewController : SHViewControllerDelegate {
@@ -192,7 +286,7 @@ extension PhotoViewController : SHViewControllerDelegate {
         })
     }
     func shViewControllerImageDidFilter(image: UIImage) {
-
+        
         self.imageView.image = image
         
         UIView.animate(withDuration: 0.4, animations: {

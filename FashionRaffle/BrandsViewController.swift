@@ -20,7 +20,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func cancel(_ sender: Any) {
         Profile.currentUser?.followBrands = followed!
         
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
         print(Profile.currentUser?.followBrands, "=====", followed)
     }
     
@@ -29,10 +29,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         SVProgressHUD.show(withStatus: "Updating...")
         Profile.currentUser?.sync()
         SVProgressHUD.dismiss()
-        SettingsLauncher.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: {
-            UIAlertAction in
-            self.dismiss(animated: true, completion: nil)
-        }, controller: self)
+        SettingsLauncher.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: nil, controller: self)
     }
     
     

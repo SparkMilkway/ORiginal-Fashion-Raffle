@@ -22,10 +22,13 @@ class Profile {
     var followBrands:[String]
     var posts:[Post]
     var profilePicUrl:URL?
+    var backgroundPictureUrl: URL?
+    var bio: String
+    var website: String
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String, website: String) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -36,14 +39,17 @@ class Profile {
         self.checkInCount = checkInCount
         self.posts = posts
         self.profilePicUrl = profilePicUrl
-        lastCheckDate = Date.nowDate()
+        self.backgroundPictureUrl = backgroundPictureUrl
+        self.bio = bio
+        self.website = website
+        lastCheckDate = Date().now()
         editor = false
         // Check in upon login
         //It's the local time, later it should be a world time and can't be changed from the user's calendar
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil)
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: String(), website: String())
     }
     
     // Used during login
@@ -77,6 +83,16 @@ class Profile {
         if let imgUrlString = profileDict["profilePicUrl"] as? String {
             profile.profilePicUrl = URL(string: imgUrlString)
         }
+        
+        if let bgimgUrlString = profileDict["backgroundPictureUrl"] as? String {
+            profile.backgroundPictureUrl = URL(string:bgimgUrlString)
+        }
+        if let bio = profileDict["bio"] as? String{
+            profile.bio = bio
+        }
+        if let website = profileDict["website"] as? String{
+            profile.website = website
+        }
         if profileDict["editor"] != nil {
             profile.editor = true
         }
@@ -100,11 +116,16 @@ class Profile {
         profileDict["followBrands"] = followBrands
         profileDict["posts"] = posts
         profileDict["lastCheckDate"] = lastCheckDate
+        profileDict["bio"] = bio
+        profileDict["website"] = website
         if editor == true {
             profileDict["editor"] = "yes"
         }
         if let profilepicurl = profilePicUrl {
             profileDict["profilePicUrl"] = "\(profilepicurl)"
+        }
+        if let backgroundpiculr = backgroundPictureUrl {
+            profileDict["backgroundPictureUrl"] = "\(backgroundpiculr)"
         }
         return profileDict
     }

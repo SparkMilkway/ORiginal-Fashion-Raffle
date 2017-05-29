@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AnimatedDropdownMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Cache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>ESPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HGCircularSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,6 +72,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01E9FE51F89215D0FFFCF2A90DD7B4B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>10F0C3C80828CC88CE8154B17E6E0B8F</key>
 		<dict>
 			<key>primary</key>
@@ -72,12 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DC8E80C3BEEA5CB40AC6C158BC03E6D</key>
+		<key>211412599AED94810745EFA1400B1C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>211412599AED94810745EFA1400B1C7F</key>
+		<key>4A5DC8D5D08BC991B694951989214D92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73B120232B71B5FB72FE71BC2566527C</key>
+		<key>5E0852C60ED195275F7125DFC86F886A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,17 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B79EDB68D7B8D3A9AC08DA921BF2E2DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CBF28DD1CEFD27AB28110B0BF0091B78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D28E0960EF1891965DC54A421C80EFB3</key>
+		<key>DCE261FF3030AB70160DFAE1475CD8DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6E4D5B6904CD3E2EB40D7DD2BF613D7</key>
+		<key>EF4AEBFAAA9A47A8B008EF29467D7BC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

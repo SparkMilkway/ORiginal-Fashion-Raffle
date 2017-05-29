@@ -13,6 +13,8 @@ class FeedSegmentedViewController: UIViewController {
     @IBOutlet weak var SocialFeedContainerView: UIView!
     @IBOutlet weak var NewsFeedContainerView: UIView!
     
+    @IBOutlet var SegmentedNaviItem: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.Controller.selectedSegmentIndex = 0

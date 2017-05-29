@@ -16,5 +16,9 @@ pod 'NohanaImagePicker'
 pod 'ESPullToRefresh'
 
 
+pod 'HGCircularSlider', '~> 2.0.0'
+pod 'AnimatedDropdownMenu'
+
+
 end
 

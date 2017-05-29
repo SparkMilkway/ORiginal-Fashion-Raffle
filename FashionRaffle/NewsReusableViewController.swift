@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseStorageUI
 import SVProgressHUD
 
 
@@ -224,15 +223,7 @@ class RaffleReusableViewController: UIViewController {
     }
     
     func handleUpdateTickets(Tickets: Int) {
-        let location = "Users"
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        self.ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
-            snapshot in
-            let value = snapshot.value as? NSDictionary
-            var hastickets = value!["Tickets"] as! Int
-            hastickets = hastickets - Tickets
-            DataBaseStructure().updateUserDatabase(location: location, userID: userID!, post: ["Tickets": hastickets])
-        })
+        
         self.handleDismiss()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
             SettingsLauncher.showAlerts(title: "Congragulations!", message: "You've entered \(Tickets) tickets for \(self.passLabel!), enjoy!", handler: nil, controller: self)
