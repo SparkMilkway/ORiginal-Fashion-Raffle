@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 var userId = String()
 var category = String()
 
@@ -14,6 +15,7 @@ var category = String()
 class followersVCTableViewController: UITableViewController {
     
     var refresher = UIRefreshControl()
+    var guestF : [Profile] = []
     
     var userIdArray = [String]()
     var userPicArray = [String]()
@@ -35,6 +37,8 @@ class followersVCTableViewController: UITableViewController {
         if category == "followings"{
             followArray = followingArray
         }
+        
+        
     }
     
    

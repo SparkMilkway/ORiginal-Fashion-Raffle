@@ -22,8 +22,8 @@ class profileMainViewController: UIViewController {
     
     @IBOutlet weak var bio: UITextView!
     
-    @IBOutlet weak var infoVE: UIVisualEffectView!
  
+    @IBOutlet weak var gradientView: GradientView!
     
     @IBOutlet weak var brandsContainerView: UIView!
 
@@ -47,7 +47,6 @@ class profileMainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         
-        infoVE.alpha = 0.5
         
         
         if let profileUrl = Profile.currentUser?.profilePicUrl {
@@ -236,10 +235,10 @@ class profileMainViewController: UIViewController {
     func backgroundImageView() {
         
         
-        profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
-        profileBackground.isUserInteractionEnabled = true
+        gradientView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
+        gradientView.isUserInteractionEnabled = true
         profileBackground.contentMode = .scaleAspectFill
-        profileBackground.alpha = 0.9
+        profileBackground.alpha = 1
         
     }
 

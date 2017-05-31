@@ -18,6 +18,7 @@
 		045FDA671ED806E4004C9BC0 /* followerVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA661ED806E4004C9BC0 /* followerVCTableViewCell.swift */; };
 		045FDA691ED8C878004C9BC0 /* settingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045FDA681ED8C878004C9BC0 /* settingTableViewController.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
+		04AEB7461EDCCE08002C7C01 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AEB7451EDCCE07002C7C01 /* GradientView.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
 		04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E61DC36C53008B1989 /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 		045FDA661ED806E4004C9BC0 /* followerVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followerVCTableViewCell.swift; sourceTree = "<group>"; };
 		045FDA681ED8C878004C9BC0 /* settingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingTableViewController.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		04AEB7451EDCCE07002C7C01 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D8A1E41DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				525D6CA91DC5A1FD00509E20 /* TabViews */,
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
 				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
+				04AEB7451EDCCE07002C7C01 /* GradientView.swift */,
 			);
 			name = "Main Interface";
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				045FDA581ED62D88004C9BC0 /* profileMainViewExtension.swift in Sources */,
+				04AEB7461EDCCE08002C7C01 /* GradientView.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				045FDA5A1ED655C8004C9BC0 /* guestVC.swift in Sources */,
