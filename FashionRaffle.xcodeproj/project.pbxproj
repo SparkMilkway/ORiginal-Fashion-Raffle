@@ -33,6 +33,9 @@
 		52146CB91EDCC79F00612540 /* followersVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CB61EDCC79F00612540 /* followersVCTableViewController.swift */; };
 		52146CBA1EDCC79F00612540 /* followerVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CB71EDCC79F00612540 /* followerVCTableViewCell.swift */; };
 		52146CBD1EDFA8F200612540 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CBC1EDFA8F200612540 /* API.swift */; };
+		522A06111EE0C40E0071EC20 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06101EE0C40E0071EC20 /* UserAPI.swift */; };
+		522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */; };
+		522A06151EE0CB1F0071EC20 /* ReleaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */; };
 		522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */; };
 		522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */; };
 		522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */; };
@@ -125,6 +128,9 @@
 		52146CB61EDCC79F00612540 /* followersVCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followersVCTableViewController.swift; sourceTree = "<group>"; };
 		52146CB71EDCC79F00612540 /* followerVCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = followerVCTableViewCell.swift; sourceTree = "<group>"; };
 		52146CBC1EDFA8F200612540 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		522A06101EE0C40E0071EC20 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIRStorageAPI.swift; sourceTree = "<group>"; };
+		522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseAPI.swift; sourceTree = "<group>"; };
 		522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
 		522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
@@ -275,6 +281,9 @@
 			isa = PBXGroup;
 			children = (
 				52146CBC1EDFA8F200612540 /* API.swift */,
+				522A06101EE0C40E0071EC20 /* UserAPI.swift */,
+				522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */,
+				522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */,
 			);
 			name = "Database APIs";
 			sourceTree = "<group>";
@@ -707,13 +716,16 @@
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
+				522A06151EE0CB1F0071EC20 /* ReleaseAPI.swift in Sources */,
 				52146CA91EDCC51200612540 /* userRaffleViewController.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				52146CBD1EDFA8F200612540 /* API.swift in Sources */,
+				522A06111EE0C40E0071EC20 /* UserAPI.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				52146CBA1EDCC79F00612540 /* followerVCTableViewCell.swift in Sources */,
 				52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */,
+				522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */,
 				52146CAD1EDCC5A800612540 /* giveAwayViewController.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				52146CB11EDCC76A00612540 /* profileMainViewExtension.swift in Sources */,

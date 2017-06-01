@@ -426,7 +426,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4dQ-RL-4Qn" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="2eS-TW-0fF"/>
-                            <constraint firstItem="xYz-tM-OQo" firstAttribute="top" secondItem="aqK-SF-3RQ" secondAttribute="top" constant="64" id="5dE-XL-0jI"/>
                             <constraint firstItem="wiy-oZ-Ipv" firstAttribute="top" secondItem="xYz-tM-OQo" secondAttribute="bottom" constant="1" id="F0p-4F-Ojn"/>
                             <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="dd2-tn-hXg" secondAttribute="bottom" id="H1J-jj-d1R"/>
                             <constraint firstItem="4dQ-RL-4Qn" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="KbA-XP-FbB"/>
@@ -440,6 +439,7 @@
                             <constraint firstItem="dd2-tn-hXg" firstAttribute="leading" secondItem="aqK-SF-3RQ" secondAttribute="leading" id="keL-Fo-bOS"/>
                             <constraint firstItem="4Ta-mD-6w0" firstAttribute="top" secondItem="wiy-oZ-Ipv" secondAttribute="bottom" id="rRK-wH-chY"/>
                             <constraint firstItem="xYz-tM-OQo" firstAttribute="width" secondItem="aqK-SF-3RQ" secondAttribute="width" id="tv3-uU-JL1"/>
+                            <constraint firstItem="xYz-tM-OQo" firstAttribute="top" secondItem="mtK-BD-0IK" secondAttribute="bottom" id="yLY-W0-8Hc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ORigiNal" id="b0R-d7-Ltj"/>

@@ -9,29 +9,21 @@
 import Foundation
 import Firebase
 
-let databaseRef = FIRDatabase.database().reference()
+
 
 
 class API: NSObject {
     
-    static let postRef = databaseRef.child("Posts")
-    static let userRef = databaseRef.child("Users")
-    static let raffleRef = databaseRef.child("Raffles")
-    static let releaseRef = databaseRef.child("ReleaseNews")
-    static let giveawayRef = databaseRef.child("Giveaways")
-    static let directPostRef = databaseRef.child("DirectPosts")
+    //Loacations, subject to change
+    var postRef = FIRDatabase.database().reference().child("Posts")
+    var userRef = FIRDatabase.database().reference().child("Users")
+    var raffleRef = FIRDatabase.database().reference().child("Raffles")
+    var releaseRef = FIRDatabase.database().reference().child("ReleaseNews")
+    var giveawayRef = FIRDatabase.database().reference().child("Giveaways")
+    var directPostRef = FIRDatabase.database().reference().child("DirectPosts")
     
-    
-    
-    
-    static func uploadDataToStorage (data: Data,itemStoragePath: String, contentType: String?, completion: ((FIRStorageMetadata?, Error?) -> Void)?) {
-        let storageRef = FIRStorage.storage().reference()
-        let metadata = FIRStorageMetadata()
-        metadata.contentType = contentType
-        
-        storageRef.child(itemStoragePath).put(data, metadata: metadata, completion: completion)
-        
-        
-    }
+    static var userAPI = UserAPI()
+    static var storageAPI = FIRStorageAPI()
+
     
 }

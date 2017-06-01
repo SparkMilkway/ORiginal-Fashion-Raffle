@@ -154,14 +154,7 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
     }
     
     func deleteRootCollectionViewItem(at indexPath: IndexPath) {
-        /*
-        guard let rootVC = rootCollectionViewController else {
-            return
-        }
-        rootVC.imageDetailPool.remove(at: indexPath.item)
-        rootVC.imagePool.remove(at: indexPath.item)
-        rootVC.imageCollectionView.reloadData()
-        */
+
         if let delegate = self.delegate {
             DispatchQueue.main.async {
                 delegate.reusableDetailViewController?(self, didDeleteAtIndex: indexPath)

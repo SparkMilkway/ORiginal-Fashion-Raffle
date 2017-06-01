@@ -13,7 +13,7 @@ import SVProgressHUD
 
 
 
-class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ReusableDetaiViewControllerDelegate {
+class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReusableDetaiViewControllerDelegate {
     
     
     @IBOutlet weak var NewsTitle: UILabel!
@@ -30,6 +30,7 @@ class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
 
         navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.isTranslucent = false
         navigationController?.hidesBarsOnSwipe = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "likeicon"), style: .plain, target: self, action: #selector(handlelike))
         let selectedNews = news
@@ -114,6 +115,12 @@ class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UI
         
         self.navigationController?.pushViewController(reusableVC, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let view = self.imageCollectionView.frame.size
+        return view
+    }
+    
     
     
     //Detail Delegate
