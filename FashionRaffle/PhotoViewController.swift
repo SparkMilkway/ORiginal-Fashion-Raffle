@@ -76,51 +76,59 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         let image = self.imageView.image
         let caption = self.captionLabel.text!
         if caption == "Captions." || caption == "" {
-            SettingsLauncher.showAlerts(title: "Error", message: "Please write the caption section.", handler: nil, controller: self)
+            Config.showAlerts(title: "Error", message: "Please write the caption section.", handler: nil, controller: self)
             return
         }
         else{
             
             self.view.endEditing(true)
-            SettingsLauncher.showLoading(Status: "Uploading...")
-            let profilePicUrl = Profile.currentUser?.profilePicUrl
-            let imageData = UIImageJPEGRepresentation(image!, 0.6)!
-            let userID = Profile.currentUser?.userID
-            let userName = Profile.currentUser?.username
-            let now = Date().now()
-            let postPath = "UserInfo/\(userID!)/posts/\(now)/postPic.jpg"
-            
-            SettingsLauncher.uploadDatatoStorage(data: imageData, itemStoragePath: postPath, contentType: "image/jpeg", completion: {
-                metadata, error in
-                if error != nil {
-                    print("Error happens when uploading")
-                    return
-                }
-                guard let meta = metadata else{
-                    return
-                }
-                let url = meta.downloadURL()
-                let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil)
-                let uniqueRef = self.postref.childByAutoId()
-                uniqueRef.setValue(newPost.dictValue())
-                SettingsLauncher.dismissLoading()
-                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
-                    UIAlertAction in
-                    UIView.animate(withDuration: 0.4, animations: {
-                        self.dismiss(animated: true, completion: nil)
-                        if let central = self.centralVC {
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
-                                UIView.animate(withDuration: 0.3, animations: {
-                                    central.view.alpha = 1
-                                })
-                            })
-                        }
-                    })
-                    
-                    
-                }, controller: self)
+            Config.showAlertsWithOptions(title: "Upload?", message: "", controller: self, yesHandler: {
+                UIAlertAction in
+                Config.showLoading(Status: "Uploading...")
+                let profilePicUrl = Profile.currentUser?.profilePicUrl
+                let imageData = UIImageJPEGRepresentation(image!, 0.6)!
+                let userID = Profile.currentUser?.userID
+                let userName = Profile.currentUser?.username
+                let now = Date().now()
+                let postPath = "UserInfo/\(userID!)/posts/\(now)/postPic.jpg"
                 
-            })
+                Config.uploadDatatoStorage(data: imageData, itemStoragePath: postPath, contentType: "image/jpeg", completion: {
+                    metadata, error in
+                    if error != nil {
+                        print("Error happens when uploading")
+                        return
+                    }
+                    guard let meta = metadata else{
+                        return
+                    }
+                    let url = meta.downloadURL()
+                    let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil)
+                    let uniqueRef = self.postref.childByAutoId()
+                    let uniqueID = uniqueRef.key
+                    Profile.currentUser?.posts.append(uniqueID)
+                    Profile.currentUser?.sync()
+                    uniqueRef.setValue(newPost.dictValue())
+                    Config.dismissLoading()
+                    Config.showAlerts(title: "Success!", message: "", handler: {
+                        UIAlertAction in
+                        UIView.animate(withDuration: 0.4, animations: {
+                            self.dismiss(animated: true, completion: nil)
+                            if let central = self.centralVC {
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                                    UIView.animate(withDuration: 0.3, animations: {
+                                        central.setNeedsStatusBarAppearanceUpdate()
+                                        central.view.alpha = 1
+                                    })
+                                })
+                            }
+                        })
+                        
+                        
+                    }, controller: self)
+                    
+                })
+            }, cancelHandler: nil)
+            
         }
         
         
@@ -136,6 +144,9 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     @IBAction func cancel(_ sender: Any) {
         
         UIView.animate(withDuration: 0.4, animations: {
+            let animatedDropDown = self.navigationItem.titleView as! AnimatedDropdownMenu
+            animatedDropDown.dismiss()
+            
             self.navigationController?.isNavigationBarHidden = true
             self.fusumaOne?.view.frame.origin.x = self.view.frame.origin.x
             
@@ -198,6 +209,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         if let central = self.centralVC {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
                 UIView.animate(withDuration: 0.3, animations: {
+                    central.setNeedsStatusBarAppearanceUpdate()
                     central.view.alpha = 1
                 })
             })
@@ -216,6 +228,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         dropdownMenu.menuTitleColor = UIColor.black
         dropdownMenu.menuArrowTintColor = UIColor.black
         dropdownMenu.cellTextColor = UIColor.black
+        
         
         dropdownMenu.cellTextAlignment = .center
         dropdownMenu.cellSeparatorColor = .clear

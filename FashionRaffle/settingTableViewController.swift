@@ -63,7 +63,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
    
     
     @IBAction func emailLogout(_ sender: Any) {
-        SettingsLauncher.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
+        Config.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
             UIAlertAction in
             try! FIRAuth.auth()?.signOut()
             self.logOut()
@@ -120,7 +120,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         Profile.currentUser?.website = self.Website.text!
         Profile.currentUser?.username = self.username.text!
         Profile.currentUser?.sync()
-        SettingsLauncher.showAlerts(title: "Profile upload", message: "Success", handler: nil, controller: self)
+        Config.showAlerts(title: "Profile upload", message: "Success", handler: nil, controller: self)
         
         
         
@@ -162,6 +162,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         super.viewDidLoad()
         setAlarmButtonTitle()
         
+
         setAlarmButton.layer.cornerRadius = setAlarmButton.frame.size.height / 2
         submitAlarmButton.isEnabled = false
         submitAlarmButton.layer.cornerRadius = submitAlarmButton.frame.size.width / 2

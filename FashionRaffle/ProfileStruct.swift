@@ -20,7 +20,7 @@ class Profile {
     var followers:[String]
     var following:[String]
     var followBrands:[String]
-    var posts:[Post]
+    var posts:[String]
     var profilePicUrl:URL?
     var backgroundPictureUrl: URL?
     var bio: String
@@ -28,7 +28,7 @@ class Profile {
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[Post], profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String, website: String) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[String], profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String, website: String) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -49,7 +49,7 @@ class Profile {
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [Post](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: String(), website: String())
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [String](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: String(), website: String())
     }
     
     // Used during login
@@ -99,6 +99,11 @@ class Profile {
         else {
             profile.editor = false
         }
+        
+        if let posts = profileDict["posts"] as? [String] {
+            profile.posts = posts
+        }
+        
         return profile
     }
     // put all info into dict

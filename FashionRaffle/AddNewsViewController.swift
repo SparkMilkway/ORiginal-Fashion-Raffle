@@ -76,17 +76,17 @@ class AddNewsTableViewController: UITableViewController {
         let imageSelect = self.titleImage.image
 
         if (titleEdit == "" || subtitleEdit == "" || detailEdit == "" || imageSelect == nil) {
-            SettingsLauncher.showAlerts(title: "", message:"Release News title, subtitle, details and title image are required!", handler: nil, controller: self)
+            Config.showAlerts(title: "", message:"Release News title, subtitle, details and title image are required!", handler: nil, controller: self)
             return
         }else if imageDetailPool.count == 0 {
-            SettingsLauncher.showAlertsWithOptions(title: "", message: "Upload without detail photos?", controller: self, yesHandler: {
+            Config.showAlertsWithOptions(title: "", message: "Upload without detail photos?", controller: self, yesHandler: {
                 UIAlertAction in
                 self.beginUpload()
                 
             }, cancelHandler: nil)
         }
         else {
-            SettingsLauncher.showAlertsWithOptions(title: "", message: "Upload?", controller: self, yesHandler: {
+            Config.showAlertsWithOptions(title: "", message: "Upload?", controller: self, yesHandler: {
                 UIAlertAction in
                 self.beginUpload()
             }, cancelHandler: nil)
@@ -96,7 +96,7 @@ class AddNewsTableViewController: UITableViewController {
     
     func beginUpload() {
         
-        SettingsLauncher.showLoading(Status: "Uploading...")
+        Config.showLoading(Status: "Uploading...")
         
         let newFeedRef = ref.child("ReleaseNews").childByAutoId()
         let titleEdit = self.titleText.text
@@ -110,10 +110,10 @@ class AddNewsTableViewController: UITableViewController {
         
         let imageData = UIImageJPEGRepresentation(imageSelect!, 0.8)!
         let headImagePath = "ReleaseNews/\(itemStorageFolderName)/headImage.jpg"
-        SettingsLauncher.uploadDatatoStorage(data: imageData, itemStoragePath: headImagePath, contentType: "image/jpeg", completion: {
+        Config.uploadDatatoStorage(data: imageData, itemStoragePath: headImagePath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let metadata = metadata else{
-                SettingsLauncher.dismissLoading()
+                Config.dismissLoading()
                 return
             }
             let url = metadata.downloadURL()
@@ -121,8 +121,8 @@ class AddNewsTableViewController: UITableViewController {
             let newFeed = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: url, detailImageURLs: [])
             if self.imageDetailPool.count == 0 {
                 newFeedRef.setValue(newFeed?.dictValue())
-                SettingsLauncher.dismissLoading()
-                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
+                Config.dismissLoading()
+                Config.showAlerts(title: "Success!", message: "", handler: {
                     UIAlertAction in
                     self.dismiss(animated: true, completion: nil)
                 }, controller: self)
@@ -132,10 +132,10 @@ class AddNewsTableViewController: UITableViewController {
                     let currentDetailImage = self.imageDetailPool[i]
                     let currentImageData = UIImageJPEGRepresentation(currentDetailImage!, 0.8)!
                     let uploadPath = "ReleaseNews/\(itemStorageFolderName)/detailImage\(i+1).jpg"
-                    SettingsLauncher.uploadDatatoStorage(data: currentImageData, itemStoragePath: uploadPath, contentType: "image/jpeg", completion: {
+                    Config.uploadDatatoStorage(data: currentImageData, itemStoragePath: uploadPath, contentType: "image/jpeg", completion: {
                         meta2, error in
                         guard let detailmeta = meta2 else{
-                            SettingsLauncher.dismissLoading()
+                            Config.dismissLoading()
                             return
                         }
                         let detailUrl = detailmeta.downloadURL()
@@ -145,8 +145,8 @@ class AddNewsTableViewController: UITableViewController {
                             if detailImageURLs.count == self.imageDetailPool.count {
                                 newFeedRef.setValue(newFeed?.dictValue())
                                 
-                                SettingsLauncher.dismissLoading()
-                                SettingsLauncher.showAlerts(title: "Success!", message: "", handler: {
+                                Config.dismissLoading()
+                                Config.showAlerts(title: "Success!", message: "", handler: {
                                     UIAlertAction in
                                     self.dismiss(animated: true, completion: nil)
                                 }, controller: self)
@@ -170,6 +170,9 @@ class AddNewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         showDetails = false
         tableView.allowsSelection = false
         titleImage.isUserInteractionEnabled = true
@@ -229,10 +232,12 @@ class AddNewsTableViewController: UITableViewController {
             return
         }
         let reusableVC = segue.destination as! ReusableDetaiViewController
+        reusableVC.delegate = self
+        
         reusableVC.imageAssets = self.imageDetailPool
         reusableVC.currentIndexPath = selectedIndexPath
         reusableVC.deletable = true
-        reusableVC.rootCollectionViewController = self
+        //reusableVC.rootCollectionViewController = self
     }
 }
 
@@ -339,7 +344,7 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
             let ipicker = NohanaImagePickerController()
             let count = self.imagePool.count
             if count == 8 {
-                SettingsLauncher.showAlerts(title: "Oops", message: "You've selected maximum number of photos", handler: {
+                Config.showAlerts(title: "Oops", message: "You've selected maximum number of photos", handler: {
                     UIAlertAction in
                     return
                 }, controller: self)
@@ -360,6 +365,17 @@ extension AddNewsTableViewController: UIImagePickerControllerDelegate, UINavigat
             
         }
     }
+}
+
+// Delegates for reusableDetailVC
+extension AddNewsTableViewController: ReusableDetaiViewControllerDelegate {
+    
+    func reusableDetailViewController(_ controller: ReusableDetaiViewController, didDeleteAtIndex indexPath: IndexPath) {
+        self.imagePool.remove(at: indexPath.item)
+        self.imageDetailPool.remove(at: indexPath.item)
+        self.imageCollectionView.reloadData()
+    }
+    
 }
 
 

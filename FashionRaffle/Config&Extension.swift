@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import Firebase
 
-class SettingsLauncher: NSObject {
+class Config: NSObject {
 
     static func showLoading(Status: String) {
         let blackV = UIView()

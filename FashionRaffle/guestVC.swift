@@ -66,7 +66,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
                 actionButton.layer.borderColor = UIColor.gray.cgColor
                 actionButton.layer.borderWidth = 1
             case .Following:
-                actionButton.backgroundColor = UIColor.red
+                actionButton.backgroundColor = UIColor.blue
                 actionButton.layer.borderWidth = 0
             }
             actionButton.setTitle(newState.rawValue, for: UIControlState())
@@ -149,12 +149,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             
             self.followingBrands = value?["followBrands"] as! [String]
             self.brandDatas = self.followingBrands
-            
-            
-            
-                
-            
-            
+
             self.brandsCollectionView.reloadData()
 
 
@@ -162,7 +157,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             print(error.localizedDescription)
         }
         
-        let guestTmp = guestId.last as! String
+        let guestTmp = guestId.last!
 
         profileImageView()
         backgroundImageView()

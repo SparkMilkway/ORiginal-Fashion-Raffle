@@ -105,6 +105,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        
+        //Cache the profile Info so don't need to retrieve again from DB
+        //It will reserve for 7 days and then cleaned automatically
+        let cache = HybridCache(name: "UserCache")
+        let syncCache = SyncHybridCache(cache)
+        let currentUserProfile = Profile.currentUser?.dictValue()
+        let jsonDic = JSON.dictionary(currentUserProfile!)
+        syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
+        print("User Profile Caches Successfully")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -119,17 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
-        //Cache the profile Info so don't need to retrieve again from DB
-        //It will reserve for 7 days and then cleaned automatically
-         let cache = HybridCache(name: "UserCache")
-         let syncCache = SyncHybridCache(cache)
-         let currentUserProfile = Profile.currentUser?.dictValue()
-         let jsonDic = JSON.dictionary(currentUserProfile!)
-         syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
-         print("User Profile Caches Successfully")
-
-
         
+
     }
     private func rootToLogIn() {
     

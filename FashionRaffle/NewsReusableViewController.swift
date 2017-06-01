@@ -13,23 +13,39 @@ import SVProgressHUD
 
 
 
-class NewsReusableViewController: UIViewController {
+class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ReusableDetaiViewControllerDelegate {
     
     
     @IBOutlet weak var NewsTitle: UILabel!
-    @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var Details: UILabel!
+    
+    @IBOutlet var imageCollectionView: UICollectionView!
+    
+    
+    var news: NewsFeed?
+    var imageUrlPool: [URL] = []
+    var imagePool: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.hidesBarsOnSwipe = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "likeicon"), style: .plain, target: self, action: #selector(handlelike))
-        let selectedNews = (NewsFeed.selectedNews)!
-        self.title = selectedNews.title
-        self.NewsTitle.text = selectedNews.title
-        self.Details.text = selectedNews.detailInfo
-        self.Image.image = nil
+        let selectedNews = news
+        self.title = selectedNews?.title
+        self.NewsTitle.text = selectedNews?.title
+        self.Details.text = selectedNews?.detailInfo
+        let headUrl = news?.headImageUrl
+        self.imageUrlPool.append(headUrl!)
+        let detailUrl = news?.detailImageUrls
+        for url in detailUrl! {
+            self.imageUrlPool.append(url)
+        }
+        
+        self.imageCollectionView.delegate = self
+        self.imageCollectionView.dataSource = self
+        self.imageCollectionView.reloadData()
         
     }
     
@@ -58,6 +74,55 @@ class NewsReusableViewController: UIViewController {
     }
     
     
+    // CollectionView delegates
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.imageCollectionView.dequeueReusableCell(withReuseIdentifier: "NewsReCell", for: indexPath)
+        let imageView = cell.viewWithTag(5) as! UIImageView
+        let currentItem = self.imageUrlPool[indexPath.item]
+        
+        imageView.setImage(url: currentItem){
+            image in
+            if let currentImage = image {
+                if self.imagePool.count < self.imageUrlPool.count {
+                    self.imagePool.append(currentImage)
+                    print(self.imagePool.count)
+                }
+            }
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return imageUrlPool.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.imageCollectionView.deselectItem(at: indexPath, animated: true)
+        if imagePool.count < imageUrlPool.count {
+            print("Not finished downloading.")
+            return
+        }
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let reusableVC = storyboard.instantiateViewController(withIdentifier: "ReusableDetailVC") as! ReusableDetaiViewController
+        reusableVC.delegate = self
+        reusableVC.deletable = false
+        reusableVC.imageAssets = self.imagePool
+        reusableVC.currentIndexPath = indexPath
+        
+        self.navigationController?.pushViewController(reusableVC, animated: true)
+    }
+    
+    
+    //Detail Delegate
+    
+    func reusableDetailViewController(_ controller: ReusableDetaiViewController, didScrollToIndex indexPath: IndexPath) {
+        
+        self.imageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        
+    }
 }
 
 
@@ -226,7 +291,7 @@ class RaffleReusableViewController: UIViewController {
         
         self.handleDismiss()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
-            SettingsLauncher.showAlerts(title: "Congragulations!", message: "You've entered \(Tickets) tickets for \(self.passLabel!), enjoy!", handler: nil, controller: self)
+            Config.showAlerts(title: "Congragulations!", message: "You've entered \(Tickets) tickets for \(self.passLabel!), enjoy!", handler: nil, controller: self)
         })
     }
 

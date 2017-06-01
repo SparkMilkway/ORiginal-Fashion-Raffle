@@ -11,15 +11,27 @@ import UIKit
 import Photos
 import SVProgressHUD
 
+@objc protocol ReusableDetaiViewControllerDelegate {
+    
+    @objc optional func reusableDetailViewController(_ controller: ReusableDetaiViewController, didScrollToIndex indexPath: IndexPath)
+    
+    @objc optional func reusableDetailViewController(_ controller: ReusableDetaiViewController, didDeleteAtIndex indexPath: IndexPath)
+    
+}
+
+
 class ReusableDetaiViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     
     @IBOutlet var deleteButton: UIBarButtonItem!
     
+    var delegate: ReusableDetaiViewControllerDelegate?
+    
+    
     var imageAssets = [UIImage?]()
     var currentIndexPath = IndexPath()
     var deletable : Bool = true
-    var rootCollectionViewController: AddNewsTableViewController?
+    //var rootCollectionViewController: AddNewsTableViewController?
     var cellSize: CGSize {
         return Size.screenRectWithoutAppBar(self).size
     }
@@ -93,7 +105,7 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
             return
         }
         let indexPath = currentIndexPath
-        SettingsLauncher.showAlertsWithOptions(title: "Delete this photo?", message: "", controller: self, yesHandler: {
+        Config.showAlertsWithOptions(title: "Delete this photo?", message: "", controller: self, yesHandler: {
             UIAlertAction in
             SVProgressHUD.showSuccess(withStatus: "Deleted!")
             
@@ -124,6 +136,7 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
         guard let collectionV = collectionView else {
             return
         }
+        
         let row = Int((collectionV.contentOffset.x + cellSize.width * 0.5) / cellSize.width)
         if row < 0 {
             self.currentIndexPath = IndexPath(row: 0, section: self.currentIndexPath.section)
@@ -132,16 +145,29 @@ class ReusableDetaiViewController: UICollectionViewController, UICollectionViewD
         }else {
             self.currentIndexPath = IndexPath(row: row, section: self.currentIndexPath.section)
         }
+        
+        if let delegate = self.delegate {
+            delegate.reusableDetailViewController?(self, didScrollToIndex: self.currentIndexPath)
+        }
+        
+        
     }
     
     func deleteRootCollectionViewItem(at indexPath: IndexPath) {
+        /*
         guard let rootVC = rootCollectionViewController else {
             return
         }
         rootVC.imageDetailPool.remove(at: indexPath.item)
         rootVC.imagePool.remove(at: indexPath.item)
         rootVC.imageCollectionView.reloadData()
-        
+        */
+        if let delegate = self.delegate {
+            DispatchQueue.main.async {
+                delegate.reusableDetailViewController?(self, didDeleteAtIndex: indexPath)
+            }
+            
+        }
     }
     
 }

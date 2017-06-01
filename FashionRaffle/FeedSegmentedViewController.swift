@@ -17,6 +17,13 @@ class FeedSegmentedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "search button"), style: .plain, target: self, action: #selector(self.searchTapped))
+        searchButton.tintColor = UIColor.black
+        SegmentedNaviItem.rightBarButtonItem = searchButton
+        
+        
         self.Controller.selectedSegmentIndex = 0
         NewsFeedContainerView.isHidden = false
         RaffleFeedContainerView.isHidden = true
@@ -59,6 +66,11 @@ class FeedSegmentedViewController: UIViewController {
 
         }
 
+    }
+    
+    func searchTapped() {
+    
+        
     }
 
     /*

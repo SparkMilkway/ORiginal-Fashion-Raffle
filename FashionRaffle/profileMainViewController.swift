@@ -188,11 +188,11 @@ class profileMainViewController: UIViewController {
     }
     
     func uploadProfileImage(){
-        SettingsLauncher.showLoading(Status: "Uploading Profile Picture...")
+        Config.showLoading(Status: "Uploading Profile Picture...")
         let userID = Profile.currentUser?.userID
         let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
         let profilePath = "UserInfo/\(userID!)/profilePic/profileImage.jpg"
-        SettingsLauncher.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
+        Config.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let meta = metadata else{
                 print("Upload Error")
@@ -201,7 +201,7 @@ class profileMainViewController: UIViewController {
             let url = meta.downloadURL()
             Profile.currentUser?.profilePicUrl = url
             Profile.currentUser?.sync()
-            SettingsLauncher.dismissLoading()
+            Config.dismissLoading()
             
         })
         
@@ -210,12 +210,12 @@ class profileMainViewController: UIViewController {
         
     }
     func uploadBackgroundImage(){
-        SettingsLauncher.showLoading(Status: "Uploading Background Picture...")
+        Config.showLoading(Status: "Uploading Background Picture...")
         let userID = Profile.currentUser?.userID
         let backgroundImageData = UIImageJPEGRepresentation(self.profileBackground.image!, 0.7)
         let backgroundPath = "UserInfo/\(userID!)/backgroundPic/backgroundImage.jpg"
         
-        SettingsLauncher.uploadDatatoStorage(data: backgroundImageData!, itemStoragePath: backgroundPath, contentType: "image/jpeg", completion: {
+        Config.uploadDatatoStorage(data: backgroundImageData!, itemStoragePath: backgroundPath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let meta = metadata else{
                 print("Upload Error")
@@ -224,7 +224,7 @@ class profileMainViewController: UIViewController {
             let url = meta.downloadURL()
             Profile.currentUser?.backgroundPictureUrl = url
             Profile.currentUser?.sync()
-            SettingsLauncher.dismissLoading()
+            Config.dismissLoading()
             
             
         })

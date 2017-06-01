@@ -195,7 +195,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //do the forget password work and if successfully sent then dismiss the view
     @IBAction func dismissForgetPasswordPopUp(_ sender: Any) {
         if self.forgetPasswordTextField.text == "" {
-            SettingsLauncher.showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil, controller: self)
+            Config.showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil, controller: self)
         }
         else{
             FIRAuth.auth()?.sendPasswordReset(withEmail: self.forgetPasswordTextField.text!, completion: {(error) in
@@ -204,14 +204,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if error != nil {
                     title = "Oops!"
                     message = (error?.localizedDescription)!
-                    SettingsLauncher.showAlerts(title: title, message: message, handler: nil, controller: self)
+                    Config.showAlerts(title: title, message: message, handler: nil, controller: self)
                     
                 }
                 else {
                     title = "Success!"
                     message = "The password reset email was sent!"
                     self.forgetPasswordTextField.text = ""
-                    SettingsLauncher.showAlerts(title: title, message: message, handler: {
+                    Config.showAlerts(title: title, message: message, handler: {
                         UIAlertAction in
                         UIView.animate(withDuration:0.3, animations:{
                             self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)

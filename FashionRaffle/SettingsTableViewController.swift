@@ -62,7 +62,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBOutlet weak var emailLogOutButton: UIButton!
     
     @IBAction func emailLogOut(_ sender: Any) {
-        SettingsLauncher.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
+        Config.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
             UIAlertAction in
             try! FIRAuth.auth()?.signOut()
             self.logOut()
@@ -79,7 +79,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     @IBAction func checkTickets(_ sender: Any) {
         let tickets:Int = (Profile.currentUser?.tickets)!
-        SettingsLauncher.showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
+        Config.showAlerts(title: "Raffle Tickets", message: "You have \(tickets) raffle tickets.", handler: nil, controller: self)
     }
     //Buy raffle Tickets and Update the database////////////////////////////////////////
     func itemToSell() -> [PKPaymentSummaryItem] {
@@ -112,7 +112,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             
         }
         else {
-            SettingsLauncher.showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
+            Config.showAlerts(title: "Oops", message: "You need to set up Apple Pay!", handler: nil, controller: self)
         }
     }
     func purchaseSuccess() {
@@ -121,7 +121,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         // Every time there is an update to the class, current user needs to be updated
         Profile.currentUser?.tickets = tickets
         Profile.currentUser?.sync()
-        SettingsLauncher.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
+        Config.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
     }
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didSelect shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) {
@@ -217,11 +217,11 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     // Upload the Image to database
     func uploadProfileImage(){
-        SettingsLauncher.showLoading(Status: "Uploading Profile Picture...")
+        Config.showLoading(Status: "Uploading Profile Picture...")
         let userID = Profile.currentUser?.userID
         let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
         let profilePath = "UserInfo/\(userID!)/profilePic/profileImage.jpg"
-        SettingsLauncher.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
+        Config.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let meta = metadata else{
                 print("Upload Error")
@@ -230,7 +230,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             let url = meta.downloadURL()
             Profile.currentUser?.profilePicUrl = url
             Profile.currentUser?.sync()
-            SettingsLauncher.dismissLoading()
+            Config.dismissLoading()
         })
     }
 

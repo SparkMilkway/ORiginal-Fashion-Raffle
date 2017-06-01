@@ -48,6 +48,7 @@ class CentralTabBarController: UITabBarController {
         UIView.animate(withDuration: 0.4, animations: {
             self.view.alpha = 0.3
 
+            photoVC.setNeedsStatusBarAppearanceUpdate()
             self.present(photoVCNavi, animated: true, completion: nil)
         })
         

@@ -115,5 +115,68 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FashionRaffle/API.swift"
+            timestampString = "517976138.880559"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "API"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_415C3E8838726D8547C61567B9B19FAD_func2"
+                  moduleName = "FashionRaffle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/OneSpark/Desktop/ORiginal/Development/Spark/Spark_New/FashionRaffle/API.swift"
+                  timestampString = "517994081.975589"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FashionRaffle.API.userRef.unsafeMutableAddressor : __ObjC.FIRDatabaseReference"
+                  moduleName = "FashionRaffle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/OneSpark/Desktop/ORiginal/Development/Spark/Spark_New/FashionRaffle/API.swift"
+                  timestampString = "517994081.978993"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static FashionRaffle.API.userRef.getter : __ObjC.FIRDatabaseReference"
+                  moduleName = "FashionRaffle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/OneSpark/Desktop/ORiginal/Development/Spark/Spark_New/FashionRaffle/API.swift"
+                  timestampString = "517994081.983282"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
