@@ -1873,16 +1873,26 @@
                                     <segue destination="b8o-Do-uyN" kind="embed" id="HkP-em-ljo"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwd-3Z-ZI3">
+                                <rect key="frame" x="0.0" y="162" width="375" height="456"/>
+                                <connections>
+                                    <segue destination="UV6-Tl-e5U" kind="embed" id="F7g-pe-xox"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="q7c-UX-DWm" secondAttribute="trailing" id="0c4-mI-oqH"/>
                             <constraint firstAttribute="trailing" secondItem="NVp-hN-P4q" secondAttribute="trailing" id="0sn-fi-cY5"/>
+                            <constraint firstItem="Uwd-3Z-ZI3" firstAttribute="width" secondItem="NVp-hN-P4q" secondAttribute="width" id="Bcz-6P-78c"/>
                             <constraint firstItem="q7c-UX-DWm" firstAttribute="top" secondItem="ffF-eT-QwI" secondAttribute="bottom" id="DXz-WG-rhB"/>
                             <constraint firstItem="NVp-hN-P4q" firstAttribute="leading" secondItem="LXr-6Y-H9H" secondAttribute="leading" id="HVM-KQ-tfC"/>
+                            <constraint firstItem="Uwd-3Z-ZI3" firstAttribute="centerY" secondItem="NVp-hN-P4q" secondAttribute="centerY" id="Hhs-NL-Dxz"/>
                             <constraint firstItem="q7c-UX-DWm" firstAttribute="leading" secondItem="LXr-6Y-H9H" secondAttribute="leading" id="Isj-Ld-3md"/>
+                            <constraint firstItem="Uwd-3Z-ZI3" firstAttribute="centerX" secondItem="NVp-hN-P4q" secondAttribute="centerX" id="PQY-I4-Nwa"/>
                             <constraint firstItem="NVp-hN-P4q" firstAttribute="top" secondItem="q7c-UX-DWm" secondAttribute="bottom" constant="-5" id="Zo8-RB-Dwt"/>
                             <constraint firstItem="wFh-Cb-9yY" firstAttribute="top" secondItem="NVp-hN-P4q" secondAttribute="bottom" id="r5v-ud-qer"/>
+                            <constraint firstItem="Uwd-3Z-ZI3" firstAttribute="height" secondItem="NVp-hN-P4q" secondAttribute="height" id="uPc-3b-RQg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PnX-D7-qD6">
@@ -1906,11 +1916,12 @@
                         <outlet property="fileUrlLabel" destination="RUo-6e-poY" id="HFS-Im-ygf"/>
                         <outlet property="giveAwayContainer" destination="NVp-hN-P4q" id="VjA-6w-ehk"/>
                         <outlet property="imageView" destination="4J5-ja-sZa" id="3lm-2Q-pUQ"/>
+                        <outlet property="raffleContainer" destination="Uwd-3Z-ZI3" id="Pgl-3c-QDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QY-VI-cmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-508" y="1466"/>
+            <point key="canvasLocation" x="-508" y="1465.8170914542729"/>
         </scene>
         <!--Give Away View Controller-->
         <scene sceneID="dxg-cf-gg2">
@@ -2400,6 +2411,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xb5-b8-Orc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2306.4000000000001" y="-727.28635682158927"/>
+        </scene>
+        <!--Raffle Request View Controller-->
+        <scene sceneID="On2-9X-YDc">
+            <objects>
+                <viewController id="UV6-Tl-e5U" customClass="RaffleRequestViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jmK-Zb-1Dx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="backer" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IEQ-Qk-wfr">
+                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-Hr-cOz">
+                                <rect key="frame" x="16" y="69" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-5K-EbD">
+                                <rect key="frame" x="16" y="111" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Category">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showCategory:" destination="UV6-Tl-e5U" eventType="touchUpInside" id="TzG-LD-L9o"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKF-fA-uN7">
+                                <rect key="frame" x="16" y="132" width="343" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Cay-EG-M7t"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="UV6-Tl-e5U" id="WIi-LN-JVE"/>
+                                    <outlet property="delegate" destination="UV6-Tl-e5U" id="Kz4-vS-PjO"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BGE-5K-EbD" firstAttribute="top" secondItem="8ZN-Hr-cOz" secondAttribute="bottom" constant="12" id="3f7-n6-FHk"/>
+                            <constraint firstItem="pKF-fA-uN7" firstAttribute="centerX" secondItem="BGE-5K-EbD" secondAttribute="centerX" id="8Nh-R7-5Tl"/>
+                            <constraint firstItem="8ZN-Hr-cOz" firstAttribute="width" secondItem="IEQ-Qk-wfr" secondAttribute="width" id="I3L-wB-W2g"/>
+                            <constraint firstItem="BGE-5K-EbD" firstAttribute="width" secondItem="8ZN-Hr-cOz" secondAttribute="width" id="Jnr-9N-cZz"/>
+                            <constraint firstItem="pKF-fA-uN7" firstAttribute="width" secondItem="BGE-5K-EbD" secondAttribute="width" id="M2Y-4H-L9V"/>
+                            <constraint firstItem="BGE-5K-EbD" firstAttribute="centerX" secondItem="8ZN-Hr-cOz" secondAttribute="centerX" id="ODp-oP-dG9"/>
+                            <constraint firstItem="IEQ-Qk-wfr" firstAttribute="trailing" secondItem="jmK-Zb-1Dx" secondAttribute="trailingMargin" id="R28-C1-dHv"/>
+                            <constraint firstItem="IEQ-Qk-wfr" firstAttribute="top" secondItem="jmK-Zb-1Dx" secondAttribute="topMargin" constant="20" id="UEM-t8-av0"/>
+                            <constraint firstItem="IEQ-Qk-wfr" firstAttribute="leading" secondItem="jmK-Zb-1Dx" secondAttribute="leadingMargin" id="icp-Ng-MxG"/>
+                            <constraint firstItem="8ZN-Hr-cOz" firstAttribute="top" secondItem="IEQ-Qk-wfr" secondAttribute="bottom" constant="19" id="kRf-nQ-0rv"/>
+                            <constraint firstItem="pKF-fA-uN7" firstAttribute="top" secondItem="BGE-5K-EbD" secondAttribute="bottom" constant="-9" id="lzy-LS-MyS"/>
+                            <constraint firstItem="8ZN-Hr-cOz" firstAttribute="centerX" secondItem="IEQ-Qk-wfr" secondAttribute="centerX" id="tM7-4Q-tuP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backer" destination="IEQ-Qk-wfr" id="5Hc-a3-5uD"/>
+                        <outlet property="category" destination="BGE-5K-EbD" id="rWO-5w-Wns"/>
+                        <outlet property="categoryDropdown" destination="pKF-fA-uN7" id="emA-fB-IdB"/>
+                        <outlet property="price" destination="8ZN-Hr-cOz" id="HHo-SK-ezg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYA-cn-fe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="2120.2398800599703"/>
         </scene>
     </scenes>
     <resources>

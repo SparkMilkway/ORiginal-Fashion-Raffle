@@ -358,7 +358,7 @@
 		0612EB4A9FFE4FF664C082238B71C849 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		064F3AE9C4A0EE96A5AC6ED87B1E62C6 /* AnimatedDropdownMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AnimatedDropdownMenu-prefix.pch"; sourceTree = "<group>"; };
 		085B19F240D9819580B951E36C690E65 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
-		091B3D2AB236610A5E6CD6F0C43E98C4 /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Imaginary.framework; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		091B3D2AB236610A5E6CD6F0C43E98C4 /* Imaginary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Imaginary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		095A72050E3F4D4B5E093A70C7F4D874 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		0AE9309D04C7FAA692C02B910FF4B8E8 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = NohanaImagePicker/Images.xcassets; sourceTree = "<group>"; };
 		0D115647E844BA0739EDA6A34B054577 /* AssetCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssetCell.swift; path = NohanaImagePicker/AssetCell.swift; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		3A3D78424C66225F12BE748368EF858E /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Sharaku/Assets/Media.xcassets; sourceTree = "<group>"; };
 		3AD6F3CBF9C508F199145F681DD0F3A6 /* Pods-FashionRaffle-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FashionRaffle-acknowledgements.plist"; sourceTree = "<group>"; };
 		3ADE16A03023AF31A5502FB6F41C9B30 /* Array+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "Sources/CryptoSwift/Array+Extension.swift"; sourceTree = "<group>"; };
-		3AF6732E638DD1DC297D5A6C5A7F8887 /* Sharaku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Sharaku.framework; path = Sharaku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF6732E638DD1DC297D5A6C5A7F8887 /* Sharaku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sharaku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C5FFEF8CCB7085FAE0FC668B1BC8F63 /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Source/Shared/DataStructures/JSON.swift; sourceTree = "<group>"; };
 		3C693912F8834FCC0BBEF0C8EFFE3306 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
 		3D8343FB280F0B357A2DFE9D5F7BA9A0 /* DropdownMenuTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropdownMenuTableView.swift; path = Source/DropdownMenuTableView.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 		40C69CC610C456EF501F287B2CED0A66 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		4177A3FD48328E222026E46AB83B0E51 /* SHA1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = Sources/CryptoSwift/SHA1.swift; sourceTree = "<group>"; };
 		41F033497FA32366F7DF319D67A7CCCD /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImagePrefetcher.m; path = SDWebImage/SDWebImagePrefetcher.m; sourceTree = "<group>"; };
-		427FDC52C088408C0BA7190A6AADA443 /* NohanaImagePicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; name = NohanaImagePicker.storyboard; path = NohanaImagePicker/NohanaImagePicker.storyboard; sourceTree = "<group>"; };
+		427FDC52C088408C0BA7190A6AADA443 /* NohanaImagePicker.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = NohanaImagePicker.storyboard; path = NohanaImagePicker/NohanaImagePicker.storyboard; sourceTree = "<group>"; };
 		43B5222AF7328275A21C760AB5A33CD1 /* NohanaImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NohanaImagePicker-dummy.m"; sourceTree = "<group>"; };
 		43E0EBE12D85BEA500DA55DE32492C10 /* BlockModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeWorker.swift; path = Sources/CryptoSwift/BlockMode/BlockModeWorker.swift; sourceTree = "<group>"; };
 		44BC692BFCA6330A219E96DBE7595503 /* PKCS5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS5.swift; path = Sources/CryptoSwift/PKCS5/PKCS5.swift; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 		466E3D4699898F410A8E0271A44AF128 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F0FF8304CC3BF33A1EBE7108086EC9 /* ESRefreshProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESRefreshProtocol.swift; path = Sources/ESRefreshProtocol.swift; sourceTree = "<group>"; };
 		478BF51A3A2EEB36D2BEAF596906C579 /* CryptoSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CryptoSwift-dummy.m"; sourceTree = "<group>"; };
-		47B595663248FDEDFA970444A9900DC8 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = NohanaImagePicker/ja.lproj; sourceTree = "<group>"; };
+		47B595663248FDEDFA970444A9900DC8 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ja.lproj; path = NohanaImagePicker/ja.lproj; sourceTree = "<group>"; };
 		497005956CF5E098D30B6D6E4CA975C8 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
 		49CD598550237E81FE703CBB2E55A091 /* NSDate+Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSDate+Cache.swift"; path = "Source/Shared/Extensions/NSDate+Cache.swift"; sourceTree = "<group>"; };
 		49E7006C19B4DDAE32812B0B7F8DB173 /* Utils+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Utils+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Utils+Foundation.swift"; sourceTree = "<group>"; };
@@ -433,12 +433,12 @@
 		4EE62CFF67AE30EC2CEE5B83A70B440E /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
 		4EF2F46D91BF36CC7BE92C7E121E55B9 /* Imaginary-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Imaginary-prefix.pch"; sourceTree = "<group>"; };
 		4EFB3AF5396DFE03CE1449A692201254 /* AssetDetailCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssetDetailCell.swift; path = NohanaImagePicker/AssetDetailCell.swift; sourceTree = "<group>"; };
-		4FBF3ED6ABD4E3C36303042F31D2642F /* NohanaImagePicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NohanaImagePicker.bundle; path = NohanaImagePicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FBF3ED6ABD4E3C36303042F31D2642F /* NohanaImagePicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NohanaImagePicker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FBFE629072C921190B979B879E5E890 /* Pods-FashionRaffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FashionRaffle.release.xcconfig"; sourceTree = "<group>"; };
 		5001BE3F13AA1C83FBF9AECA0D277A5C /* Poly1305.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Poly1305.swift; path = Sources/CryptoSwift/Poly1305.swift; sourceTree = "<group>"; };
 		504591DA5B98A24F6E5DCC173CEF5987 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
-		5067C472F46DF6BE2996007CE02235A4 /* HGCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HGCircularSlider.framework; path = HGCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		542ABA0FFB64353241EC22DF64B472C7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5067C472F46DF6BE2996007CE02235A4 /* HGCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HGCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		542ABA0FFB64353241EC22DF64B472C7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		564C8F58DF81BD6826AF44003A029E82 /* RandomBytesSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomBytesSequence.swift; path = Sources/CryptoSwift/RandomBytesSequence.swift; sourceTree = "<group>"; };
 		56B19A54369C6F27EC644C7061F91FE2 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
 		56D21D833646F21139447CA19462A980 /* UInt32+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+Extension.swift"; path = "Sources/CryptoSwift/UInt32+Extension.swift"; sourceTree = "<group>"; };
@@ -450,7 +450,7 @@
 		5A7D4B563697443D7332B25446AF7D34 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B15E15053B063F9CB7D071D2AAE4EA6 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
 		5BB3901A5BB489796F2D7D96A7D257B0 /* Digest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Digest.swift; path = Sources/CryptoSwift/Digest.swift; sourceTree = "<group>"; };
-		5C33D65799760FF052B0B64EB707520B /* ESPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ESPullToRefresh.framework; path = ESPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C33D65799760FF052B0B64EB707520B /* ESPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBB823EC2C5BC43808B75B88D4B6DDD /* Capsule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Capsule.swift; path = Source/Shared/DataStructures/Capsule.swift; sourceTree = "<group>"; };
 		5CC170E4D92CA561EF5F26B50E44186B /* SDWebImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.xcconfig; sourceTree = "<group>"; };
 		5E74C452B06B2E8038BB53F05FB12A8D /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -463,8 +463,8 @@
 		64ACEC326A1C907986686473C3BD40D1 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
 		64B55679FA3459E3F734BBCA714C8CDA /* EmptyIndicatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmptyIndicatable.swift; path = NohanaImagePicker/EmptyIndicatable.swift; sourceTree = "<group>"; };
 		64C8ECC91EE12A933EA6E346AB148FA5 /* AnimatedDropdownMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AnimatedDropdownMenu-dummy.m"; sourceTree = "<group>"; };
-		64CAB8802CB7D5E31D93143726E7C41C /* Sharaku.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Sharaku.modulemap; sourceTree = "<group>"; };
-		64EE3EAF2DEF69436384E5C438EDBEAF /* ESPullToRefresh.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ESPullToRefresh.bundle; path = ESPullToRefresh.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		64CAB8802CB7D5E31D93143726E7C41C /* Sharaku.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Sharaku.modulemap; sourceTree = "<group>"; };
+		64EE3EAF2DEF69436384E5C438EDBEAF /* ESPullToRefresh.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESPullToRefresh.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B2CBC6287A2CF999CD743063BCBF1E /* Sharaku-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Sharaku-dummy.m"; sourceTree = "<group>"; };
 		678CD94904606FA2AD1EFCBEC51F1645 /* Blowfish.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Blowfish.swift; path = Sources/CryptoSwift/Blowfish.swift; sourceTree = "<group>"; };
 		68264CD78118E056D56F6EEAA3764F84 /* Rabbit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rabbit.swift; path = Sources/CryptoSwift/Rabbit.swift; sourceTree = "<group>"; };
@@ -478,8 +478,8 @@
 		6EB0022108288453A6E076C1E996FE20 /* SHViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SHViewController.xib; path = Sharaku/Classes/SHViewController.xib; sourceTree = "<group>"; };
 		6FAC71914BF5E79673090481847740CF /* CryptoSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-prefix.pch"; sourceTree = "<group>"; };
 		70159385CBA5FAAD8085170625923848 /* PhotoKitAsset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoKitAsset.swift; path = NohanaImagePicker/PhotoKitAsset.swift; sourceTree = "<group>"; };
-		70FD4B6EDFE82BA4CDE343844C403E7F /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SDWebImage.modulemap; sourceTree = "<group>"; };
-		719CFB237CEB1915D5B7393709DC1CB7 /* ESPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ESPullToRefresh.modulemap; sourceTree = "<group>"; };
+		70FD4B6EDFE82BA4CDE343844C403E7F /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SDWebImage.modulemap; sourceTree = "<group>"; };
+		719CFB237CEB1915D5B7393709DC1CB7 /* ESPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ESPullToRefresh.modulemap; sourceTree = "<group>"; };
 		71AC636F398658C19B970DCAA13F8582 /* SHA2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA2.swift; path = Sources/CryptoSwift/SHA2.swift; sourceTree = "<group>"; };
 		73058A1C50E6129721E9DBA6C39764BA /* PCBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PCBC.swift; path = Sources/CryptoSwift/BlockMode/PCBC.swift; sourceTree = "<group>"; };
 		73235A68EDD7ED9B3EB7537B98B0393D /* MomentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MomentViewController.swift; path = NohanaImagePicker/MomentViewController.swift; sourceTree = "<group>"; };
@@ -495,7 +495,7 @@
 		7AEA8151533B34B5B8CF57815C28166A /* ESPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ESPullToRefresh.xcconfig; sourceTree = "<group>"; };
 		7BE88A332FE40A30B38DF80774F12FCC /* PhotoKitAlbumList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoKitAlbumList.swift; path = NohanaImagePicker/PhotoKitAlbumList.swift; sourceTree = "<group>"; };
 		7C238F8A898B814EC243D2E3BEBFC0D2 /* Checksum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Checksum.swift; path = Sources/CryptoSwift/Checksum.swift; sourceTree = "<group>"; };
-		7CDE74DF11863281E2CE104AEADD912A /* Imaginary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Imaginary.modulemap; sourceTree = "<group>"; };
+		7CDE74DF11863281E2CE104AEADD912A /* Imaginary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Imaginary.modulemap; sourceTree = "<group>"; };
 		7DE860D0777C3FD94E84312931F70C03 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Shared/Image.swift; sourceTree = "<group>"; };
 		7EC3A13A0DA3043CBBCCFC8A41558842 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		803DA9BA3F327D77EEBF98141A8F212F /* SHCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SHCollectionViewCell.xib; path = Sharaku/Classes/SHCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -519,40 +519,40 @@
 		8B96BAE2382EBFDA15907BD954C19264 /* Int+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Sources/CryptoSwift/Int+Extension.swift"; sourceTree = "<group>"; };
 		8BD97E9C8FF3E7B631C512FAA0A7E789 /* Drawers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Drawers.swift; path = Sources/iOS/Drawers/Drawers.swift; sourceTree = "<group>"; };
 		8C31B591E40C394CEFF602D8D02EF241 /* ECB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ECB.swift; path = Sources/CryptoSwift/BlockMode/ECB.swift; sourceTree = "<group>"; };
-		8D90E34C20B67C242407725EBF432FC4 /* Pods-FashionRaffle.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FashionRaffle.modulemap"; sourceTree = "<group>"; };
+		8D90E34C20B67C242407725EBF432FC4 /* Pods-FashionRaffle.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FashionRaffle.modulemap"; sourceTree = "<group>"; };
 		8DC773048DF616E2FF02DB3CBC503E54 /* Bit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bit.swift; path = Sources/CryptoSwift/Bit.swift; sourceTree = "<group>"; };
 		910565728CFE3C81CB7EEBB3DB71D4CC /* RandomAccessBlockModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessBlockModeWorker.swift; path = Sources/CryptoSwift/BlockMode/RandomAccessBlockModeWorker.swift; sourceTree = "<group>"; };
 		92CD7A488570C21BDE356DD61F964A6A /* ZeroPadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZeroPadding.swift; path = Sources/CryptoSwift/ZeroPadding.swift; sourceTree = "<group>"; };
 		937D5DC1DCBA1B0E4813064C10384BA3 /* DropdownMenuTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropdownMenuTableViewCell.swift; path = Source/DropdownMenuTableViewCell.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9476E5BDB92ED979207DCDCB0842C3CC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		94DABE6A86F1535E10F9BBFCBB05E0CE /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		95841EF56584119C7A6A1CCE2EDDA3A4 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		9603F528124CF916ED9B8DABF06FE3DE /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
 		964A872D7F3781ED1D4C020BC72E0F59 /* Cache-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cache-umbrella.h"; sourceTree = "<group>"; };
 		9684D1478BA39CEA9A1423D19D637DD1 /* ImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageView.swift; path = Sources/Shared/ImageView.swift; sourceTree = "<group>"; };
-		9685DBA258F04DB4D21D6274E965D8F0 /* AnimatedDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AnimatedDropdownMenu.framework; path = AnimatedDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9685DBA258F04DB4D21D6274E965D8F0 /* AnimatedDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnimatedDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971649422AA84597B7F84534B428FE1B /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
 		982275955D6EDB1CFB4AFA1DF4F53D74 /* FirebaseStorageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorageUI.framework; path = FirebaseUIFrameworks/FirebaseStorageUI/Frameworks/FirebaseStorageUI.framework; sourceTree = "<group>"; };
 		984AA672723D92E18909AFD8585FF715 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
-		98B0F475F531218F22F70BE1AA7337B2 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FashionRaffle.framework; path = "Pods-FashionRaffle.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AF15E6342D327D3D65B8B9F6E00C984 /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cache.framework; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98B0F475F531218F22F70BE1AA7337B2 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF15E6342D327D3D65B8B9F6E00C984 /* Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B28038319C771ADB8F067FEE967B6BB /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		9B919051FE2367DBDE1B0F17626A91B8 /* ESPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ESPullToRefresh-dummy.m"; sourceTree = "<group>"; };
 		9BFB46A4D2494FBCED9B1239EB83AE79 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+ImageContentType.m"; path = "SDWebImage/NSData+ImageContentType.m"; sourceTree = "<group>"; };
 		9D63DA21FB84D856BDA9166E82DA5ACA /* RandomAccessCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessCryptor.swift; path = Sources/CryptoSwift/RandomAccessCryptor.swift; sourceTree = "<group>"; };
 		9DAE0320F20F3BF7ADFC0D38ABE87101 /* ResourceBundle-NohanaImagePicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-NohanaImagePicker-Info.plist"; sourceTree = "<group>"; };
-		9E175A0642A49A33FAD20F66689EFE9C /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E175A0642A49A33FAD20F66689EFE9C /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F00ADE2F9EE99011FCABDACFD96504D /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
 		9FFD620159083985FD71F1CC9D665058 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
 		A334498849C62324178207421FD1DAF7 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		A36CEF63922BF6C3BD3438DC37E88DE3 /* ESPullToRefresh+Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ESPullToRefresh+Manager.swift"; path = "Sources/ESPullToRefresh+Manager.swift"; sourceTree = "<group>"; };
 		A414FA3344AB8640652A0154C995E287 /* Imaginary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Imaginary.xcconfig; sourceTree = "<group>"; };
 		A4E450AB08120D86269DFE79840BB675 /* IntegerConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IntegerConvertible.swift; path = Sources/CryptoSwift/IntegerConvertible.swift; sourceTree = "<group>"; };
-		A7AD4CBE7C665AA04AC6D51E797954EB /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
+		A7AD4CBE7C665AA04AC6D51E797954EB /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
 		A7F8899A1302A4F2A7AA51C6D40260B2 /* ImageDrawer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDrawer.swift; path = Sources/Shared/ImageDrawer.swift; sourceTree = "<group>"; };
 		A84C6B61FDFA51AEAFF0CFD5DC227C8A /* AnimatedDropdownMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AnimatedDropdownMenu-umbrella.h"; sourceTree = "<group>"; };
-		A853866F9C5601BC7C050793FAA8A1C9 /* icon_pull_to_refresh_arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "icon_pull_to_refresh_arrow@2x.png"; path = "Sources/Animator/icon_pull_to_refresh_arrow@2x.png"; sourceTree = "<group>"; };
+		A853866F9C5601BC7C050793FAA8A1C9 /* icon_pull_to_refresh_arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icon_pull_to_refresh_arrow@2x.png"; path = "Sources/Animator/icon_pull_to_refresh_arrow@2x.png"; sourceTree = "<group>"; };
 		A96446203012C6996B29D1DBF85CAB0B /* Pods-FashionRaffle-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FashionRaffle-frameworks.sh"; sourceTree = "<group>"; };
 		A9A4E72259ADCA067594CB00FADE863A /* Configuration+Imaginary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Configuration+Imaginary.swift"; path = "Sources/iOS/Extensions/Configuration+Imaginary.swift"; sourceTree = "<group>"; };
 		ABCBC9F8A72FB7AFDBEC1467E6680BF0 /* HybridCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HybridCache.swift; path = Source/iOS/HybridCache.swift; sourceTree = "<group>"; };
@@ -562,7 +562,7 @@
 		ADE098060CA4BDAF4EA4D4E6D0659C75 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		B06A959024CE5B0C250AEEE7ECC8CDF5 /* SDWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-prefix.pch"; sourceTree = "<group>"; };
 		B3BF65526E659E4D8CD89F88B2A2FDA2 /* NSData+Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSData+Cache.swift"; path = "Source/Shared/Extensions/NSData+Cache.swift"; sourceTree = "<group>"; };
-		B41B14AD87BFB7C28D1BA82F0B5C9AD9 /* HGCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HGCircularSlider.modulemap; sourceTree = "<group>"; };
+		B41B14AD87BFB7C28D1BA82F0B5C9AD9 /* HGCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HGCircularSlider.modulemap; sourceTree = "<group>"; };
 		B48C5B73D63591C348D49171A5B596B5 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		B4AD184F61331BF51FD5A9A261C84EF0 /* MomentCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MomentCell.swift; path = NohanaImagePicker/MomentCell.swift; sourceTree = "<group>"; };
 		B5C7EE432EE758000A680A02411DFDFE /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
@@ -574,7 +574,7 @@
 		BAF7DCA3627D25FCB4F1F5E9EC9C8C5B /* BlockModeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeOptions.swift; path = Sources/CryptoSwift/BlockMode/BlockModeOptions.swift; sourceTree = "<group>"; };
 		BC13FC4C6FB3366337E5A07E0C29ADC9 /* HGCircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HGCircularSlider-umbrella.h"; sourceTree = "<group>"; };
 		BDCA526237BB8E9F67FF2639F1CC6989 /* Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = Source/Shared/Cache.swift; sourceTree = "<group>"; };
-		BDCD5CE140E68C1B6ECE665785640276 /* NohanaImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NohanaImagePicker.framework; path = NohanaImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDCD5CE140E68C1B6ECE665785640276 /* NohanaImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NohanaImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7FF519901A91ADE150885B3202F36D /* RangeCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RangeCircularSlider.swift; path = HGCircularSlider/Classes/RangeCircularSlider.swift; sourceTree = "<group>"; };
 		BEEE83488A0DAB013F0FEEBED55F5C76 /* CryptoSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CryptoSwift.xcconfig; sourceTree = "<group>"; };
 		BF19D9AD3B735033EB65178EB1DF250B /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
@@ -586,14 +586,14 @@
 		C05C00D3626D53030266CB4BE08C01C8 /* DiskStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskStorage.swift; path = Source/Shared/Storage/DiskStorage.swift; sourceTree = "<group>"; };
 		C209BF6F5E653B234D18304AA6C73EB2 /* NotificationInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NotificationInfo.swift; path = NohanaImagePicker/NotificationInfo.swift; sourceTree = "<group>"; };
 		C32B408521ADAE34FCD58ADCE7183934 /* Pods-FashionRaffle-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FashionRaffle-umbrella.h"; sourceTree = "<group>"; };
-		C37C84A303C16E64037BF2C6977A9A8A /* AnimatedDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AnimatedDropdownMenu.modulemap; sourceTree = "<group>"; };
+		C37C84A303C16E64037BF2C6977A9A8A /* AnimatedDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AnimatedDropdownMenu.modulemap; sourceTree = "<group>"; };
 		C39109D96C85578D5FA387B8CF54FA23 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		C4B85BE9C729670F07928107A6C31ACB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5720C9DD0C67D0585319839438AE75B /* String+FoundationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+FoundationExtension.swift"; path = "Sources/CryptoSwift/Foundation/String+FoundationExtension.swift"; sourceTree = "<group>"; };
 		C6AA980DF33F1A61D39D615FF91C8A77 /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
-		C862DA2E797495FAB6494C023EF1AB38 /* NohanaImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = NohanaImagePicker.modulemap; sourceTree = "<group>"; };
+		C862DA2E797495FAB6494C023EF1AB38 /* NohanaImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = NohanaImagePicker.modulemap; sourceTree = "<group>"; };
 		C93EC9997FB805C08F69FA75DD140149 /* BasicHybridCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BasicHybridCache.swift; path = Source/Shared/BasicHybridCache.swift; sourceTree = "<group>"; };
-		C9EB0BC104E0A459DCE27DB3478E54D8 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = NohanaImagePicker/en.lproj; sourceTree = "<group>"; };
+		C9EB0BC104E0A459DCE27DB3478E54D8 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = NohanaImagePicker/en.lproj; sourceTree = "<group>"; };
 		CD00BBF5EB68E3EAC87F68BE8A386ED4 /* BlockMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockMode.swift; path = Sources/CryptoSwift/BlockMode/BlockMode.swift; sourceTree = "<group>"; };
 		CF5E8A3A1A06D2459F43E730AB348C41 /* UIButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+WebCache.h"; path = "SDWebImage/UIButton+WebCache.h"; sourceTree = "<group>"; };
 		D22E3BD6465B3FA4132A48BE39491D91 /* CircularSlider+Draw.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CircularSlider+Draw.swift"; path = "HGCircularSlider/Classes/CircularSlider+Draw.swift"; sourceTree = "<group>"; };
@@ -614,12 +614,12 @@
 		E094CD458B20E05DD830D126C442C0CC /* Imaginary-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Imaginary-umbrella.h"; sourceTree = "<group>"; };
 		E09688823439D8DA6A057CD5CA7090C8 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		E0A01E9B8349A3B66863F2AAD80DB6AC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1A6762657FD33893D17D061BA91FFCF /* Cache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cache.modulemap; sourceTree = "<group>"; };
+		E1A6762657FD33893D17D061BA91FFCF /* Cache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Cache.modulemap; sourceTree = "<group>"; };
 		E1B075923C868CE7A0B2C0D09333A036 /* AlbumListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlbumListViewController.swift; path = NohanaImagePicker/AlbumListViewController.swift; sourceTree = "<group>"; };
 		E29D56E3012506332987FA58A2CD2642 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
 		E53CC9C18DDF037FBD7F526F9ABA5D13 /* CSArrayType+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CSArrayType+Extensions.swift"; path = "Sources/CryptoSwift/CSArrayType+Extensions.swift"; sourceTree = "<group>"; };
 		E60A2A117D88834B88CA84A9303C07BD /* SHCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHCollectionViewCell.swift; path = Sharaku/Classes/SHCollectionViewCell.swift; sourceTree = "<group>"; };
-		E62EBBDFF0DAFECFF0FF74712F8B8104 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E62EBBDFF0DAFECFF0FF74712F8B8104 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DF84D70572AF1D4F69C007D9861D92 /* Authenticator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Authenticator.swift; path = Sources/CryptoSwift/Authenticator.swift; sourceTree = "<group>"; };
 		E8D14537C1D0E4AE4C892EA75EEBA6BA /* NohanaImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NohanaImagePicker-prefix.pch"; sourceTree = "<group>"; };
 		EA72E0E20B308430A35648A8AC808701 /* CSArrayType+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CSArrayType+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/CSArrayType+Foundation.swift"; sourceTree = "<group>"; };
@@ -643,7 +643,7 @@
 		F927331F439F18408243FF8223860CA7 /* ChaCha20+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ChaCha20+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/ChaCha20+Foundation.swift"; sourceTree = "<group>"; };
 		F990E37C289868BCC913DAEA21237CFB /* Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Padding.swift; path = Sources/CryptoSwift/Padding.swift; sourceTree = "<group>"; };
 		FAE278EF8476C5DBE3C124EA897092CB /* PickedAssetList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickedAssetList.swift; path = NohanaImagePicker/PickedAssetList.swift; sourceTree = "<group>"; };
-		FD2A7D828237C8C03911EB9435072E92 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
+		FD2A7D828237C8C03911EB9435072E92 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -764,7 +764,6 @@
 			children = (
 				0666878F519C77EF36E9AA76479754B1 /* Core */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -850,7 +849,6 @@
 				67BEE0A0EED885D26E8A65C0D884C787 /* Resources */,
 				F923951728B9123CAB40E67293324B42 /* Support Files */,
 			);
-			name = NohanaImagePicker;
 			path = NohanaImagePicker;
 			sourceTree = "<group>";
 		};
@@ -859,7 +857,6 @@
 			children = (
 				F047BB62C0FA5A142A5D073251C3770F /* Frameworks */,
 			);
-			name = FirebaseAuth;
 			path = FirebaseAuth;
 			sourceTree = "<group>";
 		};
@@ -876,7 +873,6 @@
 				4F128AD0A4429DA77BA567FF0A8D6D40 /* Resources */,
 				58C14B4318ECE4796F33DF31F1622A2F /* Support Files */,
 			);
-			name = ESPullToRefresh;
 			path = ESPullToRefresh;
 			sourceTree = "<group>";
 		};
@@ -899,7 +895,6 @@
 			children = (
 				A0392C6EAD73474EB7850076308768BE /* Frameworks */,
 			);
-			name = GoogleNetworkingUtilities;
 			path = GoogleNetworkingUtilities;
 			sourceTree = "<group>";
 		};
@@ -908,7 +903,6 @@
 			children = (
 				4EE3A3FE8710638C534AD87F01646526 /* Frameworks */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -938,7 +932,6 @@
 				D958F078352E305179A4388D4AC13C6D /* UIImage+Cache.swift */,
 				04C5392C65CD6B8C38C501DE7F352DD1 /* Support Files */,
 			);
-			name = Cache;
 			path = Cache;
 			sourceTree = "<group>";
 		};
@@ -947,7 +940,6 @@
 			children = (
 				7255D352DB02EBD81362586A36FBA0D7 /* Frameworks */,
 			);
-			name = GoogleInterchangeUtilities;
 			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
@@ -1124,7 +1116,6 @@
 				BF19D9AD3B735033EB65178EB1DF250B /* FIRInstanceID.h */,
 				6C5915F5C10E1388AEA19C3702A4AEFB /* Frameworks */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -1149,7 +1140,6 @@
 			children = (
 				89722B3281E71C0BAAE8986CC7C853F9 /* Storage */,
 			);
-			name = FirebaseUI;
 			path = FirebaseUI;
 			sourceTree = "<group>";
 		};
@@ -1159,7 +1149,6 @@
 				EF32F9A6A1EB64BFFF5047AEEFF66118 /* Core */,
 				15A4F123A88F004165D5D0414D8F20AE /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -1173,7 +1162,6 @@
 				C6423FDEB5EDDE959744BB9997B6869B /* Resources */,
 				16FF8B79FBF75F6D5F5DED871AE75E83 /* Support Files */,
 			);
-			name = Sharaku;
 			path = Sharaku;
 			sourceTree = "<group>";
 		};
@@ -1190,7 +1178,6 @@
 			children = (
 				4F16897B51350BAD2A4C77A1B1F44CDE /* Frameworks */,
 			);
-			name = GoogleSymbolUtilities;
 			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
@@ -1208,7 +1195,6 @@
 				73F18C8FA5D065AF6657E4473D3D71DD /* Resources */,
 				F685765A944D51664190A7C58CB3D8C2 /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1217,7 +1203,6 @@
 			children = (
 				438A89011B8E8A2A41D205EBF2026FA4 /* Frameworks */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -1239,7 +1224,6 @@
 				BE7FF519901A91ADE150885B3202F36D /* RangeCircularSlider.swift */,
 				D37D3A30F8763816CD41EB970822F3D9 /* Support Files */,
 			);
-			name = HGCircularSlider;
 			path = HGCircularSlider;
 			sourceTree = "<group>";
 		};
@@ -1248,7 +1232,6 @@
 			children = (
 				F8C21B995BC2FABAEB9F77579754061B /* Frameworks */,
 			);
-			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -1265,7 +1248,6 @@
 			children = (
 				82DFB6906545936573C868AD7CDD23A9 /* Frameworks */,
 			);
-			name = FirebaseDatabase;
 			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
@@ -1355,7 +1337,6 @@
 			children = (
 				597D4202142EA3B4583514D42C027858 /* Frameworks */,
 			);
-			name = FirebaseStorage;
 			path = FirebaseStorage;
 			sourceTree = "<group>";
 		};
@@ -1426,7 +1407,6 @@
 				92CD7A488570C21BDE356DD61F964A6A /* ZeroPadding.swift */,
 				362AC0FFDE86367F22EFFE8B67CFDE47 /* Support Files */,
 			);
-			name = CryptoSwift;
 			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
@@ -1485,7 +1465,6 @@
 				871E5B1BD0A7CBDD30B236850F4E96FF /* Resources */,
 				3D3EA4BABD4ED76693C4AA894F869F80 /* Support Files */,
 			);
-			name = AnimatedDropdownMenu;
 			path = AnimatedDropdownMenu;
 			sourceTree = "<group>";
 		};
@@ -1507,7 +1486,6 @@
 				6210C0A1B23A7CAB1AF6168F3FF634E6 /* UIImage+Modify.swift */,
 				264BFABF00FAFBBC852F1D90509E19FA /* Support Files */,
 			);
-			name = Imaginary;
 			path = Imaginary;
 			sourceTree = "<group>";
 		};

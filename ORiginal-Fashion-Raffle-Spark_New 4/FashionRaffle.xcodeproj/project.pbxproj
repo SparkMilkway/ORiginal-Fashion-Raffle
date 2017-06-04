@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048169361EE3974A009A130C /* RaffleRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048169351EE3974A009A130C /* RaffleRequestViewController.swift */; };
+		0481693C1EE3B44B009A130C /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481693B1EE3B44B009A130C /* StringUtils.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -91,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048169351EE3974A009A130C /* RaffleRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleRequestViewController.swift; sourceTree = "<group>"; };
+		0481693B1EE3B44B009A130C /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +366,8 @@
 				52146CA41EDCC51200612540 /* userPostsCollectionViewCell.swift */,
 				52146CA51EDCC51200612540 /* userPostsCollectionViewController.swift */,
 				52146CA61EDCC51200612540 /* userRaffleViewController.swift */,
+				048169351EE3974A009A130C /* RaffleRequestViewController.swift */,
+				0481693B1EE3B44B009A130C /* StringUtils.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -686,8 +692,10 @@
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				52E377401ED3B9AE00F2D609 /* Size.swift in Sources */,
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
+				0481693C1EE3B44B009A130C /* StringUtils.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
+				048169361EE3974A009A130C /* RaffleRequestViewController.swift in Sources */,
 				52146CA91EDCC51200612540 /* userRaffleViewController.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,

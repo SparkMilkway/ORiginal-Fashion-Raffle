@@ -22,6 +22,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     
     @IBOutlet weak var giveAwayContainer: UIView!
     
+    @IBOutlet weak var raffleContainer: UIView!
     
     var fusumaOne : FusumaViewController?
     var shOne : SHViewController?
@@ -35,7 +36,8 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     fileprivate let dropdownItems: [AnimatedDropdownMenu.Item] = [
         AnimatedDropdownMenu.Item.init("New Post", nil, nil),
         AnimatedDropdownMenu.Item.init("Direct Message", nil, nil),
-        AnimatedDropdownMenu.Item.init("Give Away Post", nil, nil)
+        AnimatedDropdownMenu.Item.init("Give Away Post", nil, nil),
+        AnimatedDropdownMenu.Item.init("Raffle Request", nil, nil)
     ]
     
     fileprivate var selectedStageIndex: Int = 0
@@ -67,6 +69,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         setupAnimatedDropdownMenu()
         
         giveAwayContainer.isHidden = true
+        raffleContainer.isHidden = true
         
         
         
@@ -246,13 +249,24 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
         if selectedStageIndex == 0{
             giveAwayContainer.isHidden = true
+            raffleContainer.isHidden = true
+
         }
         if selectedStageIndex == 1{
             giveAwayContainer.isHidden = true
+            raffleContainer.isHidden = true
+
         }
         if selectedStageIndex == 2{
             giveAwayContainer.isHidden = false
+            raffleContainer.isHidden = true
+
         }
+        if selectedStageIndex == 3{
+            giveAwayContainer.isHidden = true
+            raffleContainer.isHidden = false
+        }
+
         print("\(dropdownItems[selectedStageIndex].title)")
     }
     
