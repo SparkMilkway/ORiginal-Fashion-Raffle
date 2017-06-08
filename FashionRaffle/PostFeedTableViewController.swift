@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Firebase
 import SVProgressHUD
-import Cache
 import Imaginary
 import ESPullToRefresh
 
@@ -25,8 +24,9 @@ class PostFeedTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelection = false
@@ -40,8 +40,7 @@ class PostFeedTableViewController: UITableViewController {
         self.tableView.es_addInfiniteScrolling {
             self.loadMore()
         }
-        
-        
+
     }
     
     
@@ -56,9 +55,7 @@ class PostFeedTableViewController: UITableViewController {
             guard let postFeed = snapshot.value as? [String:Any] else{
                 return
             }
-            
-            
-            
+
             let postID = snapshot.key
             let new = Post.initWithPostID(postID: postID, postDict: postFeed)
             self.postFeeds.insert(new!, at: 0)
@@ -203,14 +200,29 @@ class PostFeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostPoolCell
         cell.captionLabel.text = post.caption
         let imageUrl = post.imageUrl
-        cell.imgView.setImage(url: imageUrl)
+        
+        cell.loadingIndicator.startAnimating()
+        
+        cell.imgView.setImage(url: imageUrl){
+            _ in
+            cell.loadingIndicator.stopAnimating()
+        }
         cell.userNameLabel.text = post.creator
         cell.timeStamp.text = post.timestamp
         cell.creatorID = post.creatorID
         
-        if let profileUrl = post.profileImageUrl {
-            cell.profileImage.setImage(url: profileUrl)
-        }
+        API.userAPI.fetchUserProfilePicUrl(withID: post.creatorID, completion: {
+            url in
+            if let fetchUrl = url {
+                // Has the url
+                let userIcon = UIImage(named: "UserIcon")
+                
+                cell.profileImage.setImage(url: fetchUrl, placeholder: userIcon)
+            }
+            else {
+                cell.profileImage.image = UIImage(named: "UserIcon")
+            }
+        })
         
         cell.viewProfile.layer.setValue(indexPath, forKey: "index")
 

@@ -67,24 +67,23 @@ class profileMainViewController: UIViewController {
         if let fingArray = Profile.currentUser?.following{
             followingArray = fingArray
             self.fingArray = fingArray
-            self.followingButton.setTitle("Following: " + String(self.fingArray.count), for: .normal)
-            
-            if self.fingArray.count == 0 {
-                self.followingButton.isUserInteractionEnabled = false
-            }
-            
-            
+
         }
+        else {
+            self.followingButton.isUserInteractionEnabled = false
+        }
+        self.followingButton.setTitle("Following: " + String(self.fingArray.count), for: .normal)
+        
         if let ferArray = Profile.currentUser?.followers{
             followerArray = ferArray
             self.ferArray = ferArray
-            self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
-            if self.ferArray.count == 0 {
-                self.followerButton.isUserInteractionEnabled = false
-                
-            }
             
         }
+        else {
+            self.followerButton.isUserInteractionEnabled = false
+        }
+        self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
+        
         if let bio = Profile.currentUser?.bio{
             if let web = Profile.currentUser?.website{
                 self.bio.text = bio + "\n" + web
@@ -188,45 +187,18 @@ class profileMainViewController: UIViewController {
     }
     
     func uploadProfileImage(){
-        Config.showLoading(Status: "Uploading Profile Picture...")
-        let userID = Profile.currentUser?.userID
+        
         let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
-        let profilePath = "UserInfo/\(userID!)/profilePic/profileImage.jpg"
-        Config.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
-            metadata, error in
-            guard let meta = metadata else{
-                print("Upload Error")
-                return
-            }
-            let url = meta.downloadURL()
-            Profile.currentUser?.profilePicUrl = url
-            Profile.currentUser?.sync()
-            Config.dismissLoading()
-            
+        API.storageAPI.uploadCurrentUserProfileImage(imageData: profileImageData!, onSuccess: {
+            print("Upload Success")
         })
-        
-        
 
-        
     }
     func uploadBackgroundImage(){
-        Config.showLoading(Status: "Uploading Background Picture...")
-        let userID = Profile.currentUser?.userID
-        let backgroundImageData = UIImageJPEGRepresentation(self.profileBackground.image!, 0.7)
-        let backgroundPath = "UserInfo/\(userID!)/backgroundPic/backgroundImage.jpg"
         
-        Config.uploadDatatoStorage(data: backgroundImageData!, itemStoragePath: backgroundPath, contentType: "image/jpeg", completion: {
-            metadata, error in
-            guard let meta = metadata else{
-                print("Upload Error")
-                return
-            }
-            let url = meta.downloadURL()
-            Profile.currentUser?.backgroundPictureUrl = url
-            Profile.currentUser?.sync()
-            Config.dismissLoading()
-            
-            
+        let backgroundImageData = UIImageJPEGRepresentation(self.profileBackground.image!, 0.7)
+        API.storageAPI.uploadCurrentUserBackgroundImage(imageData: backgroundImageData!, onSuccess: {
+            print("Upload Success")
         })
 
     }

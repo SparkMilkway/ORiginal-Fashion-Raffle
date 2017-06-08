@@ -47,7 +47,9 @@ class AssetListViewController: UICollectionViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBOutlet var doneButton: UIBarButtonItem!
+
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let nohanaImagePickerController = nohanaImagePickerController {
@@ -157,6 +159,8 @@ class AssetListViewController: UICollectionViewController {
         assetListDetailViewController.currentIndexPath = selectedIndexPath
     }
 
+
+    
     // MARK: - IBAction
     @IBAction func didPushDone(_ sender: AnyObject) {
 

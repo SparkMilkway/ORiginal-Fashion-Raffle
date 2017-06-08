@@ -87,7 +87,10 @@ extension LoginViewController {
                     let newprofile = Profile.newUser(username: name, userID: uid, email: email)
                     Profile.currentUser = newprofile
                     //sync to database
-                    newprofile.sync()
+                    newprofile.sync(onSuccess: {}, onError: {
+                        error in
+                        print(error.localizedDescription)
+                    })
                     // Verify the email address first
                     FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: {
                         (error) in
@@ -275,7 +278,10 @@ extension LoginViewController {
                                     }
                                     newuser.profilePicUrl = imageURL
                                     Profile.currentUser = newuser
-                                    newuser.sync()
+                                    newuser.sync(onSuccess: {}, onError: {
+                                        error in
+                                        print(error.localizedDescription)
+                                    })
                                     
                                 }
                                 return

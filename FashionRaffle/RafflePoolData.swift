@@ -26,9 +26,10 @@ class RaffleFeed {
     let headImageUrl:URL? //Required
     var detailImageUrls:[URL]? //Not required
     var likedUsers:[String]?
+    var likeCounter:Int?
     static var selectedRaffle:RaffleFeed?
     
-    init(raffleID:String?, title: String, subtitle: String, detailInfo: String, headImageURL: URL?, detailImageURLs: [URL]?, likedUsers: [String]?, timestamp: String, tags: [String]?) {
+    init(raffleID:String?, title: String, subtitle: String, detailInfo: String, headImageURL: URL?, detailImageURLs: [URL]?, likedUsers: [String]?, likeCounter: Int?, timestamp: String, tags: [String]?) {
         self.raffleID = raffleID
         self.title = title
         self.subtitle = subtitle
@@ -36,13 +37,14 @@ class RaffleFeed {
         self.headImageUrl = headImageURL
         self.detailImageUrls = detailImageURLs
         self.likedUsers = likedUsers
+        self.likeCounter = likeCounter
         self.timestamp = timestamp
         self.tags = tags
     }
     
     static func createNewRaffle(raffleID: String, title: String, subtitle: String, detailInfo: String, tags: [String]?, headImageUrl: URL?, detailImageUrls: [URL]?) -> RaffleFeed? {
         
-        return RaffleFeed(raffleID: raffleID, title: title, subtitle: subtitle, detailInfo: detailInfo, headImageURL: headImageUrl, detailImageURLs: detailImageUrls, likedUsers: nil, timestamp: Date().now(), tags: tags)
+        return RaffleFeed(raffleID: raffleID, title: title, subtitle: subtitle, detailInfo: detailInfo, headImageURL: headImageUrl, detailImageURLs: detailImageUrls, likedUsers: nil, likeCounter: 0, timestamp: Date().now(), tags: tags)
     }
     
     static func initWithRaffleID(raffleID:String, contents:[String:Any]) -> RaffleFeed? {
@@ -70,21 +72,34 @@ class RaffleFeed {
         }
         
         let timestamp = contents["timestamp"] as? String
-        let likedUsers = contents["likedUsers"] as? [String]
-        
-        return RaffleFeed(raffleID: raffleID, title: title, subtitle: subtitle!, detailInfo: detailInfo!, headImageURL: headImageURL, detailImageURLs: detailImageURL, likedUsers: likedUsers, timestamp: timestamp!, tags: tags)
+        var likeUsers = [String]()
+        if let likedUsers = contents["likedUsers"] as? [String:Bool] {
+            for tempusers in likedUsers {
+                likeUsers.append(tempusers.key)
+            }
+        }
+        let likeCounter = contents["likeCounter"] as? Int
+        return RaffleFeed(raffleID: raffleID, title: title, subtitle: subtitle!, detailInfo: detailInfo!, headImageURL: headImageURL, detailImageURLs: detailImageURL, likedUsers: likeUsers, likeCounter: likeCounter, timestamp: timestamp!, tags: tags)
         
     }
     
     func dictValue() -> [String:Any] {
         var raffleDict = [String:Any]()
+        var likeUsersDB = [String:Bool]()
         raffleDict["raffleID"] = raffleID
         raffleDict["timestamp"] = timestamp
         raffleDict["tags"] = tags
         raffleDict["title"] = title
         raffleDict["subtitle"] = subtitle
         raffleDict["detailInfo"] = detailInfo
-        raffleDict["likedUsers"] = likedUsers
+        if let likeUsers = likedUsers {
+            for tempUsers in likeUsers{
+                likeUsersDB[tempUsers] = true
+            }
+            raffleDict["likedUsers"] = likeUsersDB
+        }
+
+        raffleDict["likeCounter"] = likeCounter
         if let headimageurl = headImageUrl {
             raffleDict["headImageUrl"] = "\(headimageurl)"
         }
@@ -101,17 +116,3 @@ class RaffleFeed {
     
 }
 
-
-
-
-class RafflePoolCell: UITableViewCell{
-    @IBOutlet weak var CellImage: UIImageView!
-    
-    @IBAction func PullMenu(_ sender: Any) {
-        
-        
-        
-    }
-    @IBOutlet weak var Subtitle: UILabel!
-    @IBOutlet weak var Title: UILabel!
-}

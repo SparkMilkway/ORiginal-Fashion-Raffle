@@ -113,7 +113,7 @@ class AddNewsTableViewController: UITableViewController {
         Config.uploadDatatoStorage(data: imageData, itemStoragePath: headImagePath, contentType: "image/jpeg", completion: {
             metadata, error in
             guard let metadata = metadata else{
-                Config.dismissLoading()
+                Config.dismissLoading(onFinished: nil)
                 return
             }
             let url = metadata.downloadURL()
@@ -121,13 +121,13 @@ class AddNewsTableViewController: UITableViewController {
             let newFeed = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: url, detailImageURLs: [])
             if self.imageDetailPool.count == 0 {
                 newFeedRef.setValue(newFeed?.dictValue())
-                Config.dismissLoading()
+                Config.dismissLoading(onFinished: nil)
                 Config.showAlerts(title: "Success!", message: "", handler: {
                     UIAlertAction in
                     self.dismiss(animated: true, completion: nil)
                 }, controller: self)
                 
-            }else {
+            } else {
                 for i in 0..<self.imageDetailPool.count {
                     let currentDetailImage = self.imageDetailPool[i]
                     let currentImageData = UIImageJPEGRepresentation(currentDetailImage!, 0.8)!
@@ -135,7 +135,7 @@ class AddNewsTableViewController: UITableViewController {
                     Config.uploadDatatoStorage(data: currentImageData, itemStoragePath: uploadPath, contentType: "image/jpeg", completion: {
                         meta2, error in
                         guard let detailmeta = meta2 else{
-                            Config.dismissLoading()
+                            Config.dismissLoading(onFinished: nil)
                             return
                         }
                         let detailUrl = detailmeta.downloadURL()
@@ -145,7 +145,7 @@ class AddNewsTableViewController: UITableViewController {
                             if detailImageURLs.count == self.imageDetailPool.count {
                                 newFeedRef.setValue(newFeed?.dictValue())
                                 
-                                Config.dismissLoading()
+                                Config.dismissLoading(onFinished: nil)
                                 Config.showAlerts(title: "Success!", message: "", handler: {
                                     UIAlertAction in
                                     self.dismiss(animated: true, completion: nil)

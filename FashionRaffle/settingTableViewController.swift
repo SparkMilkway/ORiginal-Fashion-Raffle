@@ -119,7 +119,10 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         Profile.currentUser?.bio = self.Bio.text!
         Profile.currentUser?.website = self.Website.text!
         Profile.currentUser?.username = self.username.text!
-        Profile.currentUser?.sync()
+        Profile.currentUser?.sync(onSuccess: {}, onError: {
+            error in
+            print(error.localizedDescription)
+        })
         Config.showAlerts(title: "Profile upload", message: "Success", handler: nil, controller: self)
         
         

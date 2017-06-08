@@ -13,6 +13,28 @@ class UserAPI: NSObject {
     
     let userRef = API().userRef
     
+    //****************************************************//
+    // Upload
+    //****************************************************//
+    func uploadToDatabase(withID userID:String, dictValue: [String:Any], onSuccess: @escaping ()-> Void, onError: @escaping (Error)-> Void) {
+        
+        userRef.child(userID).setValue(dictValue, withCompletionBlock: {
+            error, _ in
+            
+            if error != nil {
+                onError(error!)
+            }
+            onSuccess()
+        })
+    }
+    
+    
+    
+    
+    //****************************************************//
+    // Fetch
+    //****************************************************//
+    
     func fetchUserInfo(withID userID: String, completion: @escaping (Profile) -> Void) {
         
         userRef.child(userID).observeSingleEvent(of: .value, with: {
@@ -30,12 +52,13 @@ class UserAPI: NSObject {
         
     }
     
+    // Two functions below are used in the Post Feed for faster performance
     func fetchUserProfilePicUrl(withID userID: String, completion: @escaping (URL?) -> Void) {
         
         userRef.child(userID).child("profilePicUrl").observeSingleEvent(of: .value, with: {
             snapshot in
             
-            if let fetchedURL = snapshot.value as? String{
+            if let fetchedURL = snapshot.value as? String {
                 let url = URL(string: fetchedURL)
                 completion(url)
             }
@@ -47,10 +70,18 @@ class UserAPI: NSObject {
         })
     }
     
-    // Has the chance to have no post
-    func fetchUserPosts(fromID userID: String, completion: @escaping ([Post]?) -> Void) {
+    func fetchUserName(withID userID: String, completion: @escaping (String) -> Void) {
+        
+        userRef.child(userID).child("username").observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            let name = snapshot.value as! String
+            completion(name)
+        })
         
     }
+    
+    
     
     
 }

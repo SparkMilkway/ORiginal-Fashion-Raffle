@@ -37,28 +37,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let syncUserCache = SyncHybridCache(userCache)
             print("=========")
             if let json:JSON = syncUserCache.object("UserProfile") {
-                let datadic = json.object as? [String:Any]
+                let datadic = json.object as? [String:[String:Any]]
                 print("Has Cache Value!")
-                // Need to check if the current user is actually the user logged in last time.
-                let cachedID = datadic!["userID"] as? String
-                if cachedID == userID {
-                    let userProfile = Profile.initWithUserID(userID: userID!, profileDict: datadic!)
-                    if userProfile?.lastCheckDate != Date.nowDate() {
-                        userProfile?.lastCheckDate = Date.nowDate()
-                        let count = userProfile?.checkInCount
-                        userProfile?.checkInCount = count! + 1
+                for data in datadic! {
+                    let cacheID = data.key
+                    let dict = data.value
+                    
+                    // Need to check if the current user is actually the user logged in last time.
+                    if cacheID == userID {
+                        let userProfile = Profile.initWithUserID(userID: userID!, profileDict: dict)
+                        Profile.currentUser = userProfile!
+                        if userProfile?.lastCheckDate != Date.nowDate() {
+                            userProfile?.lastCheckDate = Date.nowDate()
+                            let count = userProfile?.checkInCount
+                            userProfile?.checkInCount = count! + 1
+                            Profile.currentUser = userProfile!
+                            Profile.currentUser?.sync(onSuccess: {}, onError: {
+                                error in
+                                print(error.localizedDescription)
+                            })
+                        }
+                        
+                        print("CurrentUser data inputs successfully.")
+                        self.rootToMainTab()
                     }
-                    Profile.currentUser = userProfile!
-                    Profile.currentUser?.sync()
-                    print("CurrentUser data inputs successfully.")
-                    self.rootToMainTab()
-                }
-                else {
-                    print("The user now is not who get cached before.")
-                    print("Will log out")
-                    try! FIRAuth.auth()?.signOut()
-                    if FBSDKAccessToken.current() != nil{
-                        FBSDKLoginManager().logOut()
+                    else {
+                        print("The user now is not who get cached before.")
+                        print("Will log out")
+                        try! FIRAuth.auth()?.signOut()
+                        if FBSDKAccessToken.current() != nil{
+                            FBSDKLoginManager().logOut()
+                        }
                     }
                 }
             }
@@ -112,7 +121,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cache = HybridCache(name: "UserCache")
         let syncCache = SyncHybridCache(cache)
         let currentUserProfile = Profile.currentUser?.dictValue()
-        let jsonDic = JSON.dictionary(currentUserProfile!)
+        let currentUserID = Profile.currentUser?.userID
+        let cacheDict : [String:Any] = [currentUserID!:currentUserProfile]
+        
+        let jsonDic = JSON.dictionary(cacheDict)
         syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
         print("User Profile Caches Successfully")
     }

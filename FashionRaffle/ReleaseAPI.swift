@@ -12,6 +12,16 @@ import FirebaseDatabase
 class ReleaseAPI: NSObject {
     let releaseRef = API().releaseRef
     
+    // Remove Observers From ReleaseNews
+    func removeObserverFromRelease() {
+        
+        releaseRef.removeAllObservers()
+        
+    }
+    
+    
+    
+    // Get all the releaseInfo for now
     
     
 }

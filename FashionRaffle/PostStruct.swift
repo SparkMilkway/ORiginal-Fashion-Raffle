@@ -9,18 +9,23 @@
 import UIKit
 
 class Post {
+    let postID:String?
     let creator:String
     let creatorID:String
-    let postID:String?
+    
     var timestamp:String
     var likedUsers:[String]?
+    var likeCounter:Int?
+    var comments:[String]?
     let imageUrl:URL
     let profileImageUrl:URL?
     let caption:String?
     let brandinfo:[String]?
+    //var giveaway: Giveaway?
+    
     static var currentPost:Post?
     
-    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, profileImageUrl:URL?, timestamp: String, likedUsers: [String]?) {
+    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, profileImageUrl:URL?, timestamp: String, likedUsers: [String]?, likeCounter: Int?) {
         self.postID = postID
         self.creator = creator
         self.creatorID = creatorID
@@ -30,6 +35,7 @@ class Post {
         self.brandinfo = brandinfo
         self.timestamp = timestamp
         self.likedUsers = likedUsers
+        self.likeCounter = likeCounter
     }
     
     static func initWithPostID(postID: String, postDict:[String:Any]) -> Post? {
@@ -41,7 +47,16 @@ class Post {
         let timestamp = postDict["timestamp"] as? String
         let brandinfo = postDict["brandinfo"] as? [String]
         let creatorID = postDict["creatorID"] as? String
-        let likedUsers = postDict["likedUsers"] as? [String]
+        
+        var likeUsers = [String]()
+        if let likedUsers = postDict["likedUsers"] as? [String:Bool] {
+            for tempusers in likedUsers {
+                likeUsers.append(tempusers.key)
+            }
+        }
+        
+        
+        let likeCounter = postDict["likeCounter"] as? Int
         let imageUrl = URL(string: imageUrlStr)!
         let profileImageUrl:URL?
         if let profileUrlStr = postDict["profileImageUrl"] as? String {
@@ -50,17 +65,25 @@ class Post {
         else{
             profileImageUrl = nil
         }
-        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, profileImageUrl: profileImageUrl, timestamp: timestamp!, likedUsers: likedUsers)
+        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, profileImageUrl: profileImageUrl, timestamp: timestamp!, likedUsers: likeUsers, likeCounter: likeCounter)
 
     }
     
     func dictValue() -> [String:Any] {
         var postDict = [String:Any]()
+        
+        var likeUsersDB = [String:Bool]()
         postDict["creator"] = creator
         postDict["creatorID"] = creatorID
         postDict["brandinfo"] = brandinfo
         postDict["imageUrl"] = "\(imageUrl)"
-        postDict["likedUsers"] = likedUsers
+        if let likeUsers = likedUsers {
+            for tempUsers in likeUsers{
+                likeUsersDB[tempUsers] = true
+            }
+            postDict["likedUsers"] = likeUsersDB
+        }
+        postDict["likeCounter"] = likeCounter
         if let profileUrl = profileImageUrl {
             postDict["profileImageUrl"] = "\(profileUrl)"
         }
@@ -82,20 +105,6 @@ class PhotoEdit {
     }
 }
 
-
-
-class PostPoolCell: UITableViewCell {
-    @IBOutlet weak var captionLabel:UILabel!
-    @IBOutlet weak var imgView:UIImageView!
-    
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var timeStamp: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
-
-    @IBOutlet var viewProfile: UIButton!
-    
-    var creatorID : String!
-}
 
 
 

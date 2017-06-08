@@ -24,9 +24,11 @@ class NewsFeed {
     var detailImageUrls:[URL]?
     var tags:[String]?
     var likedUsers:[String]?
+    var likeCounter:Int?
+    
     static var selectedNews:NewsFeed?
     
-    init(newsID:String?, timestamp: String,releaseDate: String?, title:String, subtitle:String, detailInfo:String, tags:[String]?, likedUsers:[String]?, headImageURL: URL?, detailImageURLs: [URL]?) {
+    init(newsID:String?, timestamp: String,releaseDate: String?, title:String, subtitle:String, detailInfo:String, tags:[String]?, likedUsers:[String]?, likeCounter:Int?, headImageURL: URL?, detailImageURLs: [URL]?) {
         self.newsID = newsID
         self.title = title
         self.subtitle = subtitle
@@ -41,7 +43,7 @@ class NewsFeed {
     
     static func createNewFeed(newsID: String?, releaseDate: String?, title: String, subtitle: String, detailInfo: String, tags: [String]?, headImageURL: URL?, detailImageURLs: [URL]?) -> NewsFeed? {
         
-        return NewsFeed(newsID: newsID, timestamp: Date().now(), releaseDate: releaseDate, title: title, subtitle: subtitle, detailInfo: detailInfo, tags: tags, likedUsers: nil, headImageURL: headImageURL, detailImageURLs: detailImageURLs)
+        return NewsFeed(newsID: newsID, timestamp: Date().now(), releaseDate: releaseDate, title: title, subtitle: subtitle, detailInfo: detailInfo, tags: tags, likedUsers: nil, likeCounter:0, headImageURL: headImageURL, detailImageURLs: detailImageURLs)
         
     }
     
@@ -77,24 +79,37 @@ class NewsFeed {
         
         let releaseDate = contents["releaseDate"] as? String
         
-        let likedUsers = contents["likedUsers"] as? [String]
+        var likeUsers = [String]()
+        if let likedUsers = contents["likedUsers"] as? [String:Bool] {
+            for tempusers in likedUsers {
+                likeUsers.append(tempusers.key)
+            }
+        }
+        let likeCounter = contents["likeCounter"] as? Int
         
         let timestamp = contents["timestamp"] as? String
         
-        return NewsFeed(newsID: newsID, timestamp: timestamp!, releaseDate: releaseDate, title: title, subtitle: subtitle!, detailInfo: detailInfo!, tags: tags, likedUsers: likedUsers, headImageURL: headImageURL, detailImageURLs: detailImageURL)
+        return NewsFeed(newsID: newsID, timestamp: timestamp!, releaseDate: releaseDate, title: title, subtitle: subtitle!, detailInfo: detailInfo!, tags: tags, likedUsers: likeUsers, likeCounter: likeCounter, headImageURL: headImageURL, detailImageURLs: detailImageURL)
 
     }
     
     func dictValue() -> [String:Any] {
         var newsDict:[String:Any] = [:]
         //newsID, timestamp, title, titleImage, subtitle, detailInfo, imagePool, tags
-        newsDict["newsID"] = newsID
+        //newsDict["newsID"] = newsID
+        
+        var likeUsersDB = [String:Bool]()
         newsDict["timestamp"] = timestamp
         newsDict["title"] = title
         newsDict["subtitle"] = subtitle
         newsDict["detailInfo"] = detailInfo
         newsDict["tags"] = tags
-        newsDict["likedUsers"] = likedUsers
+        if let likeUsers = likedUsers {
+            for tempUsers in likeUsers{
+                likeUsersDB[tempUsers] = true
+            }
+            newsDict["likedUsers"] = likeUsersDB
+        }
         newsDict["releaseDate"] = releaseDate
         if let headImageurl = headImageUrl {
             newsDict["headImageUrl"] = "\(headImageurl)"
@@ -116,100 +131,4 @@ class NewsFeed {
 
 
 
-class NewsDataCell: UITableViewCell{
-    
-    @IBOutlet weak var Cellimage: UIImageView!
-    
-    
-    @IBOutlet weak var Title: UILabel!
-    
-    @IBOutlet weak var timestamp: UILabel!
-    @IBOutlet weak var Subtitle: UILabel!
-    
-    @IBOutlet weak var releaseDateEvent: UIButton!
-    
-    @IBAction func createEvent(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        print(self.releaseDateEvent.currentTitle!)
-        
-        if appDelegate.eventStore == nil {
-            appDelegate.eventStore = EKEventStore()
-            
-            appDelegate.eventStore?.requestAccess(
-                to: EKEntityType.reminder, completion: {(granted, error) in
-                    if !granted {
-                        print("Access to store not granted")
-                        print(error?.localizedDescription)
-                    } else {
-                        print("Access granted")
-                    }
-            })
-        }
-        
-        if (appDelegate.eventStore != nil) {
-            print( self.releaseDateEvent.currentTitle! + "test")//
-            if(self.releaseDateEvent.currentTitle == "TBD"){
-                return
-            }
-            else{
-                createReminder(releasedate: self.releaseDateEvent.currentTitle!)
-            }
-        }
-        open(scheme: "x-apple-reminder://")
-        
 
-    }
-    
-    func createReminder(releasedate: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let reminder = EKReminder(eventStore: appDelegate.eventStore!)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-        
-        
-        
-        reminder.calendar = appDelegate.eventStore!.defaultCalendarForNewReminders()
-        //let dateString = "12/12/2017 5:00"//test
-        let dateString = releasedate
-        print(releasedate + "----")
-        
-        reminder.title = self.Title.text! + ": "+dateString
-        
-        let date = dateFormatter.date(from: dateString)
-        let datesss = dateFormatter.date(from: releasedate)
-        print(datesss!,  "actual")
-        
-        
-        print(dateString + "==========")
-        print(date! , "result")
-        let alarm = EKAlarm(absoluteDate: date!)
-        
-        reminder.addAlarm(alarm)
-        
-        do {
-            try appDelegate.eventStore?.save(reminder,
-                                             commit: true)
-        } catch let error {
-            print("Reminder failed with error \(error.localizedDescription)")
-        }
-    }
-    
-
-}
-
-func open(scheme: String) {
-    if let url = URL(string: scheme) {
-        if #available(iOS 10, *) {
-            UIApplication.shared.open(url, options: [:],
-                                      completionHandler: {
-                                        (success) in
-                                        print("Open \(scheme): \(success)")
-            })
-        } else {
-            let success = UIApplication.shared.openURL(url)
-            print("Open \(scheme): \(success)")
-        }
-    }
-}

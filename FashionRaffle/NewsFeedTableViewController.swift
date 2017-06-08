@@ -303,8 +303,13 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsDataCell
         
         let newsCell = self.newsF[indexPath.row]
+        cell.loadingIndicator.startAnimating()
         if let imageUrl = newsCell.headImageUrl{
-            cell.Cellimage.setImage(url: imageUrl)
+            cell.Cellimage.setImage(url: imageUrl){
+                _ in
+                cell.loadingIndicator.stopAnimating()
+            }
+            
         }
         
         

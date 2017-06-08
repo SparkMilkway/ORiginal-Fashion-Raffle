@@ -20,15 +20,22 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func cancel(_ sender: Any) {
         Profile.currentUser?.followBrands = followed!
         //dismiss(animated: true, completion: nil)
-        print(Profile.currentUser?.followBrands, "=====", followed)
+        //print(Profile.currentUser?.followBrands, "=====", followed)
     }
     
     
     @IBAction func Done(_ sender: Any) {
         SVProgressHUD.show(withStatus: "Updating...")
-        Profile.currentUser?.sync()
-        SVProgressHUD.dismiss()
-        Config.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: nil, controller: self)
+        Profile.currentUser?.sync(onSuccess: {
+            SVProgressHUD.dismiss()
+            Config.showAlerts(title: "Have fun!", message: "Your favorite brands are updated!", handler: nil, controller: self)
+        }, onError: {
+            error in
+            SVProgressHUD.showError(withStatus: error.localizedDescription)
+            SVProgressHUD.dismiss(withDelay: 1.5)
+            return
+        })
+        
     }
     
     
@@ -92,7 +99,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         
         
-        if Profile.currentUser?.followBrands.contains(brandsTemp.name) == true {
+        if Profile.currentUser?.followBrands?.contains(brandsTemp.name) == true {
             brandCell.layer.borderWidth = 5
             brandCell.layer.borderColor = UIColor.darkGray.cgColor
             brandCell.visualEffectView.alpha = 0.7
@@ -122,19 +129,19 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         print(indexPath)
         
 
-        if Profile.currentUser?.followBrands.contains(brandDatas[indexPath.row].name) == false{
-            Profile.currentUser?.followBrands.append(brandDatas[indexPath.row].name)
+        if Profile.currentUser?.followBrands?.contains(brandDatas[indexPath.row].name) == false{
+            Profile.currentUser?.followBrands?.append(brandDatas[indexPath.row].name)
             brandCell.layer.borderColor = UIColor.black.cgColor
             brandCell.visualEffectView.alpha = 0.5
             
         } else {
             
             let removeName = brandDatas[indexPath.row].name
-            if let index = Profile.currentUser?.followBrands.index(of:removeName){
-                Profile.currentUser?.followBrands.remove(at: index)
+            if let index = Profile.currentUser?.followBrands?.index(of:removeName){
+                Profile.currentUser?.followBrands?.remove(at: index)
             }
             
-            print("======", Profile.currentUser?.followBrands)
+            //print("======", Profile.currentUser?.followBrands)
             
             brandCell.layer.borderColor = UIColor.lightGray.cgColor
             brandCell.layer.borderWidth = 6
@@ -155,20 +162,20 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.visualEffectView.alpha = 0
         
         
-        print(Profile.currentUser?.followBrands)
+        //print(Profile.currentUser?.followBrands)
         
-        if Profile.currentUser?.followBrands.contains(brandDatas[indexPath.row].name) == false {
-            Profile.currentUser?.followBrands.append(brandDatas[indexPath.row].name)
+        if Profile.currentUser?.followBrands?.contains(brandDatas[indexPath.row].name) == false {
+            Profile.currentUser?.followBrands?.append(brandDatas[indexPath.row].name)
             cell.layer.borderColor = UIColor.black.cgColor
             cell.visualEffectView.alpha = 0.5
-            print(Profile.currentUser?.followBrands)
+            //print(Profile.currentUser?.followBrands)
         } else {
             let removeName = brandDatas[indexPath.row].name
             
-            if let index = Profile.currentUser?.followBrands.index(of:removeName){
-                Profile.currentUser?.followBrands.remove(at: index)
+            if let index = Profile.currentUser?.followBrands?.index(of:removeName){
+                Profile.currentUser?.followBrands?.remove(at: index)
             }
-            print(Profile.currentUser?.followBrands)
+            //print(Profile.currentUser?.followBrands)
         }
     }
     

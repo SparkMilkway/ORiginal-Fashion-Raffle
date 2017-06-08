@@ -102,13 +102,16 @@ class PhotoViewController: UIViewController, FusumaDelegate{
                         return
                     }
                     let url = meta.downloadURL()
-                    let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil)
+                    let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil, likeCounter: 0)
                     let uniqueRef = self.postref.childByAutoId()
                     let uniqueID = uniqueRef.key
-                    Profile.currentUser?.posts.append(uniqueID)
-                    Profile.currentUser?.sync()
+                    Profile.currentUser?.posts?.append(uniqueID)
+                    Profile.currentUser?.sync(onSuccess: {}, onError: {
+                        error in
+                        print(error.localizedDescription)
+                    })
                     uniqueRef.setValue(newPost.dictValue())
-                    Config.dismissLoading()
+                    Config.dismissLoading(onFinished: nil)
                     Config.showAlerts(title: "Success!", message: "", handler: {
                         UIAlertAction in
                         UIView.animate(withDuration: 0.4, animations: {

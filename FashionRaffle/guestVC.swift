@@ -163,16 +163,14 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         backgroundImageView()
         self.guestProfilSegmentControl.selectedSegmentIndex = 0
         
-        
-        print(self.fingArray , "===",self.ferArray,"???", followerArray, "===", followingArray)
+
         self.actionButtonState = .CurrentUser
         if guestTmp != Profile.currentUser?.userID {
-            if (Profile.currentUser?.following.contains(guestTmp))! {
-                // Following
-                self.actionButtonState = .Following
-            } else {
-                // Not following
-                self.actionButtonState = .NotFollowing
+            self.actionButtonState = .NotFollowing
+            if let following = Profile.currentUser?.following {
+                if following.contains(guestTmp) {
+                    self.actionButtonState = .Following
+                }
             }
         }
 
@@ -207,26 +205,36 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             actionButtonState = .CurrentUser
         case .NotFollowing:
             actionButtonState = .Following
-            Profile.currentUser?.following.append(guestId.last!)
-            
-            userProfile?.followers.append(Profile.currentUser!.userID)
-            userProfile?.sync()
-            Profile.currentUser?.sync()
-            
+            Profile.currentUser?.following?.append(guestId.last!)
+            userProfile?.followers?.append(Profile.currentUser!.userID)
+            userProfile?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
+            Profile.currentUser?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
             
 
         case .Following:
             actionButtonState = .NotFollowing
-            if let index = Profile.currentUser?.following.index(of: guestId.last!) {
-                Profile.currentUser?.following.remove(at: index)
+            if let index = Profile.currentUser?.following?.index(of: guestId.last!) {
+                Profile.currentUser?.following?.remove(at: index)
             }
             
-            if let index = userProfile?.followers.index(of: (Profile.currentUser?.userID)!) {
-                userProfile?.followers.remove(at: index)
+            if let index = userProfile?.followers?.index(of: (Profile.currentUser?.userID)!) {
+                userProfile?.followers?.remove(at: index)
                 
             }
-            userProfile?.sync()
-            Profile.currentUser?.sync()
+            userProfile?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
+            Profile.currentUser?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
             
            
         }

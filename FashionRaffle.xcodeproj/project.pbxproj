@@ -36,6 +36,15 @@
 		522A06111EE0C40E0071EC20 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06101EE0C40E0071EC20 /* UserAPI.swift */; };
 		522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */; };
 		522A06151EE0CB1F0071EC20 /* ReleaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */; };
+		522A06171EE25E270071EC20 /* RaffleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06161EE25E270071EC20 /* RaffleAPI.swift */; };
+		522A06191EE25F2D0071EC20 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06181EE25F2D0071EC20 /* PostAPI.swift */; };
+		522A061B1EE3B1620071EC20 /* NewsReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A061A1EE3B1620071EC20 /* NewsReusableCell.swift */; };
+		522A061D1EE3B1C70071EC20 /* PostsFeedReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A061C1EE3B1C70071EC20 /* PostsFeedReusableCell.swift */; };
+		522A061F1EE3B2200071EC20 /* RafflesReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A061E1EE3B2200071EC20 /* RafflesReusableCell.swift */; };
+		522A06221EE4EEB20071EC20 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06211EE4EEB20071EC20 /* Comments.swift */; };
+		522A06241EE8DCB90071EC20 /* CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06231EE8DCB90071EC20 /* CommentAPI.swift */; };
+		522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06261EE8DCDA0071EC20 /* FollowAPI.swift */; };
+		522A06291EE8E9B40071EC20 /* FeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A06281EE8E9B40071EC20 /* FeedAPI.swift */; };
 		522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */; };
 		522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */; };
 		522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */; };
@@ -131,6 +140,15 @@
 		522A06101EE0C40E0071EC20 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIRStorageAPI.swift; sourceTree = "<group>"; };
 		522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseAPI.swift; sourceTree = "<group>"; };
+		522A06161EE25E270071EC20 /* RaffleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleAPI.swift; sourceTree = "<group>"; };
+		522A06181EE25F2D0071EC20 /* PostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
+		522A061A1EE3B1620071EC20 /* NewsReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableCell.swift; sourceTree = "<group>"; };
+		522A061C1EE3B1C70071EC20 /* PostsFeedReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsFeedReusableCell.swift; sourceTree = "<group>"; };
+		522A061E1EE3B2200071EC20 /* RafflesReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RafflesReusableCell.swift; sourceTree = "<group>"; };
+		522A06211EE4EEB20071EC20 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		522A06231EE8DCB90071EC20 /* CommentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentAPI.swift; sourceTree = "<group>"; };
+		522A06261EE8DCDA0071EC20 /* FollowAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowAPI.swift; sourceTree = "<group>"; };
+		522A06281EE8E9B40071EC20 /* FeedAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedAPI.swift; sourceTree = "<group>"; };
 		522EC6671DFE2B4100CA7AA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		522EC6681DFE2B4100CA7AA6 /* FSAlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
 		522EC6691DFE2B4100CA7AA6 /* FSAlbumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
@@ -284,6 +302,11 @@
 				522A06101EE0C40E0071EC20 /* UserAPI.swift */,
 				522A06121EE0C58C0071EC20 /* FIRStorageAPI.swift */,
 				522A06141EE0CB1F0071EC20 /* ReleaseAPI.swift */,
+				522A06161EE25E270071EC20 /* RaffleAPI.swift */,
+				522A06181EE25F2D0071EC20 /* PostAPI.swift */,
+				522A06281EE8E9B40071EC20 /* FeedAPI.swift */,
+				522A06231EE8DCB90071EC20 /* CommentAPI.swift */,
+				522A06261EE8DCDA0071EC20 /* FollowAPI.swift */,
 			);
 			name = "Database APIs";
 			sourceTree = "<group>";
@@ -296,6 +319,18 @@
 				527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */,
 			);
 			name = ReusableVCs;
+			sourceTree = "<group>";
+		};
+		522A06201EE3B23E0071EC20 /* Local Models */ = {
+			isa = PBXGroup;
+			children = (
+				526EC5151DDA7462001BE789 /* NewsFeedData.swift */,
+				52060FC31DEF785A00A26D8F /* RafflePoolData.swift */,
+				52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */,
+				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
+				522A06211EE4EEB20071EC20 /* Comments.swift */,
+			);
+			name = "Local Models";
 			sourceTree = "<group>";
 		};
 		522EC6481DFE299500CA7AA6 /* Sources */ = {
@@ -334,8 +369,9 @@
 			isa = PBXGroup;
 			children = (
 				52334D901E78C32300FFB8A4 /* Camera Handle */,
-				04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */,
 				52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */,
+				522A061C1EE3B1C70071EC20 /* PostsFeedReusableCell.swift */,
+				04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */,
 				52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */,
 			);
 			name = Social;
@@ -361,11 +397,8 @@
 		52334D921E78C3CC00FFB8A4 /* Database Structures */ = {
 			isa = PBXGroup;
 			children = (
+				522A06201EE3B23E0071EC20 /* Local Models */,
 				52146CBB1EDE693D00612540 /* Database APIs */,
-				526EC5151DDA7462001BE789 /* NewsFeedData.swift */,
-				52060FC31DEF785A00A26D8F /* RafflePoolData.swift */,
-				52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */,
-				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 			);
 			name = "Database Structures";
 			sourceTree = "<group>";
@@ -399,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				52644D451DEB97500095A8FC /* RaffleTableViewController.swift */,
+				522A061E1EE3B2200071EC20 /* RafflesReusableCell.swift */,
 			);
 			name = "Raffle Feed";
 			sourceTree = "<group>";
@@ -481,6 +515,7 @@
 			children = (
 				52334D931E78C40800FFB8A4 /* Functions */,
 				526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */,
+				522A061A1EE3B1620071EC20 /* NewsReusableCell.swift */,
 				52071E831E92E96E00ADDB8C /* AddNewsViewController.swift */,
 			);
 			name = "News Feed";
@@ -706,6 +741,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522A061D1EE3B1C70071EC20 /* PostsFeedReusableCell.swift in Sources */,
 				522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */,
 				52146CB81EDCC79F00612540 /* guestVC.swift in Sources */,
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
@@ -714,9 +750,11 @@
 				04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */,
 				52E377401ED3B9AE00F2D609 /* Size.swift in Sources */,
 				52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */,
+				522A06191EE25F2D0071EC20 /* PostAPI.swift in Sources */,
 				52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */,
 				52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */,
 				522A06151EE0CB1F0071EC20 /* ReleaseAPI.swift in Sources */,
+				522A061F1EE3B2200071EC20 /* RafflesReusableCell.swift in Sources */,
 				52146CA91EDCC51200612540 /* userRaffleViewController.swift in Sources */,
 				52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */,
 				52146CBD1EDFA8F200612540 /* API.swift in Sources */,
@@ -725,20 +763,26 @@
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				52146CBA1EDCC79F00612540 /* followerVCTableViewCell.swift in Sources */,
 				52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */,
+				522A06241EE8DCB90071EC20 /* CommentAPI.swift in Sources */,
 				522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */,
 				52146CAD1EDCC5A800612540 /* giveAwayViewController.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				52146CB11EDCC76A00612540 /* profileMainViewExtension.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
+				522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */,
 				52146CA71EDCC51200612540 /* userPostsCollectionViewCell.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
+				522A06221EE4EEB20071EC20 /* Comments.swift in Sources */,
+				522A06291EE8E9B40071EC20 /* FeedAPI.swift in Sources */,
 				52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
+				522A061B1EE3B1620071EC20 /* NewsReusableCell.swift in Sources */,
 				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
 				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
+				522A06171EE25E270071EC20 /* RaffleAPI.swift in Sources */,
 				5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */,
 				52146CA81EDCC51200612540 /* userPostsCollectionViewController.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,

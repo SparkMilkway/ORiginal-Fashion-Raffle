@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Firebase
-let ref = FIRDatabase.database().reference()
+import SVProgressHUD
 
 class Profile {
     let userID:String
@@ -17,18 +16,18 @@ class Profile {
     var tickets:Int
     var checkInCount:Int
     var lastCheckDate:String
-    var followers:[String]
-    var following:[String]
-    var followBrands:[String]
-    var posts:[String]
+    var followers:[String]?
+    var following:[String]?
+    var followBrands:[String]?
+    var posts:[String]?
     var profilePicUrl:URL?
     var backgroundPictureUrl: URL?
-    var bio: String
-    var website: String
+    var bio: String?
+    var website: String?
     var editor:Bool
     static var currentUser:Profile?
     
-    init(username:String, email:String,userID:String, tickets: Int, followers:[String], following:[String],followBrands:[String],checkInCount: Int, posts:[String], profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String, website: String) {
+    init(username:String, email:String,userID:String, tickets: Int, followers:[String]?, following:[String]?,followBrands:[String]?,checkInCount: Int, posts:[String]?, profilePicUrl:URL?, backgroundPictureUrl: URL?, bio: String?, website: String?) {
         self.username = username
         self.userID = userID
         self.email = email
@@ -49,7 +48,7 @@ class Profile {
     }
     // Used during register
     static func newUser(username:String!,userID:String!, email:String!) -> Profile {
-        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [String](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: String(), website: String())
+        return Profile(username: username, email:email, userID: userID, tickets:0, followers: [String](), following: [String](), followBrands:[String](),checkInCount:1,posts: [String](), profilePicUrl: nil, backgroundPictureUrl: nil, bio: nil, website: nil)
     }
     
     // Used during login
@@ -59,6 +58,10 @@ class Profile {
             profile.lastCheckDate = lastCheckDate
         }
         //fetch username,email,raffleTickets,checkinCount,followers,followings, brands,posts, picture
+        var followerStr = [String]()
+        var followingStr = [String]()
+        var postStr = [String]()
+        
         if let email = profileDict["email"] as? String {
             profile.email = email
         }
@@ -71,11 +74,17 @@ class Profile {
         if let checkInCount = profileDict["checkInCount"] as? Int {
             profile.checkInCount = checkInCount
         }
-        if let followers = profileDict["followers"] as? [String] {
-            profile.followers = followers
+        if let followers = profileDict["followers"] as? [String:Bool] {
+            for tempfollowers in followers {
+                followerStr.append(tempfollowers.key)
+            }
+            profile.followers = followerStr
         }
-        if let following = profileDict["following"] as? [String] {
-            profile.following = following
+        if let following = profileDict["following"] as? [String:Bool] {
+            for tempfollowing in following {
+                followingStr.append(tempfollowing.key)
+            }
+            profile.following = followingStr
         }
         if let brands = profileDict["followBrands"] as? [String] {
             profile.followBrands = brands
@@ -99,9 +108,12 @@ class Profile {
         else {
             profile.editor = false
         }
-        
-        if let posts = profileDict["posts"] as? [String] {
-            profile.posts = posts
+
+        if let posts = profileDict["posts"] as? [String:Bool] {
+            for some in posts {
+                postStr.append(some.key)
+            }
+            profile.posts = postStr
         }
         
         return profile
@@ -111,15 +123,36 @@ class Profile {
         
         var profileDict:[String:Any] = [:]
         //fetch userID,username,email,tickets,checkInCount,followers,following, followBrands,posts, picture
-        profileDict["userID"] = userID
+        var followerDB = [String:Bool]()
+        var followingDB = [String:Bool]()
+        var postDB = [String:Bool]()
+        
+        //profileDict["userID"] = userID
         profileDict["username"] = username
         profileDict["email"] = email
         profileDict["tickets"] = tickets
         profileDict["checkInCount"] = checkInCount
-        profileDict["followers"] = followers
-        profileDict["following"] = following
         profileDict["followBrands"] = followBrands
-        profileDict["posts"] = posts
+        if let postnew = posts {
+            for postStr in postnew {
+                postDB[postStr] = true
+                
+            }
+            profileDict["posts"] = postDB
+        }
+        if let followersnew = followers {
+            for followerStr in followersnew {
+                followerDB[followerStr] = true
+            }
+            profileDict["followers"] = followerDB
+        }
+        if let followingnew = following {
+            for followingStr in followingnew {
+                followingDB[followingStr] = true
+            }
+            profileDict["following"] = followingDB
+        }
+
         profileDict["lastCheckDate"] = lastCheckDate
         profileDict["bio"] = bio
         profileDict["website"] = website
@@ -135,8 +168,13 @@ class Profile {
         return profileDict
     }
     //sync the user profile to database
-    func sync() {
-        ref.child("Users").child(userID).setValue(dictValue())
+    func sync(onSuccess: @escaping ()->Void, onError: @escaping (Error)->Void) {
+        
+        API.userAPI.uploadToDatabase(withID: userID, dictValue: dictValue(), onSuccess: onSuccess, onError: {
+            error in
+            onError(error)
+        })
+
     }
 }
 

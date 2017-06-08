@@ -40,7 +40,10 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             if currentDate != currentUser?.lastCheckDate {
                 currentUser?.checkInCount = checkInCount + 1
                 currentUser?.lastCheckDate = currentDate
-                currentUser?.sync()
+                currentUser?.sync(onSuccess: {}, onError: {
+                    error in
+                    print(error.localizedDescription)
+                })
                 Profile.currentUser = currentUser
             }
             if Profile.currentUser?.checkInCount == 1 {
@@ -120,7 +123,10 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         tickets = tickets + 1
         // Every time there is an update to the class, current user needs to be updated
         Profile.currentUser?.tickets = tickets
-        Profile.currentUser?.sync()
+        Profile.currentUser?.sync(onSuccess: {}, onError: {
+            error in
+            print(error.localizedDescription)
+        })
         Config.showAlerts(title: "Purchase Success!", message: "Enjoy your raffle!", handler: nil, controller: self)
     }
     
@@ -229,8 +235,11 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
             }
             let url = meta.downloadURL()
             Profile.currentUser?.profilePicUrl = url
-            Profile.currentUser?.sync()
-            Config.dismissLoading()
+            Profile.currentUser?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
+            Config.dismissLoading(onFinished: nil)
         })
     }
 
