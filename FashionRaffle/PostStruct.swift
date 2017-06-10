@@ -18,19 +18,17 @@ class Post {
     var likeCounter:Int?
     var comments:[String]?
     let imageUrl:URL
-    let profileImageUrl:URL?
     let caption:String?
     let brandinfo:[String]?
     //var giveaway: Giveaway?
     
     static var currentPost:Post?
     
-    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, profileImageUrl:URL?, timestamp: String, likedUsers: [String]?, likeCounter: Int?) {
+    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, timestamp: String, likedUsers: [String]?, likeCounter: Int?) {
         self.postID = postID
         self.creator = creator
         self.creatorID = creatorID
         self.imageUrl = imageUrl
-        self.profileImageUrl = profileImageUrl
         self.caption = caption
         self.brandinfo = brandinfo
         self.timestamp = timestamp
@@ -58,14 +56,8 @@ class Post {
         
         let likeCounter = postDict["likeCounter"] as? Int
         let imageUrl = URL(string: imageUrlStr)!
-        let profileImageUrl:URL?
-        if let profileUrlStr = postDict["profileImageUrl"] as? String {
-            profileImageUrl = URL(string: profileUrlStr)
-        }
-        else{
-            profileImageUrl = nil
-        }
-        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, profileImageUrl: profileImageUrl, timestamp: timestamp!, likedUsers: likeUsers, likeCounter: likeCounter)
+
+        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, timestamp: timestamp!, likedUsers: likeUsers, likeCounter: likeCounter)
 
     }
     
@@ -84,9 +76,6 @@ class Post {
             postDict["likedUsers"] = likeUsersDB
         }
         postDict["likeCounter"] = likeCounter
-        if let profileUrl = profileImageUrl {
-            postDict["profileImageUrl"] = "\(profileUrl)"
-        }
         postDict["timestamp"] = timestamp
         if let realcaption = caption {
             postDict["caption"] = realcaption

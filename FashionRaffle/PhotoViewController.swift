@@ -8,7 +8,6 @@
 
 import UIKit
 import Sharaku
-import Firebase
 import AnimatedDropdownMenu
 
 
@@ -28,8 +27,6 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     var passingImage : UIImage?
     
     var centralVC : CentralTabBarController?
-    
-    let postref = FIRDatabase.database().reference().child("Posts")
     
     //set up dropdown menu
     fileprivate let dropdownItems: [AnimatedDropdownMenu.Item] = [
@@ -65,7 +62,6 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         fusumaOne = fusuma
         
         setupAnimatedDropdownMenu()
-        
         giveAwayContainer.isHidden = true
         
         
@@ -84,36 +80,12 @@ class PhotoViewController: UIViewController, FusumaDelegate{
             self.view.endEditing(true)
             Config.showAlertsWithOptions(title: "Upload?", message: "", controller: self, yesHandler: {
                 UIAlertAction in
-                Config.showLoading(Status: "Uploading...")
-                let profilePicUrl = Profile.currentUser?.profilePicUrl
-                let imageData = UIImageJPEGRepresentation(image!, 0.6)!
-                let userID = Profile.currentUser?.userID
-                let userName = Profile.currentUser?.username
-                let now = Date().now()
-                let postPath = "UserInfo/\(userID!)/posts/\(now)/postPic.jpg"
                 
-                Config.uploadDatatoStorage(data: imageData, itemStoragePath: postPath, contentType: "image/jpeg", completion: {
-                    metadata, error in
-                    if error != nil {
-                        print("Error happens when uploading")
-                        return
-                    }
-                    guard let meta = metadata else{
-                        return
-                    }
-                    let url = meta.downloadURL()
-                    let newPost = Post.init(postID: nil, creator: userName!, creatorID: userID!, imageUrl: url!, caption: caption, brandinfo: nil, profileImageUrl: profilePicUrl, timestamp: now, likedUsers: nil, likeCounter: 0)
-                    let uniqueRef = self.postref.childByAutoId()
-                    let uniqueID = uniqueRef.key
-                    Profile.currentUser?.posts?.append(uniqueID)
-                    Profile.currentUser?.sync(onSuccess: {}, onError: {
-                        error in
-                        print(error.localizedDescription)
-                    })
-                    uniqueRef.setValue(newPost.dictValue())
-                    Config.dismissLoading(onFinished: nil)
+                let imageData = UIImageJPEGRepresentation(image!, 0.6)!
+
+                API.storageAPI.uploadPostImage(withImageData: imageData, captions: caption, onSuccess: {
                     Config.showAlerts(title: "Success!", message: "", handler: {
-                        UIAlertAction in
+                        _ in
                         UIView.animate(withDuration: 0.4, animations: {
                             self.dismiss(animated: true, completion: nil)
                             if let central = self.centralVC {
@@ -125,10 +97,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
                                 })
                             }
                         })
-                        
-                        
                     }, controller: self)
-                    
                 })
             }, cancelHandler: nil)
             

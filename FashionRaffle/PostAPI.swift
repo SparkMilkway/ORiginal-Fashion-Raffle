@@ -37,7 +37,6 @@ class PostAPI: NSObject {
             completion(newPost!)
             
         })
-        
     }
     
     
@@ -80,6 +79,7 @@ class PostAPI: NSObject {
             let personalPostsRef = self.userRef.child(userID).child("posts")
             var tempPosts = [Post]()
             
+            // Continously fetch data while added child.
             personalPostsRef.queryOrderedByKey().queryLimited(toLast: actualcount).observe(.childAdded, with: {
                 snapshot in
                 

@@ -42,20 +42,33 @@ class Comments {
             print("No Comments")
             return nil
         }
+        var likeUsers = [String]()
         let caption = contents["caption"] as? String
         let timestamp = contents["timestamp"] as? String
-        let likedUsers = contents["likedUsers"] as? [String]
+        if let likedUsers = contents["likedUsers"] as? [String:Bool] {
+            for tempUsers in likedUsers {
+                likeUsers.append(tempUsers.key)
+            }
+        }
+        
         let creator = contents["creator"] as? String
         
-        return Comments(timestamp: timestamp!, commentID: commentID, creatorID: creatorID, creator: creator!, likedUsers: likedUsers, caption: caption!)
+        return Comments(timestamp: timestamp!, commentID: commentID, creatorID: creatorID, creator: creator!, likedUsers: likeUsers, caption: caption!)
     
     }
     
     func dictValue() -> [String:Any] {
         var commentDict = [String:Any]()
+        var likeUsersDB = [String:Bool]()
+        
         commentDict["creator"] = creator
         commentDict["creatorID"] = creatorID
-        commentDict["likedUsers"] = likedUsers
+        if let likedusers = likedUsers {
+            for tempUser in likedusers {
+                likeUsersDB[tempUser] = true
+            }
+        }
+        commentDict["likedUsers"] = likeUsersDB
         commentDict["caption"] = caption
         commentDict["timestamp"] = timestamp
         
