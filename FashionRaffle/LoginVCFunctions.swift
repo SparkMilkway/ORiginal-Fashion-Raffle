@@ -8,8 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
-import FirebaseDatabase
 import SVProgressHUD
 
 extension LoginViewController {
@@ -28,40 +26,10 @@ extension LoginViewController {
         else {
             self.view.endEditing(true)
             let email = emailTextField.text, password = passwordTextField.text
-            FIRAuth.auth()?.signIn(withEmail: email!, password: password!, completion: { (user, error) in
-                if error != nil {
-                    Config.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
-                }
-                else {
-                    guard let uid = user?.uid else{
-                        return
-                    }
-                    if user?.isEmailVerified == true {
-                        SVProgressHUD.show(withStatus: "Logging in...")
-                        let ref = FIRDatabase.database().reference()
-                        ref.child("Users").child(uid).observeSingleEvent(of:.value, with: {
-                            snapshot in
-                            guard let profileinfo = snapshot.value as? [String:Any] else{
-                                print("Fatal error happened in Database, can't retrieve user data.")
-                                return
-                            }
-                            let newuser = Profile.initWithUserID(userID: uid, profileDict: profileinfo)
-                            Profile.currentUser = newuser
-                        })
-                        SVProgressHUD.showSuccess(withStatus: "Welcome Back!")
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                            self.loginSuccess()
-                        })
-                    }
-                    else {
-                        Config.showAlerts(title: "Oops!", message: "Please verify your email address first.", handler: {
-                            UIAlertAction in
-                            try! FIRAuth.auth()?.signOut()
-                        }, controller: self)
-                    }
-                    
-                    
-                }
+            API.authAPI.signInWithEmail(withEmail: email!, withPassword: password!, onSuccess: {
+                self.loginSuccess()
+            }, onEmailNotVerified: {
+                Config.showAlerts(title: "Oops!", message: "Please verify your email address first.", handler:nil, controller: self)
             })
         }
     }
@@ -75,41 +43,13 @@ extension LoginViewController {
             self.view.endEditing(true)
             let email = emailTextField.text! as String, password = passwordTextField.text, name = nameTextField.text! as String
             
-            FIRAuth.auth()?.createUser(withEmail: email, password: password!, completion: {(user, error) in
-                if error != nil {
-                    Config.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
-                }
-                else {
-                    guard let uid = user?.uid else{
-                        return
-                    }
-                    SVProgressHUD.show(withStatus: "Registering...")
-                    let newprofile = Profile.newUser(username: name, userID: uid, email: email)
-                    Profile.currentUser = newprofile
-                    //sync to database
-                    newprofile.sync(onSuccess: {}, onError: {
-                        error in
-                        print(error.localizedDescription)
-                    })
-                    // Verify the email address first
-                    FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: {
-                        (error) in
-                        if error != nil {
-                            print("user not found!")
-                            return
-                        }
-                        else {
-                            SVProgressHUD.dismiss()
-                            Config.showAlerts(title: "Registered!", message: "Email was sent, please verify your email address now.", handler: {
-                                UIAlertAction in
-                                self.emailTextField.text = ""
-                                self.passwordTextField.text = ""
-                                self.nameTextField.text = ""
-                                try! FIRAuth.auth()?.signOut()
-                            }, controller: self)
-                        }
-                    })
-                }
+            API.authAPI.createNewUser(withName: name, withEmail: email, withPassword: password!, onSuccess: {
+                Config.showAlerts(title: "Success!", message: "Email was sent, please verify your email address now.", handler: {
+                    _ in
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.nameTextField.text = ""
+                }, controller: self)
             })
         }
     }
@@ -153,7 +93,6 @@ extension LoginViewController {
     func loginSuccess() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-        SVProgressHUD.dismiss()
         self.present(tabBarController, animated: true, completion: nil)
     }
     
@@ -253,62 +192,24 @@ extension LoginViewController {
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         self.fbLoginButton.isHidden = true
         if error == nil {
-            SVProgressHUD.show(withStatus: "Logging in...")
-            let ref = FIRDatabase.database().reference()
             // link with Firebase!
             if let current = FBSDKAccessToken.current() {
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: current.tokenString)
-                FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
-                    if error == nil{
-
-                        let userID = user?.uid
-                        ref.child("Users").child(userID!).observeSingleEvent(of: .value, with: {
-                            snapshot in
-                            guard let profilevalue = snapshot.value as? [String:Any] else{
-                                print("No record in database, will create one")
-                                for profile in (user?.providerData)! {
-                                    let name = profile.displayName
-                                    let email = profile.email
-                                    let uid = profile.uid as String
-                                    let newuser = Profile.newUser(username: name, userID: userID, email: email)
-                                    
-                                    guard let imageURL = URL(string: "http://graph.facebook.com/\(uid)/picture?type=large") else{
-                                        print("Can't retrieve the profile image URL.")
-                                        return
-                                    }
-                                    newuser.profilePicUrl = imageURL
-                                    Profile.currentUser = newuser
-                                    newuser.sync(onSuccess: {}, onError: {
-                                        error in
-                                        print(error.localizedDescription)
-                                    })
-                                    
-                                }
-                                return
-                            }
-                            Profile.currentUser = Profile.initWithUserID(userID: userID!, profileDict: profilevalue)
-                        })
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
-                            self.loginSuccess()
-                        })
-                    }
-                    else {
-                        self.fbLoginButton.isHidden = false
-                        SVProgressHUD.dismiss()
-                        Config.showAlerts(title: "Oops!", message: (error?.localizedDescription)!, handler: nil, controller: self)
-                    }
+                API.authAPI.signInWithFaceBook(withAccessToken: current.tokenString, onSuccess: {
+                    print("successfully logged in with Facebook")
+                    self.loginSuccess()
+                }, onError: {
+                    self.fbLoginButton.isHidden = false
+                    return
                 })
-                print("successfully logged in with Facebook")
             }
             else{
                 self.fbLoginButton.isHidden = false
-                SVProgressHUD.dismiss()
+                return
             }
             
         }
         else {
             self.fbLoginButton.isHidden = false
-            SVProgressHUD.dismiss()
             return}
         
         

@@ -189,7 +189,7 @@ class profileMainViewController: UIViewController {
     func uploadProfileImage(){
         
         let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
-        API.storageAPI.uploadCurrentUserProfileImage(imageData: profileImageData!, onSuccess: {
+        API.userAPI.uploadCurrentUserProfileImage(imageData: profileImageData!, onSuccess: {
             print("Upload Success")
         })
 
@@ -197,7 +197,7 @@ class profileMainViewController: UIViewController {
     func uploadBackgroundImage(){
         
         let backgroundImageData = UIImageJPEGRepresentation(self.profileBackground.image!, 0.7)
-        API.storageAPI.uploadCurrentUserBackgroundImage(imageData: backgroundImageData!, onSuccess: {
+        API.userAPI.uploadCurrentUserBackgroundImage(imageData: backgroundImageData!, onSuccess: {
             print("Upload Success")
         })
 

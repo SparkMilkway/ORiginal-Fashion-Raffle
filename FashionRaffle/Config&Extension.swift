@@ -23,7 +23,7 @@ class Config: NSObject {
             blackV.tag = 100
             blackV.frame = window.frame
             blackV.alpha = 0
-            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 blackV.alpha = 1
             }, completion: {(completed) -> Void in
                 if completed == true {
@@ -37,7 +37,7 @@ class Config: NSObject {
             SVProgressHUD.dismiss()
             if let blackview = window.viewWithTag(100) {
                 blackview.alpha = 1
-                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     blackview.alpha = 0
                 }, completion: {
                     (completed) -> Void in
@@ -53,11 +53,20 @@ class Config: NSObject {
     }
     
     
+    static func showPlainLoading(withStatus status:String) {
+        SVProgressHUD.show(withStatus: status)
+    }
+    
+    static func dismissPlainLoading() {
+        SVProgressHUD.dismiss()
+    }
+    
     // Show error
     static func showError(withStatus status: String) {
         SVProgressHUD.showError(withStatus: status)
         SVProgressHUD.dismiss(withDelay: 1.5)
     }
+    
 
 //Show an alert
     static func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){

@@ -8,8 +8,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 import SVProgressHUD
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -198,32 +196,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             Config.showAlerts(title: "Oops!", message: "Please enter your email!", handler: nil, controller: self)
         }
         else{
-            FIRAuth.auth()?.sendPasswordReset(withEmail: self.forgetPasswordTextField.text!, completion: {(error) in
-                var title = ""
-                var message = ""
-                if error != nil {
-                    title = "Oops!"
-                    message = (error?.localizedDescription)!
-                    Config.showAlerts(title: title, message: message, handler: nil, controller: self)
-                    
-                }
-                else {
-                    title = "Success!"
-                    message = "The password reset email was sent!"
-                    self.forgetPasswordTextField.text = ""
-                    Config.showAlerts(title: title, message: message, handler: {
-                        UIAlertAction in
-                        UIView.animate(withDuration:0.3, animations:{
-                            self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
-                            self.addForgetPasswordView.alpha = 0
-                            self.DimView.alpha = 0
-                        }) {(success:Bool) in
-                            self.addForgetPasswordView.removeFromSuperview()
-                        }
-                        
-                        
-                    }, controller: self)
-                }
+            API.authAPI.sendPasswordReset(withEmail: self.forgetPasswordTextField.text!, onSuccess: {
+                self.forgetPasswordTextField.text = ""
+                Config.showAlerts(title: "Success!", message: "The password reset email was sent!", handler: {
+                    UIAlertAction in
+                    UIView.animate(withDuration:0.3, animations:{
+                        self.addForgetPasswordView.transform = CGAffineTransform.init(scaleX:1.3,y:1.3)
+                        self.addForgetPasswordView.alpha = 0
+                        self.DimView.alpha = 0
+                    }) {(success:Bool) in
+                        self.addForgetPasswordView.removeFromSuperview()
+                    }
+                }, controller: self)
             })
         }
         
@@ -240,9 +224,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     //TextFields Edit
-
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

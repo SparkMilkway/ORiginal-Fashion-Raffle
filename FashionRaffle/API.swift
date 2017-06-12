@@ -26,7 +26,7 @@ class API: NSObject {
     
     static var userAPI = UserAPI()
     static var storageAPI = FIRStorageAPI()
-
+    static var authAPI = AuthAPI()
     static var postAPI = PostAPI()
     static var feedAPI = FeedAPI()
 }

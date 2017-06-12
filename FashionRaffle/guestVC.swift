@@ -42,6 +42,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     @IBOutlet weak var guestProfilSegmentControl: UISegmentedControl!
     
     @IBOutlet weak var actionButton: UIButton!
+    var viewUserID : String?
     var brandDatas = [String]()
     var followingBrands = [String]()
     let storageReference = FIRStorage.storage()
@@ -90,10 +91,10 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
         self.navigationItem.title = guestname.last?.uppercased()
         
         
-        ref.child("Users").child(guestId.last!).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users").child(self.viewUserID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? [String: Any]
             
-            self.userProfile = Profile.initWithUserID(userID: guestId.last!, profileDict: value!)
+            self.userProfile = Profile.initWithUserID(userID: self.viewUserID!, profileDict: value!)
             
             
             if let profileUrl = self.userProfile?.profilePicUrl{
@@ -157,7 +158,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             print(error.localizedDescription)
         }
         
-        let guestTmp = guestId.last!
+        let guestTmp = viewUserID!
 
         profileImageView()
         backgroundImageView()
@@ -205,7 +206,7 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
             actionButtonState = .CurrentUser
         case .NotFollowing:
             actionButtonState = .Following
-            Profile.currentUser?.following?.append(guestId.last!)
+            Profile.currentUser?.following?.append(self.viewUserID!)
             userProfile?.followers?.append(Profile.currentUser!.userID)
             userProfile?.sync(onSuccess: {}, onError: {
                 error in

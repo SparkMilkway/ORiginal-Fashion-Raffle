@@ -83,7 +83,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
                 
                 let imageData = UIImageJPEGRepresentation(image!, 0.6)!
 
-                API.storageAPI.uploadPostImage(withImageData: imageData, captions: caption, onSuccess: {
+                API.postAPI.uploadPostImage(withImageData: imageData, captions: caption, onSuccess: {
                     Config.showAlerts(title: "Success!", message: "", handler: {
                         _ in
                         UIView.animate(withDuration: 0.4, animations: {

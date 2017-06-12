@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Imaginary
 
 class PostPoolCell: UITableViewCell {
     
@@ -19,7 +20,7 @@ class PostPoolCell: UITableViewCell {
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var viewProfile: UIButton!
     
-    var creatorID : String!
+    var homeTableViewController: UITableViewController?
     
     var post: Post? {
         didSet {
@@ -29,10 +30,40 @@ class PostPoolCell: UITableViewCell {
     
     func updateView() {
         if let currentPost = post {
+            let fetchUserID = currentPost.creatorID
+            timeStamp.text = currentPost.timestamp
+            API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
+                profileurl in
+                if let url = profileurl {
+                    self.profileImage.setImage(url: url, placeholder: UIImage(named:"UserIcon"))
+                }
+                else {
+                    self.profileImage.image = UIImage(named: "UserIcon")
+                }
+            })
+            API.userAPI.fetchUserName(withID: fetchUserID, completion: {
+                fetchName in
+                self.userNameLabel.text = fetchName
+                
+            })
+            self.loadingIndicator.startAnimating()
+            imgView.setImage(url: currentPost.imageUrl) {
+                _ in
+                self.loadingIndicator.stopAnimating()
+            }
             
         }
     }
 
+    // View Profile Button
+    @IBAction func profileDidTouch(_ sender: Any) {
+        
+        let guestVC = homeTableViewController?.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+        guestVC.viewUserID = post?.creatorID
+    
+        homeTableViewController?.navigationController?.pushViewController(guestVC, animated: true)
+        
+    }
     
     // Comment Button
     @IBAction func commentDidTap(_ sender: Any) {
@@ -44,7 +75,6 @@ class PostPoolCell: UITableViewCell {
         super.awakeFromNib()
         captionLabel.text = ""
         userNameLabel.text = ""
-        
     }
     
     

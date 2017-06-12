@@ -120,13 +120,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //It will reserve for 7 days and then cleaned automatically
         let cache = HybridCache(name: "UserCache")
         let syncCache = SyncHybridCache(cache)
-        let currentUserProfile = Profile.currentUser?.dictValue()
-        let currentUserID = Profile.currentUser?.userID
-        let cacheDict : [String:Any] = [currentUserID!:currentUserProfile]
+        if let currentUser = Profile.currentUser {
+            let currentUserProfile = currentUser.dictValue()
+            let currentUserID = currentUser.userID
+            let cacheDict : [String:Any] = [currentUserID:currentUserProfile]
+            let jsonDic = JSON.dictionary(cacheDict)
+            syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
+            print("User Profile Caches Successfully")
+        }
+        else {
+            print("No need to cache now")
+        }
         
-        let jsonDic = JSON.dictionary(cacheDict)
-        syncCache.add("UserProfile", object: jsonDic, expiry: Expiry.seconds(604800))
-        print("User Profile Caches Successfully")
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

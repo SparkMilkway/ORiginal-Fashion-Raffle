@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseStorageUI
 import SVProgressHUD
 import Cache
@@ -65,7 +64,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBAction func emailLogout(_ sender: Any) {
         Config.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
             UIAlertAction in
-            try! FIRAuth.auth()?.signOut()
+            API.authAPI.authLogOut()
             self.logOut()
             
         }, cancelHandler: nil)
@@ -308,7 +307,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        try! FIRAuth.auth()?.signOut()
+        API.authAPI.authLogOut()
         self.logOut()
     }
     

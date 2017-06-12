@@ -127,7 +127,6 @@ class PostFeedTableViewController: UITableViewController {
         }
         
     }
-
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -136,36 +135,13 @@ class PostFeedTableViewController: UITableViewController {
         return self.postFeeds.count
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = self.postFeeds[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostPoolCell
-        cell.captionLabel.text = post.caption
-        let imageUrl = post.imageUrl
-        
-        cell.loadingIndicator.startAnimating()
-        
-        cell.imgView.setImage(url: imageUrl){
-            _ in
-            cell.loadingIndicator.stopAnimating()
-        }
-        cell.userNameLabel.text = post.creator
-        cell.timeStamp.text = post.timestamp
-        cell.creatorID = post.creatorID
-        
-        API.userAPI.fetchUserProfilePicUrl(withID: post.creatorID, completion: {
-            url in
-            if let fetchUrl = url {
-                // Has the url
-                let userIcon = UIImage(named: "UserIcon")
-                
-                cell.profileImage.setImage(url: fetchUrl, placeholder: userIcon)
-            }
-            else {
-                cell.profileImage.image = UIImage(named: "UserIcon")
-            }
-        })
-        
-        cell.viewProfile.layer.setValue(indexPath, forKey: "index")
+        cell.post = post
+        cell.homeTableViewController = self
 
         return cell
     }
@@ -184,17 +160,6 @@ class PostFeedTableViewController: UITableViewController {
     }
 
     override func didReceiveMemoryWarning() {
-        
-    }
-    
-    @IBAction func viewProfile(_ sender: AnyObject) {
-        let i = sender.layer.value(forKey: "index") as! IndexPath
-        print (i)
-        let cell = tableView.cellForRow(at: i) as! PostPoolCell
-        guestname.append(cell.userNameLabel.text!)
-        guestId.append(cell.creatorID)
-        let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
-        self.navigationController?.pushViewController(guest, animated: true)
         
     }
     

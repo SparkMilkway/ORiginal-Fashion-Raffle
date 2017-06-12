@@ -12,7 +12,8 @@ import FirebaseDatabase
 class PostAPI: NSObject {
     let postRef = API().postRef
     let userRef = API().userRef
-    
+    let feedRef = API().feedRef
+    let storageAPI = API.storageAPI
     // Remove Observers From Feed
     func removeObserverFromFeed() {
         
@@ -35,12 +36,9 @@ class PostAPI: NSObject {
             }
             let newPost = Post.initWithPostID(postID: postID, postDict: postDict)
             completion(newPost!)
-            
         })
     }
-    
-    
-    
+
     //***********************************************************//
     // Used in profile, not in the feed
     //***********************************************************//
@@ -54,8 +52,6 @@ class PostAPI: NSObject {
             fetchCount = snapshot.childrenCount
             completed(fetchCount)
         })
-        
-        
     }
     
     // Get posts from a certain user with a maximum limiter
@@ -92,13 +88,61 @@ class PostAPI: NSObject {
                         completion(tempPosts)
                     }
                 })
-                
             })
-            
         })
-        
     }
+
+
+    //***********************************************************//
+    // Upload Function
+    //***********************************************************//
     
-
-
+    
+    // Upload Posts ( Should include normal posts, giveaways and others.)
+    // Should update posts under Users, Feed and Posts.
+    func uploadPostImage(withImageData imageData:Data, captions: String?, onSuccess: @escaping() -> Void) {
+        guard let currentUser = Profile.currentUser else {
+            print("No CurrentUser")
+            return
+        }
+        let userID = currentUser.userID
+        Config.showLoading(Status: "Uploading...")
+        let creator = Profile.currentUser?.username
+        let now = Date().now()
+        let autoRef = postRef.childByAutoId()
+        let autoPostID = autoRef.key
+        let storagePath = "Posts/\(autoPostID)/postPic.jpg"
+        
+        storageAPI.uploadDataToStorage(data: imageData, itemStoragePath: storagePath, contentType: "image/jpeg", completion: {
+            metadata, error in
+            if error != nil {
+                Config.dismissLoading(onFinished: {
+                    Config.showError(withStatus: error!.localizedDescription)
+                    return
+                })
+            }
+            let url = metadata?.downloadURL()
+            // Do three things: Upload posts dict into Posts, append postID into posts in users, append postID into feed of currentUser
+            let newPost = Post.init(postID: nil, creator: creator!, creatorID: userID, imageUrl: url!, caption: captions, brandinfo: nil, timestamp: now, likedUsers: nil, likeCounter: 0)
+            // 1
+            autoRef.setValue(newPost.dictValue())
+            // 2
+            Profile.currentUser?.posts?.append(autoPostID)
+            Profile.currentUser?.sync(onSuccess: {}, onError: {
+                error in
+                print(error.localizedDescription)
+            })
+            // 3
+            self.feedRef.child(userID).child(autoPostID).setValue(true, withCompletionBlock: {
+                error,_ in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
+                Config.dismissLoading(onFinished: {
+                    onSuccess()
+                })
+            })
+        })
+    }
 }
