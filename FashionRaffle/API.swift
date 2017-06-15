@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 
-let ref = FIRDatabase.database().reference()
 
 class API: NSObject {
     
@@ -25,8 +24,12 @@ class API: NSObject {
     
     
     static var userAPI = UserAPI()
+    static var releaseAPI = ReleaseAPI()
+    static var raffleAPI = RaffleAPI()
     static var storageAPI = FIRStorageAPI()
     static var authAPI = AuthAPI()
     static var postAPI = PostAPI()
     static var feedAPI = FeedAPI()
+    static var commentAPI = CommentAPI()
+    static var followAPI = FollowAPI()
 }

@@ -30,7 +30,6 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var profileBackground: UIImageView!
-    
 
     @IBOutlet weak var brandsCollectionView: UICollectionView!
 
@@ -49,6 +48,8 @@ class guestVC: UIViewController,  UICollectionViewDelegate, UICollectionViewData
     var fingArray = [String]()
     var ferArray = [String]()
 
+    let ref = FIRDatabase.database().reference()
+    
     var userProfile: Profile? // Fetch a user's profile if necessary
 
     

@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import Firebase
 import SVProgressHUD
-
+import Firebase
 
 
 class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReusableDetaiViewControllerDelegate {
@@ -178,7 +177,7 @@ class RaffleReusableViewController: UIViewController {
     
     func handlepurchase() {
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Profile.currentUser?.userID
         let location = "Users"
         ref.child(location).child(userID!).observeSingleEvent(of: .value, with: {
             snapshot in
@@ -237,32 +236,32 @@ class RaffleReusableViewController: UIViewController {
         handleDismiss()
     }
     @IBAction func ConfirmPay(_ sender: Any) {
-        let purchasedTicket = Int(SliderTickets.value)
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child(self.passKey).child("Raffle Pool").observeSingleEvent(of: .value, with: {
-            snapshot in
-            if snapshot.hasChild(userID!){
-                let value = snapshot.value as? NSDictionary
-                let alreadyIn = value![userID!] as! Int
-                if purchasedTicket > 5 - alreadyIn {
-                    SVProgressHUD.showError(withStatus: "You already entered \(alreadyIn) tikects, the maximum is 5.")
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
-                        SVProgressHUD.dismiss()
-                    })
-                    
-                }
-                else {
-                    let value = purchasedTicket+alreadyIn
-                    let post = [userID!: value] as [AnyHashable: Any]
-                    self.ref.child(self.passKey).child("Raffle Pool").updateChildValues(post)
-                    self.handleUpdateTickets(Tickets: purchasedTicket)
-                }
-            }
-            else {
-                self.ref.child(self.passKey).child("Raffle Pool").updateChildValues([userID!: purchasedTicket])
-                self.handleUpdateTickets(Tickets: purchasedTicket)
-            }
-        })
+//        let purchasedTicket = Int(SliderTickets.value)
+//        let userID = FIRAuth.auth()?.currentUser?.uid
+//        ref.child(self.passKey).child("Raffle Pool").observeSingleEvent(of: .value, with: {
+//            snapshot in
+//            if snapshot.hasChild(userID!){
+//                let value = snapshot.value as? NSDictionary
+//                let alreadyIn = value![userID!] as! Int
+//                if purchasedTicket > 5 - alreadyIn {
+//                    SVProgressHUD.showError(withStatus: "You already entered \(alreadyIn) tikects, the maximum is 5.")
+//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
+//                        SVProgressHUD.dismiss()
+//                    })
+//                    
+//                }
+//                else {
+//                    let value = purchasedTicket+alreadyIn
+//                    let post = [userID!: value] as [AnyHashable: Any]
+//                    self.ref.child(self.passKey).child("Raffle Pool").updateChildValues(post)
+//                    self.handleUpdateTickets(Tickets: purchasedTicket)
+//                }
+//            }
+//            else {
+//                self.ref.child(self.passKey).child("Raffle Pool").updateChildValues([userID!: purchasedTicket])
+//                self.handleUpdateTickets(Tickets: purchasedTicket)
+//            }
+//        })
         
     }
     

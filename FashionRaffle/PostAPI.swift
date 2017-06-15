@@ -38,6 +38,15 @@ class PostAPI: NSObject {
             completion(newPost!)
         })
     }
+    
+    func fetchPostCommentsCount(withID postID:String, completion: @escaping(UInt) ->Void) {
+        postRef.child(postID).child("comments").observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            let count = snapshot.childrenCount
+            completion(count)
+        })
+    }
 
     //***********************************************************//
     // Used in profile, not in the feed
@@ -61,10 +70,12 @@ class PostAPI: NSObject {
         fetchUserPostsCount(fromID: userID, completed: {
             (count) in
             
-            if count == 0 {
+            guard count > 0 else {
+                print("no posts")
                 completion(nil)
                 return
             }
+
             var actualcount : UInt
             if count < number {
                 actualcount = count
@@ -74,7 +85,6 @@ class PostAPI: NSObject {
             }
             let personalPostsRef = self.userRef.child(userID).child("posts")
             var tempPosts = [Post]()
-            
             // Continously fetch data while added child.
             personalPostsRef.queryOrderedByKey().queryLimited(toLast: actualcount).observe(.childAdded, with: {
                 snapshot in
@@ -123,7 +133,7 @@ class PostAPI: NSObject {
             }
             let url = metadata?.downloadURL()
             // Do three things: Upload posts dict into Posts, append postID into posts in users, append postID into feed of currentUser
-            let newPost = Post.init(postID: nil, creator: creator!, creatorID: userID, imageUrl: url!, caption: captions, brandinfo: nil, timestamp: now, likedUsers: nil, likeCounter: 0)
+            let newPost = Post.init(postID: nil, creator: creator!, creatorID: userID, imageUrl: url!, caption: captions, brandinfo: nil, timestamp: now, comments: nil, likedUsers: nil, likeCounter: 0)
             // 1
             autoRef.setValue(newPost.dictValue())
             // 2

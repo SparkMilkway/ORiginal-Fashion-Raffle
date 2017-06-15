@@ -24,7 +24,7 @@ class Post {
     
     static var currentPost:Post?
     
-    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, timestamp: String, likedUsers: [String]?, likeCounter: Int?) {
+    init(postID:String?,creator:String, creatorID: String, imageUrl:URL, caption:String?, brandinfo:[String]?, timestamp: String, comments:[String]?,likedUsers: [String]?, likeCounter: Int?) {
         self.postID = postID
         self.creator = creator
         self.creatorID = creatorID
@@ -34,6 +34,7 @@ class Post {
         self.timestamp = timestamp
         self.likedUsers = likedUsers
         self.likeCounter = likeCounter
+        self.comments = comments
     }
     
     static func initWithPostID(postID: String, postDict:[String:Any]) -> Post? {
@@ -52,12 +53,18 @@ class Post {
                 likeUsers.append(tempusers.key)
             }
         }
+        var commentsID = [String]()
+        if let comments = postDict["comments"] as? [String:Bool] {
+            for tempcomments in comments {
+                commentsID.append(tempcomments.key)
+            }
+        }
         
         
         let likeCounter = postDict["likeCounter"] as? Int
         let imageUrl = URL(string: imageUrlStr)!
 
-        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, timestamp: timestamp!, likedUsers: likeUsers, likeCounter: likeCounter)
+        return Post(postID: postID, creator: creator, creatorID: creatorID!, imageUrl: imageUrl, caption: caption, brandinfo: brandinfo, timestamp: timestamp!, comments: commentsID, likedUsers: likeUsers, likeCounter: likeCounter)
 
     }
     
@@ -65,6 +72,7 @@ class Post {
         var postDict = [String:Any]()
         
         var likeUsersDB = [String:Bool]()
+        var commentsDB = [String:Bool]()
         postDict["creator"] = creator
         postDict["creatorID"] = creatorID
         postDict["brandinfo"] = brandinfo
@@ -75,6 +83,13 @@ class Post {
             }
             postDict["likedUsers"] = likeUsersDB
         }
+        if let comment = comments {
+            for tempcomment in comment {
+                commentsDB[tempcomment] = true
+            }
+            postDict["comments"] = commentsDB
+        }
+        
         postDict["likeCounter"] = likeCounter
         postDict["timestamp"] = timestamp
         if let realcaption = caption {

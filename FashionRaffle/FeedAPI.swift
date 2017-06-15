@@ -19,6 +19,9 @@ class FeedAPI : NSObject {
         feedRef.removeAllObservers()
     }
     
+    func removeObserverFromPosts() {
+        postRef.removeAllObservers()
+    }
     
     //***********************************************************//
     // Actual Usage Functions. Fetch the personal feeds
@@ -90,7 +93,13 @@ class FeedAPI : NSObject {
     // Returns True if there is new value in the database
     func checkNewPostsInTable(withFirstPostID PostID:String, completed: @escaping (Bool)->Void) {
         
-        feedRef.queryLimited(toLast: 1).observeSingleEvent(of: .value, with: {
+        guard let currentUser = Profile.currentUser else {
+            print("No Users")
+            return
+        }
+        let userID = currentUser.userID
+        
+        feedRef.child(userID).queryLimited(toLast: 1).observeSingleEvent(of: .value, with: {
             snapshot in
             guard let checkPosts = snapshot.value as? [String:Any] else {
                 print("Fetch fails")
@@ -156,6 +165,7 @@ class FeedAPI : NSObject {
                     tempPosts.insert(fetchedPost, at: 0)
                     // When fetched all the data
                     if tempPosts.count == Int(actualCount) {
+                        self.removeObserverFromPosts()
                         completion(tempPosts)
                     }
                 })

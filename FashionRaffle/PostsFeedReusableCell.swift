@@ -32,6 +32,10 @@ class PostPoolCell: UITableViewCell {
         if let currentPost = post {
             let fetchUserID = currentPost.creatorID
             timeStamp.text = currentPost.timestamp
+            if let caption = currentPost.caption {
+                self.captionLabel.text = caption
+            }
+
             API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
                 profileurl in
                 if let url = profileurl {

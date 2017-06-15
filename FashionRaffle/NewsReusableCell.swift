@@ -23,6 +23,47 @@ class NewsDataCell: UITableViewCell{
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var releaseDateEvent: UIButton!
     
+    var releaseNews: NewsFeed? {
+        didSet {
+            updateCellView()
+        }
+    }
+    
+    
+    
+    
+    func updateCellView() {
+        
+        if let news = releaseNews {
+            self.loadingIndicator.startAnimating()
+            if let imageUrl = news.headImageUrl {
+                self.Cellimage.setImage(url: imageUrl){
+                    _ in
+                    self.loadingIndicator.stopAnimating()
+                }
+            }
+            self.timestamp.text = news.timestamp
+            self.Title.text = news.title
+            self.Subtitle.text = news.subtitle
+            if let releaseD = news.releaseDate {
+                self.releaseDateEvent.setTitle(releaseD, for: .normal)
+            }
+            else {
+                self.releaseDateEvent.setTitle("TBD", for: .normal)
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    // Events Manager //
+    
+    
     @IBAction func createEvent(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         print(self.releaseDateEvent.currentTitle!)

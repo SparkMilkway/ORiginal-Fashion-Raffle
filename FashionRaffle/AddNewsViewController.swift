@@ -8,18 +8,15 @@
 
 import Foundation
 import UIKit
-import Firebase
 import SVProgressHUD
 import Photos
 import NohanaImagePicker
 
 class AddNewsTableViewController: UITableViewController {
     
-    let storageRef = FIRStorage.storage().reference()
-    
     var imagePool : [UIImage?] = []
     
-    var imageDetailPool : [UIImage?] = []
+    var imageDetailPool : [UIImage] = []
     
     var maxSelection : Int = 8
     
@@ -96,66 +93,19 @@ class AddNewsTableViewController: UITableViewController {
     
     func beginUpload() {
         
-        Config.showLoading(Status: "Uploading...")
-        
-        let newFeedRef = ref.child("ReleaseNews").childByAutoId()
         let titleEdit = self.titleText.text
         let subtitleEdit = self.subtitleText.text
         let detailEdit = self.detailText.text
         let imageSelect = self.titleImage.image
         let releaseDstr = self.releaseDLabel!.text
-        let now = Date().now()
-        let itemStorageFolderName = now + " " + titleEdit!
-        var detailImageURLs = [URL]()
         
-        let imageData = UIImageJPEGRepresentation(imageSelect!, 0.8)!
-        let headImagePath = "ReleaseNews/\(itemStorageFolderName)/headImage.jpg"
-        Config.uploadDatatoStorage(data: imageData, itemStoragePath: headImagePath, contentType: "image/jpeg", completion: {
-            metadata, error in
-            guard let metadata = metadata else{
-                Config.dismissLoading(onFinished: nil)
-                return
-            }
-            let url = metadata.downloadURL()
-            
-            let newFeed = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: url, detailImageURLs: [])
-            if self.imageDetailPool.count == 0 {
-                newFeedRef.setValue(newFeed?.dictValue())
-                Config.dismissLoading(onFinished: nil)
-                Config.showAlerts(title: "Success!", message: "", handler: {
-                    UIAlertAction in
-                    self.dismiss(animated: true, completion: nil)
-                }, controller: self)
-                
-            } else {
-                for i in 0..<self.imageDetailPool.count {
-                    let currentDetailImage = self.imageDetailPool[i]
-                    let currentImageData = UIImageJPEGRepresentation(currentDetailImage!, 0.8)!
-                    let uploadPath = "ReleaseNews/\(itemStorageFolderName)/detailImage\(i+1).jpg"
-                    Config.uploadDatatoStorage(data: currentImageData, itemStoragePath: uploadPath, contentType: "image/jpeg", completion: {
-                        meta2, error in
-                        guard let detailmeta = meta2 else{
-                            Config.dismissLoading(onFinished: nil)
-                            return
-                        }
-                        let detailUrl = detailmeta.downloadURL()
-                        detailImageURLs.append(detailUrl!)
-                        newFeed?.detailImageUrls = detailImageURLs
-                        DispatchQueue.main.async {
-                            if detailImageURLs.count == self.imageDetailPool.count {
-                                newFeedRef.setValue(newFeed?.dictValue())
-                                
-                                Config.dismissLoading(onFinished: nil)
-                                Config.showAlerts(title: "Success!", message: "", handler: {
-                                    UIAlertAction in
-                                    self.dismiss(animated: true, completion: nil)
-                                }, controller: self)
-                            }
-                        }
-                    })
-                }
-            }
-
+        let news = NewsFeed.createNewFeed(newsID: nil, releaseDate: releaseDstr, title: titleEdit!, subtitle: subtitleEdit!, detailInfo: detailEdit!, tags: nil, headImageURL: nil, detailImageURLs: [])
+        
+        API.releaseAPI.uploadNews(withNewsFeed: news!, withHeadImage: imageSelect!, withDetailImages: self.imageDetailPool, onSuccess: {
+            Config.showAlerts(title: "Success!", message: "", handler: {
+                _ in
+                self.dismiss(animated: true, completion: nil)
+            }, controller: self)
         })
 
     }

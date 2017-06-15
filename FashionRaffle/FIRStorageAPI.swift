@@ -14,8 +14,6 @@ import SVProgressHUD
 class FIRStorageAPI: NSObject {
     
     let storageRef = FIRStorage.storage().reference()
-    let feedRef = API().feedRef
-    let postRef = API().postRef
     
     func uploadDataToStorage (data: Data,itemStoragePath: String, contentType: String?, completion: ((FIRStorageMetadata?, Error?) -> Void)?) {
 
@@ -24,6 +22,7 @@ class FIRStorageAPI: NSObject {
         
         storageRef.child(itemStoragePath).put(data, metadata: metadata, completion: completion)
 
+        
     }
     // Upload HeadImage with DetailImages
 

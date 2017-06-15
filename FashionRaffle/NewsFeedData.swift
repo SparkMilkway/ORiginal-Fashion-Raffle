@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 import EventKit
 
 
@@ -20,7 +19,7 @@ class NewsFeed {
     let title:String
     let subtitle:String
     let detailInfo:String
-    let headImageUrl:URL?
+    var headImageUrl:URL?
     var detailImageUrls:[URL]?
     var tags:[String]?
     var likedUsers:[String]?

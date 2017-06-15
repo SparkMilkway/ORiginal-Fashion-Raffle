@@ -137,6 +137,18 @@ class AuthAPI : NSObject {
         })
     }
     
+    // Check if currentUser is nil
+    func checkCurrentUser() -> Bool {
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            return true
+        }
+        else {
+            return false
+        }
+        
+    }
+    
     // LogOut
     func authLogOut() {
         try! FIRAuth.auth()?.signOut()

@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 import FirebaseStorageUI
 import SVProgressHUD
 import Cache
@@ -67,7 +66,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     @IBAction func emailLogOut(_ sender: Any) {
         Config.showAlertsWithOptions(title: "", message: "Are you sure to sign out?", controller: self, yesHandler: {
             UIAlertAction in
-            try! FIRAuth.auth()?.signOut()
+            API.authAPI.authLogOut()
             self.logOut()
             
         }, cancelHandler: nil)
@@ -226,19 +225,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         Config.showLoading(Status: "Uploading Profile Picture...")
         let userID = Profile.currentUser?.userID
         let profileImageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.7)
-        let profilePath = "UserInfo/\(userID!)/profilePic/profileImage.jpg"
-        Config.uploadDatatoStorage(data: profileImageData!, itemStoragePath: profilePath, contentType: "image/jpeg", completion: {
-            metadata, error in
-            guard let meta = metadata else{
-                print("Upload Error")
-                return
-            }
-            let url = meta.downloadURL()
-            Profile.currentUser?.profilePicUrl = url
-            Profile.currentUser?.sync(onSuccess: {}, onError: {
-                error in
-                print(error.localizedDescription)
-            })
+        API.userAPI.uploadCurrentUserProfileImage(imageData: profileImageData!, onSuccess: {
             Config.dismissLoading(onFinished: nil)
         })
     }
@@ -266,7 +253,7 @@ class SettingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     }
 
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        try! FIRAuth.auth()?.signOut()
+        API.authAPI.authLogOut()
         self.logOut()
     }
     

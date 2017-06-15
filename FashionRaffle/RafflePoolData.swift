@@ -23,7 +23,7 @@ class RaffleFeed {
     let title:String
     let subtitle:String
     let detailInfo:String
-    let headImageUrl:URL? //Required
+    var headImageUrl:URL? //Required
     var detailImageUrls:[URL]? //Not required
     var likedUsers:[String]?
     var likeCounter:Int?

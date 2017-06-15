@@ -59,32 +59,34 @@ class PostFeedTableViewController: UITableViewController {
     }
     
     func loadRowsFromTop() {
-        let checkID = self.postFeeds[0].postID
-        self.feedAPI.checkNewPostsInTable(withFirstPostID: checkID!, completed: {
-            checkNew in
-            if checkNew == true {
-                self.postFeeds.removeAll()
-                self.feedAPI.fetchFeeds(withLimitToLast: self.currentLoad, completed: {
-                    fetchPosts in
-                    if let posts = fetchPosts {
-                        self.postFeeds = posts
-                        self.tableView.reloadData()
-                        self.tableView.es_stopPullToRefresh()
-                    }
-                    else {
-                        Config.showError(withStatus: "Loading Error!")
-                    }
-                })
-                return
-            }
-            else {
-                print("No new post feeds")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
-                    self.tableView.es_stopPullToRefresh()
-                    return
-                })
-            }
+        
+        if let checkID = self.postFeeds[0].postID {
+            self.feedAPI.checkNewPostsInTable(withFirstPostID: checkID, completed: {
+                checkNew in
+                if checkNew == true {
+                    self.postFeeds.removeAll()
+                    self.feedAPI.fetchFeeds(withLimitToLast: self.currentLoad, completed: {
+                        fetchPosts in
+                        if let posts = fetchPosts {
+                            self.postFeeds = posts
+                            self.tableView.reloadData()
+                            self.tableView.es_stopPullToRefresh()
+                            return
+                        }
+                        else {
+                            Config.showError(withStatus: "Loading Error!")
+                            return
+                        }
+                    })
+                }
+            })
+        }
+        print("No new post feeds")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
+            self.tableView.es_stopPullToRefresh()
+            return
         })
+        
     }
     
     func loadMore() {

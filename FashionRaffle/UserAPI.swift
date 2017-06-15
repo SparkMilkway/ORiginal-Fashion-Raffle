@@ -151,6 +151,26 @@ class UserAPI: NSObject {
         
     }
     
+    func fetchUserPostsIds(withID userID: String, completion: @escaping([String]?)->Void) {
+        
+        let personalPostRef = userRef.child(userID).child("posts")
+        var tempIds = [String]()
+        personalPostRef.observeSingleEvent(of: .value, with: {
+            snapshot in
+            
+            guard let fetch = snapshot.value as? [String:Bool] else {
+                // This user has no posts
+                completion(nil)
+                return
+            }
+            
+            for key in fetch.keys {
+                tempIds.append(key)
+            }
+            completion(tempIds)
+        })
+        
+    }
     
     
     

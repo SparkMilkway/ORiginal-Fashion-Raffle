@@ -86,17 +86,6 @@ class Config: NSObject {
         
     }
     
-    //FireStorageUpload
-    static func uploadDatatoStorage (data: Data,itemStoragePath: String, contentType: String?, completion: ((FIRStorageMetadata?, Error?) -> Void)?) {
-        let storageRef = FIRStorage.storage().reference()
-        let metadata = FIRStorageMetadata()
-        metadata.contentType = contentType
-        
-        storageRef.child(itemStoragePath).put(data, metadata: metadata, completion: completion)
-        
-        
-    }
-    
     
     
     override init() {
