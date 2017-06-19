@@ -362,6 +362,9 @@
                                             <state key="normal" title="Like">
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="likeTapped:" destination="bm7-K8-WjM" eventType="touchUpInside" id="pq8-G5-owg"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Captions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-11-kN7">
                                             <rect key="frame" x="8" y="314" width="359" height="40"/>
@@ -391,7 +394,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="captionLabel" destination="Ry4-11-kN7" id="wPe-Fp-OQ4"/>
+                                    <outlet property="comment" destination="UIC-TG-Zyb" id="fUp-qa-DPR"/>
                                     <outlet property="imgView" destination="Qfe-MC-Ajc" id="qtf-0A-DvZ"/>
+                                    <outlet property="like" destination="YaL-ki-Upf" id="aJL-xG-igK"/>
                                     <outlet property="loadingIndicator" destination="9M4-F9-5ge" id="GSl-Ci-2q1"/>
                                     <outlet property="profileImage" destination="sDM-cW-bLg" id="NPV-P8-d82"/>
                                     <outlet property="timeStamp" destination="KXN-KG-2yR" id="zq7-9d-AR8"/>
@@ -2524,8 +2529,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpj-AD-Jd4">
                                                     <rect key="frame" x="8" y="6" width="46" height="46"/>
                                                     <connections>
-                                                        <action selector="viewProfile:" destination="Gph-C5-TAY" eventType="touchUpInside" id="A8d-hn-LOZ"/>
-                                                        <action selector="viewProfile:" destination="pIv-Pv-mIF" eventType="touchUpInside" id="VLA-1J-FzD"/>
+                                                        <action selector="profileDidTouch:" destination="Gph-C5-TAY" eventType="touchUpInside" id="NPs-qC-jiT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -2548,7 +2552,7 @@
                                             <outlet property="commentLabel" destination="7rE-dt-x91" id="PhD-rW-9J1"/>
                                             <outlet property="nameLabel" destination="cqG-jm-HYP" id="vqv-xg-g1X"/>
                                             <outlet property="profileImageView" destination="ItN-OD-eVx" id="aHu-ts-lw3"/>
-                                            <outlet property="viewProfile" destination="cpj-AD-Jd4" id="w7T-2y-CBN"/>
+                                            <outlet property="viewProfile" destination="cpj-AD-Jd4" id="2us-nz-FZC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

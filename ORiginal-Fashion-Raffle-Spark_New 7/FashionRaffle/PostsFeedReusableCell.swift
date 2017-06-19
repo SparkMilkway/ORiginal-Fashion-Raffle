@@ -20,8 +20,11 @@ class PostPoolCell: UITableViewCell {
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var viewProfile: UIButton!
     
-    var homeTableViewController: UITableViewController?
+    @IBOutlet weak var like: UIButton!
     
+    @IBOutlet weak var comment: UIButton!
+    var homeTableViewController: UITableViewController?
+    var didLike = true
     var post: Post? {
         didSet {
             updateView()
@@ -34,6 +37,19 @@ class PostPoolCell: UITableViewCell {
             timeStamp.text = currentPost.timestamp
             if let caption = currentPost.caption {
                 self.captionLabel.text = caption
+            }
+            
+           
+            if let likeCount = currentPost.likeCounter {
+                let templikeCount = "Like" + String(likeCount)
+                self.like.setTitle(templikeCount , for: .normal)
+            }
+            
+            if let commentCount = currentPost.comments?.count {
+                let count = "Comment" + String(commentCount)
+                self.comment.setTitle(count, for: .normal)
+            } else {
+                self.comment.setTitle("Comment", for: .normal)
             }
 
             API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
@@ -73,6 +89,34 @@ class PostPoolCell: UITableViewCell {
     
     // Comment Button
    
+    @IBAction func likeTapped(_ sender: Any) {
+        if let currentPost = post {
+            print(currentPost.likedUsers, "TEST")
+            if didLike == true {
+                currentPost.likedUsers?.append((Profile.currentUser?.userID)!)
+                print(currentPost.likedUsers, "TEST")
+                didLike = false
+            } else {
+                if let index = currentPost.likedUsers?.index(of: (Profile.currentUser?.userID)!){
+                    currentPost.likedUsers?.remove(at: index)
+                    print(currentPost.likedUsers, "TEST")
+
+                    didLike = true
+                }
+            }
+            if let temp = currentPost.likedUsers?.count{
+                let templikeCount = "Like" + String(temp)
+                self.like.setTitle(templikeCount , for: .normal)
+            }
+            
+            
+            let postRef = API.postAPI.postRef.child(currentPost.postID!)
+            postRef.child("likeCounter").setValue(currentPost.likedUsers?.count)
+            
+            
+        }
+        
+    }
   
     @IBAction func commentTapped(_ sender: Any) {
         print("FUCK")

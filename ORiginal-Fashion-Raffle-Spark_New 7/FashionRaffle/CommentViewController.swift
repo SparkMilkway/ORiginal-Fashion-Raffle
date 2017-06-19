@@ -105,19 +105,9 @@ extension CommentViewController: UITableViewDataSource {
         return comments.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = self.comments[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
-        let comment = comments[indexPath.row].caption
-        cell.userID = comments[indexPath.row].creatorID
-        let username = comments[indexPath.row].creator
-        cell.commentLabel.text = comment
-        cell.nameLabel.text = username
-        API.userAPI.fetchUserProfilePicUrl(withID: cell.userID, completion: {
-            url in
-            cell.profileImageView.setImage(url: url)
-        })
-        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.height/2
-        cell.profileImageView.clipsToBounds = true
-        cell.viewProfile.layer.setValue(indexPath, forKey: "index")
+        cell.comment = comment
         
         return cell
     }
