@@ -245,8 +245,8 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
         let syncCache = SyncHybridCache(cache)
         syncCache.remove("UserProfile")
         print("Cache Removed")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        let storyboard = UIStoryboard(name: "Start", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! LoginViewController
         self.present(loginVC, animated: true, completion: {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = loginVC

@@ -39,7 +39,7 @@ class PostPoolCell: UITableViewCell {
             API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
                 profileurl in
                 if let url = profileurl {
-                    self.profileImage.setImage(url: url, placeholder: UIImage(named:"UserIcon"))
+                    self.profileImage.setImage(url: url)
                 }
                 else {
                     self.profileImage.image = UIImage(named: "UserIcon")

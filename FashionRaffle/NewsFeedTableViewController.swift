@@ -34,8 +34,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
                 FBSDKLoginManager().logOut()
             }
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! LoginViewController
             self.present(loginVC, animated: true, completion: nil)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = loginVC
@@ -268,8 +268,8 @@ class NewsFeedTableViewController: UITableViewController, UISearchBarDelegate {
         
         let newsCell = self.newsF[indexPath.row]
         
-        let storyboard = UIStoryboard(name: "FirstDemo", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "NewsReusableView") as! NewsReusableViewController
+        let storyboard = UIStoryboard(name: "ReleaseNewsFeed", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ReleaseDetailVC") as! NewsReusableViewController
         viewController.news = newsCell
         //searchBar.endEditing(true)
         self.navigationController?.pushViewController(viewController, animated: true)

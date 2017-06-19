@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 import FirebaseStorageUI
 import SVProgressHUD
 import PassKit
@@ -17,31 +16,50 @@ import PassKit
 
 class profileMainViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
-    
     @IBOutlet weak var profileBackground: UIImageView!
-    
     @IBOutlet weak var bio: UITextView!
-    
     @IBOutlet weak var infoVE: UIVisualEffectView!
- 
-    
     @IBOutlet weak var brandsContainerView: UIView!
-
     @IBOutlet weak var Controller: UISegmentedControl!
-    
     @IBOutlet weak var userPostContainerView: UIView!
-    
     @IBOutlet weak var userRaffleContainerView: UIView!
+    @IBOutlet var editProfileButton: UIBarButtonItem!
     
-    var chooseImage : Bool!
-    
+    @IBOutlet var scrollContentsView: UIView!
+    @IBOutlet var profileScrollView: UIScrollView!
     var fingArray = [String]()
     var ferArray = [String]()
+    var chooseImage : Bool = true
+    
+    var isCurrentUser : Bool = true
+    private var embeddedPostsVC : UserPostsViewController!
+    
+    var selectedUser = Profile.currentUser {
+        willSet(newValue) {
+            guard let currentUser = Profile.currentUser else {
+                print("No current User, function won't work")
+                return
+            }
+            if newValue!.userID != currentUser.userID {
+                isCurrentUser = false
+            }
+            else {
+                isCurrentUser = true
+            }
+        }
+    }
     
     @IBOutlet weak var followingButton: UIButton!
-    
     @IBOutlet weak var followerButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isCurrentUser == true {
+            selectedUser = Profile.currentUser
+        }
+        UserInfoView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,70 +67,106 @@ class profileMainViewController: UIViewController {
         
         infoVE.alpha = 0.5
         
+        UserImagesView()
+        profileImageView()
+        backgroundImageView()
         
-        if let profileUrl = Profile.currentUser?.profilePicUrl {
-            self.profileImage.setImage(url: profileUrl)
+        if isCurrentUser == true {
+            self.navigationItem.rightBarButtonItem = editProfileButton
         }
         else {
-            self.profileImage.image = UIImage(named: "UserIcon")
+            self.navigationItem.rightBarButtonItem = nil
         }
-        
-        if let backgroundUrl = Profile.currentUser?.backgroundPictureUrl {
-            self.profileBackground.setImage(url: backgroundUrl)
-        }
-        else {
-            self.profileBackground.image = UIImage(named: "background")
-        }
-        
-        if let fingArray = Profile.currentUser?.following{
-            followingArray = fingArray
-            self.fingArray = fingArray
-
-        }
-        else {
-            self.followingButton.isUserInteractionEnabled = false
-        }
-        self.followingButton.setTitle("Following: " + String(self.fingArray.count), for: .normal)
-        
-        if let ferArray = Profile.currentUser?.followers{
-            followerArray = ferArray
-            self.ferArray = ferArray
-            
-        }
-        else {
-            self.followerButton.isUserInteractionEnabled = false
-        }
-        self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
-        
-        if let bio = Profile.currentUser?.bio{
-            if let web = Profile.currentUser?.website{
-                self.bio.text = bio + "\n" + web
-            }
-            else{
-                self.bio.text = bio
-            }
-        }else {
-            if let web = Profile.currentUser?.website{
-                self.bio.text = web
-            }
-            else{
-                self.bio.isHidden = true
-            }
-        }
-
         
         self.Controller.selectedSegmentIndex = 0
         brandsContainerView.isHidden = true
         userPostContainerView.isHidden = false
         userRaffleContainerView.isHidden = true
-
-
-        
-        
-        profileImageView()
-        backgroundImageView()
-
         // Do any additional setup after loading the view.
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let postsVC = segue.destination as? UserPostsViewController, segue.identifier == "userPostsEmbedSegue" {
+            self.embeddedPostsVC = postsVC
+            
+        }
+    }
+    
+    func UserImagesView() {
+        
+        if let nowUser = selectedUser {
+            
+            if isCurrentUser == true {
+                // is CurrentUser
+                self.profileImage.isUserInteractionEnabled = true
+                self.profileBackground.isUserInteractionEnabled = true
+            }
+            else {
+                // Not currentUser
+                self.profileImage.isUserInteractionEnabled = false
+                self.profileBackground.isUserInteractionEnabled = false
+            }
+            
+            let defaultProfile = UIImage(named: "UserIcon")
+            let defaultBackGround = UIImage(named: "background")
+            if let profileUrl = nowUser.profilePicUrl {
+                self.profileImage.setImage(url: profileUrl, placeholder: defaultProfile)
+            }
+            else {
+                self.profileImage.image = defaultProfile
+            }
+            if let backgroundUrl = nowUser.backgroundPictureUrl {
+                self.profileBackground.setImage(url: backgroundUrl)
+            }
+            else {
+                self.profileBackground.image = defaultBackGround
+            }
+        }
+        
+    }
+    
+    func UserInfoView() {
+        
+        if let user = selectedUser {
+            self.embeddedPostsVC.selectedUserID = user.userID
+            navigationItem.title = user.username
+            if let fers = user.followers {
+                self.ferArray = fers
+            }
+            else {
+                self.followerButton.isUserInteractionEnabled = false
+            }
+            self.followerButton.setTitle("Followers: " + String(self.ferArray.count), for: .normal)
+            
+            if let fings = user.following {
+                self.fingArray = fings
+            }
+            else {
+                self.followingButton.isUserInteractionEnabled = false
+            }
+            self.followingButton.setTitle("Followings: " + String(self.fingArray.count), for: .normal)
+            
+            var bioTemp : String = ""
+            var webTemp : String = ""
+            
+            if let bio = user.bio {
+                bioTemp = bio
+            }
+            if let web = user.website {
+                webTemp = web
+            }
+            if bioTemp == "" && webTemp == "" {
+                //nil
+                self.bio.isHidden = true
+            }
+            else {
+                self.bio.isHidden = false
+                self.bio.text = bioTemp + "\n" + webTemp
+            }
+        }
+        
         
         
     }
@@ -138,10 +192,7 @@ class profileMainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.title = Profile.currentUser?.username
-    }
+
 
     /*
     // MARK: - Navigation
@@ -181,7 +232,6 @@ class profileMainViewController: UIViewController {
         profileImage.layer.borderColor = UIColor.white.cgColor
         
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
-        profileImage.isUserInteractionEnabled = true
         
         
     }
@@ -202,16 +252,13 @@ class profileMainViewController: UIViewController {
         })
 
     }
-    
-    
-    
+
     func backgroundImageView() {
         
         
         profileBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectBackgroundImageView)))
-        profileBackground.isUserInteractionEnabled = true
         profileBackground.contentMode = .scaleAspectFill
-        profileBackground.alpha = 0.9
+        profileBackground.alpha = 1
         
     }
 

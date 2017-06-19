@@ -24,7 +24,7 @@ class FollowAPI: NSObject {
         userRef.child(userID).child("followers").child(currentID).setValue(true)
         userRef.child(currentID).child("following").child(userID).setValue(true)
         
-        API.userAPI.fetchUserPostsIds(withID: userID, completion: {
+        API.userAPI.fetchUserPostsID(withUserID: userID, completion: {
             ids in
             if let fetchedIds = ids {
                 for currentPostId in fetchedIds {
@@ -44,7 +44,7 @@ class FollowAPI: NSObject {
         userRef.child(userID).child("followers").child(currentID).setValue(nil)
         userRef.child(currentID).child("following").child(userID).setValue(nil)
         
-        API.userAPI.fetchUserPostsIds(withID: userID, completion: {
+        API.userAPI.fetchUserPostsID(withUserID: userID, completion: {
             ids in
             if let fetchedIds = ids {
                 for currentPostId in fetchedIds {
@@ -52,8 +52,8 @@ class FollowAPI: NSObject {
                 }
             }
             completed()
-            
         })
+
     }
     
     // Check following

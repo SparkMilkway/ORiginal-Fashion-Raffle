@@ -42,10 +42,6 @@ extension profileMainViewController: UIImagePickerControllerDelegate, UINavigati
         
     }
 
-    
-
-
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var selectedImageFromPicker: UIImage?
         

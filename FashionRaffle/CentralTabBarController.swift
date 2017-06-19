@@ -40,8 +40,8 @@ class CentralTabBarController: UITabBarController {
     
     func centralAction() {
         
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let photoVCNavi = story.instantiateViewController(withIdentifier: "PhotoViewNavigation") as! UINavigationController
+        let story = UIStoryboard(name: "Camera", bundle: nil)
+        let photoVCNavi = story.instantiateViewController(withIdentifier: "CameraNaviVC") as! UINavigationController
 
         let photoVC = photoVCNavi.topViewController as! PhotoViewController
         photoVC.centralVC = self

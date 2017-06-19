@@ -101,6 +101,18 @@ class PostAPI: NSObject {
             })
         })
     }
+    
+    func fetchPostImageURL(withPostID postID: String, completed: @escaping(URL)->Void) {
+        
+        postRef.child(postID).child("imageUrl").observeSingleEvent(of: .value, with: {
+            snapshot in
+            if let value = snapshot.value as? String {
+                let url = URL(string: value)
+                completed(url!)
+            }
+            
+        })
+    }
 
 
     //***********************************************************//

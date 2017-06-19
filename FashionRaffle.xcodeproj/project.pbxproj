@@ -22,8 +22,6 @@
 		52071E871E94908500ADDB8C /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E851E94908400ADDB8C /* BrandsViewController.swift */; };
 		52071E881E94908500ADDB8C /* brandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */; };
 		520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */; };
-		52146CA71EDCC51200612540 /* userPostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CA41EDCC51200612540 /* userPostsCollectionViewCell.swift */; };
-		52146CA81EDCC51200612540 /* userPostsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CA51EDCC51200612540 /* userPostsCollectionViewController.swift */; };
 		52146CA91EDCC51200612540 /* userRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CA61EDCC51200612540 /* userRaffleViewController.swift */; };
 		52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CAA1EDCC52000612540 /* settingTableViewController.swift */; };
 		52146CAD1EDCC5A800612540 /* giveAwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */; };
@@ -61,8 +59,6 @@
 		522EC6821DFE2B4100CA7AA6 /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */; };
 		522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 522EC6831DFE2B6B00CA7AA6 /* Sources */; };
 		522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */; };
-		52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */; };
-		52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */; };
 		52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */; };
 		52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */; };
 		52334DA31E78D51800FFB8A4 /* ProfileStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */; };
@@ -75,11 +71,20 @@
 		525D6CD21DC69F3500509E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */; };
 		525D6CD51DC6A08A00509E20 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 525D6CD41DC6A08A00509E20 /* podfile */; };
 		526234DB1EEDEE7100237795 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526234DA1EEDEE7100237795 /* AuthAPI.swift */; };
+		526234DD1EF34B7B00237795 /* ReleaseNewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234DC1EF34B7B00237795 /* ReleaseNewsFeed.storyboard */; };
+		526234E01EF34C1500237795 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234DF1EF34C1500237795 /* Start.storyboard */; };
+		526234E21EF34C3300237795 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234E11EF34C3300237795 /* Camera.storyboard */; };
+		526234E41EF34C4100237795 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234E31EF34C4100237795 /* Profile.storyboard */; };
+		526234E61EF49A1500237795 /* RaffleFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234E51EF49A1500237795 /* RaffleFeed.storyboard */; };
+		526234E81EF49A2700237795 /* SocialFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234E71EF49A2700237795 /* SocialFeed.storyboard */; };
+		526234EA1EF4A72200237795 /* Reusable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234E91EF4A72200237795 /* Reusable.storyboard */; };
+		526234EC1EF4C94900237795 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526234EB1EF4C94900237795 /* User.storyboard */; };
+		526234EF1EF74D6D00237795 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526234EE1EF74D6D00237795 /* UserPostsViewController.swift */; };
+		526234F11EF74F2200237795 /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526234F01EF74F2200237795 /* UserPostsCell.swift */; };
 		52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52644D451DEB97500095A8FC /* RaffleTableViewController.swift */; };
 		526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526EC5151DDA7462001BE789 /* NewsFeedData.swift */; };
 		526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */; };
 		5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5277C03C1EBED0A300881B4A /* CentralTabBarController.swift */; };
-		5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5279FE061DC942440072A5B5 /* FirstDemo.storyboard */; };
 		527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */; };
 		52DCFD9A1E68A63400B5C748 /* LoginVCFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DCFD991E68A63400B5C748 /* LoginVCFunctions.swift */; };
 		52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */; };
@@ -127,8 +132,6 @@
 		52071E851E94908400ADDB8C /* BrandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = brandCollectionViewCell.swift; sourceTree = "<group>"; };
 		520FF42F1ED2AA6D00CAC17A /* ReusableDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableDetailViewController.swift; sourceTree = "<group>"; };
-		52146CA41EDCC51200612540 /* userPostsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userPostsCollectionViewCell.swift; sourceTree = "<group>"; };
-		52146CA51EDCC51200612540 /* userPostsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userPostsCollectionViewController.swift; sourceTree = "<group>"; };
 		52146CA61EDCC51200612540 /* userRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userRaffleViewController.swift; sourceTree = "<group>"; };
 		52146CAA1EDCC52000612540 /* settingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingTableViewController.swift; sourceTree = "<group>"; };
 		52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = giveAwayViewController.swift; sourceTree = "<group>"; };
@@ -166,8 +169,6 @@
 		522EC6741DFE2B4100CA7AA6 /* FusumaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
 		522EC6831DFE2B6B00CA7AA6 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		522EC68D1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckLikeFunctions.swift; sourceTree = "<group>"; };
-		52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewExtension.swift; sourceTree = "<group>"; };
 		52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostStruct.swift; sourceTree = "<group>"; };
 		52334D9C1E78CC3300FFB8A4 /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
 		52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStruct.swift; sourceTree = "<group>"; };
@@ -184,11 +185,20 @@
 		525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		525D6CD41DC6A08A00509E20 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		526234DA1EEDEE7100237795 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		526234DC1EF34B7B00237795 /* ReleaseNewsFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReleaseNewsFeed.storyboard; sourceTree = "<group>"; };
+		526234DF1EF34C1500237795 /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		526234E11EF34C3300237795 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		526234E31EF34C4100237795 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		526234E51EF49A1500237795 /* RaffleFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RaffleFeed.storyboard; sourceTree = "<group>"; };
+		526234E71EF49A2700237795 /* SocialFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SocialFeed.storyboard; sourceTree = "<group>"; };
+		526234E91EF4A72200237795 /* Reusable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reusable.storyboard; sourceTree = "<group>"; };
+		526234EB1EF4C94900237795 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		526234EE1EF74D6D00237795 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
+		526234F01EF74F2200237795 /* UserPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
 		52644D451DEB97500095A8FC /* RaffleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleTableViewController.swift; sourceTree = "<group>"; };
 		526EC5151DDA7462001BE789 /* NewsFeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedData.swift; sourceTree = "<group>"; };
 		526EC5171DDAD4DF001BE789 /* NewsFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewController.swift; sourceTree = "<group>"; };
 		5277C03C1EBED0A300881B4A /* CentralTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralTabBarController.swift; sourceTree = "<group>"; };
-		5279FE061DC942440072A5B5 /* FirstDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstDemo.storyboard; sourceTree = "<group>"; };
 		527CA06F1DDBB6EF00379312 /* NewsReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsReusableViewController.swift; sourceTree = "<group>"; };
 		52DCFD991E68A63400B5C748 /* LoginVCFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCFunctions.swift; sourceTree = "<group>"; };
 		52E3773D1ED2C0A700F2D609 /* ReusableCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCollectionCell.swift; sourceTree = "<group>"; };
@@ -260,7 +270,6 @@
 				04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */,
 				52334D921E78C3CC00FFB8A4 /* Database Structures */,
 				52334D911E78C39F00FFB8A4 /* Settings and Handlings */,
-				522A060F1EDFDF180071EC20 /* ReusableVCs */,
 				525D6CA81DC5A1ED00509E20 /* Main Interface */,
 				525D6CA71DC59F3900509E20 /* FashionRaffle.entitlements */,
 				04D8A1E61DC36C53008B1989 /* Assets.xcassets */,
@@ -417,16 +426,11 @@
 		52334D941E78C42C00FFB8A4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				526234ED1EF74BD500237795 /* ProfileController */,
 				52146CB41EDCC78E00612540 /* Guests */,
-				52334DA11E78D4EB00FFB8A4 /* Data Manage */,
-				52329FDF1DE2711600ED34CC /* SettingsTableViewController.swift */,
-				52329FE11DE2791000ED34CC /* SettingTableViewExtension.swift */,
 				52146CAA1EDCC52000612540 /* settingTableViewController.swift */,
 				52071E851E94908400ADDB8C /* BrandsViewController.swift */,
 				52071E861E94908400ADDB8C /* brandCollectionViewCell.swift */,
-				52146CA41EDCC51200612540 /* userPostsCollectionViewCell.swift */,
-				52146CA51EDCC51200612540 /* userPostsCollectionViewController.swift */,
-				52146CA61EDCC51200612540 /* userRaffleViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -438,15 +442,6 @@
 				522A061E1EE3B2200071EC20 /* RafflesReusableCell.swift */,
 			);
 			name = "Raffle Feed";
-			sourceTree = "<group>";
-		};
-		52334DA11E78D4EB00FFB8A4 /* Data Manage */ = {
-			isa = PBXGroup;
-			children = (
-				52146CAE1EDCC76A00612540 /* profileMainViewController.swift */,
-				52146CAF1EDCC76A00612540 /* profileMainViewExtension.swift */,
-			);
-			name = "Data Manage";
 			sourceTree = "<group>";
 		};
 		52334DA41E78DE1000FFB8A4 /* Feeds */ = {
@@ -486,10 +481,10 @@
 		525D6CA81DC5A1ED00509E20 /* Main Interface */ = {
 			isa = PBXGroup;
 			children = (
+				526234DE1EF34B8200237795 /* Storyboards */,
+				522A060F1EDFDF180071EC20 /* ReusableVCs */,
 				52334D8E1E78C25D00FFB8A4 /* Login */,
 				525D6CA91DC5A1FD00509E20 /* TabViews */,
-				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
-				5279FE061DC942440072A5B5 /* FirstDemo.storyboard */,
 			);
 			name = "Main Interface";
 			sourceTree = "<group>";
@@ -511,6 +506,34 @@
 				525D6CD11DC69F3500509E20 /* GoogleService-Info.plist */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		526234DE1EF34B8200237795 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				526234DF1EF34C1500237795 /* Start.storyboard */,
+				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
+				526234DC1EF34B7B00237795 /* ReleaseNewsFeed.storyboard */,
+				526234E51EF49A1500237795 /* RaffleFeed.storyboard */,
+				526234E71EF49A2700237795 /* SocialFeed.storyboard */,
+				526234E11EF34C3300237795 /* Camera.storyboard */,
+				526234E31EF34C4100237795 /* Profile.storyboard */,
+				526234EB1EF4C94900237795 /* User.storyboard */,
+				526234E91EF4A72200237795 /* Reusable.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		526234ED1EF74BD500237795 /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				52146CAE1EDCC76A00612540 /* profileMainViewController.swift */,
+				52146CAF1EDCC76A00612540 /* profileMainViewExtension.swift */,
+				52146CA61EDCC51200612540 /* userRaffleViewController.swift */,
+				526234EE1EF74D6D00237795 /* UserPostsViewController.swift */,
+				526234F01EF74F2200237795 /* UserPostsCell.swift */,
+			);
+			name = ProfileController;
 			sourceTree = "<group>";
 		};
 		5279FE051DC9421F0072A5B5 /* News Feed */ = {
@@ -658,12 +681,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5279FE071DC942440072A5B5 /* FirstDemo.storyboard in Resources */,
+				526234DD1EF34B7B00237795 /* ReleaseNewsFeed.storyboard in Resources */,
 				522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */,
 				522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */,
 				04D8A1EA1DC36C53008B1989 /* LaunchScreen.storyboard in Resources */,
+				526234EA1EF4A72200237795 /* Reusable.storyboard in Resources */,
+				526234EC1EF4C94900237795 /* User.storyboard in Resources */,
+				526234E01EF34C1500237795 /* Start.storyboard in Resources */,
+				526234E41EF34C4100237795 /* Profile.storyboard in Resources */,
 				525D6CD21DC69F3500509E20 /* GoogleService-Info.plist in Resources */,
 				522EC6791DFE2B4100CA7AA6 /* FSAlbumViewCell.xib in Resources */,
+				526234E21EF34C3300237795 /* Camera.storyboard in Resources */,
 				522EC6811DFE2B4100CA7AA6 /* FusumaViewController.swift.orig in Resources */,
 				522EC67F1DFE2B4100CA7AA6 /* FSVideoCameraView.xib in Resources */,
 				525D6CD51DC6A08A00509E20 /* podfile in Resources */,
@@ -672,6 +700,8 @@
 				522EC67B1DFE2B4100CA7AA6 /* FSCameraView.xib in Resources */,
 				04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */,
 				522EC6821DFE2B4100CA7AA6 /* FusumaViewController.xib in Resources */,
+				526234E61EF49A1500237795 /* RaffleFeed.storyboard in Resources */,
+				526234E81EF49A2700237795 /* SocialFeed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +776,7 @@
 			files = (
 				522A061D1EE3B1C70071EC20 /* PostsFeedReusableCell.swift in Sources */,
 				522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */,
+				526234F11EF74F2200237795 /* UserPostsCell.swift in Sources */,
 				52146CB81EDCC79F00612540 /* guestVC.swift in Sources */,
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
 				522EC67A1DFE2B4100CA7AA6 /* FSCameraView.swift in Sources */,
@@ -775,20 +806,17 @@
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */,
-				52146CA71EDCC51200612540 /* userPostsCollectionViewCell.swift in Sources */,
+				526234EF1EF74D6D00237795 /* UserPostsViewController.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				522A06221EE4EEB20071EC20 /* Comments.swift in Sources */,
 				522A06291EE8E9B40071EC20 /* FeedAPI.swift in Sources */,
-				52329FE21DE2791100ED34CC /* SettingTableViewExtension.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
 				522A061B1EE3B1620071EC20 /* NewsReusableCell.swift in Sources */,
 				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
-				52329FE01DE2711600ED34CC /* SettingsTableViewController.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
 				522A06171EE25E270071EC20 /* RaffleAPI.swift in Sources */,
 				5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */,
-				52146CA81EDCC51200612540 /* userPostsCollectionViewController.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,

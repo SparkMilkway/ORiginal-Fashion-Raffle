@@ -152,8 +152,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func rootToLogIn() {
     
-        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        let storyboard = UIStoryboard(name:"Start", bundle:nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! LoginViewController
         self.window?.rootViewController = loginVC
     }
     

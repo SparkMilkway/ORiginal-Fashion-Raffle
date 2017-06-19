@@ -23,6 +23,7 @@ class BrandsViewController: UIViewController, UICollectionViewDelegate, UICollec
         //print(Profile.currentUser?.followBrands, "=====", followed)
     }
     
+
     
     @IBAction func Done(_ sender: Any) {
         SVProgressHUD.show(withStatus: "Updating...")

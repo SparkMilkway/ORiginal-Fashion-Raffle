@@ -151,23 +151,27 @@ class UserAPI: NSObject {
         
     }
     
-    func fetchUserPostsIds(withID userID: String, completion: @escaping([String]?)->Void) {
+    // Should fetch a certain amount
+    func fetchUserPostsID(withUserID userID: String, completion: @escaping([String]?)->Void) {
         
         let personalPostRef = userRef.child(userID).child("posts")
         var tempIds = [String]()
-        personalPostRef.observeSingleEvent(of: .value, with: {
-            snapshot in
-            
-            guard let fetch = snapshot.value as? [String:Bool] else {
-                // This user has no posts
+        
+        API.postAPI.fetchUserPostsCount(fromID: userID, completed: {
+            number in
+            guard number > 0 else {
                 completion(nil)
                 return
             }
+            personalPostRef.queryOrderedByKey().observe(.childAdded, with: {
+                snapshot in
+                tempIds.insert(snapshot.key, at: 0)
+                if tempIds.count == Int(number) {
+                    completion(tempIds)
+                    personalPostRef.removeAllObservers()
+                }
+            })
             
-            for key in fetch.keys {
-                tempIds.append(key)
-            }
-            completion(tempIds)
         })
         
     }

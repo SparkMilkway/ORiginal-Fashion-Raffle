@@ -105,8 +105,8 @@ class NewsReusableViewController: UIViewController, UICollectionViewDelegate, UI
             return
         }
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let reusableVC = storyboard.instantiateViewController(withIdentifier: "ReusableDetailVC") as! ReusableDetaiViewController
+        let storyboard = UIStoryboard(name: "Reusable", bundle: nil)
+        let reusableVC = storyboard.instantiateViewController(withIdentifier: "DetailViewVC") as! ReusableDetaiViewController
         reusableVC.delegate = self
         reusableVC.deletable = false
         reusableVC.imageAssets = self.imagePool
