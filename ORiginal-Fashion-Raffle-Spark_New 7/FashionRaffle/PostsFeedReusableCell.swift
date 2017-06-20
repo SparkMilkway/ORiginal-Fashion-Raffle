@@ -38,20 +38,18 @@ class PostPoolCell: UITableViewCell {
             if let caption = currentPost.caption {
                 self.captionLabel.text = caption
             }
-            
+            self.like.imageView?.contentMode = .scaleAspectFit
+            self.comment.imageView?.contentMode = .scaleAspectFit
            
             if let likeCount = currentPost.likeCounter {
-                let templikeCount = "Like" + String(likeCount)
-                self.like.setTitle(templikeCount , for: .normal)
+               
+                self.like.setTitle(String(likeCount) , for: .normal)
             }
             
             if let commentCount = currentPost.comments?.count {
-                let count = "Comment" + String(commentCount)
-                self.comment.setTitle(count, for: .normal)
-            } else {
-                self.comment.setTitle("Comment", for: .normal)
+                
+                self.comment.setTitle(String(commentCount), for: .normal)
             }
-
             API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
                 profileurl in
                 if let url = profileurl {
@@ -95,18 +93,22 @@ class PostPoolCell: UITableViewCell {
             if didLike == true {
                 currentPost.likedUsers?.append((Profile.currentUser?.userID)!)
                 print(currentPost.likedUsers, "TEST")
+                self.like.setImage(#imageLiteral(resourceName: "likeSelected"), for: .normal)
+                self.like.imageView?.contentMode = .scaleAspectFit
                 didLike = false
             } else {
                 if let index = currentPost.likedUsers?.index(of: (Profile.currentUser?.userID)!){
                     currentPost.likedUsers?.remove(at: index)
                     print(currentPost.likedUsers, "TEST")
-
+                    self.like.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+                    self.like.imageView?.contentMode = .scaleAspectFit
                     didLike = true
                 }
             }
             if let temp = currentPost.likedUsers?.count{
                 let templikeCount = "Like" + String(temp)
                 self.like.setTitle(templikeCount , for: .normal)
+                
             }
             
             
