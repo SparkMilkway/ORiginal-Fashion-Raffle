@@ -115,6 +115,7 @@ class settingTableViewController: UITableViewController, FBSDKLoginButtonDelegat
     
     @IBAction func uploadProfile(_ sender: Any) {
         
+        self.view.endEditing(true)
         Profile.currentUser?.bio = self.Bio.text!
         Profile.currentUser?.website = self.Website.text!
         Profile.currentUser?.username = self.username.text!

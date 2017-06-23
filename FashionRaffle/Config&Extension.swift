@@ -53,8 +53,14 @@ class Config: NSObject {
     }
     
     
-    static func showPlainLoading(withStatus status:String) {
-        SVProgressHUD.show(withStatus: status)
+    static func showPlainLoading(withStatus status:String?) {
+        if let str = status {
+            SVProgressHUD.show(withStatus: str)
+        }
+        else {
+            SVProgressHUD.show()
+        }
+        
     }
     
     static func dismissPlainLoading() {

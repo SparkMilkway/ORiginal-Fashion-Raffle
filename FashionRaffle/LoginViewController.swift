@@ -50,7 +50,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         button.layer.masksToBounds = true
         
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
-        
         return button
     }()
     

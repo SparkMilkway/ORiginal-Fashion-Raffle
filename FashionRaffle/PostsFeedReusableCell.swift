@@ -62,10 +62,29 @@ class PostPoolCell: UITableViewCell {
     // View Profile Button
     @IBAction func profileDidTouch(_ sender: Any) {
         
-        let guestVC = homeTableViewController?.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
-        guestVC.viewUserID = post?.creatorID
-    
-        homeTableViewController?.navigationController?.pushViewController(guestVC, animated: true)
+
+        Config.showPlainLoading(withStatus: nil)
+        let userID = post?.creatorID
+        let profileViewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileCollectionViewController
+        profileViewController.isProfilePage = false
+        if userID == Profile.currentUser?.userID {
+            
+            profileViewController.isCurrentUser = true
+            profileViewController.selectedUser = Profile.currentUser
+            Config.dismissPlainLoading()
+            self.homeTableViewController?.navigationController?.pushViewController(profileViewController, animated: true)
+        }
+        else {
+            API.userAPI.fetchUserInfo(withID: userID!, completion: {
+                fetchProfile in
+                profileViewController.isCurrentUser = false
+                profileViewController.selectedUser = fetchProfile!
+                
+                Config.dismissPlainLoading()
+                self.homeTableViewController?.navigationController?.pushViewController(profileViewController, animated: true)
+            })
+        }
+        
         
     }
     

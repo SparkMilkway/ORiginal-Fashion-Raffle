@@ -104,6 +104,92 @@ class UserAPI: NSObject {
     // Fetch
     //****************************************************//
     
+    func fetchAllUsersCount(completed:@escaping(UInt)->Void) {
+        
+        userRef.observeSingleEvent(of: .value, with: {
+            snapshot in
+            let count = snapshot.childrenCount
+            completed(count)
+        })
+    }
+    
+    func fetchAllUserId(withLimitToLast number:UInt?, completed:@escaping([String]) -> Void) {
+        var tempStrs = [String]()
+        fetchAllUsersCount(completed: {
+            amount in
+            guard amount > 0 else {
+                print("No users")
+                return
+            }
+            var actualCount : UInt
+            if number != nil {
+                if amount < number! {
+                    actualCount = amount
+                }
+                else {
+                    actualCount = number!
+                }
+            }
+            else {
+                actualCount = amount
+            }
+            
+            self.userRef.queryOrderedByKey().queryLimited(toLast: actualCount).observe(.childAdded, with: {
+                snapshot in
+                
+                let key = snapshot.key
+                tempStrs.append(key)
+                if tempStrs.count == Int(actualCount) {
+                    completed(tempStrs)
+                    self.userRef.removeAllObservers()
+                }
+            })
+        })
+    }
+    
+    func fetchAllUsers(withLimitToLast number:UInt?, completed: @escaping([Profile]) -> Void) {
+        
+        var tempUsers = [Profile]()
+        fetchAllUsersCount(completed: {
+            amount in
+            
+            guard amount > 0 else {
+                print("no users")
+                return
+            }
+            
+            var actualCount : UInt
+            if number != nil {
+                if amount < number! {
+                    actualCount = amount
+                }
+                else {
+                    actualCount = number!
+                }
+            }
+            else {
+                actualCount = amount
+            }
+            
+            
+            self.userRef.queryOrdered(byChild: "username").queryLimited(toLast: actualCount).observe(.childAdded, with: {
+                snapshot in
+                guard let dict = snapshot.value as? [String:Any] else {
+                    return
+                }
+                let newUser = Profile.initWithUserID(userID: snapshot.key, profileDict: dict)
+                tempUsers.append(newUser!)
+                
+                if tempUsers.count == Int(actualCount) {
+                    completed(tempUsers)
+                    self.userRef.removeAllObservers()
+                }
+            })
+        })
+        
+    }
+    
+    
     func fetchUserInfo(withID userID: String, completion: @escaping (Profile?) -> Void) {
         
         userRef.child(userID).observeSingleEvent(of: .value, with: {
@@ -152,7 +238,7 @@ class UserAPI: NSObject {
     }
     
     // Should fetch a certain amount
-    func fetchUserPostsID(withUserID userID: String, completion: @escaping([String]?)->Void) {
+    func fetchUserPostsID(withUserID userID: String, withLimitToLast Maxnumber:UInt?, completion: @escaping([String]?)->Void) {
         
         let personalPostRef = userRef.child(userID).child("posts")
         var tempIds = [String]()
@@ -163,10 +249,25 @@ class UserAPI: NSObject {
                 completion(nil)
                 return
             }
-            personalPostRef.queryOrderedByKey().observe(.childAdded, with: {
+            
+            var actualCount : UInt
+            if Maxnumber != nil {
+                if number < Maxnumber! {
+                    actualCount = number
+                }
+                else {
+                    actualCount = Maxnumber!
+                }
+            }
+            else {
+                actualCount = number
+            }
+            
+            
+            personalPostRef.queryOrderedByKey().queryLimited(toLast: actualCount).observe(.childAdded, with: {
                 snapshot in
                 tempIds.insert(snapshot.key, at: 0)
-                if tempIds.count == Int(number) {
+                if tempIds.count == Int(actualCount) {
                     completion(tempIds)
                     personalPostRef.removeAllObservers()
                 }

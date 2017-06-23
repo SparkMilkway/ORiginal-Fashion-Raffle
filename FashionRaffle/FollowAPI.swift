@@ -17,14 +17,15 @@ class FollowAPI: NSObject {
     
     func followAction(withUserID userID:String, completed:@escaping()->Void) {
         
-        guard let currentID = Profile.currentUser?.userID else {
+        guard let currentUser = Profile.currentUser else {
             return
         }
-        
+        Profile.currentUser?.following?.append(userID)
+        let currentID = currentUser.userID
         userRef.child(userID).child("followers").child(currentID).setValue(true)
         userRef.child(currentID).child("following").child(userID).setValue(true)
         
-        API.userAPI.fetchUserPostsID(withUserID: userID, completion: {
+        API.userAPI.fetchUserPostsID(withUserID: userID, withLimitToLast: nil, completion: {
             ids in
             if let fetchedIds = ids {
                 for currentPostId in fetchedIds {
@@ -33,18 +34,21 @@ class FollowAPI: NSObject {
             }
             completed()
         })
+
     }
     
     func unfollowAction(withUserID userID:String, completed:@escaping()->Void) {
         
-        guard let currentID = Profile.currentUser?.userID else {
+        guard let currentUser = Profile.currentUser else {
             return
         }
-        
+
+        let filtered = currentUser.following?.filter({$0 != userID})
+        Profile.currentUser?.following = filtered
+        let currentID = currentUser.userID
         userRef.child(userID).child("followers").child(currentID).setValue(nil)
         userRef.child(currentID).child("following").child(userID).setValue(nil)
-        
-        API.userAPI.fetchUserPostsID(withUserID: userID, completion: {
+        API.userAPI.fetchUserPostsID(withUserID: userID, withLimitToLast: nil, completion: {
             ids in
             if let fetchedIds = ids {
                 for currentPostId in fetchedIds {
@@ -64,14 +68,31 @@ class FollowAPI: NSObject {
         }
         userRef.child(currentID).child("following").child(userID).observeSingleEvent(of: .value, with: {
             snapshot in
-            if snapshot.value != nil {
+            if let _ = snapshot.value as? Bool {
+                print("Following")
                 completed(true)
             }
             else {
+                print("Not following")
                 completed(false)
             }
-            
         })
+        
+    }
+    
+    func checkIsFollowingLoacally(withUserID userID:String) -> Bool? {
+        
+        guard let currentUser = Profile.currentUser else {
+            return nil
+        }
+        
+        let following = currentUser.following
+        if following?.filter({$0 == userID}) != nil {
+            return true
+        }
+        else {
+            return false
+        }
         
     }
     

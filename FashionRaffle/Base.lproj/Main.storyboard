@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="1299" y="-591"/>
         </scene>
-        <!--ProfileNavigation-->
+        <!--ProfileCollectionNavi-->
         <scene sceneID="o44-gN-aPB">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileNavigation" id="2Xr-P2-N7d" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileCollectionNavi" id="2Xr-P2-N7d" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="first" id="PHm-eA-sox"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muR-kf-u9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,7 +368,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KVX-Ci-Tdm" id="AFe-4P-dqI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4H-rI-Fko">
