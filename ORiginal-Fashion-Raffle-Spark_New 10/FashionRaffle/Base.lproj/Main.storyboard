@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="Gwg-jU-fNk" kind="relationship" relationship="viewControllers" id="dNH-8b-xts"/>
+                        <segue destination="vJ6-GO-adw" kind="relationship" relationship="viewControllers" id="F2x-ms-yzf"/>
                         <segue destination="j15-BS-u2X" kind="relationship" relationship="viewControllers" id="UA1-sC-gSm"/>
+                        <segue destination="KEq-jN-0o8" kind="relationship" relationship="viewControllers" id="Ch0-os-eG0"/>
                         <segue destination="2Xr-P2-N7d" kind="relationship" relationship="viewControllers" id="3pL-9A-PUA"/>
                     </connections>
                 </tabBarController>
@@ -40,6 +42,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqb-79-J9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-431" y="133"/>
+        </scene>
+        <!--converstation-->
+        <scene sceneID="ZCP-Zx-Gyl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="converstation" id="vJ6-GO-adw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="j6R-XA-50G"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXR-cE-WIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-450" y="261"/>
         </scene>
         <!--ORigiNal-->
         <scene sceneID="IYY-Sd-scx">
@@ -158,6 +170,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVk-7A-o6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1299" y="-591"/>
+        </scene>
+        <!--explore-->
+        <scene sceneID="DKv-Z5-qTU">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="explore" storyboardName="explore" id="KEq-jN-0o8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="V2c-pn-qJx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qCT-nm-HU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-438" y="-149"/>
         </scene>
         <!--ProfileCollectionNavi-->
         <scene sceneID="o44-gN-aPB">
@@ -368,7 +390,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KVX-Ci-Tdm" id="AFe-4P-dqI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4H-rI-Fko">

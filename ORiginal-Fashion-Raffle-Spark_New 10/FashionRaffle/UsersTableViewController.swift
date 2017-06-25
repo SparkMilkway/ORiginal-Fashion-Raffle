@@ -10,6 +10,9 @@ import UIKit
 import Imaginary
 import ESPullToRefresh
 
+var shouldViewAllUser = Bool(true)
+var followArray = [String]()
+
 class UsersTableViewController: UITableViewController {
     
     var userProfiles = [Profile]()
@@ -18,8 +21,16 @@ class UsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Find Users"
-        fetchDetails()
+        if shouldViewAllUser == true {
+            navigationItem.title = "Find Users"
+            fetchDetails()
+            print("show all")
+        } else {
+            shouldViewAllUser = true
+            //fetchDetails()
+            fetchSelectedUser()
+            print("Dont show All")
+        }
         
         tableView.es_addPullToRefresh {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.4, execute: {
@@ -45,6 +56,20 @@ class UsersTableViewController: UITableViewController {
             self.tableView.reloadData()
             Config.dismissPlainLoading()
         })
+    }
+    func fetchSelectedUser(){
+        Config.showPlainLoading(withStatus: nil)
+        for userID in followArray {
+            print("Hello, \(userID)!")
+            API.userAPI.fetchUserInfo(withID: userID, completion: {
+                fetchProfiles in
+                self.userProfiles.append(fetchProfiles!)
+                self.tableView.reloadData()
+                Config.dismissPlainLoading()
+            })
+        }
+
+        
     }
 
     func loadMore() {

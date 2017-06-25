@@ -18,7 +18,7 @@ class CentralTabBarController: UITabBarController {
             if index == (self.viewControllers?.count)! / 2 {
                 vc.tabBarItem.isEnabled = false
             }
-            if index == 3 {
+            if index == 5 {
                 let profileVC = vc as! ProfileCollectionViewController
                 profileVC.isCurrentUser = true
                 profileVC.isProfilePage = true

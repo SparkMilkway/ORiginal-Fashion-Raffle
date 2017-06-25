@@ -128,12 +128,18 @@ class ProfileHeaderView: UICollectionReusableView {
         
         if let fers = selectedUser.followers {
             self.ferArray = fers
+            if self.ferArray.count == 0 {
+                self.followerButton.isUserInteractionEnabled = false
+            }
         }
         else {
             self.followerButton.isUserInteractionEnabled = false
         }
         if let fings = selectedUser.following {
             self.fingArray = fings
+            if self.fingArray.count == 0 {
+                self.followingButton.isUserInteractionEnabled = false
+            }
         }
         else {
             self.followingButton.isUserInteractionEnabled = false
@@ -169,9 +175,21 @@ class ProfileHeaderView: UICollectionReusableView {
     
     @IBAction func followingDidTap(_ sender: Any) {
         print("Following Tapped")
+        print(self.fingArray)
+        shouldViewAllUser = false
+        followArray = self.fingArray
+        
+
+
     }
+    
+    
     @IBAction func followerDidTap(_ sender: Any) {
         print("Follower Tapped")
+        print(self.ferArray)
+        shouldViewAllUser = false
+        followArray = self.ferArray
+        
     }
     @IBAction func followDidTap(_ sender: Any) {
         if let selectUser = user {

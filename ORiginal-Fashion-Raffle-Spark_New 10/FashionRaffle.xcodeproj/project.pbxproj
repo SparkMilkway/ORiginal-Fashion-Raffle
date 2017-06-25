@@ -17,6 +17,11 @@
 		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
 		04DA8F1A1EFF35B400B02BA2 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */; };
 		04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */; };
+		04DA8F1D1EFF398600B02BA2 /* converstation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DA8F1C1EFF398600B02BA2 /* converstation.storyboard */; };
+		04DA8F1F1EFF39E600B02BA2 /* explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DA8F1E1EFF39E600B02BA2 /* explore.storyboard */; };
+		04DA8F211EFF444100B02BA2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F201EFF444100B02BA2 /* Message.swift */; };
+		04DA8F271EFF4A7500B02BA2 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */; };
+		04DA8F291EFF4D5E00B02BA2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */; };
 		04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */; };
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
 		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
@@ -125,6 +130,11 @@
 		04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		04DA8F1C1EFF398600B02BA2 /* converstation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = converstation.storyboard; sourceTree = "<group>"; };
+		04DA8F1E1EFF39E600B02BA2 /* explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = explore.storyboard; sourceTree = "<group>"; };
+		04DA8F201EFF444100B02BA2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +339,7 @@
 				52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */,
 				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 				522A06211EE4EEB20071EC20 /* Comments.swift */,
+				04DA8F201EFF444100B02BA2 /* Message.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -375,6 +386,8 @@
 				52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */,
 				04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */,
 				04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */,
+				04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */,
+				04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -503,6 +516,8 @@
 			children = (
 				526234DF1EF34C1500237795 /* Start.storyboard */,
 				04D8A1E31DC36C53008B1989 /* Main.storyboard */,
+				04DA8F1E1EFF39E600B02BA2 /* explore.storyboard */,
+				04DA8F1C1EFF398600B02BA2 /* converstation.storyboard */,
 				526234DC1EF34B7B00237795 /* ReleaseNewsFeed.storyboard */,
 				526234E51EF49A1500237795 /* RaffleFeed.storyboard */,
 				526234E71EF49A2700237795 /* SocialFeed.storyboard */,
@@ -678,6 +693,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DA8F1D1EFF398600B02BA2 /* converstation.storyboard in Resources */,
 				526234DD1EF34B7B00237795 /* ReleaseNewsFeed.storyboard in Resources */,
 				522EC6841DFE2B6B00CA7AA6 /* Sources in Resources */,
 				522EC6771DFE2B4100CA7AA6 /* FSAlbumView.xib in Resources */,
@@ -693,6 +709,7 @@
 				522EC67F1DFE2B4100CA7AA6 /* FSVideoCameraView.xib in Resources */,
 				525D6CD51DC6A08A00509E20 /* podfile in Resources */,
 				04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */,
+				04DA8F1F1EFF39E600B02BA2 /* explore.storyboard in Resources */,
 				522EC6751DFE2B4100CA7AA6 /* Assets.xcassets in Resources */,
 				522EC67B1DFE2B4100CA7AA6 /* FSCameraView.xib in Resources */,
 				04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */,
@@ -792,6 +809,7 @@
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				526234DB1EEDEE7100237795 /* AuthAPI.swift in Sources */,
 				52146CBA1EDCC79F00612540 /* UsersTableViewCell.swift in Sources */,
+				04DA8F211EFF444100B02BA2 /* Message.swift in Sources */,
 				52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */,
 				522A06241EE8DCB90071EC20 /* CommentAPI.swift in Sources */,
 				522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */,
@@ -801,6 +819,7 @@
 				04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */,
+				04DA8F271EFF4A7500B02BA2 /* MessagesController.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				522A06221EE4EEB20071EC20 /* Comments.swift in Sources */,
@@ -817,6 +836,7 @@
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
+				04DA8F291EFF4D5E00B02BA2 /* UserCell.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,
 				52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */,
 				04DA8F1A1EFF35B400B02BA2 /* CommentTableViewCell.swift in Sources */,
