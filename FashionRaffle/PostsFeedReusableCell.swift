@@ -20,6 +20,10 @@ class PostPoolCell: UITableViewCell {
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var viewProfile: UIButton!
     
+    @IBOutlet weak var comment: UIButton!
+    @IBOutlet weak var like: UIButton!
+    var didLike = true
+
     var homeTableViewController: UITableViewController?
     
     var post: Post? {
@@ -35,7 +39,18 @@ class PostPoolCell: UITableViewCell {
             if let caption = currentPost.caption {
                 self.captionLabel.text = caption
             }
-
+            if let likeCount = currentPost.likeCounter {
+                
+                self.like.setTitle(String(likeCount) , for: .normal)
+            }
+            
+            if let commentCount = currentPost.comments?.count {
+                
+                self.comment.setTitle(String(commentCount), for: .normal)
+            }
+            
+            self.like.imageView?.contentMode = .scaleAspectFit
+            self.comment.imageView?.contentMode = .scaleAspectFit
             API.userAPI.fetchUserProfilePicUrl(withID: fetchUserID, completion: {
                 profileurl in
                 if let url = profileurl {
@@ -88,9 +103,48 @@ class PostPoolCell: UITableViewCell {
         
     }
     
+    @IBAction func likeTapped(_ sender: Any) {
+        if let currentPost = post {
+            print(currentPost.likedUsers, "TEST")
+            if didLike == true {
+                currentPost.likedUsers?.append((Profile.currentUser?.userID)!)
+                print(currentPost.likedUsers, "TEST")
+                self.like.setImage(#imageLiteral(resourceName: "likeSelected"), for: .normal)
+                self.like.imageView?.contentMode = .scaleAspectFit
+                didLike = false
+            } else {
+                if let index = currentPost.likedUsers?.index(of: (Profile.currentUser?.userID)!){
+                    currentPost.likedUsers?.remove(at: index)
+                    print(currentPost.likedUsers, "TEST")
+                    self.like.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+                    self.like.imageView?.contentMode = .scaleAspectFit
+                    didLike = true
+                }
+            }
+            if let temp = currentPost.likedUsers?.count{
+                let templikeCount = String(temp)
+                self.like.setTitle(templikeCount , for: .normal)
+                
+            }
+            
+            
+            let postRef = API.postAPI.postRef.child(currentPost.postID!)
+            postRef.child("likeCounter").setValue(currentPost.likedUsers?.count)
+            
+            
+        }
+        
+
+        
+    }
     // Comment Button
     @IBAction func commentDidTap(_ sender: Any) {
-        
+        print("FUCK")
+        let comment = homeTableViewController?.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! CommentViewController
+        comment.postId = post?.postID
+        print(comment.postId, "FFFFFFFFFFFF")
+        homeTableViewController?.navigationController?.pushViewController(comment, animated: true)
+
         
     }
     

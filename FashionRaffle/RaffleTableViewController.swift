@@ -51,6 +51,7 @@ class RaffleTableViewController: UITableViewController {
             if let raffles = fetchedRaffles{
                 self.raffleFeedDatas = raffles
                 self.tableView.reloadData()
+                
             }
             else {
                 Config.showError(withStatus: "No Raffles!")
@@ -73,14 +74,13 @@ class RaffleTableViewController: UITableViewController {
             }
             else {
                 Config.showError(withStatus: "No Raffles!")
+                self.tableView.reloadData()
             }
-            
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
                 self.tableView.es_stopPullToRefresh()
                 return
             })
         })
-        
         
         
     }

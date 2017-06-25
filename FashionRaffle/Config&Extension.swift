@@ -73,6 +73,7 @@ class Config: NSObject {
         SVProgressHUD.dismiss(withDelay: 1.5)
     }
     
+    
 
 //Show an alert
     static func showAlerts(title: String, message: String, handler: ((UIAlertAction) -> Void)?, controller: UIViewController){

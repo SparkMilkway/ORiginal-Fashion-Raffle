@@ -71,14 +71,13 @@ class PostFeedTableViewController: UITableViewController {
             }
             else {
                 Config.showError(withStatus: "No Posts!")
+                self.tableView.reloadData()
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
                 self.tableView.es_stopPullToRefresh()
                 return
             })
         })
-        
-
     }
     
     func loadMore() {
@@ -92,7 +91,6 @@ class PostFeedTableViewController: UITableViewController {
                 posts in
                 if let fetchedPosts = posts {
                     if fetchedPosts.count > checkCount {
-                        
                         print("Has more data")
                         self.postFeeds.removeAll()
                         self.postFeeds = fetchedPosts
@@ -133,6 +131,7 @@ class PostFeedTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let post = self.postFeeds[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostPoolCell
         cell.post = post

@@ -15,6 +15,8 @@
 		04D8A1F51DC36C53008B1989 /* FashionRaffleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1F41DC36C53008B1989 /* FashionRaffleTests.swift */; };
 		04D8A2001DC36C53008B1989 /* FashionRaffleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */; };
 		04D8A20E1DC36CA8008B1989 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */; };
+		04DA8F1A1EFF35B400B02BA2 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */; };
+		04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */; };
 		04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */; };
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
 		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
@@ -121,6 +123,8 @@
 		04D8A1FF1DC36C53008B1989 /* FashionRaffleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionRaffleUITests.swift; sourceTree = "<group>"; };
 		04D8A2011DC36C53008B1989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D8A20D1DC36CA8008B1989 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 				522A061C1EE3B1C70071EC20 /* PostsFeedReusableCell.swift */,
 				04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */,
 				52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */,
+				04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */,
+				04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -792,6 +798,7 @@
 				52146CAD1EDCC5A800612540 /* giveAwayViewController.swift in Sources */,
 				522EC6781DFE2B4100CA7AA6 /* FSAlbumViewCell.swift in Sources */,
 				52334D9D1E78CC3300FFB8A4 /* PostFeedTableViewController.swift in Sources */,
+				04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
@@ -812,6 +819,7 @@
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,
 				52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */,
+				04DA8F1A1EFF35B400B02BA2 /* CommentTableViewCell.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				52F970811DFDED2200E396CD /* Config&Extension.swift in Sources */,
