@@ -1992,7 +1992,6 @@
         <!--Bounty Quest View Controller-->
         <scene sceneID="kJR-3I-9ir">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Xs-fl-a21" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ovU-7k-Xp5" customClass="bountyQuestViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RtE-MA-sir"/>
@@ -2046,6 +2045,7 @@
                         <outlet property="map" destination="sVA-Ur-c8z" id="8mo-sI-Qx8"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Xs-fl-a21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1135.2" y="2120.2398800599703"/>
         </scene>
@@ -2695,6 +2695,10 @@
         <scene sceneID="wwj-7u-Qid">
             <objects>
                 <viewController id="Fuz-aB-2xj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jg1-hj-Cju"/>
+                        <viewControllerLayoutGuide type="bottom" id="I7r-IX-90y"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Sw-tK-xzL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
