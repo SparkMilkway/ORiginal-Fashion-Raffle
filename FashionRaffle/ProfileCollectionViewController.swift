@@ -60,7 +60,10 @@ class ProfileCollectionViewController: UIViewController {
         super.viewWillAppear(animated)
         if isProfilePage {
             selectedUser = Profile.currentUser
-            self.updateHeaderView()
+            self.updateHeaderView(currentUser: true)
+        }
+        else {
+            self.updateHeaderView(currentUser: false)
         }
     }
     
@@ -127,11 +130,11 @@ class ProfileCollectionViewController: UIViewController {
         navigationItem.title = selectedUser?.username
     }
 
-    func updateHeaderView() {
+    func updateHeaderView(currentUser: Bool) {
         guard let headerView = userProfileCollectionView.viewWithTag(60) as? ProfileHeaderView else {
             return
         }
-        headerView.updateProfileView(currentUser: true)
+        headerView.updateProfileView(currentUser: currentUser)
         
     }
     

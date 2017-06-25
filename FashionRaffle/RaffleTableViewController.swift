@@ -50,10 +50,10 @@ class RaffleTableViewController: UITableViewController {
             fetchedRaffles in
             if let raffles = fetchedRaffles{
                 self.raffleFeedDatas = raffles
-                
-            }
-            DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+            else {
+                Config.showError(withStatus: "No Raffles!")
             }
             
         })
@@ -63,35 +63,25 @@ class RaffleTableViewController: UITableViewController {
     
     func loadRowsFromTop() {
         
-        if let firstID = self.raffleFeedDatas[0].raffleID {
-            self.raffleAPI.checkNewRafflesInTable(withFirstRaffleID: firstID, completed: {
-                checkValue in
-                if checkValue == true {
-                    print("will fetch new value")
-                    self.raffleFeedDatas.removeAll()
-                    self.raffleAPI.fetchAllRaffles(withLimitToLast: self.currentLoad, completed: {
-                        fetchRaffles in
-                        if let raffles = fetchRaffles {
-                            self.raffleFeedDatas = raffles
-                            self.tableView.reloadData()
-                            self.tableView.es_stopPullToRefresh()
-                            return
-                        }
-                        else {
-                            Config.showError(withStatus: "Loading Error!")
-                            return
-                        }
-                    })
-                }
-                
+        raffleFeedDatas.removeAll()
+        
+        raffleAPI.fetchAllRaffles(withLimitToLast: self.currentLoad, completed: {
+            fetchedRaffles in
+            if let raffles = fetchedRaffles{
+                self.raffleFeedDatas = raffles
+                self.tableView.reloadData()
+            }
+            else {
+                Config.showError(withStatus: "No Raffles!")
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
+                self.tableView.es_stopPullToRefresh()
+                return
             })
-        }
-        //Otherwise
-        print("No new Raffle Data")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
-            self.tableView.es_stopPullToRefresh()
-            return
         })
+        
+        
         
     }
     

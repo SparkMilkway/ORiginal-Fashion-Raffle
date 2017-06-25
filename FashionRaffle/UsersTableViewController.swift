@@ -20,7 +20,7 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Find Users"
         fetchDetails()
-        
+
         tableView.es_addPullToRefresh {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.4, execute: {
                 self.tableView.es_stopPullToRefresh()

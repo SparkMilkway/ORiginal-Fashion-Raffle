@@ -55,7 +55,10 @@ class FeedAPI : NSObject {
         var tempPosts = [Post]()
         fetchFeedCount(completed: {
             feedCount in
-            
+            guard feedCount > 0 else {
+                completed(nil)
+                return
+            }
             var actualCount : UInt
             if feedCount < number {
                 actualCount = feedCount
