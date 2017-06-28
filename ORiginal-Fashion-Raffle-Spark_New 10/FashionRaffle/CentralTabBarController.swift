@@ -43,6 +43,10 @@ class CentralTabBarController: UITabBarController {
             self.view.addSubview(button)
         }
     }
+    func dismissTabBar() {
+        tabBar.isHidden = true
+        
+    }
     
     func centralAction() {
         

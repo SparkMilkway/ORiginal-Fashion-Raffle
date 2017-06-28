@@ -14,6 +14,8 @@ class UserAPI: NSObject {
     let userRef = API().userRef
     let storageAPI = API.storageAPI
     
+    
+    
     //****************************************************//
     // Upload
     //****************************************************//
@@ -276,6 +278,7 @@ class UserAPI: NSObject {
         })
         
     }
+    
     
     
     

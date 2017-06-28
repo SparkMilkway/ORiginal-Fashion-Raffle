@@ -47,6 +47,9 @@ PODS:
   - HGCircularSlider (2.0.0)
   - Imaginary (1.0.2):
     - Cache (~> 2.0)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - NohanaImagePicker (0.7.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -65,6 +68,7 @@ DEPENDENCIES:
   - FirebaseUI/Storage (~> 0.6)
   - HGCircularSlider (~> 2.0.0)
   - Imaginary
+  - JSQMessagesViewController
   - NohanaImagePicker
   - SDWebImage (~> 3.8)
   - Sharaku
@@ -89,11 +93,13 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
   Imaginary: b4f4c069ad23b53243058a040a531e099aee8a1f
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   NohanaImagePicker: ae909c23150c30e29ab2c5d48766c39eef21d790
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   Sharaku: c18de569fc99f6e936f46ca812b571826cc658a7
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: d46c05897ad8c99d9484cae42fc6346fa584af81
+PODFILE CHECKSUM: 4d4a23ecf52e319ac0dbaf1f00e9d781492cc65d
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

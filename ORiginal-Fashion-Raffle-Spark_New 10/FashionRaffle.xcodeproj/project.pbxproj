@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042F7E351F008D390098DB90 /* newMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E341F008D390098DB90 /* newMessageTableViewController.swift */; };
+		042F7E371F008D3F0098DB90 /* newMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E361F008D3F0098DB90 /* newMessageTableViewCell.swift */; };
+		042F7E3B1F00902A0098DB90 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E3A1F00902A0098DB90 /* ChatVC.swift */; };
+		042F7E3D1F00906B0098DB90 /* Helper Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E3C1F00906B0098DB90 /* Helper Files.swift */; };
+		042F7E3F1F0090CB0098DB90 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E3E1F0090CB0098DB90 /* Conversation.swift */; };
+		042F7E411F0091990098DB90 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E401F0091990098DB90 /* Message.swift */; };
+		042F7E431F0091EA0098DB90 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E421F0091EA0098DB90 /* VCCells.swift */; };
+		042F7E451F009FAE0098DB90 /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E441F009FAE0098DB90 /* ConversationsVC.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
@@ -19,9 +27,6 @@
 		04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */; };
 		04DA8F1D1EFF398600B02BA2 /* converstation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DA8F1C1EFF398600B02BA2 /* converstation.storyboard */; };
 		04DA8F1F1EFF39E600B02BA2 /* explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DA8F1E1EFF39E600B02BA2 /* explore.storyboard */; };
-		04DA8F211EFF444100B02BA2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F201EFF444100B02BA2 /* Message.swift */; };
-		04DA8F271EFF4A7500B02BA2 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */; };
-		04DA8F291EFF4D5E00B02BA2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */; };
 		04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */; };
 		31CE346FCA499FA189D6D461 /* Pods_FashionRaffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */; };
 		52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52060FC31DEF785A00A26D8F /* RafflePoolData.swift */; };
@@ -114,6 +119,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042F7E341F008D390098DB90 /* newMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageTableViewController.swift; sourceTree = "<group>"; };
+		042F7E361F008D3F0098DB90 /* newMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageTableViewCell.swift; sourceTree = "<group>"; };
+		042F7E3A1F00902A0098DB90 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		042F7E3C1F00906B0098DB90 /* Helper Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Helper Files.swift"; sourceTree = "<group>"; };
+		042F7E3E1F0090CB0098DB90 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		042F7E401F0091990098DB90 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		042F7E421F0091EA0098DB90 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCCells.swift; sourceTree = "<group>"; };
+		042F7E441F009FAE0098DB90 /* ConversationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,9 +145,6 @@
 		04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		04DA8F1C1EFF398600B02BA2 /* converstation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = converstation.storyboard; sourceTree = "<group>"; };
 		04DA8F1E1EFF39E600B02BA2 /* explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = explore.storyboard; sourceTree = "<group>"; };
-		04DA8F201EFF444100B02BA2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
-		04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		04F59E4E1EB554BC00639F43 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		108A0BE55C57C44FC29EC449 /* Pods_FashionRaffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionRaffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2164BA12C36C4B5EE37D1727 /* Pods-FashionRaffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionRaffle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FashionRaffle/Pods-FashionRaffle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +256,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042F7E2B1F006DAC0098DB90 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				042F7E421F0091EA0098DB90 /* VCCells.swift */,
+				042F7E341F008D390098DB90 /* newMessageTableViewController.swift */,
+				042F7E361F008D3F0098DB90 /* newMessageTableViewCell.swift */,
+				042F7E441F009FAE0098DB90 /* ConversationsVC.swift */,
+				042F7E3A1F00902A0098DB90 /* ChatVC.swift */,
+				042F7E3C1F00906B0098DB90 /* Helper Files.swift */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
 		04D8A1D11DC36C53008B1989 = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +362,8 @@
 				52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */,
 				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 				522A06211EE4EEB20071EC20 /* Comments.swift */,
-				04DA8F201EFF444100B02BA2 /* Message.swift */,
+				042F7E401F0091990098DB90 /* Message.swift */,
+				042F7E3E1F0090CB0098DB90 /* Conversation.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -386,8 +410,6 @@
 				52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */,
 				04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */,
 				04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */,
-				04DA8F261EFF4A7500B02BA2 /* MessagesController.swift */,
-				04DA8F281EFF4D5E00B02BA2 /* UserCell.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -429,6 +451,7 @@
 		52334D941E78C42C00FFB8A4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				042F7E2B1F006DAC0098DB90 /* Message */,
 				529AA89E1EFC952D001EE8FB /* Users */,
 				526234ED1EF74BD500237795 /* ProfileController */,
 				52146CAA1EDCC52000612540 /* settingTableViewController.swift */,
@@ -748,7 +771,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D51D47FE56E515A5FA11B489 /* [CP] Embed Pods Frameworks */ = {
@@ -809,7 +832,6 @@
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
 				526234DB1EEDEE7100237795 /* AuthAPI.swift in Sources */,
 				52146CBA1EDCC79F00612540 /* UsersTableViewCell.swift in Sources */,
-				04DA8F211EFF444100B02BA2 /* Message.swift in Sources */,
 				52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */,
 				522A06241EE8DCB90071EC20 /* CommentAPI.swift in Sources */,
 				522A06131EE0C58C0071EC20 /* FIRStorageAPI.swift in Sources */,
@@ -819,30 +841,36 @@
 				04DA8F1B1EFF35B400B02BA2 /* CommentViewController.swift in Sources */,
 				04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */,
 				522A06271EE8DCDA0071EC20 /* FollowAPI.swift in Sources */,
-				04DA8F271EFF4A7500B02BA2 /* MessagesController.swift in Sources */,
 				522EC68E1DFE2DD800CA7AA6 /* CheckLikeFunctions.swift in Sources */,
 				52060FC41DEF785A00A26D8F /* RafflePoolData.swift in Sources */,
 				522A06221EE4EEB20071EC20 /* Comments.swift in Sources */,
 				522A06291EE8E9B40071EC20 /* FeedAPI.swift in Sources */,
 				529AA89D1EFA1275001EE8FB /* ProfileCollectionCell.swift in Sources */,
+				042F7E351F008D390098DB90 /* newMessageTableViewController.swift in Sources */,
+				042F7E431F0091EA0098DB90 /* VCCells.swift in Sources */,
 				52071E841E92E96E00ADDB8C /* AddNewsViewController.swift in Sources */,
 				522A061B1EE3B1620071EC20 /* NewsReusableCell.swift in Sources */,
 				52472E7E1E949A91008F6475 /* FeedSegmentedViewController.swift in Sources */,
+				042F7E3B1F00902A0098DB90 /* ChatVC.swift in Sources */,
+				042F7E451F009FAE0098DB90 /* ConversationsVC.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
+				042F7E371F008D3F0098DB90 /* newMessageTableViewCell.swift in Sources */,
 				522A06171EE25E270071EC20 /* RaffleAPI.swift in Sources */,
 				523A79C61EF9CB3E000891CE /* ProfileCollectionHeaderView.swift in Sources */,
 				5277C03D1EBED0A300881B4A /* CentralTabBarController.swift in Sources */,
+				042F7E3D1F00906B0098DB90 /* Helper Files.swift in Sources */,
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
+				042F7E3F1F0090CB0098DB90 /* Conversation.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
-				04DA8F291EFF4D5E00B02BA2 /* UserCell.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,
 				52E3773E1ED2C0A700F2D609 /* ReusableCollectionCell.swift in Sources */,
 				04DA8F1A1EFF35B400B02BA2 /* CommentTableViewCell.swift in Sources */,
 				522EC67E1DFE2B4100CA7AA6 /* FSVideoCameraView.swift in Sources */,
 				522EC6761DFE2B4100CA7AA6 /* FSAlbumView.swift in Sources */,
 				52F970811DFDED2200E396CD /* Config&Extension.swift in Sources */,
+				042F7E411F0091990098DB90 /* Message.swift in Sources */,
 				048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,6 +1032,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FashionRaffle",
+					"$(PROJECT_DIR)/FashionRaffle/FashionRaffle",
 				);
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1030,6 +1059,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FashionRaffle",
+					"$(PROJECT_DIR)/FashionRaffle/FashionRaffle",
 				);
 				INFOPLIST_FILE = FashionRaffle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

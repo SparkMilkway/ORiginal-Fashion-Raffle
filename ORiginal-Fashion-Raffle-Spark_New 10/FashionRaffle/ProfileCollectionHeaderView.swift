@@ -178,8 +178,6 @@ class ProfileHeaderView: UICollectionReusableView {
         print(self.fingArray)
         shouldViewAllUser = false
         followArray = self.fingArray
-        
-
 
     }
     
