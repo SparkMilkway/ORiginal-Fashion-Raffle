@@ -21,7 +21,8 @@ class API: NSObject {
     var giveawayRef = FIRDatabase.database().reference().child("Giveaways")
     var directPostRef = FIRDatabase.database().reference().child("DirectPosts")
     var commentRef = FIRDatabase.database().reference().child("Comments")
-    
+    var bountyRef = FIRDatabase.database().reference().child("Bounty")
+
     
     static var userAPI = UserAPI()
     static var releaseAPI = ReleaseAPI()
@@ -32,4 +33,6 @@ class API: NSObject {
     static var feedAPI = FeedAPI()
     static var commentAPI = CommentAPI()
     static var followAPI = FollowAPI()
+    static var bountyAPI = BountyAPI()
+
 }

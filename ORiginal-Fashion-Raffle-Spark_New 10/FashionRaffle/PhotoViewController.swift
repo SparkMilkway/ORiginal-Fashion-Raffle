@@ -21,6 +21,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     
     @IBOutlet weak var giveAwayContainer: UIView!
     
+    @IBOutlet weak var bountyContainer: UIView!
     
     var fusumaOne : FusumaViewController?
     var shOne : SHViewController?
@@ -31,7 +32,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     //set up dropdown menu
     fileprivate let dropdownItems: [AnimatedDropdownMenu.Item] = [
         AnimatedDropdownMenu.Item.init("New Post", nil, nil),
-        AnimatedDropdownMenu.Item.init("Direct Message", nil, nil),
+        AnimatedDropdownMenu.Item.init("Bounty", nil, nil),
         AnimatedDropdownMenu.Item.init("Give Away Post", nil, nil)
     ]
     
@@ -63,6 +64,7 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
         setupAnimatedDropdownMenu()
         giveAwayContainer.isHidden = true
+        bountyContainer.isHidden = true
         
         
         
@@ -231,12 +233,15 @@ class PhotoViewController: UIViewController, FusumaDelegate{
         
         if selectedStageIndex == 0{
             giveAwayContainer.isHidden = true
+            bountyContainer.isHidden = true
         }
         if selectedStageIndex == 1{
             giveAwayContainer.isHidden = true
+            bountyContainer.isHidden = false
         }
         if selectedStageIndex == 2{
             giveAwayContainer.isHidden = false
+            bountyContainer.isHidden = true
         }
         print("\(dropdownItems[selectedStageIndex].title)")
     }

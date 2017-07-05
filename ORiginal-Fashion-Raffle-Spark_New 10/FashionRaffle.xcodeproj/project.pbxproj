@@ -16,6 +16,9 @@
 		042F7E431F0091EA0098DB90 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E421F0091EA0098DB90 /* VCCells.swift */; };
 		042F7E451F009FAE0098DB90 /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7E441F009FAE0098DB90 /* ConversationsVC.swift */; };
 		048581B71DC37653006A1C3E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048581B61DC37653006A1C3E /* LoginTextField.swift */; };
+		04A4DFDD1F0C1D6B002C4D06 /* BountyStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFDC1F0C1D6B002C4D06 /* BountyStruct.swift */; };
+		04A4DFDF1F0C1D71002C4D06 /* BountyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFDE1F0C1D71002C4D06 /* BountyAPI.swift */; };
+		04A4DFE11F0C1D87002C4D06 /* bountyQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFE01F0C1D87002C4D06 /* bountyQuestViewController.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
 		04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E61DC36C53008B1989 /* Assets.xcassets */; };
@@ -128,6 +131,9 @@
 		042F7E421F0091EA0098DB90 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCCells.swift; sourceTree = "<group>"; };
 		042F7E441F009FAE0098DB90 /* ConversationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
 		048581B61DC37653006A1C3E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		04A4DFDC1F0C1D6B002C4D06 /* BountyStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BountyStruct.swift; sourceTree = "<group>"; };
+		04A4DFDE1F0C1D71002C4D06 /* BountyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BountyAPI.swift; sourceTree = "<group>"; };
+		04A4DFE01F0C1D87002C4D06 /* bountyQuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bountyQuestViewController.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D8A1E41DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -340,6 +346,7 @@
 				522A06281EE8E9B40071EC20 /* FeedAPI.swift */,
 				522A06231EE8DCB90071EC20 /* CommentAPI.swift */,
 				522A06261EE8DCDA0071EC20 /* FollowAPI.swift */,
+				04A4DFDE1F0C1D71002C4D06 /* BountyAPI.swift */,
 			);
 			name = "Database APIs";
 			sourceTree = "<group>";
@@ -364,6 +371,7 @@
 				522A06211EE4EEB20071EC20 /* Comments.swift */,
 				042F7E401F0091990098DB90 /* Message.swift */,
 				042F7E3E1F0090CB0098DB90 /* Conversation.swift */,
+				04A4DFDC1F0C1D6B002C4D06 /* BountyStruct.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -410,6 +418,7 @@
 				52146CAC1EDCC5A800612540 /* giveAwayViewController.swift */,
 				04DA8F181EFF35B400B02BA2 /* CommentTableViewCell.swift */,
 				04DA8F191EFF35B400B02BA2 /* CommentViewController.swift */,
+				04A4DFE01F0C1D87002C4D06 /* bountyQuestViewController.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -830,6 +839,7 @@
 				522EC67C1DFE2B4100CA7AA6 /* FSConstants.swift in Sources */,
 				526234F31EF8C11700237795 /* ProfileCollectionViewController.swift in Sources */,
 				520FF4301ED2AA6D00CAC17A /* ReusableDetailViewController.swift in Sources */,
+				04A4DFDF1F0C1D71002C4D06 /* BountyAPI.swift in Sources */,
 				526234DB1EEDEE7100237795 /* AuthAPI.swift in Sources */,
 				52146CBA1EDCC79F00612540 /* UsersTableViewCell.swift in Sources */,
 				52146CAB1EDCC52000612540 /* settingTableViewController.swift in Sources */,
@@ -854,6 +864,7 @@
 				042F7E3B1F00902A0098DB90 /* ChatVC.swift in Sources */,
 				042F7E451F009FAE0098DB90 /* ConversationsVC.swift in Sources */,
 				526EC5161DDA7462001BE789 /* NewsFeedData.swift in Sources */,
+				04A4DFE11F0C1D87002C4D06 /* bountyQuestViewController.swift in Sources */,
 				042F7E371F008D3F0098DB90 /* newMessageTableViewCell.swift in Sources */,
 				522A06171EE25E270071EC20 /* RaffleAPI.swift in Sources */,
 				523A79C61EF9CB3E000891CE /* ProfileCollectionHeaderView.swift in Sources */,
@@ -862,6 +873,7 @@
 				52644D461DEB97500095A8FC /* RaffleTableViewController.swift in Sources */,
 				042F7E3F1F0090CB0098DB90 /* Conversation.swift in Sources */,
 				522EC6801DFE2B4100CA7AA6 /* FusumaViewController.swift in Sources */,
+				04A4DFDD1F0C1D6B002C4D06 /* BountyStruct.swift in Sources */,
 				526EC5181DDAD4DF001BE789 /* NewsFeedTableViewController.swift in Sources */,
 				04F59E4F1EB554BC00639F43 /* PhotoViewController.swift in Sources */,
 				52334D9B1E78C6DD00FFB8A4 /* PostStruct.swift in Sources */,

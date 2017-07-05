@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wi7-4H-8tP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wi7-4H-8tP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,6 +91,13 @@
                                     <segue destination="TFa-CI-Fx2" kind="embed" id="Tv7-yt-VbZ"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sqh-fc-7Go">
+                                <rect key="frame" x="0.0" y="162" width="375" height="505"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="kKq-7c-NoD" kind="embed" id="FcD-lu-HUb"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -119,6 +126,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="background" destination="CVl-D3-nzu" id="01L-Mw-6lH"/>
+                        <outlet property="bountyContainer" destination="Sqh-fc-7Go" id="Ydw-Cu-X6v"/>
                         <outlet property="cancel" destination="9xm-h7-mgd" id="Lww-Oe-I7L"/>
                         <outlet property="captionLabel" destination="LC0-uz-lCX" id="z9K-LD-A6F"/>
                         <outlet property="fileUrlLabel" destination="yip-EL-Jqk" id="eIG-yt-fzj"/>
@@ -128,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="534-Av-sMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-508" y="1466"/>
+            <point key="canvasLocation" x="-508" y="1465.8170914542729"/>
         </scene>
         <!--Give Away View Controller-->
         <scene sceneID="GU0-az-03g">
@@ -525,6 +533,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="619-8O-aGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-508" y="2122"/>
+        </scene>
+        <!--Bounty Quest View Controller-->
+        <scene sceneID="XV2-N9-gxs">
+            <objects>
+                <viewController id="kKq-7c-NoD" customClass="bountyQuestViewController" customModule="FashionRaffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="keP-dd-Yk6"/>
+                        <viewControllerLayoutGuide type="bottom" id="c1D-3G-4bh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YpH-NC-mbS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-pH-qbt">
+                                <rect key="frame" x="12" y="174" width="84" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bounty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGZ-ad-4be">
+                                <rect key="frame" x="12" y="125" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWL-Un-4cW">
+                                <rect key="frame" x="310" y="169" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="useLocation:" destination="kKq-7c-NoD" eventType="valueChanged" id="Z6F-Wa-Nyh"/>
+                                </connections>
+                            </switch>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o9y-YN-Wf4">
+                                <rect key="frame" x="12" y="224" width="351" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="WQd-i5-Xox">
+                                <rect key="frame" x="243" y="120" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="bountySetting:" destination="kKq-7c-NoD" eventType="valueChanged" id="peG-U9-1LV"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="bounty" destination="GGZ-ad-4be" id="DMP-VU-RJK"/>
+                        <outlet property="bountyAmount" destination="WQd-i5-Xox" id="k8y-RU-Exm"/>
+                        <outlet property="locationSwitch" destination="AWL-Un-4cW" id="CMl-Sq-kHR"/>
+                        <outlet property="map" destination="o9y-YN-Wf4" id="SAS-C0-mtX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUS-cj-8R5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="209" y="2122"/>
         </scene>
     </scenes>
     <resources>
