@@ -71,8 +71,10 @@ class PhotoViewController: UIViewController, FusumaDelegate{
     }
     
     @IBAction func uploadPost(_ sender: Any) {
+        
         let image = self.imageView.image
         let caption = self.captionLabel.text!
+        
         if caption == "Captions." || caption == "" {
             Config.showAlerts(title: "Error", message: "Please write the caption section.", handler: nil, controller: self)
             return
@@ -84,26 +86,53 @@ class PhotoViewController: UIViewController, FusumaDelegate{
                 UIAlertAction in
                 
                 let imageData = UIImageJPEGRepresentation(image!, 0.6)!
-
-                API.postAPI.uploadPostImage(withImageData: imageData, captions: caption, onSuccess: {
-                    Config.showAlerts(title: "Success!", message: "", handler: {
-                        _ in
-                        UIView.animate(withDuration: 0.4, animations: {
-                            self.dismiss(animated: true, completion: nil)
-                            if let central = self.centralVC {
-                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
-                                    UIView.animate(withDuration: 0.3, animations: {
-                                        central.setNeedsStatusBarAppearanceUpdate()
-                                        central.view.alpha = 1
+                //
+                if self.selectedStageIndex == 0 {
+                    API.postAPI.uploadPostImage(withImageData: imageData, captions: caption, onSuccess: {
+                        Config.showAlerts(title: "Success!", message: "", handler: {
+                            _ in
+                            UIView.animate(withDuration: 0.4, animations: {
+                                self.dismiss(animated: true, completion: nil)
+                                if let central = self.centralVC {
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                                        UIView.animate(withDuration: 0.3, animations: {
+                                            central.setNeedsStatusBarAppearanceUpdate()
+                                            central.view.alpha = 1
+                                        })
                                     })
-                                })
-                            }
-                        })
-                    }, controller: self)
-                })
+                                }
+                            })
+                        }, controller: self)
+                    })//
+                }
+                
+                if self.selectedStageIndex == 1 {
+                    let tempL = myLocation
+                    let amount = myBountyAmount
+                    print(tempL, amount, "TEEEEST")
+                    API.bountyAPI.uploadPostImage(withImageData: imageData, captions: caption, location: tempL ,bountyAmount:amount, onSuccess: {
+                        Config.showAlerts(title: "Success!", message: "", handler: {
+                            _ in
+                            UIView.animate(withDuration: 0.4, animations: {
+                                self.dismiss(animated: true, completion: nil)
+                                if let central = self.centralVC {
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.1, execute: {
+                                        UIView.animate(withDuration: 0.3, animations: {
+                                            central.setNeedsStatusBarAppearanceUpdate()
+                                            central.view.alpha = 1
+                                        })
+                                    })
+                                }
+                            })
+                        }, controller: self)
+                    })
+                }
+                
             }, cancelHandler: nil)
             
         }
+        
+        
         
         
     }
