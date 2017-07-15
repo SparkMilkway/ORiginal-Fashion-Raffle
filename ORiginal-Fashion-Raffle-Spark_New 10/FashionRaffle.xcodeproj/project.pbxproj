@@ -19,6 +19,7 @@
 		04A4DFDD1F0C1D6B002C4D06 /* BountyStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFDC1F0C1D6B002C4D06 /* BountyStruct.swift */; };
 		04A4DFDF1F0C1D71002C4D06 /* BountyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFDE1F0C1D71002C4D06 /* BountyAPI.swift */; };
 		04A4DFE11F0C1D87002C4D06 /* bountyQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DFE01F0C1D87002C4D06 /* bountyQuestViewController.swift */; };
+		04D427FC1F19D28600ADAB6A /* GAW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D427FB1F19D28600ADAB6A /* GAW.swift */; };
 		04D8A1DE1DC36C53008B1989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */; };
 		04D8A1E51DC36C53008B1989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E31DC36C53008B1989 /* Main.storyboard */; };
 		04D8A1E71DC36C53008B1989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D8A1E61DC36C53008B1989 /* Assets.xcassets */; };
@@ -134,6 +135,7 @@
 		04A4DFDC1F0C1D6B002C4D06 /* BountyStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BountyStruct.swift; sourceTree = "<group>"; };
 		04A4DFDE1F0C1D71002C4D06 /* BountyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BountyAPI.swift; sourceTree = "<group>"; };
 		04A4DFE01F0C1D87002C4D06 /* bountyQuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bountyQuestViewController.swift; sourceTree = "<group>"; };
+		04D427FB1F19D28600ADAB6A /* GAW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAW.swift; sourceTree = "<group>"; };
 		04D8A1DA1DC36C53008B1989 /* FashionRaffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FashionRaffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D8A1DD1DC36C53008B1989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D8A1E41DC36C53008B1989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				526EC5151DDA7462001BE789 /* NewsFeedData.swift */,
 				52060FC31DEF785A00A26D8F /* RafflePoolData.swift */,
 				52334D9A1E78C6DD00FFB8A4 /* PostStruct.swift */,
+				04D427FB1F19D28600ADAB6A /* GAW.swift */,
 				52334DA21E78D51800FFB8A4 /* ProfileStruct.swift */,
 				522A06211EE4EEB20071EC20 /* Comments.swift */,
 				042F7E401F0091990098DB90 /* Message.swift */,
@@ -820,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D427FC1F19D28600ADAB6A /* GAW.swift in Sources */,
 				522A061D1EE3B1C70071EC20 /* PostsFeedReusableCell.swift in Sources */,
 				522EC67D1DFE2B4100CA7AA6 /* FSImageCropView.swift in Sources */,
 				527CA0701DDBB6EF00379312 /* NewsReusableViewController.swift in Sources */,
